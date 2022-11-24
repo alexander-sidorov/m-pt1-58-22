@@ -1,0 +1,37 @@
+[run]
+branch = True
+concurrency = greenlet
+data_file = .artifacts/coverage/data_file.db
+omit = \
+	.artifacts/
+	.git/
+	.github/
+	.idea/
+	.vscode/
+relative_files = True
+source = hw
+
+[report]
+exclude_lines = 
+	@(abc\.)?abstractmethod
+	class .*\bProtocol\):
+	def __repr__
+	if .*\.MODE_DEBUG
+	if 0:
+	if __name__ == .__main__.:
+	pragma: no cover
+	raise AssertionError
+	raise NotImplementedError
+fail_under = 90
+skip_covered = False
+skip_empty = True
+sort = -Cover
+
+[html]
+directory = .artifacts/coverage/html/
+skip_covered = False
+skip_empty = True
+title = M-PT1-58-22
+
+[xml]
+output = .artifacts/coverage/report.xml

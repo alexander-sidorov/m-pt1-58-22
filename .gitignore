@@ -1,0 +1,8 @@
+*.bak
+*~
+.env
+.idea
+.py[co]
+.venv
+.vscode
+venv

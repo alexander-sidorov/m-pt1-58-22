@@ -1,0 +1,121 @@
+[tool.poetry]
+name = "m-pt1-58-22"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+black = "^22.10.0"
+coverage = "^6.5.0"
+devtools = {extras = ["pygments"], version = "^0.9.0"}
+dlint = "^0.13.0"
+flake8 = "^5.0.4"
+flake8-annotations-complexity = "^0.0.7"
+flake8-bandit = "^4.1.1"
+flake8-black = "^0.3.5"
+flake8-broken-line = "^0.6.0"
+flake8-bugbear = "^22.10.27"
+flake8-builtins = "^2.0.1"
+flake8-cognitive-complexity = "^0.1.0"
+flake8-comprehensions = "^3.10.1"
+flake8-dashboard = "^0.1.4"
+flake8-debugger = "^4.1.2"
+flake8-eradicate = "^1.4.0"
+flake8-executable = "^2.1.2"
+flake8-expression-complexity = "^0.0.11"
+flake8-fixme = "^1.1.1"
+flake8-isort = "^5.0.3"
+flake8-multiline-containers = "^0.0.19"
+flake8-mutable = "^1.2.0"
+flake8-pep3101 = "^2.0.0"
+flake8-print = "^5.0.0"
+flake8-printf-formatting = "^1.1.2"
+flake8-simplify = "^0.19.3"
+flake8-variables-names = "^0.0.5"
+greenlet = "^2.0.1"
+httpie = "^3.2.1"
+ipython = "^8.6.0"
+isort = "^5.10.1"
+mypy = "^0.991"
+orjson = "^3.8.2"
+pep8-naming = "^0.13.2"
+pydantic = {extras = ["dotenv"], version = "^1.10.2"}
+pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
+python = "3.10.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 79
+target-version = ["py310"]
+exclude = """
+(
+  /(
+      /.artifacts
+    | /.env
+    | /.git
+    | /.github
+    | /.idea
+    | /.venv
+    | /.vscode
+    | /venv
+  )/
+)
+"""
+
+
+[tool.isort]
+force_single_line = true
+line_length = 79
+multi_line_output = 3
+profile = "black"
+
+
+[tool.mypy]
+cache_dir = ".artifacts/mypy/"
+check_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+files = ["hw"]
+no_implicit_optional = true
+plugins = ["pydantic.mypy"]
+pretty = true
+python_version = "3.10"
+show_error_context = true
+sqlite_cache = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+#[[tool.mypy.overrides]]
+#ignore_missing_imports = true
+#module = [
+#    "django.*",
+#]
+
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+
+[tool.pytest.ini_options]
+cache_dir = ".artifacts/pytest/"
+console_output_style = "count"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+testpaths = [
+    "hw",
+]
+addopts = "--cov --cov-branch --no-cov-on-fail --cov-fail-under=90"
