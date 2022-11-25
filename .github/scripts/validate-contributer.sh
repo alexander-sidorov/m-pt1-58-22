@@ -20,20 +20,20 @@ assert_names() {
   github_names=(
     "alexander_sidorov"
     "alexey_tyuhai"
-    "andrey_karpuk"
-    "dmitry_mihayluk"
+    "andrei_karpuk"
+    "dmitry_mihkailiuk"
     "eugene_bakun"
     "eugene_ladyko"
     "eugene_lubimov"
     "eugene_vavilov"
-    "igor_maximov"
-    "maxim_baranov"
-    "maxim_lomako"
-    "nikita_karmanov"
+    "igor_maksimov"
+    "maksim_baranau"
+    "maksim_lamaka"
+    "mikita_karmanaw"
     "sergey_sakovich"
     "vadim_zharski"
-    "vladislav_yurenia"
-    "yana_sergienko"
+    "vladislav_yurenya"
+    "jana_sergienko"
   )
 
   for n in ${dir_names}; do
