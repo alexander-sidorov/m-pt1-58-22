@@ -26,9 +26,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: 📥 Code is pulled from repo.
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: 🐍 Python runtime is set up.
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           architecture: 'x64'
           python-version: ${{ matrix.python-version }}
@@ -38,7 +38,7 @@ jobs:
       - name: 📦 Runtime is cached and restored.
         if: ${{ matrix.os != 'windows-latest' }}
         id: cache-runtime
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           key: ${{ env.cache_key }}
           path: ${{ env.pythonLocation }}
