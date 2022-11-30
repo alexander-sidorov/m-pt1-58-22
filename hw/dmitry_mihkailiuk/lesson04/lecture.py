@@ -3,7 +3,7 @@ from decimal import Decimal
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    return Decimal((rubles + (coins / 100)) * amount)
+    return random(1, Decimal((rubles + (coins / 100)) * amount))
 
 
 def task_02_sign(number: Any) -> int:

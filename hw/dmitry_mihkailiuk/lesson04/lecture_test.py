@@ -6,7 +6,7 @@ from hw.dmitry_mihkailiuk.lesson04.lecture import task_04_palindrom
 
 
 def test_task_01_money() -> None:
-    assert task_01_money(1, 2, 3) == Decimal("3.6")
+    assert task_01_money(1, 2, 3) == Decimal("3.06")
 
 
 def test_task_02_sign() -> None:
