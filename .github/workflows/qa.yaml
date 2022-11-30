@@ -19,7 +19,7 @@ jobs:
       matrix:
         os:
           - windows-latest
-#          - ubuntu-latest
+          - ubuntu-latest
 #          - macos-latest
         python-version:
           - 3.10.8
@@ -33,14 +33,17 @@ jobs:
           architecture: 'x64'
           python-version: ${{ matrix.python-version }}
       - name: 🔑 Runtime cache key is calculated.
+        id: xxx
         run: |
           echo "cacheKey=cache-runtime-${{ matrix.os }}-${{ hashFiles('poetry.lock') }}-${{ env.CACHE_CUSTOM_KEY }}" >> $GITHUB_ENV
+          echo "CACHEKEY=cache-runtime-${{ matrix.os }}-${{ hashFiles('poetry.lock') }}-${{ env.CACHE_CUSTOM_KEY }}" >> $GITHUB_OUTPUT
       - name: 📦 Runtime is cached and restored.
 #        if: ${{ matrix.os != 'windows-latest' }}
         id: cache-runtime
         uses: actions/cache@v3
         with:
-          key: ${{ env.cacheKey }}
+          # key: ${{ env.cacheKey }}
+          key: ${{ steps.xxx.outputs.CACHEKEY }}
           path: ${{ env.pythonLocation }}
       - name: 🔌 Poetry is installed.
         if: ${{ !steps.cache-runtime.outputs.cache-hit }}
