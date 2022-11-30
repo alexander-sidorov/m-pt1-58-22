@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 def task_01_money(rubles, coins, amount):
-    return(decimal((rubles + (coins / 100)) * amount))
+    return(Decimal((rubles + (coins / 100)) * amount))
 
 def task_02_sign(number):
     if number == 0 or isinstance(number, complex):
