@@ -5,7 +5,7 @@ def task_01_money(rubles: int, coins: int, amount: int):
     rb = Decimal(rubles)
     cn = Decimal(coins)
     am = Decimal(amount)
-    return (rb * (cn / 100)) * am
+    return (rb + (cn / 100)) * am
 
 
 def task_02_sign(number):
