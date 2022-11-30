@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "cache_key=cache-runtime-${{ matrix.os }}-${{ env.pythonLocation }}-${{ hashFiles('poetry.lock') }}-${{ env.CACHE_CUSTOM_KEY }}" >> $GITHUB_ENV
       - name: 📦 Runtime is cached and restored.
-        if: ${{ matrix.os != 'windows-latest' }}
+#        if: ${{ matrix.os != 'windows-latest' }}
         id: cache-runtime
         uses: actions/cache@v3
         with:
