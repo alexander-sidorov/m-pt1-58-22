@@ -4,7 +4,7 @@ def task_01_money(rubles, coins, amount):
     return(decimal((rubles + (coins / 100)) * amount))
 
 def task_02_sign(number):
-    if number == 0 or number.isinstance(number, complex):
+    if number == 0 or isinstance(number, complex):
         sign = 0
     else:
         sign = (1 if number > 0 else -1)
