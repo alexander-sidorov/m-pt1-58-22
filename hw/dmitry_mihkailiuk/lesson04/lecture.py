@@ -5,9 +5,6 @@ def task_01_money(rubles, coins, amount):
     return (rubles + (coins / 100)) * amount
 
 
-print(task_01_money(1, 2, 3))
-
-
 def task_02_sign(number):
     try:
         Decimal(number)
