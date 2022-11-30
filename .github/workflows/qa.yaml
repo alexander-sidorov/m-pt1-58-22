@@ -26,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: xxx
-        if: ${{ runner.os != 'Windows' || (github.event_name == 'push' && github.ref_name == 'main') }}
+        if: ${{ matrix.os != 'windows-latest' || (github.event_name == 'push' && github.ref_name == 'main') }}
         run: exit 0
       - name: 📥 Code is pulled from repo.
         uses: actions/checkout@v3
