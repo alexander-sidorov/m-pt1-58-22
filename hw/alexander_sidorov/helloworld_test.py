@@ -1,4 +1,4 @@
-from .helloworld import helloworld
+from hw.alexander_sidorov.helloworld import helloworld
 
 
 def test_helloworld() -> None:
