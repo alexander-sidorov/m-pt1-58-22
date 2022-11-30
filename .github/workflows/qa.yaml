@@ -13,32 +13,13 @@ env:
   POETRY_VIRTUALENVS_IN_PROJECT: false
 
 jobs:
-  check:
-    strategy:
-      matrix:
-        os:
-          - windows-latest
-          - ubuntu-latest
-        #          - macos-latest
-    runs-on: ${{ matrix.os }}
-    outputs:
-      go: ${{ steps.go.outputs.go }}
-    steps:
-      - id: go
-        name: Early exit
-        if: ${{ matrix.os != 'windows-latest' || (github.event_name == 'push' && github.ref_name == 'main') }}
-        run: |
-          echo "go=1" >> $GITHUB_OUTPUT
   qa:
     name: 🏆 QA checks are passed.
-    needs: check
-    if: needs.check.outputs.go == 1
     strategy:
       matrix:
         os:
-          - windows-latest
           - ubuntu-latest
-#          - macos-latest
+          - macos-latest
         python-version:
           - 3.10.8
     runs-on: ${{ matrix.os }}
@@ -51,15 +32,13 @@ jobs:
           architecture: 'x64'
           python-version: ${{ matrix.python-version }}
       - name: 🔑 Runtime cache key is calculated.
-        id: xxx
         run: |
-          echo "cacheKey=cache-runtime-${{ matrix.os }}-${{ hashFiles('poetry.lock') }}-${{ env.CACHE_CUSTOM_KEY }}" >> $GITHUB_ENV
+          echo "RUNTIME_CACHE_KEY=cache-runtime-${{ matrix.os }}-${{ hashFiles('poetry.lock') }}-${{ env.CACHE_CUSTOM_KEY }}" >> $GITHUB_ENV
       - name: 📦 Runtime is cached and restored.
-        if: ${{ matrix.os != 'windows-latest' }}
         id: cache-runtime
         uses: actions/cache@v3
         with:
-          key: ${{ env.cacheKey }}
+          key: ${{ env.RUNTIME_CACHE_KEY }}
           path: ${{ env.pythonLocation }}
       - name: 🔌 Poetry is installed.
         if: ${{ !steps.cache-runtime.outputs.cache-hit }}
