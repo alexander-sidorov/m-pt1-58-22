@@ -1,11 +1,13 @@
+from decimal import Decimal
+
 def task_01_money(rubles, coins, amount):
-    return((rubles + (coins / 100)) * amount)
+    return(decimal((rubles + (coins / 100)) * amount))
 
 def task_02_sign(number):
-    if number == 0:
+    if abs(number) == 0:
         sign = 0
     else:
-        sign = (1 if number > 0 else -1)
+        sign = (1 if abs(number) > 0 else -1)
     return(sign)
 
 def task_03_triangle(side1, side2, side3):
@@ -19,3 +21,5 @@ def task_04_palindrom(string):
     for i in ' ,.:;!?':
         string = string.replace(i, '')
     return(bool(string == string[::-1]))
+
+print(task_02_sign(1j))
