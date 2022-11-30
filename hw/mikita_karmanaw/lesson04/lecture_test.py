@@ -1,13 +1,5 @@
-from hw.mikita_karmanaw.lesson04.lecture import task_01_money
-from hw.mikita_karmanaw.lesson04.lecture import task_02_sign
-from hw.mikita_karmanaw.lesson04.lecture import task_03_triangle
-from hw.mikita_karmanaw.lesson04.lecture import task_04_palindrom
-
-
-#from lecture import task_01_money
-#from lecture import task_02_sign
-#from lecture import task_03_triangle
-#from lecture import task_04_palindrom
+from hw.mikita_karmanaw.lesson04.lecture import task_01_money, task_02_sign, task_03_triangle, task_04_palindrom
+#from lecture import task_01_money, task_02_sign, task_03_triangle, task_04_palindrom
 from decimal import Decimal
 
 
