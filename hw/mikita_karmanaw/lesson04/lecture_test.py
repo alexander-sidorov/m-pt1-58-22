@@ -1,7 +1,7 @@
-from lecture import task_01_money
-from lecture import task_02_sign
-from lecture import task_03_triangle
-from lecture import task_04_palindrom
+from hw.mikita_karmanaw.lesson04.lecture import task_01_money
+from hw.mikita_karmanaw.lesson04.lecture import task_02_sign
+from hw.mikita_karmanaw.lesson04.lecture import task_03_triangle
+from hw.mikita_karmanaw.lesson04.lecture import task_04_palindrom
 from decimal import Decimal
 
 def test_task_01_money() -> None:
