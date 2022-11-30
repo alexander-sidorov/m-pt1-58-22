@@ -24,7 +24,7 @@ jobs:
         python-version:
           - 3.10.8
     runs-on: ${{ matrix.os }}
-    if: matrix.os != 'windows-latest' || (github.event_name == 'push' && github.ref_name == 'main')
+    if: runner.os != 'Windows' || (github.event_name == 'push' && github.ref_name == 'main')
     steps:
       - name: 📥 Code is pulled from repo.
         uses: actions/checkout@v3
