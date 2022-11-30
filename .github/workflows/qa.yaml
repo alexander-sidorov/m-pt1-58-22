@@ -24,8 +24,10 @@ jobs:
         python-version:
           - 3.10.8
     runs-on: ${{ matrix.os }}
-    if: ${{ runner.os != 'Windows' || (github.event_name == 'push' && github.ref_name == 'main') }}
     steps:
+      - name: xxx
+        if: ${{ runner.os != 'Windows' || (github.event_name == 'push' && github.ref_name == 'main') }}
+        run: exit 0
       - name: 📥 Code is pulled from repo.
         uses: actions/checkout@v3
       - name: 🐍 Python runtime is set up.
