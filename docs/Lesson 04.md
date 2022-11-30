@@ -31,7 +31,7 @@
 ```python
 from decimal import Decimal
 
-assert task_01_money(1, 2, 3) == Decimal("3.6")
+assert task_01_money(1, 2, 3) == Decimal("3.06")
 ```
 
 ---
