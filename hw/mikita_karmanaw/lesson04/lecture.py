@@ -9,7 +9,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return (rb + (cn / 100)) * am
 
 
-def task_02_sign(number: Union[int, float, complex]) -> int:
+def task_02_sign(number: Union[int, float, complex, Decimal]) -> int:
     if number == 0 or isinstance(number, complex):
         sign = 0
     else:
