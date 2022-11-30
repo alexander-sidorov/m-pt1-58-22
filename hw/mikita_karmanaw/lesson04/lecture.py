@@ -4,10 +4,10 @@ def task_01_money(rubles, coins, amount):
     return(decimal((rubles + (coins / 100)) * amount))
 
 def task_02_sign(number):
-    if abs(number) == 0:
+    if number == 0 or number.isinstance(number, complex):
         sign = 0
     else:
-        sign = (1 if abs(number) > 0 else -1)
+        sign = (1 if number > 0 else -1)
     return(sign)
 
 def task_03_triangle(side1, side2, side3):
