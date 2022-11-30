@@ -1,7 +1,6 @@
-name: QA
+name: QA (Windows)
 
 on:
-  pull_request:
   push:
     branches:
       - main
@@ -18,8 +17,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
-          - macos-latest
+          - windows-latest
         python-version:
           - 3.10.8
     runs-on: ${{ matrix.os }}
@@ -31,22 +29,11 @@ jobs:
         with:
           architecture: 'x64'
           python-version: ${{ matrix.python-version }}
-      - name: 🔑 Runtime cache key is calculated.
-        run: |
-          echo "RUNTIME_CACHE_KEY=cache-runtime-${{ matrix.os }}-${{ hashFiles('poetry.lock') }}-${{ env.CACHE_CUSTOM_KEY }}" >> $GITHUB_ENV
-      - name: 📦 Runtime is cached and restored.
-        id: cache-runtime
-        uses: actions/cache@v3
-        with:
-          key: ${{ env.RUNTIME_CACHE_KEY }}
-          path: ${{ env.pythonLocation }}
       - name: 🔌 Poetry is installed.
-        if: ${{ !steps.cache-runtime.outputs.cache-hit }}
         run: |
           pip install pipx
           pipx install poetry
       - name: 🔋 Dependencies are installed.
-        if: ${{ !steps.cache-runtime.outputs.cache-hit }}
         run: |
           poetry export --with dev --format=requirements.txt --output=requirements.txt --without-hashes
           pip install --requirement requirements.txt
