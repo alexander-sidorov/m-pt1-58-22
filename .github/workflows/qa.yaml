@@ -13,8 +13,19 @@ env:
   POETRY_VIRTUALENVS_IN_PROJECT: false
 
 jobs:
+  check:
+    outputs:
+      go: ${{ steps.go.outputs.go }}
+    steps:
+      - id: go
+        name: Early exit
+        if: ${{ matrix.os != 'windows-latest' || (github.event_name == 'push' && github.ref_name == 'main') }}
+        run: |
+          echo "go=1" >> $GITHUB_OUTPUT
   qa:
     name: 🏆 QA checks are passed.
+    needs: check
+    if: needs.check.outputs.go == 1
     strategy:
       matrix:
         os:
@@ -25,9 +36,6 @@ jobs:
           - 3.10.8
     runs-on: ${{ matrix.os }}
     steps:
-      - name: xxx
-        if: ${{ matrix.os != 'windows-latest' || (github.event_name == 'push' && github.ref_name == 'main') }}
-        run: exit 0
       - name: 📥 Code is pulled from repo.
         uses: actions/checkout@v3
       - name: 🐍 Python runtime is set up.
