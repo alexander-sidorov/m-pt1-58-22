@@ -1,9 +1,6 @@
 name: QA (Windows)
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 env:
