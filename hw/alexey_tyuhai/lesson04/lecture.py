@@ -1,11 +1,12 @@
 from decimal import Decimal
+from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    return (rubles + (coins/100)) * amount
+    return Decimal((rubles + (coins / 100)) * amount)
 
 
-def task_02_sign(number: int) -> int:
+def task_02_sign(number: Any) -> int:
     try:
         if number > 0:
             return 1
@@ -13,7 +14,7 @@ def task_02_sign(number: int) -> int:
             return -1
         else:
             return 0
-    except:
+    except TypeError:
         return 0
 
 
