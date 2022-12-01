@@ -19,7 +19,7 @@ def task_02_sign(number: Union[int, float, complex, Decimal]) -> int:
 
 def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
     tria = [side1, side2, side3]
-    for i in tria:
+    for i in tria:  # noqa: SIM111
         if i <= 0:
             return False
     return tria.pop(tria.index(max(tria))) < (tria[0] + tria[1])
@@ -29,4 +29,4 @@ def task_04_palindrom(string: str) -> bool:
     string = string.lower()
     for i in " ,.:;!?":
         string = string.replace(i, "")
-    return bool(string == string[::-1])
+    return string == string[::-1]

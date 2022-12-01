@@ -1,13 +1,11 @@
 from decimal import Decimal
 
-from .lecture import (
+from lecture import (
     task_01_money,
     task_02_sign,
     task_03_triangle,
     task_04_palindrom,
-)
-
-# from lecture import task_01_money, task_02_sign, task_03_triangle, task_04_palindrom
+    )
 
 
 def test_task_01_money() -> None:
