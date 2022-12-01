@@ -1,17 +1,33 @@
 from decimal import Decimal
 
-def task_01_money(rubles, coins, amount):
+
+def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return (rubles + (coins/100)) * amount
 
-print(task_01_money(1, 2 ,3))
 
-#def task_02_sign(number):
-    #if number > 0:
-        #return '+1'
-    #if number < 0:
-        #return '-1'
-    #if :
-        #return '0'
-#print(task_02_sign(1))
-#print(task_02_sign(-1))
-#print(task_02_sign('jniiubnui'))
+def task_02_sign(number: int) -> int:
+    try:
+        if number > 0:
+            return 1
+        elif number < 0:
+            return -1
+        else:
+            return 0
+    except:
+        return 0
+
+
+def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
+    if side1 + side2 > side3 and side1 + side3 > side2 and side3 + side2 > side1:
+        return True
+    else:
+        return False
+
+
+def task_04_palindrom(string: str) -> bool:
+    string = string.replace(" ", "").lower()
+    re_string = string[::-1]
+    if string == re_string:
+        return True
+    else:
+        return False
