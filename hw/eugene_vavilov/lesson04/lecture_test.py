@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from hw.eugene_vavilov.lesson04.lecture import task_01_money
 from hw.eugene_vavilov.lesson04.lecture import task_02_sign
 from hw.eugene_vavilov.lesson04.lecture import task_03_triangle
