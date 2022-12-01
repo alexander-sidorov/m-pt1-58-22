@@ -1,5 +1,8 @@
 from decimal import Decimal
-from lecture import task_02_sign, task_03_triangle, task_04_palindrom, task_01_money
+from hw.eugene_vavilov.lesson04.lecture import task_01_money
+from hw.eugene_vavilov.lesson04.lecture import task_02_sign
+from hw.eugene_vavilov.lesson04.lecture import task_03_triangle
+from hw.eugene_vavilov.lesson04.lecture import task_04_palindrom
 
 assert task_01_money(1, 2, 3) == 3.06
 assert task_02_sign(0) == 0
