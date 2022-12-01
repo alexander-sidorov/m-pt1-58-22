@@ -24,10 +24,12 @@ def task_02_sign(number: int) -> int:
 
 
 def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
-    if side1 + side2 > side3 and side2 + side3 > side1 and side1 + side3 > side2:
-        return True
-    else:
-        return False
+    result = (
+        side1 + side2 > side3
+        and side2 + side3 > side1
+        and side1 + side3 > side2
+    )
+    return result
 
 
 def task_04_palindrom(string1: str) -> bool:
