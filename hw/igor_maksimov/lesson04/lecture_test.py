@@ -1,5 +1,5 @@
-from decimal import Decimal
 from hw.igor_maksimov.lesson04.lecture import task_01_money
+from decimal import Decimal
 
 # Test for task number 1
 
