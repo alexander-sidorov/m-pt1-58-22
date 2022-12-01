@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> float:
@@ -6,7 +7,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> float:
     return summa
 
 
-def task_02_sign(number: any) -> int:
+def task_02_sign(number: Any) -> int:
     if (
         isinstance(number, int | float | Decimal) != 1
         or number == 0
