@@ -1,18 +1,20 @@
-from decimal import Decimal  # isort skip
+import decimal
 
-from hw.mikita_karmanaw.lesson04.lecture import (task_01_money, task_02_sign,  # isort skip
-                                                task_03_triangle, task_04_palindrom)   # isort skip
+from hw.mikita_karmanaw.lesson04.lecture import (task_01_money,  # isort skip
+                                                 task_02_sign,  # isort skip
+                                                 task_03_triangle,  # isort skip
+                                                 task_04_palindrom)  # isort skip
 
 
 def test_task_01_money() -> None:
-    assert task_01_money(1, 2, 3) == Decimal("3.06")
+    assert task_01_money(1, 2, 3) == decimal.Decimal("3.06")
 
 
 def test_task_02_sign() -> None:
     assert task_02_sign(0) == 0
     assert task_02_sign(0.3621) == 1
     assert task_02_sign(-123) == -1
-    assert task_02_sign(Decimal("2")) == 1
+    assert task_02_sign(decimal.Decimal("2")) == 1
     assert task_02_sign(1j) == 0
 
 
