@@ -1,6 +1,7 @@
-from decimal import Decimal
+from decimal import Decimal  # isort skip
 
-from hw.mikita_karmanaw.lesson04.lecture import task_01_money, task_02_sign, task_03_triangle, task_04_palindrom   #isort skip
+from hw.mikita_karmanaw.lesson04.lecture import (task_01_money, task_02_sign,  # isort skip
+                                                task_03_triangle, task_04_palindrom)   # isort skip
 
 
 def test_task_01_money() -> None:
