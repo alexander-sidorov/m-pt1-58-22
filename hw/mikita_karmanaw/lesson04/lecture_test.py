@@ -21,6 +21,7 @@ def test_task_02_sign() -> None:
 def test_task_03_triangle() -> None:
     assert task_03_triangle(3, 4, 5)
     assert not task_03_triangle(1, 2, 3)
+    assert not task_03_triangle(0, -2, 5)
 
 
 def test_task_04_palindrom() -> None:
