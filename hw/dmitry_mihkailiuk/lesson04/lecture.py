@@ -25,9 +25,9 @@ def task_02_sign(number: Any) -> int:
 
 def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
     result = (
-            side1 + side2 > side3
-            and side2 + side3 > side1
-            and side1 + side3 > side2
+        side1 + side2 > side3
+        and side2 + side3 > side1
+        and side1 + side3 > side2
     )
     return result
 
