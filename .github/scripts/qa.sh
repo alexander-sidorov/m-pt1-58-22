@@ -14,4 +14,7 @@ mypy || ret=1
 flake8 || ret=1
 pytest || ret=1
 
-[[ "${ret}" -ne 0 ]] || exit 1
+if [[ "${ret}" -ne 0 ]]; then
+  exit 1
+fi
+
