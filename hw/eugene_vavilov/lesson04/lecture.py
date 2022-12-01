@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 
-def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
+def task_01_money(rubles: int, coins: int, amount: int) -> float:
     summa = float((Decimal(rubles) + (Decimal(coins) / 100)) * Decimal(amount))
     return summa
 
@@ -19,6 +19,8 @@ def task_02_sign(number: int) -> int:
         else:
             if number < 0:
                 return -1
+            else:
+                assert 0, "Ошибка"
 
 
 def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
@@ -33,5 +35,5 @@ def task_04_palindrom(string1: str) -> bool:
     rev_string = string1[::-1]
     if rev_string == string1:
         return True
-    if rev_string != string1:
+    else:
         return False
