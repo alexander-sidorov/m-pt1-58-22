@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from lecture import (
+from hw.mikita_karmanaw.lesson04.lecture import (
     task_01_money,
     task_02_sign,
     task_03_triangle,
