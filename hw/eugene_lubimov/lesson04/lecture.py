@@ -29,6 +29,3 @@ def task_04_palindrom(string: str) -> bool:
 
     new_string = "".join([i for i in string if i.isalpha()]).lower()
     return new_string == new_string[::-1]
-
-
-print(task_03_triangle(1, 1, 1))
