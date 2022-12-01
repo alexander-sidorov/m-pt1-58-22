@@ -7,7 +7,11 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
 
 
 def task_02_sign(number: int) -> int:
-    if isinstance(number, int | float | Decimal) != 1 or number == 0 or number == complex:
+    if (
+        isinstance(number, int | float | Decimal) != 1
+        or number == 0
+        or number == complex
+    ):
         return 0
     else:
         if number > 0:
@@ -25,7 +29,7 @@ def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
 
 
 def task_04_palindrom(string1: str) -> bool:
-    string1 = (string1.replace(' ', '')).lower()
+    string1 = (string1.replace(" ", "")).lower()
     rev_string = string1[::-1]
     if rev_string == string1:
         return True
