@@ -6,7 +6,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> float:
     return summa
 
 
-def task_02_sign(number: int | float | complex) -> int:
+def task_02_sign(number: any) -> int:
     if (
         isinstance(number, int | float | Decimal) != 1
         or number == 0
