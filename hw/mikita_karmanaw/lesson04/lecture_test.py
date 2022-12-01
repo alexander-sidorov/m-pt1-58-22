@@ -1,7 +1,7 @@
 import decimal
 
 from hw.mikita_karmanaw.lesson04.lecture import task_01_money
-from  hw.mikita_karmanaw.lesson04.lecture import task_02_sign
+from hw.mikita_karmanaw.lesson04.lecture import task_02_sign
 from hw.mikita_karmanaw.lesson04.lecture import task_03_triangle
 from hw.mikita_karmanaw.lesson04.lecture import task_04_palindrom
 
