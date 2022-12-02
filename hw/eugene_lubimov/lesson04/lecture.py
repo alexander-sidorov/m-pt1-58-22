@@ -20,8 +20,8 @@ def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
 
     return (
         side1 < (side2 + side3)
-        and side2 < (side1 + side3)
-        and side3 < (side1 + side2)
+        and side2 < (side1 + side3)  # noqa: W503
+        and side3 < (side1 + side2)  # noqa: W503
     )
 
 
