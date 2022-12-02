@@ -33,7 +33,4 @@ def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
 def task_04_palindrom(string: str) -> bool:
     string = string.replace(" ", "").lower()
     re_string = string[::-1]
-    if string == re_string:
-        return True
-    else:
-        return False
+    return string == re_string
