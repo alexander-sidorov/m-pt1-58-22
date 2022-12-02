@@ -1,21 +1,23 @@
 from decimal import Decimal
+from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    coins = Decimal(coins)
-    rubles = Decimal(rubles)
-    amount = Decimal(amount)
-    coins = coins / 100
-    total_sum = rubles + coins
-    result = total_sum * amount
+    dec_coins = Decimal(coins)
+    dec_rubles = Decimal(rubles)
+    dec_amount = Decimal(amount)
+    dec_coins = dec_coins / 100
+    total_sum = dec_rubles + dec_coins
+    result = total_sum * dec_amount
     return result
 
 
-def task_02_sign(num: int) -> int:
+def task_02_sign(num: Any) -> int:
     try:
-        if num > 0:
+        temp_num = float(num)
+        if temp_num > 0:
             return 1
-        elif num < 0:
+        elif temp_num < 0:
             return -1
         else:
             return 0

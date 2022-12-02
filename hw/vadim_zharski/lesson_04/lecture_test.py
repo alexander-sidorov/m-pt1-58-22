@@ -10,7 +10,7 @@ def test_task_01_money() -> None:
     assert task_01_money(1, 2, 3) == Decimal("3.06")
 
 
-def test_task_02_money() -> None:
+def test_task_02_sign() -> None:
     assert task_02_sign(0) == 0
     assert task_02_sign(0.3621) == 1
     assert task_02_sign(-123) == -1
