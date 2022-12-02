@@ -16,7 +16,6 @@ def test_task_02_money() -> None:
     assert task_02_sign(-123) == -1
     assert task_02_sign(Decimal("2")) == 1
     assert task_02_sign(1j) == 0
-    print("Test passed")
 
 
 def test_task_03_triangle() -> None:
