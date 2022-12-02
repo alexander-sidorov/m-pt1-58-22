@@ -2,8 +2,8 @@ from decimal import Decimal
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> object:
-    rubles, coins, amount = Decimal(rubles), Decimal(coins), Decimal(amount)
-    return (rubles * 100 + coins) * amount / 100
+    ru, co, am = Decimal(rubles), Decimal(coins), Decimal(amount)
+    return (ru * 100 + co) * am / 100
 
 
 def task_02_sign(number: object) -> int:
