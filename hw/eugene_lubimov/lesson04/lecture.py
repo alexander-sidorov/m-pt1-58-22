@@ -2,8 +2,8 @@ from decimal import Decimal
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> object:
-
-    return Decimal(str((rubles * 100 + coins) * amount / 100))
+    rubles, coins, amount = Decimal(rubles), Decimal(coins), Decimal(amount)
+    return (rubles * 100 + coins) * amount / 100
 
 
 def task_02_sign(number: object) -> int:
@@ -28,4 +28,6 @@ def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
 def task_04_palindrom(string: str) -> bool:
 
     new_string = "".join([i for i in string if i.isalpha()]).lower()
-    return new_string == new_string[::-1]
+    if new_string:
+        return new_string == new_string[::-1]
+    return False

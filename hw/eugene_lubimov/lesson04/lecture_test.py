@@ -28,3 +28,4 @@ def test_task_04_palindrom() -> None:
 
     assert lec.task_04_palindrom("Аргентина манит негра")
     assert not lec.task_04_palindrom("Аргентина")
+    assert not lec.task_04_palindrom('12321')
