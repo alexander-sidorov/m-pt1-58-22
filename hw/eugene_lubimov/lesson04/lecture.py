@@ -27,7 +27,7 @@ def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
 
 def task_04_palindrom(string: str) -> bool:
 
-    new_string = "".join([i for i in string if i.isalpha()]).lower()
+    new_string = "".join([i for i in string if i.isalnum()]).lower()
     if new_string:
         return new_string == new_string[::-1]
     return False
