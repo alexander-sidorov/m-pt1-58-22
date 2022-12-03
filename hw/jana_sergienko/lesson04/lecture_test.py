@@ -1,8 +1,9 @@
 from decimal import Decimal
-from lecture import task_01_money
-from lecture import task_02_sign
-from lecture import task_03_triangle
-from lecture import task_04_palindrom
+
+from hw.jana_sergienko.lesson_04.lecture import task_01_money
+from hw.jana_sergienko.lesson_04.lecture import task_02_sign
+from hw.jana_sergienko.lesson_04.lecture import task_03_triangle
+from hw.jana_sergienko.lesson_04.lecture import task_04_palindrom
 
 assert task_01_money(1, 2, 3) == Decimal("3.06")
 
