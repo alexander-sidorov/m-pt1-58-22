@@ -1,14 +1,15 @@
 from decimal import Decimal
+from typing import Any
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
 
-    rubles = Decimal(rubles)
-    coins = Decimal(coins)
-    amount = Decimal(amount)
+    rub = Decimal(rubles)
+    coin = Decimal(coins)
+    amt = Decimal(amount)
 
-    return (rubles + (coins/100)) * amount
+    return (rub + (coin/100)) * amt
 
-def task_02_sign(number) -> int:
+def task_02_sign(number: Any) -> int:
 
     if type(number) == complex:
         return 0
