@@ -12,7 +12,7 @@ def task_02_sign(number:int or float or complex) -> int:
     elif number<0:
         return -1
     elif number>0:
-        return 1j
+        return 1
 
 def task_03_triangle(side1: float,side2: float,side3: float) -> bool:
     answer=(side1+side2>side3 and side1+side3>side2 and side2+side3>side1)
