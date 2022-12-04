@@ -5,6 +5,6 @@ exclude =
     .github
     .idea
     .vscode
-ignore = B101,S101
+ignore = B101,S101,W503
 max_annotations_complexity = 4
 max_cognitive_complexity = 12
