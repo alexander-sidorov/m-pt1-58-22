@@ -1,9 +1,9 @@
 from decimal import Decimal
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    rubles=Decimal(rubles)
-    coins=Decimal(coins/100)
-    amount=Decimal(amount)
-    total = (rubles + coins) * amount
+    rubles_dec=Decimal(rubles)
+    coins_dec=Decimal(coins)
+    amount_dec=Decimal(amount)
+    total = (rubles_dec + coins_dec/100) * amount_dec
     return total
 
 def task_02_sign(number:int or float or complex) -> int:
