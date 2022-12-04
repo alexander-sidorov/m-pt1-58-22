@@ -1,5 +1,5 @@
 from decimal import Decimal
-
+from typing import Union
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     dec_rubles = Decimal(rubles)
@@ -9,7 +9,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return resoult
 
 
-def task_02_sign(number: object) -> int:
+def task_02_sign(number:Union[int,float,complex,Decimal]) -> int:
     try:
         Decimal(number)
         if number > 0:
