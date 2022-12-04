@@ -11,7 +11,6 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
 
 def task_02_sign(number:Union[int,float,complex,Decimal]) -> int:
     try:
-        Decimal(number)
         if number > 0:
             return 1
         if number < 0:
