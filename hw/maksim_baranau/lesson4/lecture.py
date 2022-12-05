@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     dec_rubles = Decimal(rubles)
     dec_coins = Decimal(coins)
