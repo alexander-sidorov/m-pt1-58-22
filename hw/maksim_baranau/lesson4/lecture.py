@@ -1,5 +1,4 @@
 from decimal import Decimal
-from typing import Any
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     dec_rubles = Decimal(rubles)
@@ -9,7 +8,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return resoult
 
 
-def task_02_sign(number: Any) -> int:
+def task_02_sign(number: Decimal) -> int:
     try:
         if number > 0:
             return 1
