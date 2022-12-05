@@ -1,13 +1,12 @@
+from decimal import Decimal
 from hw.igor_maksimov.lesson04.lecture import task_01_money
 from hw.igor_maksimov.lesson04.lecture import task_02_sign
 from hw.igor_maksimov.lesson04.lecture import task_03_triangle
 from hw.igor_maksimov.lesson04.lecture import task_04_palindrom
 
 
-from decimal import Decimal
-
-
 # Test for task number 1
+
 def test_task_01_money() -> None:
     assert task_01_money(1, 2, 3) == Decimal("3.06")
 
