@@ -1,9 +1,9 @@
 import decimal
 
-from hw.maksim_baranau.lesson04.lecture import task_01_money
-from hw.maksim_baranau.lesson04.lecture import task_02_sign
-from hw.maksim_baranau.lesson04.lecture import task_03_triangle
-from hw.maksim_baranau.lesson04.lecture import task_04_palindrom
+from hw.maksim_baranau.lesson_04.lecture import task_01_money
+from hw.maksim_baranau.lesson_04.lecture import task_02_sign
+from hw.maksim_baranau.lesson_04.lecture import task_03_triangle
+from hw.maksim_baranau.lesson_04.lecture import task_04_palindrom
 
 
 def test_task_01_money() -> None:
