@@ -11,7 +11,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
 
 
 def task_02_sign(number: Any) -> int:
-    if isinstance(number,complex):
+    if isinstance(number, complex):
         return 0
     elif number > 0:
         return 1
