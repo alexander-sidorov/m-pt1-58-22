@@ -204,8 +204,7 @@ def test_dict() -> None:
     assert id(my_dict1) == my_dict1_id
     my_dict3 = dict.fromkeys([7, 8, 9])
     assert my_dict3[7] is None
-    val_get = my_dict1.get("a")
-    assert val_get is None
+    assert my_dict1.get("a") is None
     assert (7, None) in my_dict3.items()
     assert 7 in my_dict3
     assert my_dict3.pop(7) is None
