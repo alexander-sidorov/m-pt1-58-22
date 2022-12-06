@@ -1,3 +1,7 @@
+from typing import Any
+from typing import Dict
+from typing import Tuple
+
 ATTRS_NO_TEST = {
     "__class__",
     "__class_getitem__",
@@ -34,7 +38,7 @@ ATTRS_NO_TEST = {
 }
 
 
-CITIES = {
+CITIES: dict[str | Any, tuple[float, float] | Any] = {
     "Барановичи": (53.132227, 26.017363),
     "Берёза": (52.534754, 24.984273),
     "Бобруйск": (53.145646, 29.225297),

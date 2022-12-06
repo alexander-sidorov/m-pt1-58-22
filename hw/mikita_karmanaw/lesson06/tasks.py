@@ -1,5 +1,6 @@
 from math import sqrt
 from typing import Union
+
 from hw.alexander_sidorov.helpers import CITIES
 
 
@@ -32,10 +33,9 @@ def task_03_hdist(
 def task_04_cities(city: str) -> dict:
     dist_dict = {}
     for town in CITIES:
-        dist = sqrt(
-            ((CITIES[city][0] - CITIES[town][0]) * 111) ** 2
-            + ((CITIES[city][1] - CITIES[town][1]) * 65) ** 2
-        )
+        dist_0 = (CITIES[city][0] - CITIES[town][0]) * 111
+        dist_1 = (CITIES[city][1] - CITIES[town][1]) * 65
+        dist = sqrt((dist_0**2) + (dist_1**2))
         dist_dict.update({town: dist})
     return dist_dict
 
@@ -43,13 +43,11 @@ def task_04_cities(city: str) -> dict:
 def task_05_route(route: Union[tuple, list]) -> float:
     dist = float(0)
     for town in route[1:]:
-        dist += sqrt(
-            ((CITIES[town][0] - CITIES[route[route.index(town) - 1]][0]) * 111)
-            ** 2
-            + (
-                (CITIES[town][1] - CITIES[route[route.index(town) - 1]][1])
-                * 65
-            )
-            ** 2
-        )
+        dist_0 = (
+            CITIES[town][0] - CITIES[route[route.index(town) - 1]][0]
+        ) * 111
+        dist_1 = (
+            CITIES[town][1] - CITIES[route[route.index(town) - 1]][1]
+        ) * 65
+        dist += sqrt(dist_0**2 + dist_1**2)
     return dist
