@@ -212,4 +212,4 @@ def test_dict() -> None:
     assert my_dict3.popitem()[1] is None
     assert my_dict3.setdefault(10) is None
     assert my_dict1.update({1: 6}) is None
-    assert my_dict1[10] in my_dict1.values()
+    assert my_dict3[10] in my_dict3.values()
