@@ -1,5 +1,5 @@
-from typing import Hashable
 
+from typing import Hashable
 def test_stdtypes() -> None:
     assert "abc" + "def" == "abcdef"
     assert "v" not in "abc"
