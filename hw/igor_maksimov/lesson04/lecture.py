@@ -2,8 +2,6 @@ from decimal import Decimal
 from typing import Any
 
 # Task number 1
-
-
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     rub_dec = Decimal(rubles)
     coins_dec = Decimal(coins)
@@ -13,8 +11,6 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
 
 
 # Task number 2
-
-
 def task_02_sign(number: Any) -> int:
     if isinstance(number, complex):
         return 0
@@ -33,8 +29,6 @@ def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
 
 
 # Task number 4
-
-
 def task_04_palindrom(string: str) -> bool:
     string = string.lower()
     string = string.replace(" ", "")

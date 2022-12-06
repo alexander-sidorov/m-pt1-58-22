@@ -10,6 +10,7 @@ def test_task_01_money() -> None:
     assert task_01_money(1, 2, 3) == Decimal("3.06")
 
 
+# Test for task number 2
 def test_task_02_sign() -> None:
     assert task_02_sign(0) == 0
     assert task_02_sign(0.3621) == 1
@@ -18,11 +19,13 @@ def test_task_02_sign() -> None:
     assert task_02_sign(1j) == 0
 
 
+# Test for task number 3
 def test_task_03_triangle() -> None:
     assert task_03_triangle(3, 4, 5)
     assert not task_03_triangle(1, 2, 3)
 
 
+# Test for task number 4
 def test_task_04_palindrom() -> None:
     assert task_04_palindrom("Аргентина манит негра")
     assert not task_04_palindrom("Аргентина")
