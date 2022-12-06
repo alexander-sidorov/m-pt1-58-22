@@ -1,4 +1,4 @@
-ATTRS_NO_TEST = {
+ATTRS_NO_TEST = set[str] {
     "__class__",
     "__class_getitem__",
     "__delattr__",
@@ -34,7 +34,7 @@ ATTRS_NO_TEST = {
 }
 
 
-CITIES: dict[str | Any, tuple[float, float] | Any] = {
+CITIES: dict[str, tuple[float, float]] = {
     "Барановичи": (53.132227, 26.017363),
     "Берёза": (52.534754, 24.984273),
     "Бобруйск": (53.145646, 29.225297),
