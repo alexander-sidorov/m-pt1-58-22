@@ -1,4 +1,4 @@
-ATTRS_NO_TEST = set[str] {
+ATTRS_NO_TEST: set[str] = {
     "__class__",
     "__class_getitem__",
     "__delattr__",
