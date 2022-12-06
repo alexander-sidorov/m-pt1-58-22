@@ -1,7 +1,3 @@
-from typing import Any
-from typing import Dict
-from typing import Tuple
-
 ATTRS_NO_TEST = {
     "__class__",
     "__class_getitem__",
