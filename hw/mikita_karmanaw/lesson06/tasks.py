@@ -43,7 +43,7 @@ def task_04_cities(city: str) -> dict:
 def task_05_route(route: Union[tuple, list]) -> float:
     dist = float(0)
     for town in route[1:]:
-        previous_town = CITIES[route[route.index(town)] - 1]
+        previous_town = CITIES[route[route.index(town) - 1]]
         dist_0 = (CITIES[town][0] - CITIES[previous_town][0]) * 111
         dist_1 = (CITIES[town][1] - CITIES[previous_town][1]) * 65
         dist += sqrt(dist_0**2 + dist_1**2)
