@@ -2,26 +2,21 @@ from decimal import Decimal
 from typing import Any
 
 
-def task_01_money(rubles: int, coins: int, amount: int) -> float:
-    summa = float((Decimal(rubles) + (Decimal(coins) / 100)) * Decimal(amount))
+def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
+    summa = (Decimal(rubles) + (Decimal(coins) / 100)) * Decimal(amount)
     return summa
 
 
 def task_02_sign(number: Any) -> int:
-    if (
-        isinstance(number, int | float | Decimal) != 1
-        or number == 0
-        or number == complex
-    ):
-        return 0
-    else:
-        if number > 0:
+    if type(number) != complex:
+        if float(number) > 0:
             return 1
+        elif float(number) < 0:
+            return -1
         else:
-            if number < 0:
-                return -1
-            else:
-                assert 0, "Ошибка"
+            return 0
+    else:
+        return 0
 
 
 def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
