@@ -1,7 +1,7 @@
 from typing import Hashable
 
 
-def test_stdtypes() -> None:
+def test_stdtypes() -> bool:
     assert "abc" + "def" == "abcdef"
     assert "v" not in "abc"
     assert "abc"[1] == "b"
@@ -192,4 +192,7 @@ def test_stdtypes() -> None:
     assert str(dic.values()) == "dict_values([5, 3])"
     assert dict.fromkeys([1, 2, 3]) == {1: None, 2: None, 3: None}
     assert not isinstance(dic, Hashable)
-    return None
+    return True
+
+
+assert test_stdtypes()
