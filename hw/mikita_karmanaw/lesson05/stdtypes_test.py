@@ -192,3 +192,4 @@ def test_stdtypes() -> None:
     assert str(dic.values()) == "dict_values([5, 3])"
     assert dict.fromkeys([1, 2, 3]) == {1: None, 2: None, 3: None}
     assert not isinstance(dic, Hashable)
+    
