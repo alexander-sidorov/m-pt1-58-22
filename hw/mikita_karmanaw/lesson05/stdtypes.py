@@ -1,7 +1,7 @@
 from typing import Hashable
 
 
-def test_stdtypes() -> bool:
+def test_stdtypes() -> None:
     assert "abc" + "def" == "abcdef"
     assert "v" not in "abc"
     assert "abc"[1] == "b"
