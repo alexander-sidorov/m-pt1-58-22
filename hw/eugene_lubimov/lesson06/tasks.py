@@ -1,5 +1,5 @@
-from typing import Sequence
 from typing import Any
+from typing import Sequence
 
 from hw.alexander_sidorov.helpers import CITIES
 
