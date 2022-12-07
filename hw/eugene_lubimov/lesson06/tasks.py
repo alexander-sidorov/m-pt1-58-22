@@ -42,7 +42,8 @@ def task_02_expand(sequence: object) -> object:
 
 def task_03_hdist(seq1: object, seq2: object) -> int:
 
-    return sum(map(lambda x: x[0] != x[1], zip(seq1, seq2))) + abs(len(seq1) - len(seq2))
+    #return sum(map(lambda x: x[0] != x[1], zip(seq1, seq2))) + abs(len(seq1) - len(seq2))
+    return sum(True for i in zip(seq1, seq2) if i[0] != i[1]) + abs(len(seq1) - len(seq2))
 
 def get_distance(point1: tuple, point2: tuple) -> float:
 
@@ -58,6 +59,4 @@ def task_05_route(route: object) -> float:
     route_len, route_city = 0, [city for city in route if city in CITIES]
     for i in range(len(route_city) - 1):
         route_len += get_distance(CITIES[route_city[i]], CITIES[route_city[i + 1]])
-    return route_len    
-        
-        
+    return route_len      
