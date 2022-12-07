@@ -228,3 +228,73 @@ def test_list() -> None:
     assert list1 == ['a', 'a', 'b', 'b', 'c', 'c']
 
 
+def test_dict() -> None:
+    # __contains__
+    assert 2 in {1: "a", 2: "b"}
+
+    # __delitem__
+    dict1 = {1: "a", 2: "b"}
+    del dict1[1]
+    assert dict1 == {2: "b"}
+
+    # __getitem__
+    assert {1: "a", 2: "b"}[2] == "b"
+
+    # __hash__
+    dict1 = {1: "a", 2: "b"}
+    assert not isinstance(dict1, Hashable)
+
+    # __ior__
+    dict1 = {1: "a"}
+    dict1 |= {2: "b"}
+    assert dict1 == {1: "a", 2: "b"}
+
+    # __len__
+    assert len({1: "a", 2: "b"}) == 2
+
+    # __or__
+    dict1 = {1: "a", 2: "b"}
+    dict1 = dict1 | {3: "c"}
+    assert dict1 == {1: "a", 2: "b", 3: "c"}
+
+    # __setitem__
+    dict1 = {1: "a", 2: "b"}
+    dict1[1] = "c"
+    assert dict1 == {1: "c", 2: "b"}
+
+    dict1 = {1: "a", 2: "b"}
+    dict1.clear()
+    assert dict1 == {}
+
+    dict1 = {1: "a", 2: "b"}
+    dict2 = dict1.copy()
+    assert dict2 == {1: "a", 2: "b"}
+
+    assert dict.fromkeys(["a", "b"]) == {"a": None, "b": None}
+
+    dict1 = {1: "a", 2: "b"}
+    assert dict1.get(1) == "a"
+
+    dict1 = {1: "a", 2: "b"}
+    assert str(dict1.items()) == "dict_items([(1, 'a'), (2, 'b')])"
+
+    dict1 = {1: "a", 2: "b"}
+    assert dict1.keys() == {1, 2}
+
+    dict1 = {1: "a", 2: "b"}
+    assert dict1.pop(1) == "a"
+
+    dict1 = {1: "a", 2: "b"}
+    assert dict1.popitem() == (2, "b")
+
+    dict1 = {1: "a", 2: "b"}
+    dict1.setdefault(3, "c")
+    assert dict1 == {1: "a", 2: "b", 3: "c"}
+
+    dict1 = {1: "a", 2: "b"}
+    dict1.update({3: "c"})
+    assert dict1 == {1: "a", 2: "b", 3: "c"}
+
+    dict1 = {1: "a", 2: "b"}
+    assert str(dict1.values()) == "dict_values(['a', 'b'])"
+
