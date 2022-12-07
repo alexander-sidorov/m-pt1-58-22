@@ -2,7 +2,7 @@ from decimal import Decimal
 from typing import Any
 
 
-def task_01_money(rubles: int, coins: int, amount: int) -> float:
+def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return (rubles + (coins / 100)) * amount
 
 
