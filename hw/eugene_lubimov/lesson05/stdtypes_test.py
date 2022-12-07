@@ -45,6 +45,9 @@ def test_list() -> None:
     assert id(my_list.copy()) != my_list_id
     assert my_list * 2 == [1, 2, 3, 1, 2, 3]
     assert not my_list < []
+    my_list = [3, 2, 1]
+    del my_list[0]
+    assert 3 not in my_list
 
 
 def test_tuple() -> None:
@@ -59,6 +62,7 @@ def test_tuple() -> None:
     assert 1 in my_tuple
     assert isinstance(my_tuple, Hashable)
     assert my_tuple * 2 == (1, 2, 3, 1, 2, 3)
+    assert (1, 2) < my_tuple
 
 
 def test_str() -> None:
@@ -110,9 +114,10 @@ def test_str() -> None:
     assert my_str.rindex("e") == 3
     assert my_str.rjust(6, "*") == "**fake"
     assert my_str.rpartition("*") == ("", "", my_str)
-    assert "a b c".rsplit(" ") == ["a", "b", "c"]
+    new_str = "a b c"
+    assert isinstance(new_str.split(), list)
     assert "fake  ".rstrip() == my_str
-    assert "a b c".rsplit(" ") == ["a", "b", "c"]
+    assert "a b c".rsplit() == ["a", "b", "c"]
     assert "fake\nfake".splitlines() == [my_str, my_str]
     assert my_str.startswith("fa")
     assert " fake ".strip() == my_str
@@ -185,6 +190,7 @@ def test_dict() -> None:
     my_dict1 = {1: 1, 2: 2, 3: 3}
     my_dict2 = {4: 4, 5: 5, 6: 6}
 
+    assert len(my_dict1.keys()) == 3
     assert 1 in my_dict1
     del my_dict1[1]
     assert 1 not in my_dict1
@@ -200,8 +206,8 @@ def test_dict() -> None:
     assert my_dict1 == {}
     my_dict1 = {1: 1, 2: 2, 3: 3}
     my_dict1_id = id(my_dict1)
-    my_dict1.copy()
-    assert id(my_dict1) == my_dict1_id
+    copy_dict = my_dict1.copy()
+    assert id(copy_dict) != my_dict1_id
     my_dict3 = dict.fromkeys([7, 8, 9])
     assert my_dict3[7] is None
     assert my_dict3.get(7) is None
