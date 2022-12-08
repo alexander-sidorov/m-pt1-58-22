@@ -1,10 +1,16 @@
 from decimal import Decimal
-from lecture import task_01_money, task_02_sign, task_03_triangle, task_04_palindrom
+
+from lecture import task_01_money
+
+from lecture import task_02_sign
+
+from lecture import task_03_triangle
+
+from lecture import task_04_palindrom
+
 
 assert task_01_money(1, 2, 3) == Decimal("3.06")
 
-
-from decimal import Decimal
 
 assert task_02_sign(0) == 0
 assert task_02_sign(0.3621) == 1
