@@ -2,7 +2,7 @@ from typing import Hashable
 
 
 def test_str() -> None:
-    #__add__
+    # __add__
     assert "a" + "b" == "ab"
 
     # __contains__
@@ -298,3 +298,129 @@ def test_dict() -> None:
     dict1 = {1: "a", 2: "b"}
     assert str(dict1.values()) == "dict_values(['a', 'b'])"
 
+
+def test_set() -> None:
+    # __and__
+    assert {"a", "b"} & {"b", "c"} == {"b"}
+
+    # __contains__
+    assert "a" in {"a", "b"}
+
+    # __hash__
+    assert not isinstance({"a", "b"}, Hashable)
+
+    # __iand__
+    set1 = {"a", "b"}
+    set1 &= {"b", "c"}
+    assert set1 == {"b"}
+
+    # __ior__
+    set1 = {"a", "b"}
+    set1 |= {"b", "c"}
+    assert set1 == {"a", "b", "c"}
+
+    # __isub__
+    set1 = {"a", "b"}
+    set1 -= {"b"}
+    assert set1 == {"a"}
+
+    # __ixor__
+    set1 = {"a", "b"}
+    set1 ^= {"b", "c"}
+    assert set1 == {"a", "c"}
+
+    # __len__
+    assert len({"a", "b"}) == 2
+
+    # __or__
+    set1 = {"a", "b"}
+    assert set1 | {"c"} == {"a", "b", "c"}
+
+    # __sub__
+    set1 = {"a", "b", "c"}
+    assert set1 - {"b"} == {"a", "c"}
+
+    # __xor__
+    set1 = {"a", "b", "c"}
+    assert set1 ^ {"a"} == {"b", "c"}
+
+    set1 = {"a", "b"}
+    assert set() < set1
+
+    set1 = {"a", "b"}
+    set1.add("c")
+    assert set1 == {"a", "b", "c"}
+
+    set1 = {"a", "b"}
+    set1.clear()
+    assert set1 == set()
+
+    set1 = {"a", "b"}
+    set2 = set1.copy()
+    assert set2 == {"a", "b"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "f"}
+    set3 = set1.difference(set2)
+    assert set3 == {"c"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "f"}
+    set1.difference_update(set2)
+    assert set1 == {"c"}
+
+    set1 = {"a", "b", "c"}
+    set1.discard("b")
+    assert set1 == {"a", "c"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "f"}
+    set3 = set1.intersection(set2)
+    assert set3 == {"a", "b"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "f"}
+    set1.intersection_update(set2)
+    assert set1 == {"a", "b"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"d", "e", "f"}
+    assert set1.isdisjoint(set2)
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "c", "d", "e", "f"}
+    assert set1.issubset(set2)
+
+    set1 = {"a", "b", "c", "d", "e", "f"}
+    set2 = {"a", "b", "c"}
+    assert set1.issuperset(set2)
+
+    set1 = {"a", "b", "c"}
+    set1.pop()
+    assert not set1 == {"a", "b", "c"}
+
+    set1 = {"a", "b", "c"}
+    set1.remove("a")
+    assert set1 == {"b", "c"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "f"}
+    set3 = set1.symmetric_difference(set2)
+    assert set3 == {"c", "f"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"a", "b", "f"}
+    set1.symmetric_difference_update(set2)
+    assert set1 == {"c", "f"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"d", "a", "f"}
+    set3 = set1.union(set2)
+    assert set3 == {"a", "b", "c", "d", "f"}
+
+    set1 = {"a", "b", "c"}
+    set2 = {"d", "a", "f"}
+    set1.update(set2)
+    assert set1 == {"a", "b", "c", "d", "f"}
+
+    
