@@ -18,7 +18,7 @@ def test_str() -> None:
     assert len("abc") == 3
 
     # __mod__
-    assert "%s%s%s" % ("a", "b", "c") == "abc"
+    assert "%s%s%s" % ("a", "b", "c") == "abc"  # noqa: S001,MOD001
 
     # __mul__
     assert "abc" * 2 == "abcabc"
@@ -101,7 +101,7 @@ def test_str() -> None:
 
     assert "   abc   ".rstrip() == "   abc"
 
-    assert "a b c".split() == ["a", "b", "c"]
+    assert "a b c".split() == ["a", "b", "c"]  # noqa: SIM905
 
     assert "abc\nabc".splitlines() == ["abc", "abc"]
 
@@ -258,9 +258,8 @@ def test_dict() -> None:
     assert dict1 == {1: "a", 2: "b", 3: "c"}
 
     # __setitem__
-    dict1 = {1: "a", 2: "b"}
-    dict1[1] = "c"
-    assert dict1 == {1: "c", 2: "b"}
+    dict1[4] = "f"
+    assert dict1 == {1: "a", 2: "b", 3: "c", 4: "f"}
 
     dict1 = {1: "a", 2: "b"}
     dict1.clear()
@@ -397,7 +396,7 @@ def test_set() -> None:
 
     set1 = {"a", "b", "c"}
     set1.pop()
-    assert not set1 == {"a", "b", "c"}
+    assert set1 != {"a", "b", "c"}
 
     set1 = {"a", "b", "c"}
     set1.remove("a")
