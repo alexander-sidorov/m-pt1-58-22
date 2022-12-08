@@ -25,7 +25,7 @@ def test_str() -> None:
 
     assert "abc" < "abd"
 
-    assert 'abc'.capitalize() == "Abc"
+    assert "abc".capitalize() == "Abc"
 
     assert "aBc".casefold() == "abc"
 
@@ -81,7 +81,7 @@ def test_str() -> None:
 
     assert "adc".maketrans("d", "b") == {100: 98}
 
-    assert "abc".partition("c") == ('ab', 'c', '')
+    assert "abc".partition("c") == ("ab", "c", "")
 
     assert "abc".removeprefix("a") == "bc"
 
@@ -95,9 +95,9 @@ def test_str() -> None:
 
     assert "abc".rjust(5, "#") == "##abc"
 
-    assert "abcabc".rpartition("ca") == ('ab', 'ca', 'bc')
+    assert "abcabc".rpartition("ca") == ("ab", "ca", "bc")
 
-    assert "a, b, c".rsplit(", ", 1) == ['a, b', 'c']
+    assert "a, b, c".rsplit(", ", 1) == ["a, b", "c"]
 
     assert "   abc   ".rstrip() == "   abc"
 
@@ -225,7 +225,7 @@ def test_list() -> None:
 
     list1 = ["c", "b", "a", "a", "b", "c"]
     list1.sort()
-    assert list1 == ['a', 'a', 'b', 'b', 'c', 'c']
+    assert list1 == ["a", "a", "b", "b", "c", "c"]
 
 
 def test_dict() -> None:
@@ -422,5 +422,3 @@ def test_set() -> None:
     set2 = {"d", "a", "f"}
     set1.update(set2)
     assert set1 == {"a", "b", "c", "d", "f"}
-
-    
