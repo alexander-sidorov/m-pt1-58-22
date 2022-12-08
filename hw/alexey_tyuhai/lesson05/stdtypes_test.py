@@ -65,7 +65,7 @@ def test_str() -> None:
     assert my_str[3] == "g"
     assert isinstance(my_str, Hashable)
     assert len(my_str) == 4
-    assert "%s" % 1 == "1"
+    assert "%s" % 1 == "1"  # noqa: S001,MOD001
     assert my_str * 2 == "flagflag"
     assert my_str.capitalize() == "Flag"
     assert my_str.casefold() == "flag"
