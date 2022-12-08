@@ -1,13 +1,9 @@
 from decimal import Decimal
-<<<<<<< HEAD
-=======
-from typing import Any
->>>>>>> main
 
-from hw.sergey_sakovich.lesson04.lecture import task_01_money
-from hw.sergey_sakovich.lesson04.lecture import task_02_sign
-from hw.sergey_sakovich.lesson04.lecture import task_03_triangle
-from hw.sergey_sakovich.lesson04.lecture import task_04_palindrom
+from hw.alexey_tyuhai.lesson04.lecture import task_01_money
+from hw.alexey_tyuhai.lesson04.lecture import task_02_sign
+from hw.alexey_tyuhai.lesson04.lecture import task_03_triangle
+from hw.alexey_tyuhai.lesson04.lecture import task_04_palindrom
 
 
 def test_task_01_money() -> None:
@@ -17,9 +13,9 @@ def test_task_01_money() -> None:
 def test_task_02_sign() -> None:
     assert task_02_sign(0) == 0
     assert task_02_sign(0.3621) == 1
-    assert task_02_sign(-123) == -1
     assert task_02_sign(Decimal("2")) == 1
     assert task_02_sign(1j) == 0
+    assert task_02_sign(-1) == -1
 
 
 def test_task_03_triangle() -> None:
@@ -29,8 +25,4 @@ def test_task_03_triangle() -> None:
 
 def test_task_04_palindrom() -> None:
     assert task_04_palindrom("Аргентина манит негра")
-<<<<<<< HEAD
     assert not task_04_palindrom("Аргентина")
-=======
-    assert not task_04_palindrom("Аргентина")
->>>>>>> main
