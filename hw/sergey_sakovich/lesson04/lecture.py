@@ -21,19 +21,15 @@ def task_02_sign(number: Any) -> int:
 
 
 def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
-    if (
-        side1 + side2 > side3
-        and side2 + side3 > side1
-        and side3 + side1 > side2
-    ):
-        return True
-    else:
-        return False
+
+    return (
+        (side1 + side2) > side3
+        and (side2 + side3) > side1
+        and (side3 + side1) > side2
+    )
 
 
 def task_04_palindrom(string: str) -> bool:
     string = string.lower().replace(" ", "")
-    if string == string[::-1]:
-        return True
-    else:
-        return False
+    string_1 = string[::-1]
+    return string_1 == string
