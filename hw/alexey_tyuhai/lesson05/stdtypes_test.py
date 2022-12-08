@@ -96,7 +96,7 @@ def test_str() -> None:
     assert "FLAG".lower() == my_str
     assert " flag".lstrip() == my_str
     trance_table = str.maketrans({"s": "f", "l": "l", "u": "a"})
-    assert trance_table == {115: "f", 108: "i", 117: "a"}
+    assert trance_table == {115: "f", 108: "l", 117: "a"}
     assert "@flag".partition("@") == ("", "@", my_str)
     assert "fallflag".removeprefix("fall") == my_str
     assert "flagshtok".removesuffix("shtok") == my_str
