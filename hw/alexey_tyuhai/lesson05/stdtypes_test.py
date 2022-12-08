@@ -39,6 +39,10 @@ def test_list() -> None:
     my_list = [1, 2, 3]
     assert my_list * 2 == [1, 2, 3, 1, 2, 3]
     assert not isinstance(my_list, Hashable)
+    my_list[0] = 3
+    assert my_list == [3, 2, 3]
+    assert not my_list < []
+    assert not my_list <= []
 
 
 def test_tuple() -> None:
