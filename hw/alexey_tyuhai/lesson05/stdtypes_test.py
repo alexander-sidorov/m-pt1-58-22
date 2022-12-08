@@ -104,7 +104,7 @@ def test_str() -> None:
     assert my_str.rfind("g") == 3
     assert my_str.rindex("g") == 3
     assert my_str.rjust(7, "@") == "@@@flag"
-    assert my_str.rpartition("@") == ("", "", "", my_str)
+    assert my_str.rpartition("@") == ("", "", my_str)
     n_str = "q w e"
     assert isinstance(n_str.split(), list)
     assert "flag ".rstrip() == my_str
