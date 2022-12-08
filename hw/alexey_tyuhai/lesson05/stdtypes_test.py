@@ -16,7 +16,7 @@ def test_list() -> None:
     assert my_list == [1, 2]
     my_list = [1, 2, 3]
     assert my_list.index(1) == 0
-    my_list.insert(3, 4)
+    my_list.insert(4)
     assert my_list == [1, 2, 3, 4]
     my_list += [5]
     assert my_list == [1, 2, 3, 4, 5]
@@ -96,7 +96,7 @@ def test_str() -> None:
     assert "FLAG".lower() == my_str
     assert " flag".lstrip() == my_str
     trance_table = str.maketrans({"s": "f", "l": "l", "u": "a"})
-    assert trance_table == {116: "f", 114: "a", 117: "k"}
+    assert trance_table == {115: "f", 108: "a", 117: "k"}
     assert "@flag".partition("@") == ("", "@", my_str)
     assert "fallflag".removeprefix("fall") == my_str
     assert "flagshtok".removesuffix("shtok") == my_str
