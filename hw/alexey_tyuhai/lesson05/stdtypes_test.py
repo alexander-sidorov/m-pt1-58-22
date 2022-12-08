@@ -29,12 +29,12 @@ def test_list() -> None:
     my_list.sort()
     assert my_list == [1, 2, 3, 4]
     assert my_list + [5, 6] == [1, 2, 3, 4, 5, 6]
-    assert 5 in my_list
+    assert 3 in my_list
     del my_list[-1]
     assert 6 not in my_list
     assert my_list[2] == 3
     my_list *= 2
-    assert my_list == [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+    assert my_list == [1, 2, 3, 1, 2, 3]
     assert len(my_list) != 1
     my_list = [1, 2, 3]
     assert my_list * 2 == [1, 2, 3, 1, 2, 3]
