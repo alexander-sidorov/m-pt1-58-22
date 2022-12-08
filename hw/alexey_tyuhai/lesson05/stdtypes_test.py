@@ -21,6 +21,7 @@ def test_list() -> None:
     my_list += [5]
     assert my_list == [1, 2, 3, 4, 5]
     assert my_list.pop() == 5
+    my_list.append(5)
     my_list.remove(5)
     assert my_list == [1, 2, 3, 4]
     my_list.reverse()
@@ -47,7 +48,7 @@ def test_tuple() -> None:
     assert 1 in my_tuple
     assert 6 not in my_tuple
     assert my_tuple[2] == 3
-    assert len(my_tuple) == 5
+    assert len(my_tuple) == 3
     assert my_tuple * 2 == (1, 2, 3, 1, 2, 3)
     assert my_tuple.count(1) == 1
     assert my_tuple.index(3) == 2
@@ -64,7 +65,7 @@ def test_str() -> None:
     assert my_str[3] == "g"
     assert isinstance(my_str, Hashable)
     assert len(my_str) == 4
-    assert "%s" % 1 == 1
+    assert "%s" % 1 == "1"
     assert my_str * 2 == "flagflag"
     assert my_str.capitalize() == "Flag"
     assert my_str.casefold() == "flag"
