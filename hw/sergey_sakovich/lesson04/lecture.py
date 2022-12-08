@@ -3,7 +3,10 @@ from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    return (rubles + (coins / 100)) * amount
+    rub = Decimal(rubles)
+    coi = Decimal(coins)
+    amo = Decimal(amount)
+    return (rub + (coi / 100)) * amo
 
 
 def task_02_sign(number: Any) -> int:
@@ -34,6 +37,3 @@ def task_04_palindrom(string: str) -> bool:
         return True
     else:
         return False
-
-
-

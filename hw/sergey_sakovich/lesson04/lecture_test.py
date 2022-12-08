@@ -1,5 +1,4 @@
 from decimal import Decimal
-from typing import Any
 
 from hw.sergey_sakovich.lesson04.lecture import task_01_money
 from hw.sergey_sakovich.lesson04.lecture import task_02_sign
