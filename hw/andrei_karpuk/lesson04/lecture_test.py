@@ -1,4 +1,5 @@
 from decimal import Decimal
+from lecture import task_01_money, task_02_sign, task_03_triangle, task_04_palindrom
 
 assert task_01_money(1, 2, 3) == Decimal("3.06")
 
