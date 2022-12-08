@@ -28,7 +28,7 @@ def test_list() -> None:
     assert my_list == [4, 3, 2, 1]
     my_list.sort()
     assert my_list == [1, 2, 3, 4]
-    assert my_list + [5, 6] == [5, 6]
+    assert my_list + [5, 6] == [1, 2, 3, 4, 5, 6]
     assert 5 in my_list
     del my_list[-1]
     assert 6 not in my_list
