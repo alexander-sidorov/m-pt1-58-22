@@ -25,7 +25,7 @@ def task_03_hdist(
     return dist
 
 
-def distance(city1: tuple, city2:tuple) -> float:
+def distance(city1: tuple, city2: tuple) -> float:
     dist_0 = (city1[0] - city2[0]) * 111
     dist_1 = (city1[1] - city2[1]) * 65
     return sqrt((dist_0**2) + (dist_1**2))
