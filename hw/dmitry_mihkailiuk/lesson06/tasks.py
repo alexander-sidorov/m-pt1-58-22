@@ -29,9 +29,9 @@ def task_03_hdist(seq1: typing.Sequence, seq2: typing.Sequence) -> int:
 def task_04_cities(city: str) -> dict:
     dict_distance = {}
     for place in CITIES:
-        x = (CITIES[city][0] - CITIES[place][0]) * 111
-        y = (CITIES[city][1] - CITIES[place][1]) * 65
-        distance = pow(x ** 2 + y ** 2, 0.5)
+        distance_x = (CITIES[city][0] - CITIES[place][0]) * 111
+        distance_y = (CITIES[city][1] - CITIES[place][1]) * 65
+        distance = pow(distance_x**2 + distance_y**2, 0.5)
         dict_distance.update({place: distance})
     return dict_distance
 
@@ -39,7 +39,7 @@ def task_04_cities(city: str) -> dict:
 def task_05_route(route: typing.Sequence) -> int:
     distance = 0
     for city1, city2 in zip(route, route[1:]):
-        x = (CITIES[city1][0] - CITIES[city2][0]) * 111
-        y = (CITIES[city1][1] - CITIES[city2][1]) * 65
-        distance += pow(x ** 2 + y ** 2, 0.5)
+        distance_x = (CITIES[city1][0] - CITIES[city2][0]) * 111
+        distance_y = (CITIES[city1][1] - CITIES[city2][1]) * 65
+        distance += pow(distance_x**2 + distance_y**2, 0.5)
     return distance
