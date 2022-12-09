@@ -131,7 +131,7 @@ def test_str() -> None:
     assert string.rfind("n") == 10
     assert string.rindex("is") == 5
     assert "NOT {}".format(string) == "NOT this_is_tin"
-    assert "%s" % 231 == "231"  ## noqa: S001,MOD001
+    assert "%s" % 231 == "231"  # noqa: S001,MOD001
     string = "DICH"
     dich = string.maketrans({"t": "D", "h": "I", "i": "C", "s": "H"})
     assert dich == {116: "D", 104: "I", 105: "C", 115: "H"}
@@ -163,14 +163,14 @@ def test_dict() -> None:
     dict1 = {1: "e", 2: "n", 3: "o"}
     dict_1 = {4: "u", 5: "h", 6: "h"}
     dict_new = dict1.fromkeys([1, 3, 5])
-    assert not dict_new[3] in dict1.values()
+    assert dict_new[3] not in dict1.values()
     dict1[1] = "c"
     assert len(dict1 | dict_new) == 4
     assert 3 in dict_new
     dict1 = {1: 9, 2: 8, 3: 7}
     dict_id = id(dict1)
     dict_copy = dict1.copy()
-    assert id(dict1) == dict_id
+    assert id(dict_copy) != dict_id
     assert dict_new[3] is None
     val_dict = dict1.get(2, 'Not in "dict1"')
     assert val_dict == 8
