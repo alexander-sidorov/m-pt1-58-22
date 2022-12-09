@@ -167,14 +167,14 @@ def test_dict() -> None:
     dict1[1] = "c"
     assert len(dict1 | dict_new) == 4
     assert 3 in dict_new
-    dict1 = {1: 9, 2: 8, 3: 7}
+    dict1 = {1: 'oh', 2: 'my', 3: 'god'}
     dict_id = id(dict1)
     dict_copy = dict1.copy()
     assert id(dict_copy) != dict_id
     assert dict_new[3] is None
     val_dict = dict1.get(2, 'Not in "dict1"')
-    assert val_dict == 8
-    assert (3, 7) in dict1.items()
+    assert val_dict == 'my'
+    assert (1,'oh') in dict1.items()
     assert 1 in dict1
     assert len(dict1) == 3
 
