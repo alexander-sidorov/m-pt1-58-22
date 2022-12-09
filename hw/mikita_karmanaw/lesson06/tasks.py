@@ -45,4 +45,3 @@ def task_05_route(route: Union[tuple, list]) -> float:
         previous_town_cords = CITIES[route[route.index(town) - 1]]
         dist += distance(CITIES[town], previous_town_cords)
     return dist
- 
