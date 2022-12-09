@@ -9,7 +9,8 @@ def task_01_boundary(sequence: typing.Sequence) -> tuple:
 
 
 def task_02_expand(sequence: typing.Sequence) -> typing.Sequence:
-    return sequence[1:] * int(sequence[0])
+    res = sequence[1:] * int(sequence[0])
+    return res
 
 
 def task_03_hdist(seq1: typing.Sequence, seq2: typing.Sequence) -> int:
