@@ -1,19 +1,20 @@
-import typing
+from typing import Any
+from typing import Sequence
 
 from hw.alexander_sidorov.helpers import CITIES
 
 
-def task_01_boundary(sequence: typing.Sequence) -> tuple:
-    tup = (sequence[0], sequence[-1])
-    return tup
+def task_01_boundary(sequence: Sequence) -> tuple:
+
+    return sequence[0], sequence[-1]
 
 
-def task_02_expand(sequence: typing.Sequence) -> typing.Sequence:
-    res = sequence[1:] * int(sequence[0])
-    return res
+def task_02_expand(sequence: Sequence) -> Any:
+
+    return sequence[1:] * int(sequence[0])
 
 
-def task_03_hdist(seq1: typing.Sequence, seq2: typing.Sequence) -> int:
+def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     if len(seq1) >= len(seq2):
         res = len(seq1) - len(seq2)
         for i in range(len(seq2)):
@@ -37,7 +38,7 @@ def task_04_cities(city: str) -> dict:
     return dict_distance
 
 
-def task_05_route(route: typing.Sequence) -> int:
+def task_05_route(route: Sequence) -> int:
     distance = 0
     for city1, city2 in zip(route, route[1:]):
         distance_x = (CITIES[city1][0] - CITIES[city2][0]) * 111
