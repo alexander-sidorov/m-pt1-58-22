@@ -115,6 +115,7 @@ def test_stdtypes() -> None:
     assert not tup.index(1)
 
     se = {1, 2}
+    assert {1, 2, 3}.issuperset(se)
     assert se & {2, 3} == {2}
     assert 1 in se
     assert se > set()
@@ -166,6 +167,7 @@ def test_stdtypes() -> None:
     assert not isinstance(se, Hashable)
 
     dic = {1: 2, 2: 3}
+    assert dic[1] == 2
     assert 1 in dic
     del dic[2]
     assert dic == {1: 2}
