@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from hw.andrei_karpuk.lesson04.lecture import task_01_money
 from hw.andrei_karpuk.lesson04.lecture import task_02_sign
 from hw.andrei_karpuk.lesson04.lecture import task_03_triangle

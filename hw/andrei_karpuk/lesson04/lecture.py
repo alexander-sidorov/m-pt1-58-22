@@ -2,11 +2,15 @@ from decimal import Decimal
 
 
 def task_01_money(rubles: int, coin: int, amount: int) -> Decimal:
-    return Decimal(rubles + coin / 100) * amount
+    return Decimal((rubles + coin / 100) * amount)
 
 
 def task_02_sign(number: int | float | complex | Decimal) -> int:
-    return 0 if isinstance(number, complex) or number == 0 else (+1 if number > 0 else -1)
+    return (
+        0
+        if isinstance(number, complex) or number == 0
+        else (+1 if number > 0 else -1)
+    )
 
 
 def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
