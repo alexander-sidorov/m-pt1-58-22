@@ -20,10 +20,10 @@ def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
     s1 = side1
     s2 = side2
     s3 = side3
-    return bool(s1 + s2 > s3 and s2 + s3 > s1 and s3 + s1 > s2)
+    return s1 + s2 > s3 and s2 + s3 > s1 and s3 + s1 > s2
 
 
 def task_04_palindrom(string: str) -> bool:
     string = string.lower()
     string = string.replace(" ", "")
-    return bool(string == string[::-1])
+    return string == string[::-1]
