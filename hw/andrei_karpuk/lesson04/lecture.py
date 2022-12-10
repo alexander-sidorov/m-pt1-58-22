@@ -2,9 +2,9 @@ from decimal import Decimal
 
 
 def task_01_money(rubles: int, coin: int, amount: int) -> Decimal:
-    rub = rubles(Decimal)
-    co = coin(Decimal)
-    amo = amount(Decimal)
+    rub = Decimal(rubles)
+    co = Decimal(coin)
+    amo = Decimal(amount)
     return (rub + co / 100) * amo
 
 
