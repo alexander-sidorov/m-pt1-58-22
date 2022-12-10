@@ -1,7 +1,7 @@
 .PHONY: format
 format:
 	black hw/
-	isort --virtual-env="$(poetry env info --path)" hw/
+	isort --virtual-env="$(shell poetry env info --path)" hw/
 
 
 .PHONY: qa
