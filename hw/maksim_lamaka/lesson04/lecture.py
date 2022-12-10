@@ -8,6 +8,7 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     amount = Decimal(amount)
     return (rubles + (coins / 100)) * amount
 
+
 def task_02_sign(number: Any) -> float:
     if isinstance(number, complex):
         return 0
