@@ -1,8 +1,8 @@
 from decimal import Decimal
-from lecture import task_01_money
-from lecture import task_02_sign
-from lecture import task_03_triangle
-from lecture import task_04_palindrom
+from hw.andrei_karpuk.lesson04.lecture import task_01_money
+from hw.andrei_karpuk.lesson04.lecture import task_02_sign
+from hw.andrei_karpuk.lesson04.lecture import task_03_triangle
+from hw.andrei_karpuk.lesson04.lecture import task_04_palindrom
 
 
 def test_01_money() -> None:
