@@ -2,7 +2,10 @@ from decimal import Decimal
 
 
 def task_01_money(rubles: int, coin: int, amount: int) -> Decimal:
-    return Decimal((rubles + coin / 100) * amount)
+    rub = rubles(Decimal)
+    co = coin(Decimal)
+    amo = amount(Decimal)
+    return (rub + co / 100) * amo
 
 
 def task_02_sign(number: int | float | complex | Decimal) -> int:
