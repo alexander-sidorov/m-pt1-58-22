@@ -18,6 +18,7 @@ def test_task_03_hdist() -> None:
     assert task_03_hdist("aaa", "aba") == 1
     assert task_03_hdist("aaa", "baa") == 1
     assert task_03_hdist("", "baa") == 3
+    assert task_03_hdist("aa", "baa") == 2
 
 
 def test_task_04_cities() -> None:
