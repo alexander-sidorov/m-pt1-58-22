@@ -1,7 +1,6 @@
 from decimal import Decimal
 from typing import Any
 
-
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     rubles = Decimal(rubles)
     coins = Decimal(coins)
