@@ -38,10 +38,10 @@ def calculation(one: tuple, two: tuple) -> tuple:
 
 
 def task_04_cities(city: str) -> dict:
-    total = {}
+    total = dict()
     for key in CITIES.keys():
-        one = CITIES.get(city)
-        two = CITIES.get(key)
+        one = CITIES[city]
+        two = CITIES[key]
         calculation(one, two)
         total.update([(key, calculation(one, two))])
     return total
