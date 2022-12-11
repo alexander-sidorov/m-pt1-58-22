@@ -44,8 +44,7 @@ def task_04_cities(city: str) -> dict:
         one = CITIES.get(city)
         two = CITIES.get(key)
         calculation(one, two)
-        new_dict = dict([(key, calculation(one, two))])
-        total.update(new_dict)
+        total.update(dict([(key, calculation(one, two))]))
     return total
 
 
