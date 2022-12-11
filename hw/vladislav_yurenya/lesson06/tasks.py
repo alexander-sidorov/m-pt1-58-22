@@ -12,7 +12,7 @@ def task_02_expand(sequence: Sequence) -> Any:
     return sequence[1:] * sequence[0]
 
 
-def f(seq1: Sequence, seq2: Sequence) -> str:
+def f(seq1: str, seq2: str) -> str:
     if len(seq1) < len(seq2):
         seq1 += " " * (len(seq2) - len(seq1))
         return seq1
@@ -32,7 +32,7 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     return total
 
 
-def calculation(one: tuple[float, float], two: tuple[float, float]) -> int:
+def calculation(one: float, two: float) -> int:
     x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
     return int((x**2 + y**2) ** 0.5)
 
