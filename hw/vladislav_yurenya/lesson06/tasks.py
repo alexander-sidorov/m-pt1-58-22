@@ -32,18 +32,14 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     return total
 
 
-def calculation(one: tuple[float, float], two: tuple[float, float]) -> int:
-    x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
-    return int((x**2 + y**2) ** 0.5)
-
-
 def task_04_cities(city: str) -> dict:
     total = {}
     for key in CITIES.keys():
         one = tuple(CITIES[city])
         two = tuple(CITIES[key])
-        calculation(one, two)
-        total.update({key: calculation(one, two)})
+        x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
+        distance = int((x**2 + y**2) ** 0.5)
+        total.update({key: distance})
     return total
 
 
@@ -52,6 +48,7 @@ def task_05_route(route: Sequence) -> int:
     for first, second in zip(route, route[1:]):
         one = CITIES.get(first)
         two = CITIES.get(second)
-        calculation(one, two)
-        total += calculation(one, two)
+        x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
+        distance = int((x**2 + y**2) ** 0.5)
+        total += distance
     return total
