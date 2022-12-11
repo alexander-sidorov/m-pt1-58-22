@@ -13,7 +13,7 @@ def task_02_expand(sequence: Sequence) -> Any:
     return sequence[1:] * sequence[0]
 
 
-def f(seq1: Sequence, seq2: Sequence) -> int:
+def f(seq1: Sequence, seq2: Sequence) -> str:
     if len(seq1) < len(seq2):
         seq1 += " " * (len(seq2) - len(seq1))
         return seq1
@@ -33,18 +33,18 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     return total
 
 
-def calculation(first: tuple, second: tuple) -> Any:
-    x, y = (first[0] - second[0]) * 111, (first[1] - second[1]) * 65
+def calculation(one: tuple, two: tuple) -> Any:
+    x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
     return floor((x**2 + y**2) ** 0.5)
 
 
 def task_04_cities(city: str) -> dict:
     total = {}
     for key in CITIES.keys():
-        first = CITIES.get(city)
-        second = CITIES.get(key)
-        calculation(first, second)
-        new_dict = dict([(key, calculation(first, second))])
+        one = CITIES.get(city)
+        two = CITIES.get(key)
+        calculation(one, two)
+        new_dict = dict([(key, calculation(one, two))])
         total.update(new_dict)
     return total
 
