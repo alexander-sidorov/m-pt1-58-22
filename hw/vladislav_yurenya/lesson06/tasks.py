@@ -32,7 +32,7 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     return total
 
 
-def calculation(one: tuple, two: tuple) -> int:
+def calculation(one: tuple, two: tuple) -> tuple:
     x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
     return int((x**2 + y**2) ** 0.5)
 
@@ -43,7 +43,7 @@ def task_04_cities(city: str) -> dict:
         one = CITIES.get(city)
         two = CITIES.get(key)
         calculation(one, two)
-        total.update(dict([(key, calculation(one, two))]))
+        total.update([(key, calculation(one, two))])
     return total
 
 
