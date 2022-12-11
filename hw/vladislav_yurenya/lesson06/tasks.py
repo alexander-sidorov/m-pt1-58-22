@@ -46,8 +46,8 @@ def task_04_cities(city: str) -> dict:
 def task_05_route(route: Sequence) -> int:
     total = 0
     for first, second in zip(route, route[1:]):
-        one = list(CITIES.get(first))
-        two = list(CITIES.get(second))
+        one = list(CITIES[first])
+        two = list(CITIES[second])
         x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
         distance = int((x**2 + y**2) ** 0.5)
         total += distance
