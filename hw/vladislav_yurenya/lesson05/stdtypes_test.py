@@ -55,10 +55,13 @@ def test_list() -> None:
     list1 = [1, 2, 3]
     list1.extend([4, 5])
     assert list1 == [1, 2, 3, 4, 5]
+    del list1[2]
+    assert list1 == [1, 2, 4, 5]
 
 
 def test_tuple() -> None:
     tuple1 = (1, "string", [1, 2])
+    assert tuple1 > (1, "avc")
     assert tuple1.index("string") == 1
     assert tuple1 + (2, 3) == (1, "string", [1, 2], 2, 3)
     assert tuple1.count(3) != 3
@@ -77,8 +80,8 @@ def test_str() -> None:
     assert len(string) == 11
     assert string.lower() == "this_is_tin"
     assert string.upper() == "THIS_IS_TIN"
-    string = "#@!this_is_tin#@!"
-    string.replace("#@!", "")
+    string_1 = "#@!this_is_tin#@!"
+    assert string_1.replace("#@!", "") == string
     string = "this_is_tin"
     assert string == "this_is_tin"
     assert string < "tin"
@@ -136,6 +139,11 @@ def test_str() -> None:
     dich = string.maketrans({"t": "D", "h": "I", "i": "C", "s": "H"})
     assert dich == {116: "D", 104: "I", 105: "C", 115: "H"}
     assert string.translate(dich) == string
+    string = "python"
+    string_1 = "3python3"
+    assert string_1.replace("3", "") == string
+    string_1 = "python    "
+    assert string_1.rstrip() == "python"
 
 
 def test_dict() -> None:
@@ -143,6 +151,7 @@ def test_dict() -> None:
     dict1 = {1: "e", 2: "n", 3: "o"}
     dict_1 = {4: "u", 5: "h", 6: "h"}
 
+    assert len(dict1.keys()) == 3
     assert "h" not in dict_1
     del dict_1[5]
     assert 5 not in dict_1
@@ -184,6 +193,7 @@ def test_set() -> None:
     set1 = {1, 3, 5}
     set2 = {2, 4, 6}
 
+    assert set1 > set()
     assert set1 != set2
     assert set1 & set2 != {3}
     assert 3 in set1
