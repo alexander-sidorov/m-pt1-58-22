@@ -3,10 +3,10 @@ from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    rubles = Decimal(rubles)
-    coins = Decimal(coins)
-    amount = Decimal(amount)
-    return (rubles + (coins / 100)) * amount
+    rubl = Decimal(rubles)
+    coin = Decimal(coins)
+    amount_d = Decimal(amount)
+    return (rubl + (coin / 100)) * amount_d
 
 
 def task_02_sign(number: Any) -> float:
