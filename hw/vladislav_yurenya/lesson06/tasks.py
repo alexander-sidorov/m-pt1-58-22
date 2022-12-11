@@ -10,12 +10,10 @@ def task_01_boundary(sequence: Sequence) -> tuple:
 
 
 def task_02_expand(sequence: Sequence) -> Any:
-    seq = sequence[0]
-    del sequence[0]
-    return sequence * seq
+    return sequence[1:] * sequence[0]
 
 
-def f(seq1, seq2):
+def f(seq1: Sequence, seq2: Sequence) -> int:
     if len(seq1) < len(seq2):
         seq1 += " " * (len(seq2) - len(seq1))
         return seq1
@@ -29,13 +27,13 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     seq1 = list(seq1)
     seq2 = list(seq2)
     f(seq1, seq2)
-    for x in zip(seq1, seq2):
-        if x[0] != x[1]:
+    for zip_seq in zip(seq1, seq2):
+        if zip_seq[0] != zip_seq[1]:
             total += 1
     return total
 
 
-def calculation(first, second):
+def calculation(first: tuple, second: tuple) -> Any:
     x, y = (first[0] - second[0]) * 111, (first[1] - second[1]) * 65
     return floor((x**2 + y**2) ** 0.5)
 
