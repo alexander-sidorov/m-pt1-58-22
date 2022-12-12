@@ -36,7 +36,7 @@ def task_05_route(route: Sequence) -> int:
     total = 0
     value = ()
     for i in route:
-        value += CITIES[i]
+        value: Any = value + CITIES[i]
     first = value[0::2]  # type: tuple
     sec = value[1::2]  # type: tuple
     for ind in range(len(first) - 1):
