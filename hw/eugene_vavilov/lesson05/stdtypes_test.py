@@ -1,7 +1,7 @@
 from typing import Hashable
 
 
-def list_test() -> None:
+def test_list() -> None:
 
     assert [1] + [2] == [1, 2]  # __add__
 
@@ -27,7 +27,8 @@ def list_test() -> None:
 
     assert [1, 2, 3][2] == 3  # __setitem__
 
-    [1, 2].append(3)
+    my_list = [1, 2]
+    my_list.append(3)
     assert my_list == [1, 2, 3]
 
     my_list = [1, 2]
@@ -70,11 +71,10 @@ def list_test() -> None:
 
     assert type([1, 2, 3]) == list
 
-    my_list_1 = ["1", 2, 4]
-    assert my_list_1.__hash__ is None
+    assert not isinstance(["a", "b", "c"], Hashable)
 
 
-def tuple_test() -> None:
+def test_tuple() -> None:
 
     my_tuple = (1, 2, 3, 4)
 
@@ -94,10 +94,10 @@ def tuple_test() -> None:
 
     assert type(my_tuple) == tuple
 
-    assert my_tuple.__hash__() == 590899387183067792
+    assert isinstance(("a", "b", "c"), Hashable)
 
 
-def string_test() -> None:
+def test_str() -> None:
 
     assert "a" + "b" == "ab"  # __add__
 
@@ -217,7 +217,7 @@ def string_test() -> None:
     assert str.maketrans("a", "1") == {97: 49}
 
 
-def set_test() -> None:
+def test_set() -> None:
 
     assert {1, 2, 3} & {3, 4} == {3}  # __and__
 
@@ -328,12 +328,12 @@ def set_test() -> None:
     my_set.update({4, 5, 6})
     assert my_set == {1, 2, 3, 4, 5, 6}
 
-    assert {1, 2, 3}.__hash__ is None
+    assert not isinstance({"a", "b"}, Hashable)
 
     assert type({1, 2}) is set
 
 
-def dict_test() -> None:
+def test_dict() -> None:
 
     assert 1 in {1: "1", 2: "2", 3: "3"} and "1" not in {
         1: "1",
@@ -375,7 +375,7 @@ def dict_test() -> None:
     assert str(my_dict.items()) == "dict_items([(1, '1'), (2, '2'), (3, '3')])"
 
     my_dict = {1: "1", 2: "2", 3: "3"}
-    assert str(my_dict.keys()) == "dict_keys(['a', 'b', 'c'])"
+    assert str(my_dict.keys()) == "dict_keys([1, 2, 3])"
 
     my_dict = {1: "1", 2: "2", 3: "3"}
     assert my_dict.pop(3) == "3"
@@ -395,7 +395,8 @@ def dict_test() -> None:
     my_dict = {1: "1", 2: "2", 3: "3"}
     assert str(my_dict.values()) == "dict_values(['1', '2', '3'])"
 
-    assert {"a": "1", "b": "2", "c": "3"}.__hash__ is None
+    dict1 = {1: "a", 2: "b"}
+    assert not isinstance(dict1, Hashable)
 
     my_dict = dict.fromkeys([1, 2, 3, 4], "0")
     assert my_dict == {1: "0", 2: "0", 3: "0", 4: "0"}
