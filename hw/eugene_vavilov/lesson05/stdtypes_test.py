@@ -111,7 +111,7 @@ def string_test() -> None:
 
     assert len("Hello") == 5  # __len__
 
-    assert ("%s %s" % ("Hello,", "world!")) == "Hello, world!"  # __mod__
+    assert ("%s %s" % ("H", "w")) == "H w"  # noqa: S001,MOD001
 
     assert "a" * 5 == "aaaaa"  # __mul__
 
@@ -170,7 +170,7 @@ def string_test() -> None:
 
     assert "HELLO world".lower() == "hello world"
 
-    assert "               hello world".lstrip(" hello ") == "world"
+    assert "               hello world".lstrip() == "hello world"
 
     assert "hello world".partition(" ") == ("hello", " ", "world")
 
@@ -195,7 +195,7 @@ def string_test() -> None:
 
     assert "Hello world".rstrip("world") == "Hello "
 
-    assert "Hello1 world1 hello".split("1 ") == ["Hello", "world", "hello"]
+    assert "H1 w1 h".split("1 ") == ["H", "w", "h"]  # noqa: SIM905
 
     assert "Hello\rworld\n".splitlines() == ["Hello", "world"]
 
@@ -363,7 +363,7 @@ def dict_test() -> None:
 
     my_dict = {1: "1", 2: "2"}
     my_dict.clear()
-    assert my_dict == dict()
+    assert my_dict == {}
 
     my_dict = {1: "1", 2: "2"}
     my_dict1 = my_dict.copy()
@@ -372,10 +372,7 @@ def dict_test() -> None:
     assert {"a": "1", "b": "2", "c": "3"}.get("b") == "2"
 
     my_dict = {1: "1", 2: "2", 3: "3"}
-    assert (
-        str(my_dict.items())
-        == "dict_items([(1, '1'), (2, '2'), (3, '3')])"
-    )
+    assert str(my_dict.items()) == "dict_items([(1, '1'), (2, '2'), (3, '3')])"
 
     my_dict = {1: "1", 2: "2", 3: "3"}
     assert str(my_dict.keys()) == "dict_keys(['a', 'b', 'c'])"
