@@ -52,7 +52,7 @@ def test_stdtypes() -> None:
     assert my_dict.setdefault(1, 111) == 111
     my_dict.update({2: 222})
     assert my_dict == {1: 111, 2: 222}
-    assert str(my_dict.values()) == 'dict_values([222, 111])'
+    assert str(my_dict.values()) == "dict_values([222, 111])"
     assert my_dict[1] == 111
     my_dict[0] = 1
     assert my_dict == {0: 1, 1: 111, 2: 222}
@@ -62,16 +62,16 @@ def test_stdtypes() -> None:
     assert 1 in my_dict
     assert not isinstance(my_dict, Hashable)
 
-    kort = (1, 2, 'abc')
-    assert kort + (3,) == (1, 2, 'abc', 3)
+    kort = (1, 2, "abc")
+    assert kort + (3,) == (1, 2, "abc", 3)
     assert kort[1] == 2
     assert 1 in kort
     assert len(kort) == 3
     assert () >= ()
     assert kort > ()
-    assert () < (1, )
+    assert () < (1,)
     assert kort != ()
-    assert kort * 2 == (1, 2, 'abc', 1, 2, 'abc')
+    assert kort * 2 == (1, 2, "abc", 1, 2, "abc")
     assert kort.count(2) == 1
     assert isinstance(kort, Hashable)
 
@@ -109,55 +109,54 @@ def test_stdtypes() -> None:
     assert st == {1, 2, 3}
     assert not isinstance(st, Hashable)
 
-    assert 'abc' + 'def' == 'abcdef'
-    assert 'n' not in 'abc'
-    assert 'a' in 'abc'
-    assert 'abc'[1] == 'b'
-    assert 'abc' == 'abc'
+    assert "abc" + "def" == "abcdef"
+    assert "n" not in "abc"
+    assert "a" in "abc"
+    assert "abc"[1] == "b"
+    assert "abc" == "abc"
     assert not len("")
-    assert 'abc' < 'def'
-    assert 'abc'*2 == 'abcabc'
-    assert 'abc'.capitalize() == "Abc"
-    assert "AbC".casefold() == 'abc'
-    assert 'abc'.center(5, '!') == "!abc!"
-    assert 'abccab'.count('a') == 2
-    assert 'abc'.encode() == b'abc'
-    assert 'abc'.endswith('c')
-    assert'abc\tdef'.expandtabs(2) == "abc def"
-    assert 'abc'.find('bc') == 1
-    assert 'abc'.index('c') == 2
-    assert 'abc'.isalnum()
-    assert not 'abc1'.isalpha()
-    assert 'abc'.isascii()
-    assert not 'abc'.isdecimal()
-    assert not 'abc'.isdigit()
-    assert not '&'.isidentifier()
-    assert 'abc'.islower()
-    assert not 'abc'.isnumeric()
-    assert 'abc'.isprintable()
+    assert "abc" < "def"
+    assert "abc" * 2 == "abcabc"
+    assert "abc".capitalize() == "Abc"
+    assert "AbC".casefold() == "abc"
+    assert "abc".center(5, "!") == "!abc!"
+    assert "abccab".count("a") == 2
+    assert "abc".encode() == b"abc"
+    assert "abc".endswith("c")
+    assert "abc\tdef".expandtabs(2) == "abc def"
+    assert "abc".find("bc") == 1
+    assert "abc".index("c") == 2
+    assert "abc".isalnum()
+    assert not "abc1".isalpha()
+    assert "abc".isascii()
+    assert not "abc".isdecimal()
+    assert not "abc".isdigit()
+    assert not "&".isidentifier()
+    assert "abc".islower()
+    assert not "abc".isnumeric()
+    assert "abc".isprintable()
     assert " ".isspace()
-    assert 'Abc'.istitle()
+    assert "Abc".istitle()
     assert "ABC".isupper()
-    assert "-".join(['A', 'B']) == "A-B"
-    assert 'abc'.ljust(5, '*') == 'abc**'
-    assert 'abc'.rjust(5, '*') == '**abc'
-    assert 'AbC'.lower() == "abc"
-    assert ',- abc'.lstrip(', -') == 'abc'
-    assert 'abc'.partition('b') == ('a', 'b', 'c')
-    assert 'abcdef'.removeprefix('abc') == 'def'
-    assert 'abcdef'.removesuffix('def') == 'abc'
-    assert 'a.b.c'.replace(".", '') == 'abc'
-    assert 'abcdefg'.rfind('def') == 3
-    assert 'abcdefg'.rindex('efg') == 4
-    assert 'abcd'.rpartition('b') == ('a', 'b', 'cd')
-    assert 'abc'.split('b') == ['a', 'c']
-    assert 'abc\nabc'.splitlines() == ['abc', 'abc']
-    assert 'abc'.startswith('a')
-    assert ',.abc,.abc'.strip(',.') == 'abc,.abc'
-    assert 'AbC'.swapcase() == 'aBc'
-    assert 'abc'.title() == 'Abc'
-    assert 'abc'.translate({97: 'b'}) == 'bbc'
-    assert 'abc'.upper() == 'ABC'
-    assert 'abc'.zfill(4) == '0abc'
-    assert str.maketrans({'a': 'b'}) == {97: 'b'}
-    
+    assert "-".join(["A", "B"]) == "A-B"
+    assert "abc".ljust(5, "*") == "abc**"
+    assert "abc".rjust(5, "*") == "**abc"
+    assert "AbC".lower() == "abc"
+    assert ",- abc".lstrip(", -") == "abc"
+    assert "abc".partition("b") == ("a", "b", "c")
+    assert "abcdef".removeprefix("abc") == "def"
+    assert "abcdef".removesuffix("def") == "abc"
+    assert "a.b.c".replace(".", "") == "abc"
+    assert "abcdefg".rfind("def") == 3
+    assert "abcdefg".rindex("efg") == 4
+    assert "abcd".rpartition("b") == ("a", "b", "cd")
+    assert "abc".split("b") == ["a", "c"]
+    assert "abc\nabc".splitlines() == ["abc", "abc"]
+    assert "abc".startswith("a")
+    assert ",.abc,.abc".strip(",.") == "abc,.abc"
+    assert "AbC".swapcase() == "aBc"
+    assert "abc".title() == "Abc"
+    assert "abc".translate({97: "b"}) == "bbc"
+    assert "abc".upper() == "ABC"
+    assert "abc".zfill(4) == "0abc"
+    assert str.maketrans({"a": "b"}) == {97: "b"}
