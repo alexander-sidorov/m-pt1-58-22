@@ -4,19 +4,19 @@ from typing import Hashable
 def test_stdtypes() -> None:
     str_13 = "python"
     assert "python" < "sfg"
-    assert "%s" % 3 == 3    # noqa: S001,MOD001
-    assert "python" + "Q" == 'pythonQ'
+    assert "%s" % 3 == 3  # noqa: S001,MOD001
+    assert "python" + "Q" == "pythonQ"
     assert "y" in str_13
-    assert str_13[3] == 'h'
+    assert str_13[3] == "h"
     assert isinstance(str_13, Hashable)
-    assert len(str_13) == 6     # noqa: S001,MOD001
-    assert str_13 * 2 == 'pythonpython'
+    assert len(str_13) == 6  # noqa: S001,MOD001
+    assert str_13 * 2 == "pythonpython"
     assert str_13 <= str_13
-    assert str_13.capitalize() == 'Python'
-    assert str_13.casefold() == 'python'
-    assert str_13.center(10) == '**python**'
+    assert str_13.capitalize() == "Python"
+    assert str_13.casefold() == "python"
+    assert str_13.center(10) == "**python**"
     assert str_13.count("o") == 1
-    assert str_13.encode() == b'python'
+    assert str_13.encode() == b"python"
     assert str_13.endswith("thon")
     assert "p\tyt\tho\tn".expandtabs() == "p       yt      ho      n"
     assert str_13.find("o") == 4
@@ -61,7 +61,7 @@ def test_stdtypes() -> None:
     assert str_13.startswith("pyt")
     assert str_13.strip("pyon") == "th"
     assert str_13.swapcase() == "PYTHON"
-    assert str_13.title() == 'Python'
+    assert str_13.title() == "Python"
     assert "asd".translate({98: "d"}) == "asd"
     assert str_13.upper() == "PYTHON"
     assert str_13.zfill(10) == "0000python"
@@ -76,7 +76,7 @@ def test_stdtypes() -> None:
     assert [1] != [9]
     assert [1] not in [9]
     assert not [1] is [9]
-    assert list_13[2] == 'python'
+    assert list_13[2] == "python"
     assert [19] * 5 == [19, 19, 19, 19, 19]
     list_13.append(13)
     assert list_13 == [1, 9, "python", 13]
@@ -183,7 +183,7 @@ def test_stdtypes() -> None:
     assert len(dict_13) == 2
     assert dict_13 != {}
     assert dict_13 | {"d": 12} == {"a": 13, "c": 11, "d": 12}
-    assert dict_13.copy() == {'a': 13, 'c': 11}
+    assert dict_13.copy() == {"a": 13, "c": 11}
     assert dict_13.fromkeys(["one", "two", "3"], 10) == {
         "one": 10,
         "two": 10,
@@ -193,12 +193,12 @@ def test_stdtypes() -> None:
     assert dict_13.items() == "dict_items([('a', 13), ('c', 11)])"
     assert dict_13.keys() == "dict_keys(['a', 'c'])"
     assert dict_13.pop("a") == 13
-    assert dict_13.popitem() == ('c', 11)
+    assert dict_13.popitem() == ("c", 11)
     dict_13.setdefault("i", 3)
     assert dict_13 == {"i", 3}
     dict_13.update({"i": 9})
-    assert dict_13 == {'i': 9}
-    assert str(dict_13.values()) == 'dict_values([9])'
+    assert dict_13 == {"i": 9}
+    assert str(dict_13.values()) == "dict_values([9])"
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
     assert not dict_13
