@@ -192,16 +192,16 @@ def test_set() -> None:
 
 
 def test_tuple() -> None:
-    t_tuple = (1,)
-    t_tuple = t_tuple + (3,)
-    assert t_tuple == (1, 3)
-    assert t_tuple[1] == 3
-    t_tuple = t_tuple * 2
-    assert t_tuple == (1, 3, 1, 3)
-    assert isinstance(t_tuple, Hashable)
-    assert 3 in t_tuple
-    assert len(t_tuple) == 4
-    assert t_tuple.index(3) == 1
-    assert t_tuple.count(3) == 2
-    assert (1,) < t_tuple
-    assert t_tuple >= (1,)
+    t_tuple = (1, 2)
+    new_tuple = t_tuple + (3,)
+    assert new_tuple == (1, 2, 3)
+    assert new_tuple[1] == 2
+    m_tuple = new_tuple * 2
+    assert m_tuple == (1, 2, 3, 1, 2, 3)
+    assert isinstance(m_tuple, Hashable)
+    assert 3 in m_tuple
+    assert len(m_tuple) == 6
+    assert m_tuple.index(3) == 2
+    assert m_tuple.count(3) == 2
+    assert (1,) < m_tuple
+    assert m_tuple >= (1,)
