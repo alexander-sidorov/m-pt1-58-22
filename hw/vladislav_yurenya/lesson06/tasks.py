@@ -34,14 +34,15 @@ def task_04_cities(city: str) -> dict:
 
 def task_05_route(route: Sequence) -> int:
     total = 0
-    val = ()
+    value = tuple()
     for i in route:
-        val += CITIES[i]
-    first = val[0::2]
-    sec = val[1::2]
+        value += CITIES[i]
+    first = tuple(value[0::2])
+    sec = tuple(value[1::2])
     for ind in range(len(first) - 1):
-        lon = (first[ind] - first[ind + 1]) * 111
-        lat = (sec[ind] - sec[ind + 1]) * 65
+        lon, lat = (first[ind] - first[ind + 1]) * 111, (
+            sec[ind] - sec[ind + 1]
+        ) * 65
         distance = int((lon**2 + lat**2) ** 0.5)
         total += distance
     return total
