@@ -3,9 +3,9 @@ from typing import Hashable
 
 def test_stdtypes() -> None:
     str_13 = "python"
-    assert str_13 < "sfg"
+    assert "python" < "sfg"
     assert "%s" % 3 == 3
-    assert str_13 + "Q" == 'pythonQ'
+    assert "python" + "Q" == 'pythonQ'
     assert "y" in str_13
     assert str_13[3] == 'h'
     assert isinstance(str_13, Hashable)
@@ -37,7 +37,7 @@ def test_stdtypes() -> None:
     assert not str_13.istitle()
     assert not str_13.isupper()
     name1 = ".."
-    assert not name1.join("1..2") == "1........2"
+    assert name1.join("1..2") != "1........2"
     assert str_13.ljust(10, "s") == "pythonssss"
     assert str_13.lstrip("ptn") == "ython"
     assert str_13.maketrans({"p": "a", "h": "y", "n": "6"}) == {
@@ -73,22 +73,27 @@ def test_stdtypes() -> None:
     assert not [1] > [9]
     assert not [1] >= [9]
     assert [1] <= [9]
-    assert not [1] == [9]
     assert [1] != [9]
-    assert not [1] in [9]
+    assert [1] not in [9]
     assert not [1] is [9]
     assert list_13[2] == 'python'
     assert [19] * 5 == [19, 19, 19, 19, 19]
-    assert list_13.append(13) == [1, 9, "python", 13]
-    assert list_13.clear() == []
+    list_13.append(13)
+    assert list_13 == [1, 9, "python", 13]
+    list_13.clear()
+    assert not list_13
     assert list_13.copy() == []
     assert list_13.count("o") == 0
-    assert list_13.extend([1, 9, 13]) == [1, 9, 13]
+    list_13.extend([1, 9, 13])
+    assert list_13 == [1, 9, 13]
     assert list_13.index(9) == 1
-    assert list_13.insert(2, 7) == [1, 9, 7, 13]
+    list_13.insert(2, 7)
+    assert list_13 == [1, 9, 7, 13]
     assert list_13.pop() == 13
-    assert list_13.remove(1) == [9, 7]
-    assert list_13.reverse() == [7, 9]
+    list_13.remove(1)
+    assert list_13 == [9, 7]
+    list_13.reverse()
+    assert list_13 == [7, 9]
     assert list_13.sort() == [7, 9]
     assert not isinstance(list_13, Hashable)
 
@@ -124,8 +129,10 @@ def test_stdtypes() -> None:
     set_13 ^= {12, 8}
     assert set_13 == {19, 36, 8, 25, 11, 12}
     assert len(set_13) == 6
-    assert set_13.remove(25) == {19, 36, 8, 11, 12}
-    assert set_13.add(13) == {19, 36, 8, 11, 12, 13}
+    set_13.remove(25)
+    assert set_13 == {19, 36, 8, 11, 12}
+    set_13.add(13)
+    assert set_13 == {19, 36, 8, 11, 12, 13}
     assert set_13.symmetric_difference([258, 356, 11, 35]) == {
         258,
         35,
@@ -137,32 +144,38 @@ def test_stdtypes() -> None:
         19,
     }
     assert set_13.copy() == {19, 36, 8, 11, 12, 13}
-    assert set_13.symmetric_difference_update([12, 13, 19, 356]) == {
+    set_13.symmetric_difference_update([12, 13, 19, 356])
+    assert set_13 == {
         36,
         356,
         8,
         11,
     }
     assert set_13.difference([11]) == {356, 8, 36}
-    assert set_13.difference_update([13]) == {36, 356, 8, 11}
-    assert set_13.discard(11) == {36, 356, 8}
+    set_13.difference_update([13])
+    assert set_13 == {36, 356, 8, 11}
+    set_13.discard(11)
+    assert set_13 == {36, 356, 8}
     assert set_13.intersection([36, 8]) == {8, 36}
-    assert set_13.intersection_update([36, 11, 8]) == {8, 36}
+    set_13.intersection_update([36, 11, 8])
+    assert set_13 == {8, 36}
     assert set_13.isdisjoint([26])
     assert set_13.isdisjoint([26])
     assert set_13.issubset([36, 13, 8])
     assert not set_13.issuperset([8, 36])
     assert set_13.pop() == 8
     assert set_13.union([1, 2, 3, 4, 5]) == {1, 2, 3, 36, 4, 5}
-    assert set_13.update([45, 25]) == {25, 36, 45}
-    assert set_13.clear() == set()
+    set_13.update([45, 25])
+    assert set_13 == {25, 36, 45}
+    set_13.clear()
+    assert not set_13
     assert {12, 25} & {35, 25} == {25}
     assert not isinstance(set_13, Hashable)
 
     dict_13 = {"a": 13, "b": 19}
 
     assert dict_13["a"] == 13
-    dict_13["c"] = "11"
+    dict_13["c"] = 11
     assert dict_13 == {"a": 13, "b": 19, "c": 11}
     assert "a" in dict_13
     del dict_13["b"]
@@ -177,16 +190,15 @@ def test_stdtypes() -> None:
         "3": 10,
     }
     assert dict_13.get("a") == 13
-    assert dict_13.items() == dict_items([('a', 13), ('c', 11)])
-    assert dict_13.keys() == dict_keys(['a', 'c'])
+    assert dict_13.items() == "dict_items([('a', 13), ('c', 11)])"
+    assert dict_13.keys() == "dict_keys(['a', 'c'])"
     assert dict_13.pop("a") == 13
     assert dict_13.popitem() == ('c', 11)
     dict_13.setdefault("i", 3)
     assert dict_13 == {"i", 3}
     dict_13.update({"i": 9})
     assert dict_13 == {'i': 9}
-    assert dict_13.values() == dict_values([9])
+    assert str(dict_13.values()) == 'dict_values([9])'
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
     assert not dict_13
-
