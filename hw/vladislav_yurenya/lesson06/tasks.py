@@ -37,8 +37,8 @@ def task_05_route(route: Sequence) -> int:
     value = ()
     for i in route:
         value += CITIES[i]
-    first = tuple(value[0::2])
-    sec = tuple(value[1::2])
+    first = value[0::2]  # type: tuple
+    sec = value[1::2]  # type: tuple
     for ind in range(len(first) - 1):
         lon, lat = (first[ind] - first[ind + 1]) * 111, (
             sec[ind] - sec[ind + 1]
