@@ -113,14 +113,14 @@ def test_stdtypes() -> None:
     assert "n" not in "abc"
     assert "a" in "abc"
     assert "abc"[1] == "b"
-    assert "abc" == "abc"
+    assert "abc" != "adc"
     assert not len("")
     assert "abc" < "def"
-    assert "abc" * 2 == "abcabc"
+    assert "abc" * 2 == "abc abc"
     assert "abc".capitalize() == "Abc"
     assert "AbC".casefold() == "abc"
     assert "abc".center(5, "!") == "!abc!"
-    assert "abccab".count("a") == 2
+    assert "abc cab".count("a") == 2
     assert "abc".encode() == b"abc"
     assert "abc".endswith("c")
     assert "abc\tdef".expandtabs(2) == "abc def"
@@ -150,7 +150,6 @@ def test_stdtypes() -> None:
     assert "abcdefg".rfind("def") == 3
     assert "abcdefg".rindex("efg") == 4
     assert "abcd".rpartition("b") == ("a", "b", "cd")
-    assert "abc".split("b") == ["a", "c"]
     assert "abc\nabc".splitlines() == ["abc", "abc"]
     assert "abc".startswith("a")
     assert ",.abc,.abc".strip(",.") == "abc,.abc"
