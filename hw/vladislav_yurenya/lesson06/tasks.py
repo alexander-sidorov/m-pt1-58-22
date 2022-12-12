@@ -34,7 +34,7 @@ def task_04_cities(city: str) -> dict:
 
 def task_05_route(route: Sequence) -> int:
     total = 0
-    value = tuple()
+    value = ()
     for i in route:
         value += CITIES[i]
     first = tuple(value[0::2])
