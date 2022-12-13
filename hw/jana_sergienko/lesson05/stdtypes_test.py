@@ -57,7 +57,7 @@ def test_str() -> None:
     assert "jana" <= "jana"
     assert len("jana") == 4
     assert "abc" < "def"
-    assert "%s %s" % (2, "milk") == "2 milk"
+    assert "%s" % 2 == "2"
     assert "jana" * 2 == "janajana"
 
 
