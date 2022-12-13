@@ -76,15 +76,17 @@ def test_02():
 Пример:
 
 ```python
-def test_04_benchmark(func): ...
+def test_03_benchmark(func):
+    # здесь ваш код!
+    ...
 
 import time
 
-@test_04_benchmark
+@test_03_benchmark
 def slowpoke(n):
     time.sleep(n)
 
-def test_04():
+def test_03():
     t = time.monotonic()
     slowpoke(1)  # дольше не спать! тесты будут педалить
     dt = time.monotonic() - t
@@ -95,7 +97,7 @@ def test_04():
 
 #### 4. Задача про типизацию (+2)
 
-Существует функция с названием `task_05_typecheck`.
+Существует функция с названием `task_04_typecheck`.
 
 Функция реализует декоратор: проверяет типы переданных аргументов и результата
 у декорированной функции.
@@ -103,19 +105,21 @@ def test_04():
 Пример:
 
 ```python
-def task_05_typecheck(func): ...
+def task_04_typecheck(func):
+    # здесь ваш код!
+    ...
 
-@task_05_typecheck
+@task_04_typecheck
 def f(a: int, b: int) -> int:
     return b * a
 
-@task_05_typecheck
+@task_04_typecheck
 def g() -> int:
     return "1"  # type: ignore
 
 import pytest
 
-def test_05():
+def test_04():
     assert f(2, 3) == 6
 
     with pytest.raises(TypeError):
@@ -136,26 +140,37 @@ if not isinstance(a, b):
 
 #### 5. Задача про кэш (+4)
 
-Существует функция с названием `task_03_cache`.
+Существует функция с названием `task_05_cache`.
 
 Функция реализует декоратор: кэширует запуск декорированной функции.
 
 Пример:
 
 ```python
-def task_03_cache(func): ...
+def task_05_cache(func):
+    # здесь ваш код!
+    ...
 
-@task_03_cache
+@task_05_cache
 def bad(x=[]):
     x.append(1)
     return x
 
-def test_03():
+def test_05():
     y = bad()
     assert y == [1]
     
     z = [bad() for _ in "123"][-1]
     assert z is y
+    
+    data = [1,2,3,4]
+    r1 = bad(data)
+    r2 = bad(data)
+    r3 = bad([1,2])
+    assert data == [1,2,3,4,1]
+    assert r1 is data
+    assert r2 is r1
+    assert r3 is not r1
+    assert r3 == [1,2,1]
 ```
 
----
