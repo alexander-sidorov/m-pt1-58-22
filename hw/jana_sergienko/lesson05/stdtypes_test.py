@@ -39,7 +39,8 @@ def test_str() -> None:
     assert "janna".rpartition("n") == ("jan", "n", "a")
     assert "jan".rsplit("a") == ["j", "n"]
     assert "jana.!".rstrip(".!") == "jana"
-    assert '["jana"]'.split(" ") == ["jana"]
+    world = "jana"
+    assert world.split(" ") == ["jana"]
     assert "jana\njana\njana".splitlines() == ["jana", "jana", "jana"]
     assert "jana".startswith("j")
     assert "    jana    ".strip() == "jana"
