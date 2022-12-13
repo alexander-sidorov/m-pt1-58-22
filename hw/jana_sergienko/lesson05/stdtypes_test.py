@@ -39,7 +39,7 @@ def test_str() -> None:
     assert "janna".rpartition("n") == ("jan", "n", "a")
     assert "jan".rsplit("a") == ["j", "n"]
     assert "jana.!".rstrip(".!") == "jana"
-    assert "jan".split("a") == ["j", "n"]
+    assert "jana".split(" ") == ["jana"]
     assert "jana\njana\njana".splitlines() == ["jana", "jana", "jana"]
     assert "jana".startswith("j")
     assert "    jana    ".strip() == "jana"
@@ -56,7 +56,7 @@ def test_str() -> None:
     assert "jana" <= "jana"
     assert len("jana") == 4
     assert "abc" < "def"
-    assert "%s and %s" % ("coffee", "milk") == "coffee and milk"
+    assert "%s %s" % (2, "milk") == "2 milk"
     assert "jana" * 2 == "janajana"
 
 
@@ -184,7 +184,7 @@ def test_dictionary() -> None:
     assert dct == {1: 2, 3: 4}
     assert len(dct) == 2
     assert dct != {}
-    assert dct | {5: 6} == {1: 2, 3: 4, 5:6}
+    assert dct | {5: 6} == {1: 2, 3: 4, 5: 6}
     dct[0] = 1
     assert dct == {0: 1, 1: 2, 3: 4}
     dct.clear()
