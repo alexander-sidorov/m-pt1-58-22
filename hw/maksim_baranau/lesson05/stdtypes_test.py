@@ -116,11 +116,12 @@ def test_stdtypes() -> None:
     assert "abc" != "adc"
     assert not len("")
     assert "abc" < "def"
-    assert "abc" * 2 == "abc abc"
+    assert "ma" * 2 == "mama"
     assert "abc".capitalize() == "Abc"
     assert "AbC".casefold() == "abc"
     assert "abc".center(5, "!") == "!abc!"
     assert "abc cab".count("a") == 2
+    assert 'a b'.split() == ['a', 'b']
     assert "abc".encode() == b"abc"
     assert "abc".endswith("c")
     assert "abc\tdef".expandtabs(2) == "abc def"
