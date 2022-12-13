@@ -57,7 +57,7 @@ def test_str() -> None:
     assert "jana" <= "jana"
     assert len("jana") == 4
     assert "abc" < "def"
-    assert "%s" % 2 == "2"
+    assert "%s" % 2 == "2"  # noqa: S001,MOD001
     assert "jana" * 2 == "janajana"
 
 
@@ -105,7 +105,7 @@ def test_list() -> None:
 
 
 def test_tuple() -> None:
-    assert (0, ) + (1, ) == (0, 1)
+    assert (0,) + (1,) == (0, 1)
     tpl = (0, 1)
     assert 0 in tpl
     assert () >= ()
