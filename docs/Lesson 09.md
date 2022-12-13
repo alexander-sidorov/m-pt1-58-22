@@ -100,7 +100,7 @@ def test_03():
 Существует функция с названием `task_04_typecheck`.
 
 Функция реализует декоратор: проверяет типы переданных аргументов и результата
-у декорированной функции.
+у декорированной функции. Декорированная функция принимает аргументы только по имени.
 
 Пример:
 
@@ -110,7 +110,7 @@ def task_04_typecheck(func):
     ...
 
 @task_04_typecheck
-def f(a: int, b: int) -> int:
+def f(*, a: int, b: int) -> int:
     return b * a
 
 @task_04_typecheck
@@ -120,10 +120,10 @@ def g() -> int:
 import pytest
 
 def test_04():
-    assert f(2, 3) == 6
+    assert f(a=2, b=3) == 6
 
     with pytest.raises(TypeError):
-        f(2, 0.2)  # type: ignore
+        f(a=2, b=0.2)  # type: ignore
 
     with pytest.raises(TypeError):
         g()
