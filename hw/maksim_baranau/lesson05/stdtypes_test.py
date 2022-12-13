@@ -121,7 +121,7 @@ def test_stdtypes() -> None:
     assert "AbC".casefold() == "abc"
     assert "abc".center(5, "!") == "!abc!"
     assert "abc cab".count("a") == 2
-    assert 'a b'.split() == ['a', 'b']
+    assert "a b".split() == ["a", "b"]
     assert "abc".encode() == b"abc"
     assert "abc".endswith("c")
     assert "abc\tdef".expandtabs(2) == "abc def"
