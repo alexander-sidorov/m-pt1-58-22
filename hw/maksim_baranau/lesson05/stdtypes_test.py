@@ -159,5 +159,5 @@ def test_stdtypes() -> None:
     assert "abc".upper() == "ABC"
     assert "abc".zfill(5) == "00abc"
     assert str.maketrans({"a": "b"}) == {97: "b"}
-    text = 'a b'
-    assert text.split() == ['a', 'b']
+    text = "a b"
+    assert text.split() == ["a", "b"]
