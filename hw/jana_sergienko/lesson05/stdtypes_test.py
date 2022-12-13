@@ -89,7 +89,8 @@ def test_list() -> None:
     lst.extend([1, 2, 3])
     assert lst == [1, 2, 3]
     assert lst.index(1) == 0
-    assert lst.insert(1, 4) == [1, 4, 2, 3]
+    lst.insert(1, 4)
+    assert lst == [1, 4, 2, 3]
     assert lst.pop(1) == 4
     lst.remove(1)
     assert lst == [2, 3]
@@ -138,7 +139,7 @@ def test_set() -> None:
     assert st == {1, 3}
     assert len(st) == 2
     assert st != {1}
-    assert st | 2 == {1, 2, 3}
+    assert st | {2} == {1, 2, 3}
     assert st - {3} == {1}
     assert st ^ {2, 3, 4} == {1, 2, 4}
     st.add(2)
@@ -148,7 +149,7 @@ def test_set() -> None:
     assert not st.copy()
     st = {1, 2, 3}
     assert st.difference({3, 4, 5}) == {1, 2}
-    assert st.difference_update({3, 4, 5})
+    st.difference_update({3, 4, 5})
     assert st == {1, 2}
     st.discard(2)
     assert st == {1}
