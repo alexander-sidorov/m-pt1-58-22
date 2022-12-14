@@ -110,13 +110,13 @@ def test_tuple() -> None:
     tpl = (0, 1)
     assert 0 in tpl
     assert () >= ()
-    assert (1, ) > ()
+    assert (1,) > ()
     assert () <= ()
     assert () < (1, )
     assert tpl[1] == 1
     assert len(tpl) == 2
     assert tpl * 3 == (0, 1, 0, 1, 0, 1)
-    assert () != (1, )
+    assert () != (1,)
     assert tpl.count(2) == 0
     assert tpl.index(0) == 0
     assert isinstance(tpl, Hashable)
