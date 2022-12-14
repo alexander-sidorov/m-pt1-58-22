@@ -14,7 +14,7 @@ def test_str() -> None:
     assert "{j}{n}".format_map({"j": "ja", "n": "na"}) == "jana"
     assert "jana".index("j") == 0
     assert "jana".isalnum()
-    assert "jana95".isalpha()
+    assert not "jana95".isalpha()
     assert "jana".isascii()
     assert not "jana".isdecimal()
     assert not "jana".isdigit()
@@ -86,7 +86,9 @@ def test_list() -> None:
     assert lst == [1, 2, 3]
     lst.clear()
     assert not lst.copy()
-    assert [1, 2, 3].count(1) == 0
+    lst = [1, 2, 3]
+    assert lst.count(1) == 0
+    lst.clear()
     lst.extend([1, 2, 3])
     assert lst == [1, 2, 3]
     assert lst.index(1) == 0
