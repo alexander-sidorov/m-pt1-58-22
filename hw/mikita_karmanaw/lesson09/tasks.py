@@ -12,9 +12,6 @@ def task_01_do_twice(func: Callable) -> Callable:
 
 
 def counter_cache_factory(counter_cache: dict) -> Callable:
-    if counter_cache is None:
-        counter_cache = {}
-
     def task_02_count_calls(func: Callable) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
@@ -29,17 +26,14 @@ def counter_cache_factory(counter_cache: dict) -> Callable:
 
 
 def func_cache_factory(func_cache: dict) -> Callable:
-    if func_cache is None:
-        func_cache = {}
-
     def task_05_cache(func: Callable) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
-            ar = str(args)
+            ar = str(args) + str(kwargs)
             try:
                 return func_cache[ar]
             except KeyError:
                 res = func(*args, **kwargs)
-                func_cache[str(args)] = res
+                func_cache[ar] = res
                 return res
 
         return wrapper
@@ -48,9 +42,6 @@ def func_cache_factory(func_cache: dict) -> Callable:
 
 
 def time_cache_factory(time_cache: dict) -> Callable:
-    if time_cache is None:
-        time_cache = {}
-
     def task_03_benchmark(func: Callable) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             t_start = time.perf_counter()
@@ -65,12 +56,9 @@ def time_cache_factory(time_cache: dict) -> Callable:
 
 
 def cache_factory(cache: dict) -> Callable:
-    if cache is None:
-        cache = {}
-
     def cache_func(func: Callable) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
-            cache_key = func.__name__ + "&argument=&" + str(args)
+            cache_key = func.__name__ + "&argument=&" + str(args) + str(kwargs)
             try:
                 result = cache[cache_key]
                 cache[cache_key][2] += 1
