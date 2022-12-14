@@ -105,7 +105,8 @@ def test_list() -> None:
 
 
 def test_tuple() -> None:
-    assert (0,) + (1,) == (0, 1)
+    tup = (0, 1)
+    assert tup + (2, 3) == (0, 1, 2, 3)
     tpl = (0, 1)
     assert 0 in tpl
     assert () >= ()
