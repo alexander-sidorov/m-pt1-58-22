@@ -16,7 +16,7 @@ def counter_cache_factory(counter_cache: dict) -> Callable:
         counter_cache = {}
 
     def task_02_count_calls(func: Callable) -> Callable:
-        def wrapper(*args: Any, **kwargs: Any) -> Callable:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 counter_cache[func.__name__] += 1
             except KeyError:
@@ -33,7 +33,7 @@ def func_cache_factory(func_cache: dict) -> Callable:
         func_cache = {}
 
     def task_05_cache(func: Callable) -> Callable:
-        def wrapper(*args: Any, **kwargs: Any) -> Callable:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             ar = str(args)
             try:
                 return func_cache[ar]
@@ -52,7 +52,7 @@ def time_cache_factory(time_cache: dict) -> Callable:
         time_cache = {}
 
     def task_03_benchmark(func: Callable) -> Callable:
-        def wrapper(*args: Any, **kwargs: Any) -> Callable:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             t_start = time.perf_counter()
             res = func(*args, **kwargs)
             time_spent = time.perf_counter() - t_start
@@ -69,7 +69,7 @@ def cache_factory(cache: dict) -> Callable:
         cache = {}
 
     def cache_func(func: Callable) -> Callable:
-        def wrapper(*args: Any, **kwargs: Any) -> Callable:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             cache_key = func.__name__ + "&argument=&" + str(args)
             try:
                 result = cache[cache_key]
@@ -88,7 +88,7 @@ def cache_factory(cache: dict) -> Callable:
 
 
 def task_04_typecheck(func: Callable) -> Callable:
-    def wrapper(**kwargs: Any) -> Callable:
+    def wrapper(**kwargs: Any) -> Any:
         result = func(**kwargs)
         annotations = func.__annotations__
         try:
