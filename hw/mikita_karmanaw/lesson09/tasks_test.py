@@ -96,7 +96,7 @@ def test_cache() -> None:
     assert not func_total_cache
     cached_function(5)
     assert "cached_function&argument=&(5,)" in func_total_cache
-    assert func_total_cache["cached_function&argument=&(5,)"] is list
+    assert isinstance(func_total_cache["cached_function&argument=&(5,)"], list)
     assert func_total_cache["cached_function&argument=&(5,)"][0] == 6
     assert func_total_cache["cached_function&argument=&(5,)"][1] > 1
     assert func_total_cache["cached_function&argument=&(5,)"][2] == 1
