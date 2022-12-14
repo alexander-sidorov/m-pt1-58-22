@@ -87,7 +87,7 @@ def test_list() -> None:
     lst.clear()
     assert not lst.copy()
     lst = [1, 2, 3]
-    assert lst.count(1) == 0
+    assert lst.count(1) == 1
     lst.clear()
     lst.extend([1, 2, 3])
     assert lst == [1, 2, 3]
