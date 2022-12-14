@@ -7,7 +7,7 @@ counter: dict = {}
 
 def task_01_do_twice(func: Callable) -> Callable:
     def wrapper(
-        *args,
+        *args: tuple,
     ) -> None:
         func(
             *args,
@@ -22,7 +22,7 @@ def task_01_do_twice(func: Callable) -> Callable:
 def task_02_count_calls(counter: dict) -> Callable:
     def wrapper(func: Callable) -> Callable:
         @wraps(func)
-        def inner(*args) -> Callable:
+        def inner(*args: tuple) -> Any:
             res = func(
                 *args,
             )
@@ -41,7 +41,7 @@ def task_03_benchmark(benchmark: dict) -> Callable:
 
     def wrapper(func: Callable) -> Callable:
         @wraps(func)
-        def inner(*args) -> Callable:
+        def inner(*args: tuple) -> Any:
             start = time.monotonic()
             res = func(*args)
             time_work = time.monotonic() - start
@@ -55,8 +55,7 @@ def task_03_benchmark(benchmark: dict) -> Callable:
 
 
 def task_04_typecheck(func: Callable) -> Callable:
-    def wrapper(**kwargs):
-
+    def wrapper(**kwargs: dict) -> Any:
         res = func(**kwargs)
         for key, value in kwargs.items():
             if func.__annotations__[key] is Any:
@@ -76,15 +75,20 @@ def task_04_typecheck(func: Callable) -> Callable:
     return wrapper
 
 
-def task_05_cache(func: Callable) -> Callable:
-    cash_dict = {}
+def task_05_cache(cash: dict) -> Callable:
+    def dec(func: Callable) -> Callable:
+        @wraps(func)
+        def wrapper(*args: tuple, **kwargs: dict) -> Any:
+            runs = cash.get(func.__name__)
+            if runs is not None:
+                for run in runs:
+                    arg, kwarg, result = run
+                    if arg == args and kwarg == kwargs:
+                        return result
+            res = func(*args, **kwargs)
+            cash[func.__name__].append([args, kwargs, res])
+            return res
 
-    @wraps(func)
-    def wrapper(my_list5=[]) -> None:  # noqa: B006
+        return wrapper
 
-        if (func, id(my_list5)) in cash_dict:
-            return cash_dict[(func, id(my_list5))]
-        cash_dict[(func, id(my_list5))] = func(my_list5)
-        return cash_dict[(func, id(my_list5))]
-
-    return wrapper
+    return dec

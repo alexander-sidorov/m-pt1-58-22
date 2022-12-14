@@ -1,4 +1,5 @@
 import time
+from collections import defaultdict
 from typing import Any
 from typing import cast
 
@@ -76,7 +77,7 @@ def test_04() -> None:
 
 
 def test_05() -> None:
-    cache: dict = {}
+    cache: dict = defaultdict(list)
 
     @les9.task_05_cache(cache)
     def func1(arg: list) -> list:
