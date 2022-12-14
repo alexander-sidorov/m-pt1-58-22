@@ -17,9 +17,9 @@ def f01(lst: list) -> None:
 
 
 def test_01() -> None:
-    x: list[None] = []
-    f01(x)
-    assert len(x) == 2
+    x01: list[None] = []
+    f01(x01)
+    assert len(x01) == 2
 
 
 function_counter_cache: dict[str, int] = {}
@@ -47,8 +47,8 @@ function_time_cache: dict[str, float] = {}
 
 
 @time_cache_factory(function_time_cache)
-def slowpoke(n: int) -> None:
-    time.sleep(n)
+def slowpoke(n03: int) -> None:
+    time.sleep(n03)
 
 
 def test_03() -> None:
@@ -60,17 +60,17 @@ function_result_cache: dict[str, Any] = {}
 
 
 @func_cache_factory(function_result_cache)
-def bad(x: list = []) -> list:
-    x.append(1)
-    return x
+def bad(x05: list = []) -> list:
+    x05.append(1)
+    return x05
 
 
 def test_05() -> None:
-    y = bad()
-    assert y == [1]
+    y05 = bad()
+    assert y05 == [1]
 
-    z = [bad() for _ in "123"][-1]
-    assert z is y
+    z05 = [bad() for _ in "123"][-1]
+    assert z05 is y05
 
     data = [1, 2, 3, 4]
     r1 = bad(data)
@@ -87,15 +87,15 @@ func_total_cache: dict[str, list] = {}
 
 
 @cache_factory(func_total_cache)
-def cached_function(val: int) -> str:
+def cached_function(value: int) -> str:
     time.sleep(1)
-    return "a" + str(val)
+    return "a" + str(value)
 
 
 def test_cache() -> None:
     assert not func_total_cache
     cached_function(5)
-    assert "cached_function5" in func_total_cache
+    assert "cached_function&argument=&5" in func_total_cache
     assert func_total_cache["cached_function&argument=&5"] is list
     assert func_total_cache["cached_function&argument=&5"][0] == 6
     assert func_total_cache["cached_function&argument=&5"][1] > 1
@@ -108,8 +108,8 @@ def f04(*, a: int, b: int) -> int:
 
 
 @task_04_typecheck
-def g04() -> str:
-    return "1"
+def g04() -> int:
+    return "1"  # type: ignore
 
 
 def test_04() -> None:
