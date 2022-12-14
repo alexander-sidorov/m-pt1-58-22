@@ -60,7 +60,7 @@ function_result_cache: dict[str, Any] = {}
 
 
 @func_cache_factory(function_result_cache)
-def bad(x05: list = []) -> list:
+def bad(x05: list = []) -> list:  # noqa: B006
     x05.append(1)
     return x05
 
