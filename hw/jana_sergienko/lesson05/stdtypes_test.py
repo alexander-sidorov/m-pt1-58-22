@@ -112,7 +112,7 @@ def test_tuple() -> None:
     assert () >= ()
     assert (1,) > ()
     assert () <= ()
-    assert () < (1, )
+    assert () < (1,)
     assert tpl[1] == 1
     assert len(tpl) == 2
     assert tpl * 3 == (0, 1, 0, 1, 0, 1)
