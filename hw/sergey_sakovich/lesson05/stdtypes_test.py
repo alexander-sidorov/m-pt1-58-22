@@ -9,7 +9,7 @@ def test_stdtypes() -> None:
     assert "y" in str_13
     assert str_13[3] == "h"
     assert isinstance(str_13, Hashable)
-    assert len(str_13) == 6
+    assert len(str_13) == 6  # noqa: S001,MOD001
     assert str_13 * 2 == "pythonpython"
     assert str_13 <= str_13
     assert str_13.capitalize() == "Python"
@@ -212,13 +212,13 @@ def test_stdtypes() -> None:
     assert dict_13.keys() == {'a', 'c'}
     assert dict_13.pop("a") == 13
     assert dict_13.popitem() == ("c", 11)
-    dict_13 = {13: "13", 19: "19", 7: "7"}
-    dict_13.setdefault(9, '9')
-    assert dict_13[9] == '9'
-    dict_13 = {13: "13", 19: "19", 7: "7"}
-    dict_13.update({9: '9'})
-    assert dict_13 == {13: '13', 19: '19', 7: '7', 9: '9'}
-    dict_13 = {13: "13", 19: "19", 7: "7"}
+    dict_13 = {"13": 13, "19": 19, "7": 7}
+    dict_13.setdefault('9', 9)
+    assert dict_13['9'] == 9
+    dict_13 = {"13": 13, "19": 19, "7": 7}
+    dict_13.update({'9': 9})
+    assert dict_13 == {'13': 13, '19': 19, '7': 7, 9: '9'}
+    dict_13 = {"13": 13, "19": 19, "7": 7}
     assert str(dict_13.values()) == "dict_values(['13', '19', '7'])"
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
