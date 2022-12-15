@@ -171,7 +171,7 @@ def test_stdtypes() -> None:
     assert set_13.isdisjoint([26])
     assert set_13.isdisjoint([26])
     assert set_13.issubset([36, 13, 8])
-    assert not set_13.issuperset([8, 36])
+    assert set_13.issuperset({8, 36})
     assert set_13.pop() == 8
     assert set_13.union([1, 2, 3, 4, 5]) == {1, 2, 3, 36, 4, 5}
     set_13.update([45, 25])
