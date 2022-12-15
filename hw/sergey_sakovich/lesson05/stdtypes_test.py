@@ -219,6 +219,6 @@ def test_stdtypes() -> None:
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
     assert not dict_13
-    dict_13 = {1: 'python', 2: 'c++'}
-    dict_13 |= {3: 'c'}
-    assert dict_13 == {1: 'python', 2: 'c++', 3: 'c'}
+    dict_13 = {13: '13', 19: '19'}
+    dict_13 |= {7: '7'}
+    assert dict_13 == {13: '13', 19: '19', 7: '7'}
