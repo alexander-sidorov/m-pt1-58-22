@@ -190,6 +190,6 @@ def test_stdtypes() -> None:
     assert "{}{}".format("a", "b") == "ab"
     assert "{x}{y}".format_map({"x": "a", "y": "b"}) == "ab"
     assert "abc".rsplit("b") == ["a", "c"]
-    assert "abc./.".rstrip("./.") == "abc"
+    assert "abc,./".rstrip(",./") == "abc"
     assert "%s or %s" % ("two", 2) == "two or 2"  # noqa: S001,MOD001
     assert isinstance("abc", Hashable)
