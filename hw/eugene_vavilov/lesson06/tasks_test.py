@@ -7,6 +7,7 @@ from hw.eugene_vavilov.lesson06.tasks import task_05_route
 
 def test_task_01_boundary() -> None:
     assert task_01_boundary("ab") == ("a", "b")
+    assert task_01_boundary("a") == ("a", None)
 
 
 def test_task_02_expand() -> None:
@@ -16,7 +17,7 @@ def test_task_02_expand() -> None:
 def test_task_03_hdist() -> None:
     assert task_03_hdist("aaa", "aab") == 1
     assert task_03_hdist("aaa", "aba") == 1
-    assert task_03_hdist("aaa", "baa") == 1
+    assert task_03_hdist("aaa", "ba") == 2
     assert task_03_hdist("", "baa") == 3
     assert task_03_hdist("aa", "baa") == 2
 
