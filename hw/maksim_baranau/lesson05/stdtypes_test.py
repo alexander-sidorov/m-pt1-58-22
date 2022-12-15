@@ -36,6 +36,11 @@ def test_stdtypes() -> None:
     assert id(my_list_copy) != my_list_id
     del my_list[0]
     assert my_list == [2, 3, 4]
+    assert my_list.pop(1) == 8
+    assert my_list.__add__([1]) == [2, 3, 4, 1]
+    assert not isinstance(my_list, Hashable)
+    assert [] < my_list
+    assert my_list.__mul__(2) == [2, 3, 4, 1, 2, 3, 4, 1]
 
     my_dict = {1: 11, 2: 22}
     my_dict.clear()
@@ -61,13 +66,17 @@ def test_stdtypes() -> None:
     assert my_dict == {1: 111, 2: 222}
     assert 1 in my_dict
     assert not isinstance(my_dict, Hashable)
+    assert my_dict.popitem() == "(2, 222)"
 
     kort = (1, 2, "abc")
+    assert kort.index(2) == 1
     assert kort + (3,) == (1, 2, "abc", 3)
     assert kort[1] == 2
     assert 1 in kort
     assert len(kort) == 3
     assert () >= ()
+    assert () == ()
+    assert () <= ()
     assert kort > ()
     assert () < (1,)
     assert kort != ()
@@ -107,6 +116,17 @@ def test_stdtypes() -> None:
     assert st.union({3, 4}) == {2, 3, 4}
     st.update({1, 2, 3})
     assert st == {1, 2, 3}
+    assert st.intersection({1, 2, 3}) == {1, 2, 3}
+    assert st.intersection_update({2, 3}) == {2, 3}
+    st -= {3}
+    assert st == {2}
+    assert {1}.__len__() == 1
+    st = {2, 3, 4}
+    assert st != {2}
+    assert st | {1} == {1, 2, 3, 4}
+    assert st ^ {2, 3, 4} == {1}
+    st = {1, 2, 3}
+    assert st - {1} == {2, 3}
     assert not isinstance(st, Hashable)
 
     assert "abc" + "def" == "abcdef"
@@ -116,6 +136,10 @@ def test_stdtypes() -> None:
     assert "abc" != "adc"
     assert not len("")
     assert "abc" < "def"
+    assert "abc" <= "abc"
+    assert "abc" >= "abc"
+    assert "abc" > "a"
+    assert "abc" != "de"
     assert "ma" * 2 == "mama"
     assert "abc".capitalize() == "Abc"
     assert "AbC".casefold() == "abc"
@@ -161,3 +185,9 @@ def test_stdtypes() -> None:
     assert str.maketrans({"a": "b"}) == {97: "b"}
     text = "a b"
     assert text.split() == ["a", "b"]
+    assert "{}{}".format("a", "b") == "ab"
+    assert "{x}{y}".format_map({"x": "a", "y": "b"}) == "ab"
+    assert "abc".rsplit("b") == ["a", "c"]
+    assert "abc./.".rstrip("./.") == "abc"
+    assert "%s or %s" % ("two", 2) == "two or 2"  # noqa: S001,MOD001
+    assert isinstance("abc", Hashable)
