@@ -84,7 +84,8 @@ def test_05() -> None:
 
 
 func_total_cache: dict[str, list] = {}
-c: dict[str, list] = {}
+cache_new: dict[str, list] = {}
+
 
 @cache_factory(func_total_cache)
 def cached_function(value: int) -> str:
@@ -104,13 +105,13 @@ def test_cache() -> None:
     assert func_total_cache["cached_function&argument=&(5,){}"][1] > 1
     assert func_total_cache["cached_function&argument=&(5,){}"][2] == 2
 
-    @func_cache_factory(c)
-    def f_cache(a: int, b: int) -> int:
-        return a + b
+    @func_cache_factory(cache_new)
+    def f_cache(a_f: int, b_f: int) -> int:
+        return a_f + b_f
 
-    @func_cache_factory(c)
-    def g_cache(a: int, b: int) -> int:
-        return a - b
+    @func_cache_factory(cache_new)
+    def g_cache(a_g: int, b_g: int) -> int:
+        return a_g - b_g
 
     [f_cache(1, 10) for _ in "123"]
     assert f_cache(1, 10) == 11
