@@ -1,6 +1,8 @@
 **/__pycache__
 *.bak
+*.swp
 *~
+.DS_Store
 .env
 .idea
 .py[co]

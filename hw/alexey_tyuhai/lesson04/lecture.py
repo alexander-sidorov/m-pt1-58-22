@@ -3,20 +3,21 @@ from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    rubl = Decimal(rubles)
-    coin = Decimal(coins)
+    rubles_d = Decimal(rubles)
+    coins_d = Decimal(coins)
     amount_d = Decimal(amount)
-    return (rubl + (coin / 100)) * amount_d
+    return (rubles_d + (coins_d / 100)) * amount_d
 
 
-def task_02_sign(number: Any) -> float:
-    if isinstance(number, complex):
-        return 0
-    elif number > 0:
-        return 1
-    elif number < 0:
-        return -1
-    else:
+def task_02_sign(number: Any) -> int:
+    try:
+        if number > 0:
+            return 1
+        elif number < 0:
+            return -1
+        else:
+            return 0
+    except TypeError:
         return 0
 
 
