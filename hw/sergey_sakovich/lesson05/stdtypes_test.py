@@ -4,12 +4,12 @@ from typing import Hashable
 def test_stdtypes() -> None:
     str_13 = "python"
     assert "python" < "sfg"
-    assert "%s" % 3 == 3  # noqa: S001,MOD001
+    assert "%s" % 3 == 3
     assert "python" + "Q" == "pythonQ"
     assert "y" in str_13
     assert str_13[3] == "h"
     assert isinstance(str_13, Hashable)
-    assert len(str_13) == 6  # noqa: S001,MOD001
+    assert len(str_13) == 6
     assert str_13 * 2 == "pythonpython"
     assert str_13 <= str_13
     assert str_13.capitalize() == "Python"
@@ -65,7 +65,7 @@ def test_stdtypes() -> None:
     assert "asd".translate({98: "d"}) == "asd"
     assert str_13.upper() == "PYTHON"
     assert str_13.zfill(10) == "0000python"
-    assert str.lower("Python") == 'python'
+    assert str.lower("Python") == "python"
 
     list_13 = [1, 9, "python"]
 
@@ -219,6 +219,6 @@ def test_stdtypes() -> None:
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
     assert not dict_13
-    dict_13 = {'python': 13, 'c++': 19}
-    dict_13 |= {'c': 7}
-    assert dict_13 == {'python': 13, 'c++': 19, 'c': 7}
+    dict_13 = {"python": 13, "c++": 19}
+    dict_13 |= {"c": 7}
+    assert dict_13 == {"python": 13, "c++": 19, "c": 7}
