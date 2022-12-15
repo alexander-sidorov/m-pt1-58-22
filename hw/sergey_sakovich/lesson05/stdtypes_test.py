@@ -208,8 +208,8 @@ def test_stdtypes() -> None:
         "3": 10,
     }
     assert dict_13.get("a") == 13
-    assert dict_13.items() == "dict_items([('a', 13), ('c', 11)])"
-    assert dict_13.keys() == "dict_keys(['a', 'c'])"
+    assert str(dict_13.items()) == "dict_items([('a', 13), ('c', 11)])"
+    assert dict_13.keys() == {'a', 'c'}
     assert dict_13.pop("a") == 13
     assert dict_13.popitem() == ("c", 11)
     dict_13.setdefault("i", 3)
