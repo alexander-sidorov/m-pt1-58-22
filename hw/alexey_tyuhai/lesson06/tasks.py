@@ -24,7 +24,7 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
 def get_distance(point1: tuple, point2: tuple) -> Any:
 
     d_x, d_y = (point1[0] - point2[0]) * 111, (point1[1] - point2[1]) * 65
-    return (d_x ** 2 + d_y ** 2) ** 0.5
+    return (d_x**2 + d_y**2) ** 0.5
 
 
 def task_04_cities(city: str) -> dict:
