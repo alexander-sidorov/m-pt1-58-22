@@ -3,6 +3,9 @@ from typing import Hashable
 
 def test_list() -> None:
 
+    assert [1, 2, 3] < [2, 3]
+    assert [1, 2, 3] > [0, 90]
+
     assert [1] + [2] == [1, 2]  # __add__
 
     assert 2 in [1, 2, 3]  # __contains__
@@ -78,6 +81,9 @@ def test_tuple() -> None:
 
     my_tuple = (1, 2, 3, 4)
 
+    assert (1, 2, 3) < (2, 3)
+    assert (1, 2, 3) > (0, 90)
+
     assert my_tuple + (5, 6) == (1, 2, 3, 4, 5, 6)  # __add__
 
     assert 2 in my_tuple  # __contains__
@@ -98,6 +104,9 @@ def test_tuple() -> None:
 
 
 def test_str() -> None:
+
+    assert "1, 2, 3" < "2, 3"
+    assert "1, 2, 3" > "0, 90"
 
     assert "a" + "b" == "ab"  # __add__
 
@@ -216,8 +225,12 @@ def test_str() -> None:
 
     assert str.maketrans("a", "1") == {97: 49}
 
-
+assert {1, 2, 3} > {2, 3}
+assert {1, 2, 3} < {1, 2, 3, 5}
 def test_set() -> None:
+    
+    assert {1, 2, 3} > {2, 3}
+    assert {1, 2, 3} < {1, 2, 3, 5}
 
     assert {1, 2, 3} & {3, 4} == {3}  # __and__
 
