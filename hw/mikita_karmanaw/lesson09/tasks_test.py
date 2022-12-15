@@ -105,16 +105,18 @@ def test_cache() -> None:
     assert func_total_cache["cached_function&argument=&(5,){}"][2] == 2
 
     @func_cache_factory(c)
-    def f(a, b): return a + b
+    def f_cache(a: int, b: int) -> int:
+        return a + b
 
     @func_cache_factory(c)
-    def g(a, b): return a - b
+    def g_cache(a: int, b: int) -> int:
+        return a - b
 
-    [f(1, 10) for _ in "123"]
-    assert f(1, 10) == 11
+    [f_cache(1, 10) for _ in "123"]
+    assert f_cache(1, 10) == 11
 
-    rg = g(1, 10)
-    assert rg == -9, rg  # AssertionError: 11
+    rg = g_cache(1, 10)
+    assert rg == -9, rg
 
 
 @task_04_typecheck
