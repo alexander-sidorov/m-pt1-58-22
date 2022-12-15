@@ -2,8 +2,6 @@ import time
 
 import pytest
 
-from hw.dmitry_mihkailiuk.lesson09.tasks import cache_05
-from hw.dmitry_mihkailiuk.lesson09.tasks import cache_benchmark
 from hw.dmitry_mihkailiuk.lesson09.tasks import counter
 from hw.dmitry_mihkailiuk.lesson09.tasks import task_01_do_twice
 from hw.dmitry_mihkailiuk.lesson09.tasks import task_02_count_calls
@@ -18,9 +16,9 @@ def f_do(lst: list) -> None:
 
 
 def test_01() -> None:
-    x: list = []
-    f_do(x)
-    assert len(x) == 2
+    x_list: list = []
+    f_do(x_list)
+    assert len(x_list) == 2
 
 
 @task_02_count_calls
@@ -47,9 +45,9 @@ def slowpoke(number: int) -> None:
 
 
 def test_03() -> None:
-    t = time.monotonic()
+    t_start = time.monotonic()
     slowpoke(1)
-    dt = time.monotonic() - t
+    dt = time.monotonic() - t_start
     t_cache = time.monotonic()
     slowpoke(1)
     dt_cache = time.monotonic() - t_cache
@@ -57,8 +55,8 @@ def test_03() -> None:
 
 
 @task_04_typecheck
-def f_type(*, a: int, b: int) -> int:
-    return b * a
+def f_type(*, a_type: int, b_type: int) -> int:
+    return b_type * a_type
 
 
 @task_04_typecheck
@@ -67,17 +65,17 @@ def g_type() -> int:
 
 
 def test_04() -> None:
-    assert f_type(a=2, b=3) == 6
+    assert f_type(a_t=2, b_t=3) == 6
 
     with pytest.raises(TypeError):
-        f_type(a=2, b=0.2)
+        f_type(a_t=2, b_t=0.2)
 
     with pytest.raises(TypeError):
         g_type()
 
 
 @task_05_cache
-def bad(x_cache=[]) -> list:
+def bad(x_cache: list = []) -> list:
     x_cache.append(1)
     return x_cache
 

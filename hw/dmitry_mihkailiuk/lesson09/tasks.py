@@ -1,4 +1,3 @@
-import functools
 from typing import Any
 from typing import Callable
 
@@ -42,10 +41,12 @@ def task_04_typecheck(func: Callable) -> Callable:
     def wrapper(**kwargs: Any) -> Any:
         func_result = func(**kwargs)
         keys_list = list(kwargs.keys())
-        a = keys_list[0]
-        b = keys_list[1]
-        if not isinstance(kwargs[a], type(kwargs[b])):
-            raise TypeError(f"{kwargs[a]} is not of type {type(kwargs[b])}")
+        vel_a = keys_list[0]
+        vel_b = keys_list[1]
+        if not isinstance(kwargs[vel_a], type(kwargs[vel_b])):
+            raise TypeError(
+                f"{kwargs[vel_a]} is not of type {type(kwargs[vel_b])}"
+            )
         else:
             type_return_func = func.__annotations__["return"]
             if not isinstance(func_result, type_return_func):
