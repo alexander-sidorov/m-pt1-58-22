@@ -4,7 +4,7 @@ from typing import Hashable
 def test_stdtypes() -> None:
     str_13 = "python"
     assert "python" < "sfg"
-    assert "%s" % 3 == "3"
+    assert "%s" % 3 == "3"  # noqa: S001,MOD001
     assert "python" + "Q" == "pythonQ"
     assert "y" in str_13
     assert str_13[3] == "h"
@@ -14,7 +14,7 @@ def test_stdtypes() -> None:
     assert str_13 <= str_13
     assert str_13.capitalize() == "Python"
     assert str_13.casefold() == "python"
-    assert str_13.center(10, '*') == "**python**"
+    assert str_13.center(10, "*") == "**python**"
     assert str_13.count("o") == 1
     assert str_13.encode() == b"python"
     assert str_13.endswith("thon")
@@ -209,17 +209,17 @@ def test_stdtypes() -> None:
     }
     assert dict_13.get("a") == 13
     assert str(dict_13.items()) == "dict_items([('a', 13), ('c', 11)])"
-    assert dict_13.keys() == {'a', 'c'}
+    assert dict_13.keys() == {"a", "c"}
     assert dict_13.pop("a") == 13
     assert dict_13.popitem() == ("c", 11)
     dict_13 = {"13": 13, "19": 19, "7": 7}
-    dict_13.setdefault('9', 9)
-    assert dict_13['9'] == 9
+    dict_13.setdefault("9", 9)
+    assert dict_13["9"] == 9
     dict_13 = {"13": 13, "19": 19, "7": 7}
-    dict_13.update({'9': 9})
-    assert dict_13 == {'13': 13, '19': 19, '7': 7, '9': 9}
+    dict_13.update({"9": 9})
+    assert dict_13 == {"13": 13, "19": 19, "7": 7, "9": 9}
     dict_13 = {"13": 13, "19": 19, "7": 7}
-    assert (str(dict_13.values()) == "dict_values([13, 19, 7])")
+    assert str(dict_13.values()) == "dict_values([13, 19, 7])"
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
     assert not dict_13
