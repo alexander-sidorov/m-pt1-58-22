@@ -4,7 +4,7 @@ from typing import Callable
 
 
 def task_01_do_twice(func: Callable) -> Callable:
-    def wrapper(*args, **kwargs) -> None:
+    def wrapper(*args: Any, **kwargs: Any) -> None:
         func(*args, **kwargs)
         func(*args, **kwargs)
         return None
@@ -12,11 +12,11 @@ def task_01_do_twice(func: Callable) -> Callable:
     return wrapper
 
 
-counter = {}
+counter: dict = {}
 
 
 def task_02_count_calls(func: Callable) -> Callable:
-    def wrapper(*args, **kwargs) -> None:
+    def wrapper(*args: Any, **kwargs: Any) -> None:
         counter[func.__name__] = counter.get(func.__name__, 0) + 1
         func(*args, **kwargs)
         return None
@@ -24,11 +24,11 @@ def task_02_count_calls(func: Callable) -> Callable:
     return wrapper
 
 
-cache_benchmark = {}
+cache_benchmark: dict = {}
 
 
 def task_03_benchmark(func: Callable) -> Callable:
-    def wrapper(*args, **kwargs) -> Any:
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         if func.__name__ in cache_benchmark:
             return cache_benchmark[func.__name__]
         else:
@@ -39,7 +39,7 @@ def task_03_benchmark(func: Callable) -> Callable:
 
 
 def task_04_typecheck(func: Callable) -> Callable:
-    def wrapper(**kwargs) -> Any:
+    def wrapper(**kwargs: Any) -> Any:
         func_result = func(**kwargs)
         keys_list = list(kwargs.keys())
         a = keys_list[0]
@@ -58,11 +58,11 @@ def task_04_typecheck(func: Callable) -> Callable:
     return wrapper
 
 
-cache_05 = {}
+cache_05: dict = {}
 
 
 def task_05_cache(func: Callable) -> Callable:
-    def wrapper(*args, **kwargs) -> Any:
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         key = func.__name__ + str(args) + str(kwargs)
         if key is cache_05:
             return cache_05[key]

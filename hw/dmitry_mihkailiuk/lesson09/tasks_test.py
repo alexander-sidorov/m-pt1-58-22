@@ -18,7 +18,7 @@ def f_do(lst: list) -> None:
 
 
 def test_01() -> None:
-    x = []
+    x: list = []
     f_do(x)
     assert len(x) == 2
 
@@ -66,11 +66,11 @@ def g_type() -> int:
     return "1"  # type: ignore
 
 
-def test_04():
+def test_04() -> None:
     assert f_type(a=2, b=3) == 6
 
     with pytest.raises(TypeError):
-        f_type(a=2, b=0.2)  # type: ignore
+        f_type(a=2, b=0.2)
 
     with pytest.raises(TypeError):
         g_type()
