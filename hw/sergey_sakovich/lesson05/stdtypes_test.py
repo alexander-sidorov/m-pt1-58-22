@@ -181,10 +181,10 @@ def test_stdtypes() -> None:
     assert {12, 25} & {35, 25} == {25}
     assert not isinstance(set_13, Hashable)
     set_13 = {12, 25}
-    set_13 &= {13}
-    assert set_13 == {13}
+    set_13 &= {12}
+    assert set_13 == {12}
     set_13 = {12, 25}
-    set_13 &= {13}
+    set_13 |= {13}
     assert set_13 == {12, 25, 13}
     assert {12, 25, 13} | {19} == {25, 19, 12, 13}
     assert {12, 25, 13} - {13} == {25, 12}
