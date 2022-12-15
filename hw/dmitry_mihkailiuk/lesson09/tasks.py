@@ -41,18 +41,16 @@ def task_04_typecheck(func: Callable) -> Callable:
     def wrapper(**kwargs: Any) -> Any:
         func_result = func(**kwargs)
         keys_list = list(kwargs.keys())
-        vel_a = keys_list[0]
-        vel_b = keys_list[1]
-        if not isinstance(kwargs[vel_a], type(kwargs[vel_b])):
-            raise TypeError(
-                f"{kwargs[vel_a]} is not of type {type(kwargs[vel_b])}"
-            )
-        else:
-            type_return_func = func.__annotations__["return"]
-            if not isinstance(func_result, type_return_func):
+        if len(keys_list) == 2:
+            vel_a = keys_list[0]
+            vel_b = keys_list[1]
+            if not isinstance(kwargs[vel_a], type(kwargs[vel_b])):
                 raise TypeError(
-                    f"{func_result} is not of type {type_return_func}"
+                    f"{kwargs[vel_a]} is not of type {type(kwargs[vel_b])}"
                 )
+        type_return_func = func.__annotations__["return"]
+        if not isinstance(func_result, type_return_func):
+            raise TypeError(f"{func_result} is not of type {type_return_func}")
 
         return func_result
 
@@ -65,9 +63,9 @@ cache_05: dict = {}
 def task_05_cache(func: Callable) -> Callable:
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         key = func.__name__ + str(args) + str(kwargs)
-        if key is cache_05:
+        try:
             return cache_05[key]
-        else:
+        except KeyError:
             func_result = func(*args, **kwargs)
             cache_05[key] = func_result
             return func_result

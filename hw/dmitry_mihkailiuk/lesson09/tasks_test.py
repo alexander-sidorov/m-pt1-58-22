@@ -65,10 +65,10 @@ def g_type() -> int:
 
 
 def test_04() -> None:
-    assert f_type(a_t=2, b_t=3) == 6
+    assert f_type(a_type=2, b_type=3) == 6
 
     with pytest.raises(TypeError):
-        f_type(a_t=2, b_t=0.2)
+        f_type(a_type=2, b_type=0.2)
 
     with pytest.raises(TypeError):
         g_type()
