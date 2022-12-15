@@ -225,10 +225,13 @@ def test_str() -> None:
 
     assert str.maketrans("a", "1") == {97: 49}
 
+
 assert {1, 2, 3} > {2, 3}
 assert {1, 2, 3} < {1, 2, 3, 5}
+
+
 def test_set() -> None:
-    
+
     assert {1, 2, 3} > {2, 3}
     assert {1, 2, 3} < {1, 2, 3, 5}
 
