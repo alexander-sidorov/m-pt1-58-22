@@ -14,7 +14,7 @@ def test_stdtypes() -> None:
     assert str_13 <= str_13
     assert str_13.capitalize() == "Python"
     assert str_13.casefold() == "python"
-    assert str_13.center(10) == "**python**"
+    assert str_13.center(10, '*') == "**python**"
     assert str_13.count("o") == 1
     assert str_13.encode() == b"python"
     assert str_13.endswith("thon")
