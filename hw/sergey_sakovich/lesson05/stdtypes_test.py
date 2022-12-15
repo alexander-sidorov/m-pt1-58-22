@@ -217,7 +217,7 @@ def test_stdtypes() -> None:
     assert dict_13['9'] == 9
     dict_13 = {"13": 13, "19": 19, "7": 7}
     dict_13.update({'9': 9})
-    assert dict_13 == {'13': 13, '19': 19, '7': 7, 9: '9'}
+    assert dict_13 == {'13': 13, '19': 19, '7': 7, '9': 9}
     dict_13 = {"13": 13, "19": 19, "7": 7}
     assert str(dict_13.values()) == "dict_values(['13', '19', '7'])"
     assert not isinstance(dict_13, Hashable)
