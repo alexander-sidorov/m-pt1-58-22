@@ -39,7 +39,7 @@ def test_stdtypes() -> None:
     assert my_list.pop(1) == 3
     assert my_list.__add__([1]) == [2, 4, 1]
     assert not isinstance(my_list, Hashable)
-    assert [] < my_list
+    assert [1] < my_list
     assert my_list.__mul__(2) == [2, 4, 2, 4]
 
     my_dict = {1: 11, 2: 22}
@@ -117,9 +117,8 @@ def test_stdtypes() -> None:
     st.update({1, 2, 3})
     assert st == {1, 2, 3}
     assert st.intersection({1, 2, 3}) == {1, 2, 3}
-    assert st.intersection_update({2, 3}) == None
     st -= {3}
-    assert st == {2}
+    assert st == {1, 2}
     assert {1}.__len__() == 1
     st = {2, 3, 4}
     assert st != {2}
@@ -127,6 +126,9 @@ def test_stdtypes() -> None:
     assert st ^ {2, 3, 4} == set()
     st = {1, 2, 3}
     assert st - {1} == {2, 3}
+    st2 = [1, 3, 4]
+    st.intersection_update(st2)
+    assert st == {1, 3}
     assert not isinstance(st, Hashable)
 
     assert "abc" + "def" == "abcdef"
