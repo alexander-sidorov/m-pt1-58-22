@@ -29,6 +29,8 @@ def stdtypes_test() -> None:
     assert my_tuple.count("igor") == 1
     assert isinstance(my_tuple, Hashable)
     assert my_tuple[2] == "maksimov"
+    assert my_tuple * 2 == ('igor', 'yigal', 'maksimov',
+                            'igor', 'yigal', 'maksimov')
     assert len(my_set) < 5
     assert not isinstance(my_set, Hashable)
     assert not isinstance(my_dict, Hashable)
