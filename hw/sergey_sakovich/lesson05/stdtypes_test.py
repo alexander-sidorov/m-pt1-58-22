@@ -65,6 +65,7 @@ def test_stdtypes() -> None:
     assert "asd".translate({98: "d"}) == "asd"
     assert str_13.upper() == "PYTHON"
     assert str_13.zfill(10) == "0000python"
+    assert str.lower("Python") == 'python'
 
     list_13 = [1, 9, "python"]
 
@@ -96,7 +97,14 @@ def test_stdtypes() -> None:
     assert list_13 == [7, 9]
     assert list_13.sort() == [7, 9]
     assert not isinstance(list_13, Hashable)
-
+    del list_13[1]
+    assert list_13 == [7]
+    list_13 += [2]
+    assert list_13 == [7, 2]
+    list_13 *= 2
+    assert list_13 == [7, 2, 7, 2]
+    assert len(list_13) == 4
+    assert list_13[2] == 7
     tuple_13 = (19, 13, 8, 11)
 
     assert tuple_13[1] == 13
@@ -171,6 +179,15 @@ def test_stdtypes() -> None:
     assert not set_13
     assert {12, 25} & {35, 25} == {25}
     assert not isinstance(set_13, Hashable)
+    set_13 = {12, 25}
+    set_13 &= {13}
+    assert set_13 == {13}
+    set_13 = {12, 25}
+    set_13 &= {13}
+    assert set_13 == {12, 25, 13}
+    assert {12, 25, 13} | {19} == {25, 19, 12, 13}
+    assert {12, 25, 13} - {13} == {25, 12}
+    assert {12, 25, 13} ^ {19} == {25, 19, 12, 13}
 
     dict_13 = {"a": 13, "b": 19}
 
@@ -202,3 +219,6 @@ def test_stdtypes() -> None:
     assert not isinstance(dict_13, Hashable)
     dict_13.clear()
     assert not dict_13
+    dict_13 = {1: 'python', 2: 'c++'}
+    dict_13 |= {3: 'c'}
+    assert dict_13 == {1: 'python', 2: 'c++', 3: 'c'}
