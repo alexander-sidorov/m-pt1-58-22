@@ -28,7 +28,7 @@ def counter_cache_factory(counter_cache: dict) -> Callable:
 def func_cache_factory(func_cache: dict) -> Callable:
     def task_05_cache(func: Callable) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
-            ar = func.__name__ + '&' + str(args) + str(kwargs)
+            ar = func.__name__ + "&" + str(args) + str(kwargs)
             try:
                 return func_cache[ar]
             except KeyError:
