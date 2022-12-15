@@ -36,8 +36,8 @@ def test_stdtypes() -> None:
     assert not str_13.isspace()
     assert not str_13.istitle()
     assert not str_13.isupper()
-    name1 = ".."
-    assert name1.join("1..2") != "1........2"
+    name1 = "@"
+    assert name1.join(["a", "b"]) != "a@b"
     assert str_13.ljust(10, "s") == "pythonssss"
     assert str_13.lstrip("ptn") == "ython"
     assert str_13.maketrans({"p": "a", "h": "y", "n": "6"}) == {
