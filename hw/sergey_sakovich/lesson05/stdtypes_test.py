@@ -4,7 +4,7 @@ from typing import Hashable
 def test_stdtypes() -> None:
     str_13 = "python"
     assert "python" < "sfg"
-    assert "%s" % 3 == 3
+    assert "%s" % 3 == "3"
     assert "python" + "Q" == "pythonQ"
     assert "y" in str_13
     assert str_13[3] == "h"
