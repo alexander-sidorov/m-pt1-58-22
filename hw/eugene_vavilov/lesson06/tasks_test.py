@@ -7,7 +7,7 @@ from hw.eugene_vavilov.lesson06.tasks import task_05_route
 
 def test_task_01_boundary() -> None:
     assert task_01_boundary("ab") == ("a", "b")
-    assert task_01_boundary("a") == ("a", None)
+    assert task_01_boundary("a") == ("a", "a")
 
 
 def test_task_02_expand() -> None:

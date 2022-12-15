@@ -6,12 +6,8 @@ from hw.alexander_sidorov.helpers import CITIES
 
 
 def task_01_boundary(_seq1: Sequence) -> tuple:
-    if len(_seq1) > 1:
-        _element_1 = _seq1[0]
-        _element_2 = _seq1[-1]
-    else:
-        _element_1 = _seq1[0]
-        _element_2 = None
+    _element_1 = _seq1[0]
+    _element_2 = _seq1[-1]
     return _element_1, _element_2
 
 
