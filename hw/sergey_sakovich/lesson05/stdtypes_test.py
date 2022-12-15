@@ -95,7 +95,8 @@ def test_stdtypes() -> None:
     assert list_13 == [9, 7]
     list_13.reverse()
     assert list_13 == [7, 9]
-    assert list_13.sort() == [7, 9]
+    list_13.sort()
+    assert list_13 == [7, 9]
     assert not isinstance(list_13, Hashable)
     del list_13[1]
     assert list_13 == [7]
