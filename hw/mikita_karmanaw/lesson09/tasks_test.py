@@ -84,7 +84,7 @@ def test_05() -> None:
 
 
 func_total_cache: dict[str, list] = {}
-
+c: dict[str, list] = {}
 
 @cache_factory(func_total_cache)
 def cached_function(value: int) -> str:
@@ -103,6 +103,18 @@ def test_cache() -> None:
     assert func_total_cache["cached_function&argument=&(5,){}"][0] == "a5"
     assert func_total_cache["cached_function&argument=&(5,){}"][1] > 1
     assert func_total_cache["cached_function&argument=&(5,){}"][2] == 2
+
+    @func_cache_factory(c)
+    def f(a, b): return a + b
+
+    @func_cache_factory(c)
+    def g(a, b): return a - b
+
+    [f(1, 10) for _ in "123"]
+    assert f(1, 10) == 11
+
+    rg = g(1, 10)
+    assert rg == -9, rg  # AssertionError: 11
 
 
 @task_04_typecheck
