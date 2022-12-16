@@ -8,7 +8,7 @@ def test_user() -> None:
     assert person1.get_name == "Bob"
     assert person1.get_class_name() == les.User.__name__
     assert person1.get_hello_world() == hw_text
-   
+
     person2 = les.User("Vasya")
 
     assert person2.get_name == "Vasya"

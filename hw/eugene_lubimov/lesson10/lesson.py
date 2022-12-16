@@ -6,7 +6,6 @@ class User:
     def get_name(self) -> str:
         return self._name
 
-  
     @classmethod
     def get_class_name(cls) -> str:
         return cls.__name__
@@ -25,5 +24,5 @@ class Counter:
         if self.num < self.end:
             self.num += 1
             return self.num
-        self.num = self.start - 1    
+        self.num = self.start - 1
         raise StopIteration
