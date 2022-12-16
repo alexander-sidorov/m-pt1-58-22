@@ -25,5 +25,3 @@ def next(self) -> int:  # noqa: A003
 
     if self.current > self.stop:
         return self.stop
-
-
