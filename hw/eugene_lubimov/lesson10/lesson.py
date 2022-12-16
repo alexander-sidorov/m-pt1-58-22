@@ -21,7 +21,9 @@ class Counter:
         self.end = end
         self.num = start - 1
 
-    def next(self) -> int | None:  # noqa: A003
+    def next(self) -> int:  # noqa: A003
         if self.num < self.end:
             self.num += 1
             return self.num
+        self.num = self.start - 1    
+        raise StopIteration
