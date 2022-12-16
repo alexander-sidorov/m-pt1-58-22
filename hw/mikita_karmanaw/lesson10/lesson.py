@@ -1,5 +1,5 @@
 class User:
-    name = 'User'
+    name = "User"
 
     def __init__(self, nm: str) -> None:
         User.name = nm
