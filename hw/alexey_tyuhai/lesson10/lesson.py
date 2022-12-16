@@ -10,3 +10,17 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
+
+
+class Counter:
+    def __init__(self, start: int, end: int):
+        self.start = start
+        self.end = end
+        self.current = self.start
+
+    def next(self) -> int:
+        if self.current > self.end:
+            return self.end
+
+        result, self.current = self.current, self.current + 1
+        return result
