@@ -75,7 +75,7 @@ def test_04() -> None:
 
 
 @task_05_cache
-def bad(x_cache: list = []) -> list:
+def bad(x_cache: list = []) -> list:  # noqa: B006
     x_cache.append(1)
     return x_cache
 
