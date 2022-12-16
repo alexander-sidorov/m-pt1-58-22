@@ -1,15 +1,20 @@
-from hw.igor_maksimov.lesson10.lesson10 import User
 from hw.igor_maksimov.lesson10.lesson10 import Counter
+from hw.igor_maksimov.lesson10.lesson10 import User
+
 
 def test_01():
-    igor = User("Igor")
-    vasia = User("Vasia")
-    assert igor.get_name() == "Igor"
-    assert igor.get_class_name() == User.__name__
-    assert igor.get_hello_world() == "hello world"
-    assert vasia.get_name() == "Vasia"
-    assert vasia.get_class_name() == User.__name__
-    assert vasia.get_hello_world() == 'hello world'
+    hw_text = "hello world"
+    petya = User("Петя")
+    vasya = User("Вася")
+
+    assert petya.get_name() == "Петя"
+    assert petya.get_class_name() == User.__name__
+    assert petya.get_hello_world() == hw_text
+
+    assert vasya.get_name() == "Вася"
+    assert vasya.get_class_name() == User.__name__
+    assert vasya.get_hello_world() == hw_text
+
 
 def test_02():
     r1 = 1
