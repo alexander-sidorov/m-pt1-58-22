@@ -1,3 +1,4 @@
+import time
 from typing import Any
 from typing import Callable
 
@@ -28,11 +29,11 @@ cache_benchmark: dict = {}
 
 def task_03_benchmark(func: Callable) -> Callable:
     def wrapper(*args: Any, **kwargs: Any) -> Any:
-        if func.__name__ in cache_benchmark:
-            return cache_benchmark[func.__name__]
-        else:
-            cache_benchmark[func.__name__] = func(*args, **kwargs)
-            return func(*args, **kwargs)
+        t_start = time.monotonic()
+        func_result = func(*args, **kwargs)
+        dt = time.monotonic() - t_start
+        cache_benchmark[func.__name__] = dt
+        return func_result
 
     return wrapper
 

@@ -2,6 +2,7 @@ import time
 
 import pytest
 
+from hw.dmitry_mihkailiuk.lesson09.tasks import cache_benchmark
 from hw.dmitry_mihkailiuk.lesson09.tasks import counter
 from hw.dmitry_mihkailiuk.lesson09.tasks import task_01_do_twice
 from hw.dmitry_mihkailiuk.lesson09.tasks import task_02_count_calls
@@ -45,13 +46,8 @@ def slowpoke(number: int) -> None:
 
 
 def test_03() -> None:
-    t_start = time.monotonic()
     slowpoke(1)
-    dt = time.monotonic() - t_start
-    t_cache = time.monotonic()
-    slowpoke(1)
-    dt_cache = time.monotonic() - t_cache
-    assert dt_cache < dt
+    assert abs(cache_benchmark["slowpoke"] - 1) < 0.1
 
 
 @task_04_typecheck
