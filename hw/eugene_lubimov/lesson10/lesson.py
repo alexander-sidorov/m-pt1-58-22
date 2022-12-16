@@ -24,5 +24,4 @@ class Counter:
         if self.num < self.end:
             self.num += 1
             return self.num
-        self.num = self.start - 1
-        raise StopIteration
+        return self.num
