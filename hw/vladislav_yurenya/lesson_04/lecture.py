@@ -3,33 +3,34 @@ from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    rubl = Decimal(rubles)
-    coin = Decimal(coins)
-    amount_d = Decimal(amount)
-    return (rubl + (coin / 100)) * amount_d
+    rubles_dec = Decimal(rubles)
+    coins_dec = Decimal(coins)
+    amount_dec = Decimal(amount)
+    total = (rubles_dec + coins_dec / 100) * amount_dec
+    return total
 
 
-def task_02_sign(number: Any) -> float:
+def task_02_sign(number: Any) -> int:
     if isinstance(number, complex):
         return 0
-    elif number > 0:
-        return 1
     elif number < 0:
         return -1
+    elif number > 0:
+        return 1
     else:
         return 0
 
 
 def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
-    result = (
+    answer = (
         side1 + side2 > side3
-        and side2 + side3 > side1
         and side1 + side3 > side2
+        and side2 + side3 > side1
     )
-    return result
+    return answer
 
 
 def task_04_palindrom(string: str) -> bool:
-    string = string.replace(" ", "").lower()
-    re_string = string[::-1]
-    return string == re_string
+    string = string.lower()
+    string = string.replace(" ", "")
+    return string[::-1] == string
