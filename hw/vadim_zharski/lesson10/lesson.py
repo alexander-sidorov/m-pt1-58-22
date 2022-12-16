@@ -18,3 +18,4 @@ class User:
 some_user = User("some_user")
 print(some_user.get_name())
 print(some_user.get_hello_world())
+
