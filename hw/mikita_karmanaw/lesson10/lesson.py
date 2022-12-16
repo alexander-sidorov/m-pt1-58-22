@@ -15,8 +15,3 @@ class User:
     @staticmethod
     def get_hello_world():
         return "hello world"
-
-
-a = User('alice')
-
-print(a.get_class_name())
