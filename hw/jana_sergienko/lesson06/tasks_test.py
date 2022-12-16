@@ -29,4 +29,3 @@ def task_04_cities() -> None:
 def task_05_route() -> None:
     km = task_05_route(("Минск", "Минск", "Жодино", "Жодино", "Минск"))
     assert int(km) == 108
-    
