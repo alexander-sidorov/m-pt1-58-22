@@ -13,15 +13,14 @@ class User:
 
 
 class Counter:
-
-    def __init__(self, start: int, end: int):
+    def __init__(self, start: int, stop: int):
         self.start = start
-        self.end = end
+        self.stop = stop
+        self.current = self.start
 
-    def next(self):
+    def next(self) -> int:  # noqa: A003
+        if self.current > self.stop:
+            return self.stop
 
-        if self.start < self.end:
-            self.start += 1
-            return self.start
-        else:
-            print("Всё")
+        result, self.current = self.current, self.current + 1
+        return result

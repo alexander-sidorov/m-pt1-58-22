@@ -17,6 +17,12 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    c = Counter(10, 20)
-    assert c.next() == 10
-    assert c.next() == 11
+    r1 = 1
+    ctr1 = Counter(0, r1)
+
+    r2 = 2
+    ctr2 = Counter(0, r2)
+
+    assert [ctr1.next() for _ in range(r1 + 1)] == [0, 1]
+    assert [ctr2.next() for _ in range(r2 + 1)] == [0, 1, 2]
+    assert [ctr2.next() for _ in range(r2 + 1)] == [2, 2, 2]
