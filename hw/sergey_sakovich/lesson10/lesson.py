@@ -1,5 +1,6 @@
 class User:
-    def __init__(self, name):
+
+    def __init__(self, name: str):
         self.name = name
 
     def get_name(self) -> str:
@@ -9,4 +10,4 @@ class User:
         return User.__name__
 
     def get_hello_world(self) -> str:
-        return 'hello world'
+        return "hello world"
