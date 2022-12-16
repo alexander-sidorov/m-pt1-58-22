@@ -13,12 +13,12 @@ class User:
 
 
 class Counter:
-    def __init__(self, start, end):
+    def __init__(self, start: int, end: int) -> None:
         self.start = start
         self.end = end
         self.number = start
 
-    def next(self):
+    def next(self) -> int:
         number = self.start
         self.number += 1
         return self.number
