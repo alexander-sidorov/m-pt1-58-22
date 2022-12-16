@@ -9,14 +9,14 @@ def task_01_boundary(sequence: Sequence) -> tuple:
 
 
 def task_02_expand(sequence: Sequence) -> Any:
-    return sequence[1:] * int(sequence[0])
+    return sequence[1:] * sequence[0]
 
 
 def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     val = abs(len(seq1) - len(seq2))
     zip_val = zip(seq1, seq2)
     for i in zip_val:
-        if zip_val[0] != zip_val[1]:
+        if i[0] != i[1]:
             val += 1
         return val
 
