@@ -5,7 +5,7 @@ from math import sqrt
 from hw.alexander_sidorov.helpers import CITIES
 
 def task_01_boundary(sequence: Sequence) -> tuple:
-    return sequence[0] + sequence[-1]
+    return tuple(sequence[0] + sequence[-1])
 
 
 def task_02_expand(sequence: Sequence) -> Any:
