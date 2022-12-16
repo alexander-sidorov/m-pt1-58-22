@@ -1,4 +1,5 @@
 from hw.alexey_tyuhai.lesson10.lesson import User
+from hw.alexey_tyuhai.lesson10.lesson import Counter
 
 
 def test_01() -> None:
