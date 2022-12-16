@@ -1,4 +1,5 @@
-from typing import Union
+from typing import Optional
+
 
 class User:
     pass
@@ -20,7 +21,7 @@ class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start
         self.stop = stop
-        self.current: Union[int, None] = None
+        self.current: Optional[int] = None
 
     def next(self) -> int:  # noqa: A003
         if self.current is None:
