@@ -3,22 +3,17 @@ from hw.vladislav_yurenya.lesson10.lesson import User
 
 
 def test_01() -> None:
-    txt = "hello word"
-    zhora = User("Петя")
-    vasya = User("Вася")
-    assert zhora.get_name() == "Петя"
-    assert zhora.get_class_name() == User.__name__
-    assert zhora.get_hello_word() == txt
-    assert vasya.get_name() == "Вася"
-    assert vasya.get_class_name() == User.__name__
-    assert vasya.get_hello_word() == txt
+    name01 = User("Zhora")
+    name02 = User("Вася")
+    assert name01.get_name() == "Zhora"
+    assert name01.get_class_name() == User.__name__
+    assert name01.get_hello_world() == "hello world"
+    assert name02.get_name() == "Вася"
+    assert name02.get_class_name() == User.__name__
+    assert name02.get_hello_world() == "hello world"
 
 
 def test_02() -> None:
-    r1 = 1
-    ctr1 = Counter(0, r1)
-    r2 = 2
-    ctr2 = Counter(0, r2)
-    assert [ctr1.next() for _ in range(r1 + 1)] == [0, 1]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [0, 1, 2]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [2, 2, 2]
+    c = Counter(-3, 3)
+    assert c.next() == -3
+    assert c.next() == -2
