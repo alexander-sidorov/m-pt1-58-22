@@ -18,7 +18,7 @@ class Counter:
         self.end = end
         self.current = self.start
 
-    def next(self) -> int:
+    def next(self) -> int:  # noqa: A003
         if self.current > self.end:
             return self.end
 
