@@ -12,18 +12,18 @@ class User:
         return "hello world"
 
 
+def __init__(self, start: int, finish: int):
+    self.start = start
+    self.finish = finish
+    self.current: int | None = None
+    self.current = self.start
 
 
-class Counter:
-    def __init__(self, start: int, finish: int):
-        self.start = start
-        self.finish = finish
-        self.current: int | None = None
-    def  next (self) -> int:
-        self.start == 10
-        self.finish == 11
+def next(self) -> int:  # noqa: A003
+    if self.current is None:
+        self.current = self.start
 
-        result, self.current = self.current, self.current +1
-        return result
+    if self.current > self.stop:
+        return self.stop
 
-    
+
