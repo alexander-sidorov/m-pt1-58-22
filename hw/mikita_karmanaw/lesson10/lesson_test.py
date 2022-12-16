@@ -1,5 +1,5 @@
-from hw.mikita_karmanaw.lesson10.lesson import User
 from hw.mikita_karmanaw.lesson10.lesson import Counter
+from hw.mikita_karmanaw.lesson10.lesson import User
 
 
 def test_01() -> None:
@@ -14,6 +14,6 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    c = Counter(10, 20)
-    assert c.next() == 10
-    assert c.next() == 11
+    count = Counter(10, 20)
+    assert count.next() == 10
+    assert count.next() == 11

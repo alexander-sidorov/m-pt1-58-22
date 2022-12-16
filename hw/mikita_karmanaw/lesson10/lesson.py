@@ -15,13 +15,13 @@ class User:
 
 
 class Counter:
-    count = int(-1)
-
     def __init__(self, start: int, stop: int) -> None:
         self.start = start
         self.stop = stop
+        self.count = int(-1)
+        return None
 
-    def next(self) -> int | None:
+    def next(self) -> int | None:  # noqa: A003
         if self.count + self.start >= self.stop:
             pass
         else:
