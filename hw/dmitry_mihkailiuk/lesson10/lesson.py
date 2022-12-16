@@ -1,13 +1,19 @@
 class User:
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
-    def get_class_name(self):
-        return str(User.__name__)
+    def get_class_name(self) -> str:
+        return User.__name__
 
-    def get_hello_world(self):
+    def get_hello_world(self) -> str:
         return "hello world"
+
+
+u = User("Dim")
+print(u.get_name())
+print(u.get_class_name())
+print(u.get_hello_world())
