@@ -1,9 +1,7 @@
 import hw.eugene_lubimov.lesson10.lesson as les
 
-person = les.User("Bob")
 
-
-def test_user():
+def test_user() -> None:
     person = les.User("Bob")
 
     assert person.get_name() == "Bob"
