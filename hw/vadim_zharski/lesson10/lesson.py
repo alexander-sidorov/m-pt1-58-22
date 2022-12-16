@@ -15,7 +15,3 @@ class User:
         return self.__hello_world
 
 
-some_user = User("some_user")
-print(some_user.get_name())
-print(some_user.get_hello_world())
-
