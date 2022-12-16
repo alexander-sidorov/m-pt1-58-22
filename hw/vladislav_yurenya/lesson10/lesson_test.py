@@ -14,6 +14,6 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    c = Counter(-3, 3)
-    assert c.next() == -3
-    assert c.next() == -2
+    count = Counter(-3, 3)
+    assert count.next() == -3
+    assert count.next() == -2

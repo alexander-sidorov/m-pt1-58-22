@@ -1,5 +1,5 @@
 class User:
-    def __init__(self, name: str) -> str:
+    def __init__(self, name: str):
         self.name = name
 
     def get_name(self) -> str:
@@ -18,6 +18,6 @@ class Counter:
         self.stop = stop
         self.resault = self.start - 1
 
-    def next(self) -> int:
+    def next(self) -> int:  # noqa: A003
         self.resault += 1
         return self.resault
