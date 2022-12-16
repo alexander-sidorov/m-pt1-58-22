@@ -11,8 +11,3 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
-
-u = User("Dim")
-print(u.get_name())
-print(u.get_class_name())
-print(u.get_hello_world())
