@@ -1,3 +1,5 @@
+from typing import Union
+
 class User:
     pass
 
@@ -15,15 +17,17 @@ class User:
 
 
 class Counter:
-    pass
-
-    def __init__(self, start: int, end: int) -> None:
+    def __init__(self, start: int, stop: int):
         self.start = start
-        self.end = end
+        self.stop = stop
+        self.current: Union[int, None] = None
 
-    def next(self) -> int:
-        start = 10
-        end = 20
-        while start < end:
-            start += 1
-        return start
+    def next(self) -> int:  # noqa: A003
+        if self.current is None:
+            self.current = self.start
+
+        if self.current > self.stop:
+            return self.stop
+
+        result, self.current = self.current, self.current + 1
+        return result
