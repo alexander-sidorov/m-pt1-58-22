@@ -34,13 +34,11 @@ def task_04_cities(city: str) -> dict:
     return alt
 
 
-def distance(city1: tuple, city2: tuple) -> float:
-    value_0 = (city1[0] - city2[0]) * 111
-    value_1 = (city1[1] - city2[1]) * 65
-    return sqrt((value_0 ** 2) + (value_1 ** 2))
-
-
 def task_05_route(route: Sequence) -> float:
+    def distance(city1: tuple, city2: tuple) -> float:
+        value_0 = (city1[0] - city2[0]) * 111
+        value_1 = (city1[1] - city2[1]) * 65
+        return sqrt((value_0 ** 2) + (value_1 ** 2))
     dist = float(0)
     for town in route[1:]:
         previous_town_cords = CITIES[route[route.index(town) - 1]]
