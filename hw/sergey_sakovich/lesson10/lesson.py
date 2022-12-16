@@ -14,7 +14,7 @@ class User:
 
 class Counter:
 
-    def __init__(self, start, end):
+    def __init__(self, start: int, end: int):
         self.start = start
         self.end = end
 
