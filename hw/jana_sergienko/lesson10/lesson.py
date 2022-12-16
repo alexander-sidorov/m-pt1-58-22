@@ -1,6 +1,6 @@
 class User:
     pass
-    def __int__(self, name: str):
+    def __init__(self, name: str):
         self.name = name
 
     def get_name(self) -> str:
@@ -9,5 +9,5 @@ class User:
     def get_class_name(self) -> str:
         return User.__name__
 
-    def get_hollow_world(self) -> str:
-        return "Hello world"
+    def get_hello_world(self) -> str:
+        return "hello world"
