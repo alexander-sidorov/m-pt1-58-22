@@ -12,3 +12,18 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
+
+
+class Counter:
+    count = int(-1)
+
+    def __init__(self, start: int, stop: int) -> None:
+        self.start = start
+        self.stop = stop
+
+    def next(self) -> int | None:
+        if self.count + self.start >= self.stop:
+            pass
+        else:
+            self.count += 1
+            return self.count + self.start
