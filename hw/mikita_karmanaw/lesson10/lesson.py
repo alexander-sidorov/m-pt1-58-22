@@ -21,7 +21,7 @@ class Counter:
         self.count = int(-1)
         return None
 
-    def next(self) -> int | None:  # noqa: A003
+    def next(self) -> int:  # noqa: A003
         if self.count + self.start >= self.stop:
             pass
         else:
