@@ -1,6 +1,6 @@
 from math import sqrt
-from typing import Sequence
 from typing import Any
+from typing import Sequence
 
 from hw.alexander_sidorov.helpers import CITIES
 
@@ -29,7 +29,7 @@ def task_04_cities(city: str) -> dict:
         alt_1 = CITIES[city]
         alt_2 = CITIES[i]
         x, y = (alt_1[0] - alt_2[0]) * 111, (alt_1[1] - alt_2[1]) * 65
-        distance = int((x ** 2 + y ** 2) ** 0.5)
+        distance: int = int((x ** 2 + y ** 2) ** 0.5)
         alt.update({i: distance})
     return alt
 
