@@ -1,4 +1,4 @@
-from hw.alexander_sidorov.lesson10.lesson import User
+from hw.sergey_sakovich.lesson10.lesson import User
 
 
 def test_01() -> None:
