@@ -1,17 +1,14 @@
 class User:
-    class_name = 'User'
+    name = 'User'
 
-    def __init__(self, nm) -> None:
+    def __init__(self, nm: str) -> None:
         User.name = nm
 
-    @classmethod
-    def get_user_name(cls) -> str:
-        return User.name
+    def get_user_name(self) -> str:
+        return self.name
 
-    @staticmethod
-    def get_class_name() -> str:
-        return User.class_name
+    def get_class_name(self) -> str:
+        return User.__name__
 
-    @staticmethod
-    def get_hello_world() -> str:
+    def get_hello_world(self) -> str:
         return "hello world"
