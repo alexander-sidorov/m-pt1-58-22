@@ -18,7 +18,7 @@ def test_02() -> None:
     assert count.next() == 10
     assert count.next() == 11
     count_2 = Counter(-5, 15)
-    count_2_list = [count_2.next for _ in range(1, 25)]
+    count_2_list = [count_2.next() for _ in range(1, 25)]
     assert count_2_list == [
         -5,
         -4,
