@@ -7,5 +7,5 @@ class User:
     def get_class_name(self):
         return User.__name__
     
-    def get_hello_world():
-        return "get hello world"
+    def get_hello_world(self):
+        return "hello world"
