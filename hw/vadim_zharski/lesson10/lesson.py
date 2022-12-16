@@ -15,3 +15,15 @@ class User:
         return self.__hello_world
 
 
+class Counter:
+    def __init__(self, start_pos: int, final_pos: int):
+        self.__start_pos = start_pos
+        self.__final_pos = final_pos
+        self.__result = start_pos
+
+    def next(self) -> int:
+        if self.__result < self.__final_pos:
+            self.__result = self.__result + 1
+            return self.__result
+        else:
+            return self.__result
