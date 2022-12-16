@@ -1,16 +1,16 @@
 class User:
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
 
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
 
-    def get_class_name(self):
+    def get_class_name(self) -> str:
         return User.__name__
 
 
-    def get_hello_world(self):
+    def get_hello_world(self) -> str:
         return "hello world"
