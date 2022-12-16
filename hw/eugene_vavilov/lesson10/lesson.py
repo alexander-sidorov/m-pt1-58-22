@@ -18,7 +18,6 @@ class Counter:
         self.end = end
         self.number = start
 
-    def next(self) -> int:
-        number = self.start
+    def next_number(self) -> int:
         self.number += 1
         return self.number

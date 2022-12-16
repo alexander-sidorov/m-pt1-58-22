@@ -1,5 +1,5 @@
-from hw.eugene_vavilov.lesson10.lesson import User
 from hw.eugene_vavilov.lesson10.lesson import Counter
+from hw.eugene_vavilov.lesson10.lesson import User
 
 
 def test_01() -> None:
@@ -17,6 +17,6 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    c = Counter(10, 20)
-    assert c.next() == 11
-    assert c.next() == 12
+    counter = Counter(10, 20)
+    assert counter.next_number() == 11
+    assert counter.next_number() == 12
