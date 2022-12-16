@@ -1,4 +1,3 @@
-from math import sqrt
 from typing import Any
 from typing import Sequence
 
@@ -24,24 +23,27 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
 
 
 def task_04_cities(city: str) -> dict:
-    def distance(city1: tuple, city2: tuple) -> float:
-        value_0 = (city1[0] - city2[0]) * 111
-        value_1 = (city1[1] - city2[1]) * 65
-        return sqrt((value_0 ** 2) + (value_1 ** 2))
-    dist_dict = {}
-    for town in CITIES:
-        dist = distance(CITIES[city], CITIES[town])
-        dist_dict[town] = dist
-    return dist_dict
+    total = {}
+    for key in CITIES.keys():
+        one = CITIES[city]
+        two = CITIES[key]
+        x, y = (one[0] - two[0]) * 111, (one[1] - two[1]) * 65
+        distance = int((x**2 + y**2) ** 0.5)
+        total.update({key: distance})
+    return total
 
 
-def task_05_route(route: Sequence) -> float:
-    def distance(city1: tuple, city2: tuple) -> float:
-        value_0 = (city1[0] - city2[0]) * 111
-        value_1 = (city1[1] - city2[1]) * 65
-        return sqrt((value_0 ** 2) + (value_1 ** 2))
-    dist = float(0)
-    for town in route[1:]:
-        previous_town_cords = CITIES[route[route.index(town) - 1]]
-        dist += distance(CITIES[town], previous_town_cords)
-    return dist
+def task_05_route(route: Sequence) -> int:
+    total = 0
+    value: Any = ()
+    for i in route:
+        value = value + CITIES[i]
+    first = value[0::2]  # type: tuple
+    sec = value[1::2]  # type: tuple
+    for ind in range(len(first) - 1):
+        lon, lat = (first[ind] - first[ind + 1]) * 111, (
+            sec[ind] - sec[ind + 1]
+        ) * 65
+        distance = int((lon**2 + lat**2) ** 0.5)
+        total += distance
+    return total
