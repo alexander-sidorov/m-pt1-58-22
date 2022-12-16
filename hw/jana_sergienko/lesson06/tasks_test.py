@@ -9,23 +9,23 @@ def task_01_boundary_test() -> None:
     assert task_01_boundary("ab") == ("a", "b")
 
 
-def task_02_expand() -> None:
+def task_02_expand_test() -> None:
     assert task_02_expand([2, 3, 4]) == [3, 4, 3, 4]
 
 
-def task_03_hdist() -> None:
+def task_03_hdist_test() -> None:
     assert task_03_hdist("aaa", "aab") == 1
     assert task_03_hdist("aaa", "aba") == 1
     assert task_03_hdist("aaa", "baa") == 1
     assert task_03_hdist("", "baa") == 3
 
 
-def task_04_cities() -> None:
+def task_04_cities_test() -> None:
     distances = task_04_cities("Минск")
     km = distances["Жодино"]
     assert int(km) == 54
 
 
-def task_05_route() -> None:
+def task_05_route_test() -> None:
     km = task_05_route(("Минск", "Минск", "Жодино", "Жодино", "Минск"))
     assert int(km) == 108
