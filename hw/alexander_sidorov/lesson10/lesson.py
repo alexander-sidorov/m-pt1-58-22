@@ -2,12 +2,9 @@ class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start
         self.stop = stop
-        self.current: int | None = None
+        self.current = self.start
 
     def next(self) -> int:  # noqa: A003
-        if self.current is None:
-            self.current = self.start
-
         if self.current > self.stop:
             return self.stop
 
