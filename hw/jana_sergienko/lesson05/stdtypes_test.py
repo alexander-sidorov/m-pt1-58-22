@@ -103,6 +103,9 @@ def test_list() -> None:
     assert lst == [3, 2, 3, 2]
     lst.sort()
     assert lst == [2, 2, 3, 3]
+    lst = [2, 2, 3, 3]
+    lst += [4]
+    assert lst == [2, 2, 3, 3, 4]
     assert not isinstance(lst, Hashable)
 
 
