@@ -13,3 +13,9 @@ def test_01() -> None:
     assert vasya.get_name() == "Вася"
     assert vasya.get_class_name() == User.__name__
     assert vasya.get_hello_world() == hw_text
+
+
+def test_02() -> None:
+    c = Counter(10, 20)
+    assert c.next() == 10
+    assert c.next() == 11

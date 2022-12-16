@@ -10,3 +10,18 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
+
+
+class Counter:
+
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def next(self):
+
+        if self.start < self.end:
+            self.start += 1
+            return self.start
+        else:
+            print("Всё")
