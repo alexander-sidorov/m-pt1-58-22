@@ -63,7 +63,7 @@ def task_04_cities(city: str) -> dict:
     dictionary = {}
     for town in CITIES.keys():
         point1 = CITIES[city]
-        point2 = CITIES[town]
+        point2 = CITIES[town]  # noqa: ECE001
         distance = int(
             (
                 ((point1[0] - point2[0]) * 110) ** 2
