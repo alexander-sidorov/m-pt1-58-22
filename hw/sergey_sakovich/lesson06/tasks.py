@@ -1,4 +1,3 @@
-import itertools
 from typing import Any
 from typing import Sequence
 
@@ -44,14 +43,13 @@ def task_02_expand(sequence: Sequence) -> Any:
     return sequence[1:] * sequence[0]
 
 
-def task_03_hdist(seq1, seq2: Any) -> int:
+def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
 
     if len(seq1) >= len(seq2):
         seq = len(seq1) - len(seq2)
         for i in range(len(seq2)):
             if seq1[i] != seq2[i]:
                 seq += 1
-
     else:
         seq = len(seq2) - len(seq1)
         for i in range(len(seq1)):
@@ -66,15 +64,23 @@ def task_04_cities(city: str) -> dict:
     for town in CITIES.keys():
         point1 = CITIES[city]
         point2 = CITIES[town]
-        distance = int((((point1[0] - point2[0]) * 110) ** 2 + ((point1[1] - point2[1]) * 65) ** 2) ** 0.5)
+        distance = int(
+            (
+                ((point1[0] - point2[0]) * 110) ** 2
+                + ((point1[1] - point2[1]) * 65) ** 2
+            )
+            ** 0.5
+        )
         dictionary.update({town: distance})
-
     return dictionary
 
 
 def length(point1: tuple, point2: tuple) -> Any:
 
-    distance = (((point1[0] - point2[0]) * 110) ** 2 + ((point1[1] - point2[1]) * 65) ** 2) ** 0.5
+    distance = (
+        ((point1[0] - point2[0]) * 110) ** 2
+        + ((point1[1] - point2[1]) * 65) ** 2
+    ) ** 0.5
     return distance
 
 
