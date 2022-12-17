@@ -9,15 +9,6 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return (ru + co / 100) * am
 
 
-<<<<<<< HEAD
-def task_02_sing(numb: Any) -> int:
-    if type(numb) == complex or numb == 0:
-        return 0
-    elif numb > 0:
-        return 1
-    elif numb < 0:
-        return -1
-=======
 def task_02_sign(numb: Any) -> int:
     if type(numb) == complex or numb == 0:
         if numb > 0:
@@ -41,4 +32,3 @@ def task_04_palindrom(string1: str) -> bool:
     rev_string = string1[::-1]
     result = string1 == rev_string
     return result
->>>>>>> main
