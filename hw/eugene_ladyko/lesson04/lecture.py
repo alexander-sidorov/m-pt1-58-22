@@ -9,13 +9,16 @@ def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     return (ru + co / 100) * am
 
 
-def task_02_sign(numb: Any) -> int:
-    if type(numb) == complex or numb == 0:
-        if numb > 0:
-            return 1
+def task_02_sign(number: Any) -> int:
+    if type(number) == complex:
+        return 0
     else:
-        return -1
-    return 0
+        if number > 0:
+            return 1
+        elif number < 0:
+            return -1
+        else:
+            return 0
 
 
 def task_03_triangle(side1: int, side2: int, side3: int) -> bool:
