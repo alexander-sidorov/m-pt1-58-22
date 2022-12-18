@@ -42,7 +42,7 @@ def task_04_cities(city: str) -> dict:
 
     dictionary = {}
     point1 = CITIES[city]
-    for town in CITIES.keys():
+    for town in CITIES:
         point2 = CITIES[town]
         dictionary.update({town: length(point1, point2)})
     return dictionary
