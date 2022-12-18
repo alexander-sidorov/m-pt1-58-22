@@ -1,5 +1,6 @@
-from typing import Union
 from math import sqrt
+from typing import Union
+
 from hw.alexander_sidorov.helpers import CITIES
 
 
