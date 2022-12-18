@@ -37,7 +37,7 @@ def test_stdtypes() -> None:
     del my_list[0]
     assert my_list == [2, 3, 4]
     assert my_list.pop(1) == 3
-    assert my_list.__add__([1]) == [2, 4, 1]
+    assert my_list + [1] == [2, 4, 1]
     assert not isinstance(my_list, Hashable)
     assert [1] < my_list
     assert my_list.__mul__(2) == [2, 4, 2, 4]
@@ -67,6 +67,9 @@ def test_stdtypes() -> None:
     assert 1 in my_dict
     assert not isinstance(my_dict, Hashable)
     assert my_dict.popitem() == (1, 111)
+    my_dict |= 3:333
+    assert my_dict = {1: 111, 2: 222, 3: 333}
+    assert my_dict | 3:331 == {1: 111, 2: 222, 3: 331}
 
     kort = (1, 2, "abc")
     assert kort.index(2) == 1
