@@ -64,7 +64,6 @@ def task_04_typecheck(func: Callable) -> Callable:
                 continue
             if not isinstance(value, annot[key]):
                 raise TypeError(f"{value=!r} is not of type {annot[key]}")
-
         if not isinstance(res, type(annot["return"])):
             raise TypeError(f"{res=!r} is not of type {annot['return']}")
         return res
