@@ -102,7 +102,7 @@ def test_cache() -> None:
         func_total_cache["cached_function&argument=&(5,){}"], list
     )
     assert func_total_cache["cached_function&argument=&(5,){}"][0] == "a5"
-    assert func_total_cache["cached_function&argument=&(5,){}"][1] > 1
+    assert func_total_cache["cached_function&argument=&(5,){}"][1] > 0.99
     assert func_total_cache["cached_function&argument=&(5,){}"][2] == 2
 
     @func_cache_factory(cache_new)
