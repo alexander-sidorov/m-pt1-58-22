@@ -1,3 +1,4 @@
+from typing import Hashable
 def test_list() -> None:
 
     my_list = [1, 2, 3]
