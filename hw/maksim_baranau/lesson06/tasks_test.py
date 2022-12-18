@@ -1,10 +1,8 @@
-from hw.maksim_baranau.lesson06.tasks import (
-    task_01_boundary,
-    task_02_expand,
-    task_03_hdist,
-    task_04_cities,
-    task_05_route,
-)
+from hw.maksim_baranau.lesson06.tasks import task_01_boundary
+from hw.maksim_baranau.lesson06.tasks import task_02_expand
+from hw.maksim_baranau.lesson06.tasks import task_03_hdist
+from hw.maksim_baranau.lesson06.tasks import task_04_cities
+from hw.maksim_baranau.lesson06.tasks import task_05_route
 
 
 def test_task_01_boundary() -> None:
