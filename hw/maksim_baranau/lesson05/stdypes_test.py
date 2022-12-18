@@ -37,10 +37,9 @@ def test_stdtypes() -> None:
     del my_list[0]
     assert my_list == [2, 3, 4]
     assert my_list.pop(1) == 3
-    assert my_list.__add__([1]) == [2, 4, 1]
+    assert my_list + [1] == [2, 4, 1]
     assert not isinstance(my_list, Hashable)
     assert [1] < my_list
-    assert my_list.__mul__(2) == [2, 4, 2, 4]
 
     my_dict = {1: 11, 2: 22}
     my_dict.clear()
@@ -67,6 +66,9 @@ def test_stdtypes() -> None:
     assert 1 in my_dict
     assert not isinstance(my_dict, Hashable)
     assert my_dict.popitem() == (1, 111)
+    my_dict |= {3: 333}
+    assert my_dict == {1: 111, 2: 222, 3: 333}
+    assert my_dict | {3: 331} == {1: 111, 2: 222, 3: 331}
 
     kort = (1, 2, "abc")
     assert kort.index(2) == 1
@@ -119,7 +121,7 @@ def test_stdtypes() -> None:
     assert st.intersection({1, 2, 3}) == {1, 2, 3}
     st -= {3}
     assert st == {1, 2}
-    assert {1}.__len__() == 1
+    assert len(st) == 1
     st = {2, 3, 4}
     assert st != {2}
     assert st | {1} == {1, 2, 3, 4}
@@ -129,6 +131,12 @@ def test_stdtypes() -> None:
     st2 = [1, 3, 4]
     st.intersection_update(st2)
     assert st == {1, 3}
+    st &= {1, 4}
+    assert st == {1}
+    st |= {2, 3}
+    assert st == {1, 2, 3}
+    st ^= {2, 3, 4}
+    assert st == {1, 4}
     assert not isinstance(st, Hashable)
 
     assert "abc" + "def" == "abcdef"
