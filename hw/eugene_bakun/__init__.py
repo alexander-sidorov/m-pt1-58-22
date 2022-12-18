@@ -47,7 +47,7 @@ def test_list() -> None:
     del my_list[0]
     assert 3 not in my_list
 
-    def test_tuple() -> None:
+def test_tuple() -> None:
         my_tuple = (1, 2, 3)
 
         assert my_tuple + (4, 5) == (1, 2, 3, 4, 5)
@@ -61,7 +61,7 @@ def test_list() -> None:
         assert (1, 2) < my_tuple
         assert isinstance(my_tuple, Hashable)
 
-    def test_str() -> None:
+def test_str() -> None:
         my_str = "flag"
 
         assert my_str + "S" == "flagS"
@@ -123,7 +123,7 @@ def test_list() -> None:
         assert my_str.zfill(8) == "0000flag"
         assert my_str < "w"
 
-    def test_set() -> None:
+def test_set() -> None:
         my_set1 = {1, 2, 3}
         my_set2 = {3, 4, 5}
 
@@ -177,7 +177,7 @@ def test_list() -> None:
         num = my_set1.pop()
         assert num not in my_set1
 
-    def test_dict() -> None:
+def test_dict() -> None:
         my_dict1 = {1: 1, 2: 2, 3: 3}
         my_dict2 = {4: 4, 5: 5, 6: 6}
 
