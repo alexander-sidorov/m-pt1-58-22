@@ -70,7 +70,6 @@ def test_stdtypes() -> None:
     assert my_dict == {2: 222, 3: 333}
     assert my_dict | {3: 331} == {2: 222, 3: 331}
 
-
     kort = (1, 2, "abc")
     assert kort.index(2) == 1
     assert kort + (3,) == (1, 2, "abc", 3)
