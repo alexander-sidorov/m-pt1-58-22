@@ -3,13 +3,14 @@ from typing import Any
 
 
 def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
-    rubl = Decimal(rubles)
-    coin = Decimal(coins)
-    amount_d = Decimal(amount)
-    return (rubl + (coin / 100)) * amount_d
+    dec_rubles = Decimal(rubles)
+    dec_coins = Decimal(coins)
+    dec_amount = Decimal(amount)
+    resoult = (dec_rubles + (dec_coins / 100)) * dec_amount
+    return resoult
 
 
-def task_02_sign(number: Any) -> float:
+def task_02_sign(number: Any) -> int:
     if isinstance(number, complex):
         return 0
     elif number > 0:
@@ -29,7 +30,8 @@ def task_03_triangle(side1: float, side2: float, side3: float) -> bool:
     return result
 
 
-def task_04_palindrom(string: str) -> bool:
-    string = string.replace(" ", "").lower()
-    re_string = string[::-1]
-    return string == re_string
+def task_04_palindrom(text: str) -> bool:
+    text_full = text.replace(" ", "")
+    text_lower = text_full.lower()
+    text_back = text_lower[::-1]
+    return text_back == text_lower
