@@ -63,7 +63,7 @@ def test_04() -> None:
 
     @les9.task_04_typecheck
     def yyy(*, arg: Any) -> None:
-        return arg
+        return arg  # type: ignore
 
     assert xxx(arg=10) is None
     assert yyy(arg=None) is None
