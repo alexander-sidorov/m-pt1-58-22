@@ -67,11 +67,9 @@ def test_stdtypes() -> None:
     assert not isinstance(my_dict, Hashable)
     assert my_dict.popitem() == (1, 111)
     my_dict |= {3: 333}
-    assert my_dict == {1: 111, 2: 222, 3: 333}
-    assert my_dict | {3: 331} == {1: 111, 2: 222, 3: 331}
-    my_dict |= {3: 333}
-    assert my_dict == {1: 111, 2: 222, 3: 333}
-    assert my_dict | {3: 331} == {1: 111, 2: 222, 3: 331}
+    assert my_dict == {2: 222, 3: 333}
+    assert my_dict | {3: 331} == {2: 222, 3: 331}
+
 
     kort = (1, 2, "abc")
     assert kort.index(2) == 1
