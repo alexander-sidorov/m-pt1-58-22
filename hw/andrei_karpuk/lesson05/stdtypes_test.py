@@ -56,6 +56,7 @@ def test_str() -> None:
     assert "python".upper() == "PYTHON"
     assert "sci\nand\nfi".splitlines() == ["sci", "and", "fi"]
     assert "AAA" < "B"
+    assert "abcabcabc".rindex("abc") == 6
 
 
 def test_list() -> None:
@@ -94,6 +95,14 @@ def test_list() -> None:
     testing_list.clear()
     assert testing_list == []
     assert testing_list < [4, 6]
+    assert ["a"] + ["b"] == ["a", "b"]
+    list = ["a"]
+    list += ["b"]
+    assert list == ["a", "b"]
+    list = ["a"]
+    list *= 2
+    assert list == ["a", "a"]
+
 
 
 def test_dict() -> None:
