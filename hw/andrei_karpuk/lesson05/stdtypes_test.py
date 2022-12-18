@@ -96,12 +96,12 @@ def test_list() -> None:
     assert testing_list == []
     assert testing_list < [4, 6]
     assert ["a"] + ["b"] == ["a", "b"]
-    list = ["a"]
-    list += ["b"]
-    assert list == ["a", "b"]
-    list = ["a"]
-    list *= 2
-    assert list == ["a", "a"]
+    list2 = ["a"]
+    list2 += ["b"]
+    assert list2 == ["a", "b"]
+    list2 = ["a"]
+    list2 *= 2
+    assert list2 == ["a", "a"]
 
 
 
