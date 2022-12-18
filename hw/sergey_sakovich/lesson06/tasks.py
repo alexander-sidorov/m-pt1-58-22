@@ -1,5 +1,6 @@
 from typing import Any
 from typing import Sequence
+
 from hw.alexander_sidorov.helpers import CITIES
 
 
@@ -34,13 +35,11 @@ def task_04_cities(city: str) -> dict:
     for town in CITIES.keys():
         point1 = CITIES[city]
         point2 = CITIES[town]
-        distance = int(
-            (
-                ((point1[0] - point2[0]) * 110) ** 2
-                + ((point1[1] - point2[1]) * 65) ** 2
-            )
-            ** 0.5
-        )
+        distance = (
+            ((point1[0] - point2[0]) * 110) ** 2
+            + ((point1[1] - point2[1]) * 65) ** 2
+        ) ** 0.5
+
         dictionary.update({town: distance})
     return dictionary
 
