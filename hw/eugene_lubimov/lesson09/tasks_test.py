@@ -1,7 +1,6 @@
 import time
 from collections import defaultdict
 from typing import Any
-from typing import cast
 
 import pytest
 
@@ -60,11 +59,11 @@ def test_03() -> None:
 def test_04() -> None:
     @les9.task_04_typecheck
     def xxx(*, arg: int) -> None:
-        assert arg > 0 or arg <= 0
+        pass
 
     @les9.task_04_typecheck
     def yyy(*, arg: Any) -> None:
-        return cast(None, arg)
+        return arg
 
     assert xxx(arg=10) is None
     assert yyy(arg=None) is None
