@@ -104,7 +104,6 @@ def test_list() -> None:
     assert list2 == ["a", "a"]
 
 
-
 def test_dict() -> None:
     testing_dict = {1: "one", 2: "two"}
     assert testing_dict.items() == {(1, "one"), (2, "two")}
