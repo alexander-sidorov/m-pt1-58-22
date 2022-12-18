@@ -122,7 +122,7 @@ def test_stdtypes() -> None:
     assert st.intersection({1, 2, 3}) == {1, 2, 3}
     st -= {3}
     assert st == {1, 2}
-    assert len(st) == 1
+    assert len(st) == 2
     st = {2, 3, 4}
     assert st != {2}
     assert st | {1} == {1, 2, 3, 4}
