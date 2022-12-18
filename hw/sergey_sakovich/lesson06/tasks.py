@@ -29,21 +29,6 @@ def task_03_hdist(seq1: Sequence, seq2: Sequence) -> int:
     return seq
 
 
-def task_04_cities(city: str) -> dict:
-
-    dictionary = {}
-    for town in CITIES.keys():
-        point1 = CITIES[city]
-        point2 = CITIES[town]
-        distance = (
-            ((point1[0] - point2[0]) * 110) ** 2
-            + ((point1[1] - point2[1]) * 65) ** 2
-        ) ** 0.5
-
-        dictionary.update({town: distance})
-    return dictionary
-
-
 def length(point1: tuple, point2: tuple) -> Any:
 
     distance = (
@@ -51,6 +36,16 @@ def length(point1: tuple, point2: tuple) -> Any:
         + ((point1[1] - point2[1]) * 65) ** 2
     ) ** 0.5
     return distance
+
+
+def task_04_cities(city: str) -> dict:
+
+    dictionary = {}
+    point1 = CITIES[city]
+    for town in CITIES.keys():
+        point2 = CITIES[town]
+        dictionary.update({town: length(point1, point2)})
+    return dictionary
 
 
 def task_05_route(route: Sequence) -> float:

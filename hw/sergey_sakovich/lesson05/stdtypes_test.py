@@ -107,6 +107,9 @@ def test_stdtypes() -> None:
     assert len(list_13) == 4
     assert list_13[2] == 7
     assert [13, 19, 17][0] == 13
+    list13 = ["q", "w"]
+    list13[1] = "e"
+    assert list13 == ["q", "e"]
 
     tuple_13 = (19, 13, 8, 11)
 
