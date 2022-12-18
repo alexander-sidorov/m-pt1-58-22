@@ -1,6 +1,6 @@
 from typing import Union
 from math import sqrt
-from helpers import CITIES
+from hw.alexander_sidorov.helpers import CITIES
 
 
 def task_01_boundary(sequence: Union[str, list, tuple]) -> tuple:
@@ -46,4 +46,3 @@ def task_05_route(route: Union[tuple, list]) -> float:
         gorod_len = distance(CITIES[i], gorod_next)
         dist = dist + gorod_len
     return int(dist)
-
