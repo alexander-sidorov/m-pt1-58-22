@@ -8,11 +8,6 @@ from hw.vladislav_yurenya.lesson09.tasks import task_01_do_twice
 from hw.vladislav_yurenya.lesson09.tasks import task_03_benchmark
 from hw.vladislav_yurenya.lesson09.tasks import task_04_typecheck
 
-# from hw.vladislav_yurenya.lesson09.tasks import task_02_count_calls
-
-
-# from hw.vladislav_yurenya.lesson09.tasks import task_05_cache
-
 
 def test_01() -> None:
     @task_01_do_twice
@@ -25,24 +20,6 @@ def test_01() -> None:
     assert xxx == [1, 1]
 
 
-# def test_02() -> None:
-#     calls: dict = {}
-#
-#     @task_02_count_calls(calls)
-#     def f() -> None:
-#         pass
-#
-#     @task_02_count_calls(calls)
-#     def g() -> None:
-#         pass
-#
-#     [f() for _ in "123"]
-#     [(f(), g()) for _ in "123"]
-#
-#     assert calls == {
-#         f.__name__: 6,
-#         g.__name__: 3,
-#     }
 def test_03() -> None:
     benchmarks: dict = {}
 
