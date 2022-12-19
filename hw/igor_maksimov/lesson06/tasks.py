@@ -2,7 +2,7 @@ from typing import Any
 from math import sqrt
 from typing import Sequence
 
-# from hw.alexander_sidorov.helpers import CITIES
+from hw.alexander_sidorov.helpers import CITIES
 
 
 def task_01_boundary(suquence: Sequence) -> tuple:
