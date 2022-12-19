@@ -24,6 +24,4 @@ class Counter:
     def next(self) -> int:  # noqa: A003
         if self.__result < self.__final_pos:
             self.__result = self.__result + 1
-            return self.__result
-        else:
-            return self.__result
+        return self.__result
