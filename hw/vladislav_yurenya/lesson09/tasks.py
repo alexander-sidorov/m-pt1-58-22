@@ -1,45 +1,44 @@
 import time
+from typing import Any
+from typing import Callable
 
-def task_01_do_twice(func):
-    def w(lst):
+
+def task_01_do_twice(func: Callable) -> Callable:
+    def inside(lst):
         func(lst)
         func(lst)
-        return lst
-    return w
+
+    return inside
 
 
-@task_01_do_twice
-def f(lst):
-    lst.append(1)
-
-counter = {}
+benchmarks: dict = {}
 
 
-def task_02_count_calls(counter):
-    def wrapper(func):
+def task_03_benchmark(benchmarks):
+    def rex(func):
         def inside(*ar, **kw):
+            start = time.monotonic()
             resault = func(*ar, **kw)
-            counter[func.__name__] = counter.get(func.__name__, 0) + 1
+            end = time.monotonic()
+            total = end - start
+            benchmarks[func.__name__] = total
             return resault
 
         return inside
 
-    return wrapper
+    return rex
 
 
-@task_02_count_calls(counter)
-def f():
-    pass
+def task_04_typecheck(func: Callable) -> Callable:
+    def inside(**kw: Any) -> Any:
+        lst = list(kw.values())
+        resault = func(**kw)
+        for i in range(len(lst)):
+            if not isinstance(lst[i], type(lst[i - 1])):
+                raise TypeError(f"{lst[i-1]=!r} is not of type {lst[i]}")
+        type_func = func.__annotations__["return"]
+        if not isinstance(type_func, type(resault)):
+            raise TypeError(f"{resault} is not of type {type_func}")
+        return resault
 
-
-@task_02_count_calls(counter)
-def g():
-    pass
-
-
-def test_02():
-    assert not counter
-    [(f(), g()) for _ in "123"]
-    [f() for _ in "123"]
-    assert counter["f"] == 6
-    assert counter["g"] == 3
+    return inside
