@@ -2,7 +2,7 @@ from hw.igor_maksimov.lesson10.lesson10 import Counter
 from hw.igor_maksimov.lesson10.lesson10 import User
 
 
-def test_01():
+def test_01() -> None:
     hw_text = "hello world"
     petya = User("Петя")
     vasya = User("Вася")
@@ -16,7 +16,7 @@ def test_01():
     assert vasya.get_hello_world() == hw_text
 
 
-def test_02():
+def test_02() -> None:
     r1 = 1
     ctr1 = Counter(0, r1)
 
