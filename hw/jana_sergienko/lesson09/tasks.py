@@ -1,6 +1,4 @@
 import time
-
-
 from typing import Any
 from typing import Callable
 
@@ -31,8 +29,9 @@ cache_benchmark: dict = {}
 def task_03_benchmark(func: Callable) -> Callable:
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         t_start = time.monotonic()
+        result_func = func(*args, **kwargs)
         result = time.monotonic() - t_start
         cache_benchmark[func.__name__] = result
-        return func(*args, **kwargs)
+        return result_func
 
     return wrapper
