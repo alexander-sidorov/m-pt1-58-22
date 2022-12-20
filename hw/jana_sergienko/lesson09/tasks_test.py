@@ -1,4 +1,6 @@
 from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
+from hw.jana_sergienko.lesson09.tasks import task_02_count_calls
+from hw.jana_sergienko.lesson09.tasks import counter
 
 
 @task_01_do_twice
@@ -10,3 +12,21 @@ def test_task_01_do_twice() -> None:
     x01: list[None] = []
     f01(x01)
     assert len(x01) == 2
+
+
+@task_02_count_calls
+def f_count() -> None:
+    pass
+
+@task_02_count_calls
+def g_count() -> None:
+    pass
+
+
+def test_test_02_count_calls():
+    assert not counter
+    [(f_count(), g_count()) for _ in "123"]
+    [f_count() for _ in "123"]
+    assert counter["f_count"] == 6
+    assert counter["g_count"] == 3
+
