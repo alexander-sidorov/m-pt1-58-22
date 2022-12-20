@@ -4,7 +4,7 @@ from typing import Callable
 
 
 def task_01_do_twice(func: Callable) -> Callable:
-    def inside(lst):
+    def inside(lst: list) -> list:
         func(lst)
         func(lst)
 
@@ -14,15 +14,15 @@ def task_01_do_twice(func: Callable) -> Callable:
 benchmarks: dict = {}
 
 
-def task_03_benchmark(benchmarks):
-    def rex(func):
-        def inside(*ar, **kw):
+def task_03_benchmark(benchmarks: dict) -> Callable:
+    def rex(func: Callable) -> Callable:
+        def inside(*ar: Any, **kw: Any) -> Any:
             start = time.monotonic()
-            resault = func(*ar, **kw)
+            result = func(*ar, **kw)
             end = time.monotonic()
             total = end - start
             benchmarks[func.__name__] = total
-            return resault
+            return result
 
         return inside
 
@@ -31,14 +31,27 @@ def task_03_benchmark(benchmarks):
 
 def task_04_typecheck(func: Callable) -> Callable:
     def inside(**kw: Any) -> Any:
-        lst = list(kw.values())
-        resault = func(**kw)
+        lst = list(kw.items())
+        result = func(**kw)
         for i in range(len(lst)):
-            if not isinstance(lst[i], type(lst[i - 1])):
+            if not isinstance(lst[i - 1], type(lst[i])):
                 raise TypeError(f"{lst[i-1]=!r} is not of type {lst[i]}")
         type_func = func.__annotations__["return"]
-        if not isinstance(type_func, type(resault)):
-            raise TypeError(f"{resault} is not of type {type_func}")
-        return resault
+        if not isinstance(type_func, type(result)):
+            raise TypeError(f"{result} is not of type {type_func}")
+        return result
+
+    return inside
+
+
+cache = {}
+
+
+def task_05_cache(func: Callable) -> Callable:
+    def inside(*args: Any, **kwargs: Any) -> Any:
+        key = func.__name__ + str(args) + str(kwargs)
+        result = func(*args, **kwargs)
+        cache[key] = result
+        return result
 
     return inside

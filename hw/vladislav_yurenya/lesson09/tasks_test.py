@@ -7,6 +7,7 @@ import pytest
 from hw.vladislav_yurenya.lesson09.tasks import task_01_do_twice
 from hw.vladislav_yurenya.lesson09.tasks import task_03_benchmark
 from hw.vladislav_yurenya.lesson09.tasks import task_04_typecheck
+from hw.vladislav_yurenya.lesson09.tasks import task_05_cache
 
 
 def test_01() -> None:
@@ -51,3 +52,28 @@ def test_04() -> None:
 
     with pytest.raises(TypeError):
         yyy(arg="a")
+
+
+#
+@task_05_cache
+def bad(x=[]):
+    x.append(1)
+    return x
+
+
+def test_05():
+    y = bad()
+    assert y == [1]
+
+    z = [bad() for _ in "123"][-1]
+    assert z is y
+
+    data = [1, 2, 3, 4]
+    r1 = bad(data)
+    r2 = bad(data)
+    r3 = bad([1, 2])
+    assert data == [1, 2, 3, 4, 1, 1]
+    assert r1 is data
+    assert r2 is r1
+    assert r3 is not r1
+    assert r3 == [1, 2, 1]
