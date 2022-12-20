@@ -2,11 +2,11 @@ from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
 
 
 @task_01_do_twice
-def f(lst: list) -> None:
+def f01(lst: list) -> None:
     lst.append(1)
 
 
 def test_task_01_do_twice() -> None:
-    x: list[None] = []
-    f(x)
-    assert len(x) == 2
+    x01: list[None] = []
+    f01(x01)
+    assert len(x01) == 2
