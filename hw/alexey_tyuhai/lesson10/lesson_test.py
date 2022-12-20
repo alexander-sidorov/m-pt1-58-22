@@ -24,3 +24,4 @@ def test_02() -> None:
 
     assert [ctr1.next() for _ in range(r1 + 1)] == [0, 1]
     assert [ctr2.next() for _ in range(r2 + 1)] == [0, 1, 2]
+    assert [ctr2.next() for _ in range(r2 + 1)] == [2, 2, 2]
