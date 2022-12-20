@@ -1,8 +1,8 @@
 import time
 
+from hw.jana_sergienko.lesson09.tasks import counter
 from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
 from hw.jana_sergienko.lesson09.tasks import task_02_count_calls
-from hw.jana_sergienko.lesson09.tasks import counter
 
 
 @task_01_do_twice
