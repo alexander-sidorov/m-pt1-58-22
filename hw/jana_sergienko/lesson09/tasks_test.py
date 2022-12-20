@@ -1,7 +1,7 @@
 import time
 
-from hw.jana_sergienko.lesson09.tasks import counter
 from hw.jana_sergienko.lesson09.tasks import cache_benchmark
+from hw.jana_sergienko.lesson09.tasks import counter
 from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
 from hw.jana_sergienko.lesson09.tasks import task_02_count_calls
 from hw.jana_sergienko.lesson09.tasks import task_03_benchmark
@@ -37,10 +37,10 @@ def test_task_02_count_calls() -> None:
 
 
 @task_03_benchmark
-def slowpoke(n: int) -> None:
-    time.sleep(n)
+def slowpoke(num: int) -> None:
+    time.sleep(num)
 
 
-def test_task_03_benchmark():
+def test_task_03_benchmark() -> None:
     slowpoke(1)
     assert abs(cache_benchmark["slowpoke"] - 1) < 0.1
