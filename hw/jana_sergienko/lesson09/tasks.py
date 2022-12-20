@@ -17,7 +17,7 @@ counter: dict = {}
 def task_02_count_calls(func: Callable) -> Callable:
     def wrapper(*args: Any, **kwargs: Any) -> None:
         counter[func.__name__] = 0
-        if (wrapper):
+        if wrapper(*args, **kwargs):
             counter[func.__name__] += 1
         func(*args, **kwargs)
         return None

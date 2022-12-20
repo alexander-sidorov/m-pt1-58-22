@@ -1,3 +1,5 @@
+import time
+
 from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
 from hw.jana_sergienko.lesson09.tasks import task_02_count_calls
 from hw.jana_sergienko.lesson09.tasks import counter
@@ -18,6 +20,7 @@ def test_task_01_do_twice() -> None:
 def f_count() -> None:
     pass
 
+
 @task_02_count_calls
 def g_count() -> None:
     pass
@@ -29,4 +32,3 @@ def test_test_02_count_calls():
     [f_count() for _ in "123"]
     assert counter["f_count"] == 6
     assert counter["g_count"] == 3
-
