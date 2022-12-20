@@ -55,19 +55,19 @@ def test_04() -> None:
         yyy(arg="a")
 
 
-#
+
 @task_05_cache
-def bad(x=[]):
-    x.append(1)
-    return x
+def bad(x_lst: list = []) -> list:
+    x_lst.append(1)
+    return x_lst
 
 
-def test_05():
-    y = bad()
-    assert y == [1]
+def test_05()->None:
+    y_x = bad()
+    assert y_x == [1]
 
-    z = [bad() for _ in "123"][-1]
-    assert z is y
+    z_bad = [bad() for _ in "123"][-1]
+    assert z_bad is y_x
 
     data = [1, 2, 3, 4]
     r1 = bad(data)

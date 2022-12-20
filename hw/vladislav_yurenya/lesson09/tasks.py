@@ -7,7 +7,7 @@ def task_01_do_twice(func: Callable) -> Callable:
     def inside(lst: list) -> list:
         func(lst)
         func(lst)
-
+        return lst
     return inside
 
 
@@ -57,7 +57,7 @@ def task_05_cache(func: Callable) -> Callable:
     return inside
 
 
-counter = {}
+counter: dict[str, int] = {}
 
 
 def dec(counter: dict) -> Callable:
@@ -65,7 +65,7 @@ def dec(counter: dict) -> Callable:
         def inside(*args: Any, **kwargs: Any) -> None:
             counter[func.__name__] = counter.get(func.__name__, 0) + 1
             func(*args, **kwargs)
-            return counter
+            return None
 
         return inside
 
