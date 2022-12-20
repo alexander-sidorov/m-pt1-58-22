@@ -18,7 +18,6 @@ def test_01() -> None:
 
     xxx: list = []
     func(xxx)
-
     assert xxx == [1, 1]
 
 
@@ -32,7 +31,6 @@ def test_03() -> None:
     t0 = time.monotonic()
     slowpoke(1)
     dt = time.monotonic() - t0
-
     assert abs(dt - 1) < 0.1
 
 
@@ -47,13 +45,10 @@ def test_04() -> None:
 
     assert xxx(arg=10) is None
     assert yyy(arg=None) is None
-
     with pytest.raises(TypeError):
         xxx(arg="a")
-
     with pytest.raises(TypeError):
         yyy(arg="a")
-
 
 
 @task_05_cache
@@ -62,13 +57,11 @@ def bad(x_lst: list = []) -> list:
     return x_lst
 
 
-def test_05()->None:
+def test_05() -> None:
     y_x = bad()
     assert y_x == [1]
-
     z_bad = [bad() for _ in "123"][-1]
     assert z_bad is y_x
-
     data = [1, 2, 3, 4]
     r1 = bad(data)
     r2 = bad(data)
