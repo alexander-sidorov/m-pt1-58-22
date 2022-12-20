@@ -24,7 +24,7 @@ def g_count() -> None:
     pass
 
 
-def test_test_02_count_calls():
+def test_test_02_count_calls() -> None:
     assert not counter
     [(f_count(), g_count()) for _ in "123"]
     [f_count() for _ in "123"]
