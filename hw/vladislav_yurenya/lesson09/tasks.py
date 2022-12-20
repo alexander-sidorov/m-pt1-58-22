@@ -8,6 +8,7 @@ def task_01_do_twice(func: Callable) -> Callable:
         func(lst)
         func(lst)
         return lst
+
     return inside
 
 

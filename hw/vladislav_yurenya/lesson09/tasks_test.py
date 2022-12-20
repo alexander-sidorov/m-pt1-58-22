@@ -52,7 +52,7 @@ def test_04() -> None:
 
 
 @task_05_cache
-def bad(x_lst: list = []) -> list:
+def bad(x_lst: list = []) -> list:  # noqa: B006
     x_lst.append(1)
     return x_lst
 
