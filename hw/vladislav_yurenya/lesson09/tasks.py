@@ -31,7 +31,7 @@ def task_03_benchmark(benchmarks: dict) -> Callable:
 
 def task_04_typecheck(func: Callable) -> Callable:
     def inside(**kw: Any) -> Any:
-        lst = list(kw.items())
+        lst = list(kw.values())
         result = func(**kw)
         for i in range(len(lst)):
             if not isinstance(lst[i - 1], type(lst[i])):
@@ -55,3 +55,18 @@ def task_05_cache(func: Callable) -> Callable:
         return result
 
     return inside
+
+
+counter = {}
+
+
+def dec(counter: dict) -> Callable:
+    def task_02_count_calls(func: Callable) -> Callable:
+        def inside(*args: Any, **kwargs: Any) -> None:
+            counter[func.__name__] = counter.get(func.__name__, 0) + 1
+            func(*args, **kwargs)
+            return counter
+
+        return inside
+
+    return task_02_count_calls

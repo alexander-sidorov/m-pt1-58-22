@@ -4,6 +4,7 @@ from typing import cast
 
 import pytest
 
+from hw.vladislav_yurenya.lesson09.tasks import dec
 from hw.vladislav_yurenya.lesson09.tasks import task_01_do_twice
 from hw.vladislav_yurenya.lesson09.tasks import task_03_benchmark
 from hw.vladislav_yurenya.lesson09.tasks import task_04_typecheck
@@ -77,3 +78,24 @@ def test_05():
     assert r2 is r1
     assert r3 is not r1
     assert r3 == [1, 2, 1]
+
+
+counter: dict = {}
+
+
+@dec(counter)
+def f_count() -> None:
+    pass
+
+
+@dec(counter)
+def g_count() -> None:
+    pass
+
+
+def test_02() -> None:
+    assert not counter
+    [(f_count(), g_count()) for _ in "123"]
+    [f_count() for _ in "123"]
+    assert counter["f_count"] == 6
+    assert counter["g_count"] == 3
