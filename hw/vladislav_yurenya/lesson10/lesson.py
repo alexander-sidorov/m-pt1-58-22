@@ -3,7 +3,7 @@ class User:
         self.name = name
 
     def __str__(self) -> str:
-        return f"{self.name}"
+        return self.name
 
     def get_class_name(self) -> str:
         return User.__name__
