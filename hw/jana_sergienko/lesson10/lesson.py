@@ -23,7 +23,6 @@ class Counter:
         self.stop = stop
         self.current: Optional[int] = None
 
-
     def __iter__(self) -> "Counter":
         return self
 
@@ -34,5 +33,5 @@ class Counter:
         if self.current > self.stop:
             return self.stop
 
-        result, self.current = self.current, self.current + 1
+        self.current = self.current, self.current + 1
         raise StopIteration
