@@ -18,7 +18,7 @@ class User:
 
 
 class Counter:
-    def __init__(self, start: int, stop: int) -> None:
+    def __init__(self, start: int, stop: int):
         self.start = start
         self.stop = stop
         self.current: Optional[int] = None
