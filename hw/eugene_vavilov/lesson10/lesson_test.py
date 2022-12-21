@@ -1,3 +1,5 @@
+import json
+
 from hw.eugene_vavilov.lesson10.lesson import Counter
 from hw.eugene_vavilov.lesson10.lesson import User
 
@@ -29,3 +31,10 @@ def test_02() -> None:
     assert next(counter) == 18
     assert next(counter) == 19
     assert next(counter) == 20
+
+
+def test_task_05() -> None:
+    petya = User("p")
+    js = petya.to_json()
+    assert js == '{"name": "p"}'
+    assert json.loads(js) == {"name": "p"}
