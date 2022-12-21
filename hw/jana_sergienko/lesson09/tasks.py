@@ -30,10 +30,10 @@ cache_benchmark: dict = {}
 def task_03_benchmark(func: Callable) -> Callable:
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         t_start = time.monotonic()
-        result_func = func(*args, **kwargs)
+        func_result: object = func(*args, **kwargs)
         result = time.monotonic() - t_start
         cache_benchmark[func.__name__] = result
-        return result_func
+        return func_result
 
     return wrapper
 
