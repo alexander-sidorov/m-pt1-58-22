@@ -1,5 +1,6 @@
 import json
 
+
 class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start

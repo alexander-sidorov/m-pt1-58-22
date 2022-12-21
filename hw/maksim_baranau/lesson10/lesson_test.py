@@ -1,7 +1,7 @@
+import json
+
 from hw.maksim_baranau.lesson10.lesson import Counter
 from hw.maksim_baranau.lesson10.lesson import User
-
-import json
 
 
 def test_01() -> None:
@@ -26,6 +26,7 @@ def test_02() -> None:
 
     assert list(ctr1) == [0, 1, 2, 3]
     assert list(ctr2) == [1, 2, 3, 4]
+
 
 def test_task_5() -> None:
     petya = User("P")
