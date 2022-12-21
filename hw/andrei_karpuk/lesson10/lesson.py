@@ -24,6 +24,3 @@ class Counter:
 
         result, self.current = self.current, self.current + 1
         return result
-
-
-print(str(User("asdadadsd"))) #noqa: T201
