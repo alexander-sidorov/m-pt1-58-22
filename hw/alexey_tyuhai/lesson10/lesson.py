@@ -18,9 +18,12 @@ class Counter:
         self.end = end
         self.current = self.start
 
-    def next(self) -> int:  # noqa: A003
-        if self.current > self.end:
-            return self.end
+    def __iter__(self) -> "Counter":
+        return self
 
-        result, self.current = self.current, self.current + 1
-        return result
+    def __next__(self) -> int:
+        if self.start < self.end:
+            num = self.current
+            self.current += 1
+            return num
+        raise StopIteration
