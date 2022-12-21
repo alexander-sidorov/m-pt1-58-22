@@ -18,7 +18,7 @@ class User:
         return self.__hello_world
 
     def to_json(self) -> str:
-        ret_str = "{\"name\":\"%s\"}" % self.name
+        ret_str = '{"name":"%s"}' % self.name
         return ret_str
 
 
@@ -36,4 +36,3 @@ class Counter:
             self.__result = self.__result + 1
             return self.__result
         raise StopIteration
-

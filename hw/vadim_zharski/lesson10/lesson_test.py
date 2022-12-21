@@ -1,5 +1,6 @@
-import pytest
 import json
+
+import pytest
 
 from hw.vadim_zharski.lesson10.lesson import Counter
 from hw.vadim_zharski.lesson10.lesson import User
@@ -33,6 +34,3 @@ def test_02() -> None:
 
     with pytest.raises(StopIteration):
         next(iter_count)
-
-
-
