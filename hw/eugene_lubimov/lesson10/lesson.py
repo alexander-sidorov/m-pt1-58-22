@@ -24,6 +24,3 @@ class Counter:
             self.num += 1
             return self.num
         return self.num
-
-
-print(str(User("Ben")))
