@@ -10,12 +10,6 @@ class User:
     def __str__(self) -> str:
         return self.name
 
-    def get_class_name(self) -> str:
-        return User.__name__
-
-    def get_hello_world(self) -> str:
-        return "hello world"
-
 
 class Counter:
     def __init__(self, start: int, stop: int):
@@ -26,7 +20,8 @@ class Counter:
     def __iter__(self) -> "Counter":
         return self
 
-    def __next__(self) -> int :
+
+    def __next__(self) -> int:
         if self.current > self.stop:
             raise StopIteration
 
