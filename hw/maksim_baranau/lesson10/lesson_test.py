@@ -1,6 +1,8 @@
 from hw.maksim_baranau.lesson10.lesson import Counter
 from hw.maksim_baranau.lesson10.lesson import User
 
+import json
+
 
 def test_01() -> None:
     hw_text = "hello world"
@@ -24,3 +26,10 @@ def test_02() -> None:
 
     assert list(ctr1) == [0, 1, 2, 3]
     assert list(ctr2) == [1, 2, 3, 4]
+
+def test_task_5() -> None:
+    petya = User("P")
+    js = petya.to_json()
+
+    assert js == '{"name": "P"}'
+    assert json.loads(js) == {"name": "P"}
