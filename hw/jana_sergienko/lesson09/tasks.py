@@ -49,7 +49,9 @@ def task_04_typecheck(func: Callable) -> Callable:
             if not isinstance(value, an_func[key]):
                 raise TypeError(f"{value=!r} is not of type {an_func[key]}")
         if not isinstance(func_result, type(an_func["return"])):
-            raise TypeError(f"{func_result=!r} is not of type {an_func['return']}")
+            raise TypeError(
+                f"{func_result=!r} is not of type {an_func['return']}"
+            )
         return func_result
 
     return wrapper
