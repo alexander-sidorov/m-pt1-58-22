@@ -4,9 +4,6 @@ class User:
     def __init__(self, name: str) -> None:
         self.name = name
 
-    def get_user_name(self) -> str:
-        return self.name
-
     def get_class_name(self) -> str:
         return User.name
 
@@ -21,11 +18,13 @@ class Counter:
     def __init__(self, start: int, stop: int) -> None:
         self.start = start
         self.stop = stop
-        self.count = int(-1)
 
-    def next(self) -> int:  # noqa: A003
-        if self.count + self.start >= self.stop:
-            return self.stop
+    def __iter__(self) -> "Counter":
+        return self
+
+    def __next__(self) -> int:
+        if self.start > self.stop:
+            raise StopIteration
         else:
-            self.count += 1
-            return self.count + self.start
+            start_temp, self.start = self.start, self.start + 1
+            return start_temp
