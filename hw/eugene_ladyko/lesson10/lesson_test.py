@@ -23,6 +23,14 @@ def test_02() -> None:
     r2 = 2
     ctr2 = Counter(0, r2)
 
-    assert list(ctr1) == [0, 1]
+    assert tuple(ctr1) == [0, 1]
     assert list(ctr2) == [0, 1, 2]
+
+
+def test_05() -> None:
+    petya = User("P")
+    js = petya.to_json()
+
+    assert js == '{"name": "P"}'
+    assert json.loads(js) == {"name": "P"}
 
