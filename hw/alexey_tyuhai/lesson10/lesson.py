@@ -22,7 +22,7 @@ class Counter:
         return self
 
     def __next__(self) -> int:
-        if self.start < self.end:
+        if self.current < self.end:
             num = self.current
             self.current += 1
             return num
