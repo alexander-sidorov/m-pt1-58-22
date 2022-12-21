@@ -11,7 +11,7 @@ class User:
         return User.name
 
     def __str__(self) -> str:
-        return User.name
+        return self.name
 
     def get_hello_world(self) -> str:
         return "hello world"
