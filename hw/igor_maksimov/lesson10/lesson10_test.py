@@ -7,11 +7,11 @@ def test_01() -> None:
     petya = User("Петя")
     vasya = User("Вася")
 
-    assert petya.get_name() == "Петя"
+    assert petya.__str__() == "Петя"
     assert petya.get_class_name() == User.__name__
     assert petya.get_hello_world() == hw_text
 
-    assert vasya.get_name() == "Вася"
+    assert vasya.__str__() == "Вася"
     assert vasya.get_class_name() == User.__name__
     assert vasya.get_hello_world() == hw_text
 
