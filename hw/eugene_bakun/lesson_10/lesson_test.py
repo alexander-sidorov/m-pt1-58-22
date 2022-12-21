@@ -3,6 +3,7 @@ import json
 from hw.eugene_bakun.lesson_10.lesson import Counter
 from hw.eugene_bakun.lesson_10.lesson import User
 
+
 def test_01() -> None:
     hw_text = "hello world"
     petya = User("Петя")
@@ -13,6 +14,8 @@ def test_01() -> None:
     assert str(vasya) == "Вася"
     assert vasya.get_class_name() == User.__name__
     assert vasya.get_hello_world() == hw_text
+
+
 def test_02() -> None:
     r1 = 3
     ctr1 = Counter(0, r1)
@@ -33,5 +36,5 @@ def test_task_05() -> None:
     assert json.loads(js) == {"name": "P"}
     js = petya.to_json()
 
-    assert js == '{"name" : "P"}'
-    assert json.loads(js) == {"name" : "P"}
+    assert js == '{"name": "P"}'
+    assert json.loads(js) == {"name": "P"}
