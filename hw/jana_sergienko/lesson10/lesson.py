@@ -1,3 +1,6 @@
+import json
+
+
 class User:
     pass
 
@@ -12,6 +15,9 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
+
+    def to_json(self) -> str:
+        return json.dumps({"name": self.name})
 
 
 class Counter:

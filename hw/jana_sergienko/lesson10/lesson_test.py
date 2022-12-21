@@ -1,3 +1,5 @@
+import json
+
 from hw.jana_sergienko.lesson10.lesson import Counter
 from hw.jana_sergienko.lesson10.lesson import User
 
@@ -24,3 +26,11 @@ def test_02() -> None:
 
     assert list(ctr1) == [0, 1, 2, 3]
     assert list(ctr2) == [2, 3, 4, 5]
+
+
+def test_03() -> None:
+    petya = User("P")
+    js = petya.to_json()
+
+    assert js == '{"name": "P"}'
+    assert json.loads(js) == {"name": "P"}
