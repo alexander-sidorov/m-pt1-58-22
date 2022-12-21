@@ -23,7 +23,7 @@ class Counter:
         self.stop = stop
         self.current: Optional[int] = None
 
-    def __iter__(self) -> Counter:
+    def __iter__(self) -> "Counter":
         return self
 
     def __next__(self) -> int:  # noqa: A003
