@@ -25,5 +25,5 @@ class Counter:
         result, self.current = self.current, self.current + 1
         return result
 
-print(str(User("asdadadsd")))
 
+print(str(User("asdadadsd")))
