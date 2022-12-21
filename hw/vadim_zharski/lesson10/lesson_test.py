@@ -5,13 +5,15 @@ from hw.vadim_zharski.lesson10.lesson import User
 def test_01() -> None:
     petya = User("Petya")
     vasya = User("Vasya")
-    assert petya.get_name() == "Petya"
-    assert vasya.get_name() == "Vasya"
     assert petya.get_class_name() == User.__name__
     assert vasya.get_class_name() == User.__name__
     assert petya.get_hello_world() == "hello world"
     assert vasya.get_hello_world() == "hello world"
     assert petya != vasya
+
+    assert str(vasya) == "Vasya"
+    assert str(petya) == "Petya"
+    assert vasya.__str__() == "Vasya"
 
 
 def test_02() -> None:
