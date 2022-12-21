@@ -18,5 +18,14 @@ def test_01() -> None:
 
 def test_02() -> None:
     counter = Counter(10, 20)
-    assert counter.next() == 10
-    assert counter.next() == 11
+    assert next(counter) == 10
+    assert next(counter) == 11
+    assert next(counter) == 12
+    assert next(counter) == 13
+    assert next(counter) == 14
+    assert next(counter) == 15
+    assert next(counter) == 16
+    assert next(counter) == 17
+    assert next(counter) == 18
+    assert next(counter) == 19
+    assert next(counter) == 20
