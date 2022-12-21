@@ -16,7 +16,7 @@ def test_01() -> None:
     assert vasya.get_hello_world() == hw_text
 
 
-def test_02() -> None:
+def test_task_02() -> None:
     assert list(Counter(0, 2)) == [0, 1, 2]
     assert tuple(Counter(1, 3)) == (1, 2, 3)
     assert set(Counter(-1, 1)) == {-1, 0, 1}
