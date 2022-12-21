@@ -26,4 +26,4 @@ class Counter:
         return result
 
 
-print(str(User("asdadadsd")))
+print(str(User("asdadadsd"))) #noqa: T201
