@@ -27,10 +27,8 @@ class Counter:
         return self
 
     def __next__(self) -> int:  # noqa: A003
-        if self.current is None:
-            self.current = self.start
+        if self.current > self.stop:
+            raise StopIteration
 
-        if self.current < self.stop:
-            self.current += 1
-            return self.current
-        raise StopIteration
+        result, self.current = self.current, self.current + 1
+        return result

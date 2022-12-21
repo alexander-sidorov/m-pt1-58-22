@@ -16,11 +16,11 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    ctr1 = Counter(0, 3)
-    ctr2 = Counter(0, 5)
+    r1 = 1
+    ctr1 = Counter(0, r1)
 
-    assert next(ctr1) == 0
-    lst = list(ctr1)
-    assert lst == [1, 2, 3]
-    assert next(ctr2) == 0
-    assert next(ctr2) == 1
+    r2 = 2
+    ctr2 = Counter(0, r2)
+
+    assert list(ctr1) == [0, 1, 3, 4]
+    assert list(ctr2) == [0, 1, 3, 4]
