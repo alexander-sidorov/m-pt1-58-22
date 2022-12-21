@@ -7,7 +7,7 @@ def test_01() -> None:
 
     assert petya.get_name() == "Петя"
     assert petya.get_class_name() == User.__name__
-    assert petya.get_hello_world() == hw_text
+    assert petya.get_hello_world() == hw_textrun
 
     assert vasya.get_name() == "Вася"
     assert vasya.get_class_name() == User.__name__
