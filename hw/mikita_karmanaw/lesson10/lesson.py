@@ -10,6 +10,9 @@ class User:
     def get_class_name(self) -> str:
         return User.name
 
+    def __str__(self) -> str:
+        return User.name
+
     def get_hello_world(self) -> str:
         return "hello world"
 
