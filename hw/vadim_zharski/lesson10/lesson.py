@@ -1,5 +1,3 @@
-
-
 class User:
 
     __hello_world: str = "hello world"
