@@ -18,5 +18,5 @@ def test_01() -> None:
 
 def test_02() -> None:
     counter = Counter(10, 20)
-    assert counter.next_number() == 11
-    assert counter.next_number() == 12
+    assert counter.next() == 10
+    assert counter.next() == 11

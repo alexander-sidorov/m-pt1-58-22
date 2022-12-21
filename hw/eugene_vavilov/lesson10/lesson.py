@@ -16,8 +16,8 @@ class Counter:
     def __init__(self, start: int, end: int) -> None:
         self.start = start
         self.end = end
-        self.number = start
+        self.number = start - 1
 
-    def next_number(self) -> int:
+    def next(self) -> int:  # noqa A003
         self.number += 1
         return self.number
