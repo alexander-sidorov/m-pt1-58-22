@@ -1,4 +1,5 @@
 import time
+from functools import wraps
 from typing import Any
 from typing import Callable
 
@@ -32,6 +33,23 @@ def task_03_benchmark(func: Callable) -> Callable:
         result_func = func(*args, **kwargs)
         result = time.monotonic() - t_start
         cache_benchmark[func.__name__] = result
+        return result_func
+
+    return wrapper
+
+
+def task_04_typecheck(func: Callable) -> Callable:
+    @wraps
+    def wrapper(**kwargs: Any) -> Any:
+        result_func = func(**kwargs)
+        an_func = func.__annotations__
+        for key, value in kwargs.items():
+            if an_func[key] is Any:
+                continue
+            if not isinstance(value, an_func[key]):
+                raise TypeError(f"{value=!r} is not of type {an_func[key]}")
+        if not isinstance(result_func, type(an_func["return"])):
+            raise TypeError(f"{result_func=!r} is not of type {an_func['return']}")
         return result_func
 
     return wrapper

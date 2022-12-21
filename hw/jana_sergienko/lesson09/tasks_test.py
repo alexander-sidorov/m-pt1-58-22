@@ -1,10 +1,14 @@
 import time
+from typing import Any
+
+import pytest
 
 from hw.jana_sergienko.lesson09.tasks import cache_benchmark
 from hw.jana_sergienko.lesson09.tasks import counter
 from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
 from hw.jana_sergienko.lesson09.tasks import task_02_count_calls
 from hw.jana_sergienko.lesson09.tasks import task_03_benchmark
+from hw.jana_sergienko.lesson09.tasks import task_04_typecheck
 
 
 @task_01_do_twice
@@ -44,3 +48,22 @@ def slowpoke(num: int) -> None:
 def test_task_03_benchmark() -> None:
     slowpoke(1)
     assert abs(cache_benchmark["slowpoke"] - 1) < 0.1
+
+
+def test_task_04_typecheck() -> None:
+    @task_04_typecheck
+    def xxx(*, arg: int) -> None:
+        pass
+
+    @task_04_typecheck
+    def yyy(*, arg: Any) -> None:
+        return arg  # type: ignore
+
+    assert xxx(arg=10) is None
+    assert yyy(arg=None) is None
+
+    with pytest.raises(TypeError):
+        xxx(arg="a")
+
+    with pytest.raises(TypeError):
+        yyy(arg="a")
