@@ -2,7 +2,7 @@ import hw.eugene_lubimov.lesson10.lesson as les
 
 
 def test_user() -> None:
-    hw_text = "hello world"
+    hw_text: str = "hello world"
     person1 = les.User("Bob")
 
     assert person1.get_name == "Bob"
