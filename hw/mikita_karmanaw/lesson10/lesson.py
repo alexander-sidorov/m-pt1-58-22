@@ -14,7 +14,7 @@ class User:
         return "hello world"
 
     def to_json(self) -> str:
-        return str({"name": self.name})
+        return json.dumps({"name": self.name})
 
 
 class Counter:
