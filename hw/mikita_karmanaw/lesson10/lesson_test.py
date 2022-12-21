@@ -31,4 +31,3 @@ def test_02() -> None:
     assert list(count_2) == [-5, -4, -3, -2, -1, 0, 1, 2, 3]
     count_2.cursor(5)
     assert list(count_2) == [0, 1, 2, 3]
-    
