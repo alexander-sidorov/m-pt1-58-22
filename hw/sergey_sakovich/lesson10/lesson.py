@@ -24,3 +24,4 @@ class Counter:
 
         result, self.current = self.current, self.current + 1
         return result
+    
