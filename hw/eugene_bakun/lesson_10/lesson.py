@@ -1,9 +1,5 @@
-from typing import Optional
-
-
+from typing import Optiona
 class User:
-    pass
-
     def __init__(self, name: str):
         self.name = name
 
@@ -15,7 +11,6 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
-
 
 class Counter:
     def __init__(self, start: int, stop: int):
