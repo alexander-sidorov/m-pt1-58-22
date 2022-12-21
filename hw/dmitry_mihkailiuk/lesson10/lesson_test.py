@@ -10,12 +10,14 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    r1 = 1
-    ctr1 = Counter(0, r1)
+    ctr1 = Counter(0, 5)
 
-    r2 = 2
-    ctr2 = Counter(0, r2)
+    ctr2 = Counter(0, 2)
 
-    assert [ctr1.next() for _ in range(r1 + 1)] == [0, 1]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [0, 1, 2]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [2, 2, 2]
+    assert next(ctr1) == 0
+
+    list_num = list(ctr1)
+    assert list_num == [1, 2, 3, 4]
+
+    assert next(ctr2) == 0
+    assert next(ctr2) == 1

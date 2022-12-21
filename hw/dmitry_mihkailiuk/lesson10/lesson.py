@@ -13,14 +13,16 @@ class User:
 
 
 class Counter:
-    def __init__(self, start: int, stop: int):
+    def __init__(self, start: int, stop: int) -> None:
         self.start = start
         self.stop = stop
-        self.current = self.start
 
-    def next(self) -> int:  # noqa: A003
-        if self.current > self.stop:
-            return self.stop
+    def __iter__(self) -> "Counter":
+        return self
 
-        result, self.current = self.current, self.current + 1
-        return result
+    def __next__(self) -> int:
+        if self.start < self.stop:
+            num = self.start
+            self.start += 1
+            return num
+        raise StopIteration
