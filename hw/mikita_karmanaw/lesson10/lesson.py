@@ -1,14 +1,14 @@
 class User:
     name = "User"
 
-    def __init__(self, nm: str) -> None:
-        User.name = nm
+    def __init__(self, name: str) -> None:
+        self.name = name
 
     def get_user_name(self) -> str:
         return self.name
 
     def get_class_name(self) -> str:
-        return User.__name__
+        return User.name
 
     def get_hello_world(self) -> str:
         return "hello world"
@@ -19,12 +19,10 @@ class Counter:
         self.start = start
         self.stop = stop
         self.count = int(-1)
-        return None
 
-    def next(self) -> int | None:  # noqa: A003
+    def next(self) -> int:  # noqa: A003
         if self.count + self.start >= self.stop:
             return self.stop
         else:
             self.count += 1
             return self.count + self.start
-        return None
