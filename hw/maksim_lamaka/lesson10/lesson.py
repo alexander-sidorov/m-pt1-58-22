@@ -4,10 +4,12 @@ class Counter:
         self.stop = stop
         self.current = self.start
 
-    def next(self) -> int:  # noqa: A003
-        if self.current > self.stop:
-            return self.stop
+    def __iter__(self) -> "Counter":  # noqa: A003
+        return self
 
+    def __next__(self) -> int:
+        if self.current > self.stop:
+            raise StopIteration
         result, self.current = self.current, self.current + 1
         return result
 
