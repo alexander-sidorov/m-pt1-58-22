@@ -30,7 +30,7 @@ def test_02() -> None:
         next(iteration)
 
 
-def test_03():
+def test_03() -> None:
     for_json = User({"rabbit": None})
     js = for_json.to_json()
     assert js == '{"rabbit": null}'

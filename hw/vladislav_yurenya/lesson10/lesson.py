@@ -14,7 +14,7 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
-    def to_json(self):
+    def to_json(self) -> str:
         return json.dumps(self.name)
 
 
@@ -24,7 +24,7 @@ class Counter:
         self.stop = stop
         self.resault = self.start - 1
 
-    def __iter__(self):
+    def __iter__(self) -> "Counter":
         return self
 
     def __next__(self) -> int:  # noqa: A003
