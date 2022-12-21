@@ -2,16 +2,15 @@ class User:
     def __init__(self, name: str) -> None:
         self._name = name
 
-    @property
-    def get_name(self) -> str:
-        return self._name
-
     @classmethod
     def get_class_name(cls) -> str:
         return cls.__name__
 
     def get_hello_world(self) -> str:
         return "hello world"
+
+    def __str__(self) -> str:
+        return self._name
 
 
 class Counter:
@@ -25,3 +24,6 @@ class Counter:
             self.num += 1
             return self.num
         return self.num
+
+
+print(str(User("Ben")))
