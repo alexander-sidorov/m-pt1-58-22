@@ -7,7 +7,7 @@ class User:
     def __init__(self, name: str):
         self.name = name
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     def get_class_name(self) -> str:
