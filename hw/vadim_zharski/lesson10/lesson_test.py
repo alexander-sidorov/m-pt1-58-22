@@ -1,4 +1,5 @@
 import pytest
+import json
 
 from hw.vadim_zharski.lesson10.lesson import Counter
 from hw.vadim_zharski.lesson10.lesson import User
@@ -17,6 +18,10 @@ def test_01() -> None:
     assert str(petya) == "Petya"
     assert vasya.__str__() == "Vasya"
 
+    js = petya.to_json()
+    assert js == '{"name":"Petya"}'
+    assert json.loads(js) == {"name": "Petya"}
+
 
 def test_02() -> None:
     counter = Counter(8, 12)
@@ -28,3 +33,6 @@ def test_02() -> None:
 
     with pytest.raises(StopIteration):
         next(iter_count)
+
+
+

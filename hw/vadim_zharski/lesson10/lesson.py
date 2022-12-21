@@ -1,3 +1,6 @@
+import json
+
+
 class User:
 
     __hello_world: str = "hello world"
@@ -14,6 +17,10 @@ class User:
     def get_hello_world(self) -> str:
         return self.__hello_world
 
+    def to_json(self) -> str:
+        ret_str = "{\"name\":\"%s\"}" % self.name
+        return ret_str
+
 
 class Counter:
     def __init__(self, start_pos: int, final_pos: int):
@@ -29,3 +36,4 @@ class Counter:
             self.__result = self.__result + 1
             return self.__result
         raise StopIteration
+
