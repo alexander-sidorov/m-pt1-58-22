@@ -3,6 +3,7 @@ class Counter:
         self.start = start
         self.stop = stop
         self.current = self.start
+
     def __iter__(self) -> "Counter":
         return self
 
