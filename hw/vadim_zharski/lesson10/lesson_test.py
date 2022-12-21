@@ -1,3 +1,5 @@
+import pytest
+
 from hw.vadim_zharski.lesson10.lesson import Counter
 from hw.vadim_zharski.lesson10.lesson import User
 
@@ -18,8 +20,11 @@ def test_01() -> None:
 
 def test_02() -> None:
     counter = Counter(8, 12)
-    assert counter.next() == 9
-    assert counter.next() == 10
-    assert counter.next() == 11
-    assert counter.next() == 12
-    assert counter.next() != 13
+    iter_count = iter(counter)
+    assert next(iter_count) == 9
+    assert next(iter_count) == 10
+    assert next(iter_count) == 11
+    assert next(iter_count) == 12
+
+    with pytest.raises(StopIteration):
+        next(iter_count)
