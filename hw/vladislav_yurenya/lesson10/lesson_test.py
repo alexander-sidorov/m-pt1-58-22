@@ -31,7 +31,7 @@ def test_02() -> None:
 
 
 def test_03() -> None:
-    for_json = User({"rabbit": None})
+    for_json = User({"rabbit": None})  # type: dict[str, None]
     js = for_json.to_json()
     assert js == '{"rabbit": null}'
     assert json.loads(js) == {"rabbit": None}
