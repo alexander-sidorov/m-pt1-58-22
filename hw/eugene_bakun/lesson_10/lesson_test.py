@@ -33,5 +33,5 @@ def test_task_05() -> None:
     assert json.loads(js) == {"name": "P"}
     js = petya.to_json()
 
-    assert js = '{"name" : "P"}'
-    assert json.loads(js) = {"name" : "P"}
+    assert js == '{"name" : "P"}'
+    assert json.loads(js) == {"name" : "P"}
