@@ -1,5 +1,5 @@
 class Counter:
-    def __init__(self, start: int, stop: int):
+    def __init__(self, start: int, stop: int) -> None:
         self.start = start
         self.stop = stop
         self.current = self.start
@@ -15,8 +15,8 @@ class Counter:
 
 
 class User:
-    def __init__(self, name: str) -> str:
-        return self.name
+    def __init__(self, name: str) -> None:
+        self.name = name
 
     def __str__(self) -> str:
         return self.name
@@ -26,4 +26,3 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
-
