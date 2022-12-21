@@ -1,3 +1,5 @@
+import json
+
 from hw.dmitry_mihkailiuk.lesson10.lesson import Counter
 from hw.dmitry_mihkailiuk.lesson10.lesson import User
 
@@ -7,6 +9,10 @@ def test_01() -> None:
     assert str(dim) == "Dim"
     assert dim.get_class_name() == "User"
     assert dim.get_hello_world() == "hello world"
+
+    js = dim.to_json()
+    assert js == '{"name": "Dim"}'
+    assert json.loads(js) == {"name": "Dim"}
 
 
 def test_02() -> None:
