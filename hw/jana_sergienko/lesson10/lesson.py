@@ -18,7 +18,7 @@ class User:
 
 
 class Counter:
-    def __init__(self, start: int, stop: int):
+    def __init__(self, start: int, stop: int) -> None:
         self.start = start
         self.stop = stop
         self.current: Optional[int] = None
@@ -30,8 +30,7 @@ class Counter:
         if self.current is None:
             self.current = self.start
 
-        if self.current > self.stop:
-            return self.stop
-
-        self.current = self.current, self.current + 1
+        if self.current < self.stop:
+            self.current += 1
+            return self.current
         raise StopIteration
