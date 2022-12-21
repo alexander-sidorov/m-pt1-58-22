@@ -41,7 +41,7 @@ def task_03_benchmark(func: Callable) -> Callable:
 def task_04_typecheck(func: Callable) -> Callable:
     @wraps
     def wrapper(**kwargs: Any) -> Any:
-        result_func = func(**kwargs)
+        func_result = func(**kwargs)
         an_func = func.__annotations__
         for key, value in kwargs.items():
             if an_func[key] is Any:
@@ -49,9 +49,9 @@ def task_04_typecheck(func: Callable) -> Callable:
             if not isinstance(value, an_func[key]):
                 raise TypeError(f"{value=!r} "
                                 f"is not of type {an_func[key]}")
-        if not isinstance(result_func, type(an_func["return"])):
-            raise TypeError(f"{result_func=!r} "
+        if not isinstance(func_result, type(an_func["return"])):
+            raise TypeError(f"{func_result=!r} "
                             f"is not of type {an_func['return']}")
-        return result_func
+        return func_result
 
     return wrapper
