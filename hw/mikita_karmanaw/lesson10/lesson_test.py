@@ -1,4 +1,4 @@
-import  json
+import json
 
 from hw.mikita_karmanaw.lesson10.lesson import Counter
 from hw.mikita_karmanaw.lesson10.lesson import User
@@ -10,15 +10,15 @@ def test_01() -> None:
     assert alice.get_hello_world() == "hello world"
     assert str(alice) == "Alice"
     alice_js = alice.to_json()
-    assert alice_js == "{'name': 'Alice'}"
-    assert json.loads(alice_js) == {'name': 'Alice'}
+    assert alice_js == '{"name": "Alice"}'
+    assert json.loads(alice_js) == {"name": "Alice"}
     bob = User("Bob")
     assert bob.get_class_name() == "User"
     assert bob.get_hello_world() == "hello world"
     assert str(bob) == "Bob"
     bob_js = bob.to_json()
-    assert bob_js == "{'name': 'Bob'}"
-    assert json.loads(bob_js) == {'name': 'Bob'}
+    assert bob_js == '{"name": "Bob"}'
+    assert json.loads(bob_js) == {"name": "Bob"}
 
 
 def test_02() -> None:
