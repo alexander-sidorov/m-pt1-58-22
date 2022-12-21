@@ -7,7 +7,10 @@ class User:
     def __init__(self, name: str):
         self.name = name
 
-    def get_name(self) -> str:
+    #def get_name(self) -> str:
+    #    return self.name
+
+    def __str__(self) -> str:
         return self.name
 
     def get_class_name(self) -> str:
@@ -32,3 +35,4 @@ class Counter:
 
         result, self.current = self.current, self.current + 1
         return result
+
