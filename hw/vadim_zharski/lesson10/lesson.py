@@ -1,4 +1,3 @@
-import json
 
 
 class User:
@@ -18,7 +17,7 @@ class User:
         return self.__hello_world
 
     def to_json(self) -> str:
-        ret_str = '{"name":"%s"}' % self.name
+        ret_str = '{"name":"%s"}' % self.name  # noqa: MOD001, S001
         return ret_str
 
 
