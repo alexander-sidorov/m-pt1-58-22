@@ -27,3 +27,5 @@ def test_02() -> None:
     assert next(count) == 11
     count_2 = Counter(-5, 3)
     assert list(count_2) == [-5, -4, -3, -2, -1, 0, 1, 2, 3]
+    count_2.cursor(-3)
+    assert list(count_2) == [-5, -4, -3, -2, -1, 0, 1, 2, 3]
