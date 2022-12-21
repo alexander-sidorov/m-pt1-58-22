@@ -23,6 +23,6 @@ def test_02() -> None:
     r2 = 2
     ctr2 = Counter(0, r2)
 
-    assert list(ctr1) == [0, 1, 3, 4]
-    assert list(ctr2) == [0, 1, 3, 4]
+    assert list(ctr1) == [0, 1]
+    assert list(ctr2) == [0, 1, 2]
 
