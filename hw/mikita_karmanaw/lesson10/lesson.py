@@ -23,14 +23,21 @@ class User:
 class Counter:
     def __init__(self, start: int, stop: int) -> None:
         self.start = start
+        self.current = self.start
         self.stop = stop
 
     def __iter__(self) -> "Counter":
         return self
 
     def __next__(self) -> int:
-        if self.start > self.stop:
+        if self.current > self.stop:
             raise StopIteration
         else:
-            start_temp, self.start = self.start, self.start + 1
-            return start_temp
+            current_temp, self.current = self.current, self.current + 1
+            return current_temp
+
+    def cursor(self, pointer: int) -> None:
+        if pointer < 0:
+            self.current = self.start
+        else:
+            self.current = self.start + pointer
