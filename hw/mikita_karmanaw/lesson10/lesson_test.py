@@ -7,10 +7,12 @@ def test_01() -> None:
     assert alice.get_class_name() == "User"
     assert alice.get_hello_world() == "hello world"
     assert str(alice) == "Alice"
+    assert alice.to_json() == "{'name': 'alice'}"
     bob = User("Bob")
     assert bob.get_class_name() == "User"
     assert bob.get_hello_world() == "hello world"
     assert str(bob) == "Bob"
+    assert bob.to_json() == "{'name': 'bob'}"
 
 
 def test_02() -> None:
