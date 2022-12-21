@@ -18,7 +18,7 @@ def test_01() -> None:
     assert str(bob) == "Bob"
     bob_js = bob.to_json()
     assert bob_js == "{'name': 'Bob'}"
-    assert json.loads(bob) == {'name': 'Bob'}
+    assert json.loads(bob_js) == {'name': 'Bob'}
 
 
 def test_02() -> None:
