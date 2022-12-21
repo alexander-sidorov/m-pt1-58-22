@@ -13,7 +13,7 @@ class Counter:
 
 
 class User:
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> str:
         return self.name
 
     def __str__(self) -> str:
