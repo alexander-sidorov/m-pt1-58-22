@@ -1,12 +1,13 @@
-def func():
+def func() -> int:
     return -1
 
 
-def decor(func):
-    def wrapper():
+def decor(func) -> None:
+    def wrapper() -> None:
         try:
             func()
-        except AssertionError:
+        except AssertionError:  # noqa: SIM105
             pass
         return None
+
     return None
