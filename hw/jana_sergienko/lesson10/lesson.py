@@ -21,7 +21,7 @@ class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start
         self.stop = stop
-        self.current: Optional[int] = None
+        self.current = self.start
 
     def __iter__(self) -> "Counter":
         return self
