@@ -1,7 +1,7 @@
-from typing import Any
 import time
+from typing import Any
+
 import pytest
-from typing import cast
 
 import hw.vadim_zharski.lesson09.tasks as tasks_les9
 
@@ -33,7 +33,7 @@ def test_02() -> None:
     [func_one() for _ in range(0, 4)]
     [(func_one(), func_two()) for _ in range(0, 5)]
 
-    assert func_one.__name__ == 'func_one'
+    assert func_one.__name__ == "func_one"
     assert counter_dict[func_one.__name__] == 9
     assert counter_dict[func_two.__name__] == 5
 
@@ -66,9 +66,9 @@ def test_03() -> None:
             ["x", 1],
         ],
         [
-            ([1, 'wq', 1],),
+            ([1, "wq", 1],),
             {},
-            [1, 'wq', 1],
+            [1, "wq", 1],
         ],
     ]
     func_res = list_append(data1)
@@ -101,17 +101,17 @@ def test_04() -> None:
 def test_05() -> None:
     @tasks_les9.typecheck
     def xxx(*, arg: int) -> None:
-        assert arg > 0 or arg <= 0
+        pass
 
     @tasks_les9.typecheck
     def yyy(*, arg: Any) -> None:
-        return cast(None, arg)
+        return arg  # type: ignore
 
     assert xxx(arg=10) is None
     assert yyy(arg=None) is None
 
     with pytest.raises(TypeError):
-        xxx("a")
+        xxx(arg="a")
 
     with pytest.raises(TypeError):
         yyy(arg="a")
