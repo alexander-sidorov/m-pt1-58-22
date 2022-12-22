@@ -1,4 +1,5 @@
 import json
+from typing import Any
 
 
 class User:
@@ -17,6 +18,10 @@ class User:
     def to_json(self) -> str:
         data = {"name": self.name}
         return json.dumps(data)
+
+    def save_json(self, func_json: Any) -> Any:
+        with open("data.json", "w") as f:
+            f.write(func_json)
 
 
 class Counter:

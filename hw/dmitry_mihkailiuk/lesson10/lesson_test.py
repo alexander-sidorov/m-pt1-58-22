@@ -14,6 +14,14 @@ def test_01() -> None:
     assert js == '{"name": "Dim"}'
     assert json.loads(js) == {"name": "Dim"}
 
+    dim.save_json(js)
+
+    with open("data.json") as f:
+        file_content = f.read()
+        file_json = json.loads(file_content)
+    assert file_content == '{"name": "Dim"}'
+    assert file_json == {"name": "Dim"}
+
 
 def test_02() -> None:
     ctr1 = Counter(0, 5)
