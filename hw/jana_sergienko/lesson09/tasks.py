@@ -39,19 +39,36 @@ def task_03_benchmark(func: Callable) -> Callable:
 
 
 def task_04_typecheck(func: Callable) -> Callable:
-    @wraps
-    def wrapper(**kwargs: Any) -> Any:
-        func_result = func(**kwargs)
-        an_func = func.__annotations__
+    @wraps(func)
+    def wrapper(**kwargs: dict) -> Any:
+        res = func(**kwargs)
+        annot = func.__annotations__
         for key, value in kwargs.items():
-            if an_func[key] is Any:
+            if annot[key] is Any:
                 continue
-            if not isinstance(value, an_func[key]):
-                raise TypeError(f"{value=!r} is not of type {an_func[key]}")
-        if not isinstance(func_result, type(an_func["return"])):
-            raise TypeError(
-                f"{func_result=!r} is not of type {an_func['return']}"
-            )
-        return func_result
+            if not isinstance(value, annot[key]):
+                raise TypeError(f"{value=!r} is not of type {annot[key]}")
+        if not isinstance(res, type(annot["return"])):
+            raise TypeError(f"{res=!r} is not of type {annot['return']}")
+        return res
 
     return wrapper
+
+
+def task_05_cache(cash: dict) -> Callable:
+    def dec(func: Callable) -> Callable:
+        @wraps(func)
+        def wrapper(*args: tuple, **kwargs: dict) -> Any:
+            runs = cash.get(func.__name__)
+            if runs is not None:
+                for run in runs:
+                    arg, kwarg, result = run
+                    if arg == args and kwarg == kwargs:
+                        return result
+            res = func(*args, **kwargs)
+            cash[func.__name__].append([args, kwargs, res])
+            return res
+
+        return wrapper
+
+    return dec

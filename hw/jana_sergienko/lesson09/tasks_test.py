@@ -1,4 +1,5 @@
 import time
+from collections import defaultdict
 from typing import Any
 
 import pytest
@@ -9,6 +10,7 @@ from hw.jana_sergienko.lesson09.tasks import task_01_do_twice
 from hw.jana_sergienko.lesson09.tasks import task_02_count_calls
 from hw.jana_sergienko.lesson09.tasks import task_03_benchmark
 from hw.jana_sergienko.lesson09.tasks import task_04_typecheck
+from hw.jana_sergienko.lesson09.tasks import task_05_cache
 
 
 @task_01_do_twice
@@ -67,3 +69,37 @@ def test_task_04_typecheck() -> None:
 
     with pytest.raises(TypeError):
         yyy(arg="a")
+
+
+def test_task_05_cache() -> None:
+    cache: dict = defaultdict(list)
+
+    @task_05_cache(cache)
+    def func1(arg: list) -> list:
+        arg.append(1)
+        return arg
+
+    data1: list = []
+    data2: list = ["x"]
+
+    [func1(data1) for _ in "123"]
+    [func1(data2) for _ in "123"]
+    assert cache.get(func1.__name__) == [
+        [
+            ([1],),
+            {},
+            [1],
+        ],
+        [
+            (["x", 1],),
+            {},
+            ["x", 1],
+        ],
+    ]
+
+    ret = func1(data1)
+    assert ret == [1]
+
+    cached_calls = cache.get(func1.__name__)
+    assert isinstance(cached_calls, list)
+    assert [([1],), {}, ret] in cached_calls
