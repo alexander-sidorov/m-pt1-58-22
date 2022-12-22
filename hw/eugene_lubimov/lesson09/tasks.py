@@ -55,21 +55,17 @@ def task_03_benchmark(benchmark: dict) -> Callable:
 
 
 def task_04_typecheck(func: Callable) -> Callable:
+    @wraps(func)
     def wrapper(**kwargs: dict) -> Any:
         res = func(**kwargs)
+        annot = func.__annotations__
         for key, value in kwargs.items():
-            if func.__annotations__[key] is Any:
+            if annot[key] is Any:
                 continue
-            if not isinstance(value, func.__annotations__[key]):
-                raise TypeError(
-                    f"{value=!r} is not of type {func.__annotations__[key]}"
-                )
-        if func.__annotations__["return"] is res:
-            return res
-        if not isinstance(res, func.__annotations__["return"]):
-            raise TypeError(
-                f"{res=!r} is not of type {func.__annotations__['return']}"
-            )
+            if not isinstance(value, annot[key]):
+                raise TypeError(f"{value=!r} is not of type {annot[key]}")
+        if not isinstance(res, type(annot["return"])):
+            raise TypeError(f"{res=!r} is not of type {annot['return']}")
         return res
 
     return wrapper
