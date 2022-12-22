@@ -14,7 +14,7 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
-    def to_json(self):
+    def to_json(self) -> str:
         return json.dumps({"name": self.name})
 
 
