@@ -35,3 +35,4 @@ def test_05() -> None:
 
     assert js == '{"name": "P"}'
     assert json.loads(js) == {"name": "P"}
+
