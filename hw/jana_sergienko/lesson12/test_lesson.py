@@ -1,9 +1,16 @@
 from hw.jana_sergienko.lesson12.lesson import task_01_urlsplit
 
+url = "vnc://user:pass@localhost:8000/s/cree/n1?q=2#x"
+
 
 def test_task_01_urlsplit() -> None:
-    comps = task_01_urlsplit('http://user:password@host:1234/resourse')
-    assert comps("scheme") == "http"
-    assert comps("userinfo") == "user:password"
-    assert comps("host") == "host"
-    assert comps("port") == "1234"
+    assert task_01_urlsplit(url) == {
+        "scheme": "vnc",
+        "user": "user",
+        "password": "pass",
+        "host": "localhost",
+        "port": 8000,
+        "path": "/s/cree/n1",
+        "query": "q=2",
+        "fragment": "x",
+    }
