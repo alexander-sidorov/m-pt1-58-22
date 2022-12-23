@@ -15,7 +15,7 @@ def task_01_urlsplit(url: str) -> dict:
     ditail = url.split(separators[0], maxsplit=1)
     schema[syntax_name[0]] = ditail[0]
     url = ditail[1]
-    last_separator = 1
+    last_separator = 3
 
     if "@" in url:
         ditail = url.split(separators[1], maxsplit=1)
@@ -52,7 +52,4 @@ def task_01_urlsplit(url: str) -> dict:
 
     schema[syntax_name[last_separator]] = url
 
-
     return schema
-
-print(task_01_urlsplit("https://github.com/alexander-sidorov/m-pt1-58-22/pulls"))

@@ -10,3 +10,7 @@ def test_task_1() -> None:
     assert schema["port"] == "8000"
     assert schema["path"] == "s/cree/n1"
     assert schema["query"] == "q=2"
+    assert schema["fragment"] == "x"
+    schema = task_01_urlsplit("https://github.com")
+    assert schema["scheme"] == "https"
+    assert schema["host"] == "github.com"
