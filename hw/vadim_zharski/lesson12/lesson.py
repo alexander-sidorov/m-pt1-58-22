@@ -48,12 +48,12 @@ class Request:
         self.__body = body
 
 
-def main():
-    test_url = UrlParser("http://user:password@host:1234/resourse")
-    next_url = UrlParser("vnc://user:pass@localhost:8000/s/cree/n1?q=2#x")
-    print(str(next_url))
-    print(next_url.splitter())
-
-
-if __name__ == "__main__":
-    main()
+# def main():
+#     test_url = UrlParser("http://user:password@host:1234/resourse")
+#     next_url = UrlParser("vnc://user:pass@localhost:8000/s/cree/n1?q=2#x")
+#     print(str(next_url))
+#     print(next_url.splitter())
+#
+#
+# if __name__ == "__main__":
+#     main()
