@@ -12,5 +12,5 @@ def test_01_urlsplit() -> None:
         "port": "8000",
         "query": "q=2",
         "fragment": "x",
-        "path": "/s/cree/n1"
+        "path": "/s/cree/n1",
     }

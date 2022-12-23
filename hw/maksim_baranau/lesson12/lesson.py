@@ -6,8 +6,8 @@ def task_01_urlsplit(url: str) -> dict:
     netloc = dict_url[1]
     netloc_dict = {
         "user": netloc[: netloc.find(":")],
-        "password": netloc[netloc.find(":") + 1: netloc.find("@")],
-        "host": netloc[netloc.find("@") + 1: -5],
+        "password": netloc[netloc.find(":") + 1 : netloc.find("@")],
+        "host": netloc[netloc.find("@") + 1 : -5],
         "port": netloc[-4:],
     }
     dict_url1 = {
