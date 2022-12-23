@@ -1,3 +1,6 @@
+import json
+
+
 class User:
 
     __hello_world: str = "hello world"
@@ -5,7 +8,7 @@ class User:
     def __init__(self, name: str):
         self.name = name
 
-    def get_name(self) -> str:
+    def __str__(self) -> str:
         return self.name
 
     def get_class_name(self) -> str:
@@ -14,6 +17,9 @@ class User:
     def get_hello_world(self) -> str:
         return self.__hello_world
 
+    def to_json(self) -> str:
+        return json.dumps({"name": self.name})
+
 
 class Counter:
     def __init__(self, start_pos: int, final_pos: int):
@@ -21,7 +27,12 @@ class Counter:
         self.__final_pos = final_pos
         self.__result = start_pos
 
-    def next(self) -> int:  # noqa: A003
-        if self.__result < self.__final_pos:
-            self.__result = self.__result + 1
-        return self.__result
+    def __iter__(self) -> "Counter":
+        return self
+
+    def __next__(self) -> int:  # noqa: A003
+        if self.__result > self.__final_pos:
+            raise StopIteration
+
+        result, self.__result = self.__result, self.__result + 1
+        return result
