@@ -1,7 +1,5 @@
 import json
 
-import pytest
-
 from hw.vadim_zharski.lesson10.lesson import Counter
 from hw.vadim_zharski.lesson10.lesson import User
 
@@ -20,17 +18,10 @@ def test_01() -> None:
     assert vasya.__str__() == "Vasya"
 
     js = petya.to_json()
-    assert js == '{"name":"Petya"}'
+    assert js == '{"name": "Petya"}'
     assert json.loads(js) == {"name": "Petya"}
 
 
 def test_02() -> None:
-    counter = Counter(8, 12)
-    iter_count = iter(counter)
-    assert next(iter_count) == 9
-    assert next(iter_count) == 10
-    assert next(iter_count) == 11
-    assert next(iter_count) == 12
-
-    with pytest.raises(StopIteration):
-        next(iter_count)
+    assert list(Counter(8, 12)) == [8, 9, 10, 11, 12]
+    assert list(Counter(-2, 2)) == [-2, -1, 0, 1, 2]

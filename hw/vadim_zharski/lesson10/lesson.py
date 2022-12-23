@@ -1,3 +1,6 @@
+import json
+
+
 class User:
 
     __hello_world: str = "hello world"
@@ -15,8 +18,7 @@ class User:
         return self.__hello_world
 
     def to_json(self) -> str:
-        ret_str = '{"name":"%s"}' % self.name  # noqa: MOD001, S001
-        return ret_str
+        return json.dumps({"name": self.name})
 
 
 class Counter:
@@ -29,7 +31,8 @@ class Counter:
         return self
 
     def __next__(self) -> int:  # noqa: A003
-        if self.__result < self.__final_pos:
-            self.__result = self.__result + 1
-            return self.__result
-        raise StopIteration
+        if self.__result > self.__final_pos:
+            raise StopIteration
+
+        result, self.__result = self.__result, self.__result + 1
+        return result
