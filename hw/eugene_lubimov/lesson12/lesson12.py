@@ -29,11 +29,11 @@ class Request:
         return self.req[0].split()[2]
 
     def headers(self) -> dict:
-        self.headers = {}
+        self.headers_dict: dict = {}
         for head in self.req[1:-3]:
-            head = head.split(": ")
-            self.headers[head[0]] = head[1]
-        return self.headers
+            head1: list = head.split(": ")
+            self.headers_dict[head1[0]] = head1[1]
+        return self.headers_dict
 
     def body(self) -> str:
         return self.req[-1]
@@ -48,6 +48,3 @@ User-Agent: HTTPie/3.2.1
 
 
 """
-
-for i in req.split("\n")[1:-3]:
-    print(i)
