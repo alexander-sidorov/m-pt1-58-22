@@ -49,5 +49,5 @@ User-Agent: HTTPie/3.2.1
 
 """
 
-for i in req.split('\n')[1:-3]:
+for i in req.split("\n")[1:-3]:
     print(i)
