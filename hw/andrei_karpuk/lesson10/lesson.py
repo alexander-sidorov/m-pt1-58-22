@@ -18,7 +18,6 @@ class User:
         return json.dumps({"name": self.name})
 
 
-
 class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start
