@@ -1,9 +1,15 @@
-import urllib.parse
+from urllib.parse import urlparse
 
 
 def task_01_urlsplit(url: str) -> dict:
-    base_url = 'http://user:password@host:1234/resourse'
-    url_path = dict(urllib.parse.urlsplit(base_url))
-
-    return url_path
-
+    url_var = urlparse(url)
+    return {
+        "scheme": url_var.scheme,
+        "user": url_var.username,
+        "password": url_var.password,
+        "host": url_var.hostname,
+        "port": url_var.port,
+        "path": url_var.path,
+        "query": url_var.query,
+        "fragment": url_var.fragment,
+    }
