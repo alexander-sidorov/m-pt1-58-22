@@ -44,3 +44,30 @@ def task_01_urlsplit(url: str) -> dict:  # noqa: CCR001
     else:
         pass
     return url_dict
+
+class Request:
+    def __init__(self, req: str):
+        self.rq = req
+        self.headers_dict = {}
+        self.body = None
+    def request_to_dict(self):
+        req = self.rq
+        headers = req.splitlines()
+        head_tup = tuple(headers[0].split())
+        self.method, self.path, self.version = head_tup
+        headers.remove(headers[0])
+        for header in headers:
+            head = header.partition(": ")
+            self.headers_dict.update({head[0]: head[2]})
+        return None
+
+f=Request(
+    """GET /alexander-sidorov/m-pt-1-58-22 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-agent: HTTPie/3.2.1
+""")
+f.request_to_dict()
+print(f.headers_dict)
