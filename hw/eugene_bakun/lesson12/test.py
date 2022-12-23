@@ -14,3 +14,4 @@ def test_01_urlsplit() -> None:
         "query": "q=2",
         "fragment": "x",
     }
+
