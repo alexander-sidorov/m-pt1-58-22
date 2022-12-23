@@ -1,3 +1,6 @@
+import json
+
+
 class User:
     def __init__(self, name: str):
         self.name = name
@@ -10,6 +13,10 @@ class User:
 
     def get_hello_world(self) -> str:
         return "hello world"
+
+    def to_json(self) -> str:
+        return json.dumps({"name": self.name})
+
 
 
 class Counter:
