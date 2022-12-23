@@ -13,3 +13,14 @@ def task_01_urlsplit(url: str) -> dict:
         "query": url_cort.query,
         "fragment": url_cort.fragment,
     }
+
+
+class Request:
+    __init__git
+
+GET /alexander-sidorov/m-pt1-58-22 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
