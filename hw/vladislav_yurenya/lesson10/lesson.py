@@ -5,7 +5,7 @@ class User:
     def __init__(self, name: str | None):
         self.name = name
 
-    def __str__(self) -> str:
+    def __str__(self) -> str | None:
         return self.name
 
     def get_class_name(self) -> str:
@@ -14,7 +14,7 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
-    def to_json(self) -> str:
+    def to_json(self) -> str | None:
         return json.dumps({"rabbit": self.name})
 
 

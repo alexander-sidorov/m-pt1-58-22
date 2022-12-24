@@ -16,8 +16,8 @@ def test_01() -> None:
 
 
 def test_02() -> None:
-    count = Counter(3, 7)
     assert list(Counter(3, 5)) == [3, 4, 5]
+    assert list(Counter(6, 10)) == [6, 7, 8, 9, 10]
 
 
 def test_03() -> None:
