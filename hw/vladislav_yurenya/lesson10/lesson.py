@@ -2,10 +2,10 @@ import json
 
 
 class User:
-    def __init__(self, name: str | None):
+    def __init__(self, name: str):
         self.name = name
 
-    def __str__(self) -> str | None:
+    def __str__(self) -> str:
         return self.name
 
     def get_class_name(self) -> str:
@@ -14,7 +14,7 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
-    def to_json(self) -> str | None:
+    def to_json(self) -> str:
         return json.dumps({"rabbit": self.name})
 
 
