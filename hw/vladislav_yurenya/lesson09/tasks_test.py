@@ -34,21 +34,27 @@ def test_03() -> None:
     assert abs(dt - 1) < 0.1
 
 
-def test_04() -> None:
-    @task_04_typecheck
-    def xxx(*, arg: int) -> None:
-        assert arg > 0 or arg <= 0
+@task_04_typecheck
+def f(*, a: int, b: int) -> int:
+    return b * a
 
-    @task_04_typecheck
-    def yyy(*, arg: Any) -> None:
-        return cast(None, arg)
 
-    assert xxx(arg=10) is None
-    assert yyy(arg=None) is None
+@task_04_typecheck
+def g() -> int:
+    return "1"  # type: ignore
+
+
+import pytest
+
+
+def test_04():
+    assert f(a=2, b=3) == 6
+
     with pytest.raises(TypeError):
-        xxx(arg="a")
+        f(a=2, b=0.2)  # type: ignore
+
     with pytest.raises(TypeError):
-        yyy(arg="a")
+        g()
 
 
 @task_05_cache
