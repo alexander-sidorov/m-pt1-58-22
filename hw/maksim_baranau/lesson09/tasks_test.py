@@ -4,11 +4,11 @@ from typing import cast
 
 import pytest
 
-from tasks import dec
-from tasks import task_01_do_twice
-from tasks import task_03_benchmark
-from tasks import task_04_typecheck
-from tasks import task_05_cache
+from hw.maksim_baranau.lesson09.tasks import dec
+from hw.maksim_baranau.lesson09.tasks import task_01_do_twice
+from hw.maksim_baranau.lesson09.tasks import task_03_benchmark
+from hw.maksim_baranau.lesson09.tasks import task_04_typecheck
+from hw.maksim_baranau.lesson09.tasks import task_05_cache
 
 
 def test_01() -> None:
