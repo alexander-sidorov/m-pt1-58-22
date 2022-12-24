@@ -20,18 +20,11 @@ def test_01() -> None:
 def test_02() -> None:
     count = Counter(3, 7)
     iteration = iter(count)
-    assert next(iteration) == 3
-    assert next(iteration) == 4
-    assert next(iteration) == 5
-    assert next(iteration) == 6
-    assert next(iteration) == 7
-
-    with pytest.raises(StopIteration):
-        next(iteration)
+    assert list(Counter(3, 5)) == [3, 4, 5]
 
 
 def test_03() -> None:
-    for_json = User({"rabbit": None})  # type: ignore[arg-type]
+    for_json = User(None)
     js = for_json.to_json()
     assert js == '{"rabbit": null}'
     assert json.loads(js) == {"rabbit": None}
