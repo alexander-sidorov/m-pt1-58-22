@@ -13,25 +13,33 @@ class Url:
         self.path: None | str = None
         self.query: None | str = None
         self.fragment: None | str = None
-        self.scheme = url[: url.find("://")]
-        url_no_scheme = url[url.find("://") + 3:]  # noqa: BLK100
+        url_scheme_pos = url.find("://")
+        self.scheme = url[:url_scheme_pos]
+        scheme_cut_pos = url_scheme_pos + 3
+        url_no_scheme = url[scheme_cut_pos:]
         if ("/" in url_no_scheme) or (
             ("?" in url_no_scheme) and ("/" not in url_no_scheme)
         ):
             try:
-                access_data = url_no_scheme[: url_no_scheme.index("/")]
-                request_data = url_no_scheme[url_no_scheme.index("/"):]
+                cut_request_pos = url_no_scheme.index("/")
+                access_data = url_no_scheme[:cut_request_pos]
+                request_data = url_no_scheme[cut_request_pos:]
             except ValueError:
-                access_data = url_no_scheme[: url_no_scheme.index("?")]
-                request_data = url_no_scheme[url_no_scheme.index("?"):]
+                cut_request_pos = url_no_scheme.index("?")
+                access_data = url_no_scheme[:cut_request_pos]
+                request_data = url_no_scheme[cut_request_pos:]
             if "#" in request_data:
-                self.fragment = request_data[request_data.find("#") + 1:]
-                request_data = request_data[: request_data.find("#")]
+                frag_pos = request_data.find("#")
+                frag_cut_pos = frag_pos + 1
+                self.fragment = request_data[frag_cut_pos:]
+                request_data = request_data[:frag_pos]
             else:
                 pass
             if "?" in request_data:
-                self.query = request_data[request_data.find("?") + 1:]
-                request_data = request_data[: request_data.find("?")]
+                query_pos = request_data.find("?")
+                query_cut_pos = query_pos + 1
+                self.query = request_data[query_cut_pos:]
+                request_data = request_data[:query_pos]
             else:
                 pass
             self.path = request_data
@@ -40,18 +48,24 @@ class Url:
         else:
             access_data = url_no_scheme
         if "@" in access_data:
-            user_data = access_data[: access_data.find("@")]
-            host_data = access_data[access_data.find("@") + 1:]
+            host_pos = access_data.find("@")
+            host_cut_pos = host_pos + 1
+            user_data = access_data[:host_pos]
+            host_data = access_data[host_cut_pos:]
             if ":" in user_data:
-                self.username = user_data[: user_data.find(":")]
-                self.password = user_data[user_data.find(":") + 1:]
+                pass_pos = user_data.find(":")
+                pass_cut_pos = pass_pos + 1
+                self.username = user_data[:pass_pos]
+                self.password = user_data[pass_cut_pos:]
             else:
                 self.username = user_data
         else:
             host_data = access_data
         if ":" in host_data:
-            self.host = host_data[: host_data.find(":")]
-            self.port = int(host_data[host_data.find(":") + 1:])
+            port_pos = host_data.find(":")
+            port_cut_pos = port_pos + 1
+            self.host = host_data[:port_pos]
+            self.port = int(host_data[port_cut_pos:])
         else:
             self.host = host_data
 
@@ -63,7 +77,8 @@ class HttpRequest:
         self.http_version: None | str = None
         self.headers: dict[str, str] = {}
         self.body: None | str = None
-        self.body = req[req.find("\n\n") + 2:]
+        body_cut_pos = req.find("\n\n") + 2
+        self.body = req[body_cut_pos:]
         if self.body == "":
             self.body = None
         req = req[: req.find("\n\n")]
@@ -83,17 +98,20 @@ class HttpResponse:
         self.http_version: None | str = None
         self.headers: dict[str, str | int] = {}
         self.body: None | str = None
-        self.body = resp[resp.find("\n\n") + 2:]
+        body_cut_pos = resp.find("\n\n") + 2
+        self.body = resp[body_cut_pos:]
         if self.body == "":
             self.body = None
         resp = resp[: resp.find("\n\n")]
         lines = resp.splitlines()
         head = lines[0]
         self.http_version = head.partition(" ")[0]
-        head = head[len(self.http_version) + 1:]
+        head_cut_pos = len(self.http_version) + 1
+        head = head[head_cut_pos:]
         code = head.partition(" ")[0]
         self.status_code = int(code)
-        self.reason = head[len(code) + 1:].title()
+        reason_cut_pos = len(code) + 1
+        self.reason = head[reason_cut_pos:].title()
         del lines[0]
         for line in lines:
             value: int | str

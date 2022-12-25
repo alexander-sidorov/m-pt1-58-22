@@ -3,12 +3,13 @@ from hw.mikita_karmanaw.lesson12.lesson import HttpResponse
 from hw.mikita_karmanaw.lesson12.lesson import Url
 
 
-def task_01_test() -> None:
+def test_task_01() -> None:
     url1 = Url("http://google.com")
     url2 = Url("postgresql://u:p@db:5432/dbname?opt=1&xyz=2#f")
     url3 = Url("vnc://user@host?query=q")
     url4 = Url("vnc://user@host/?query=q")
     url5 = Url("ftp://a.b.c.host/p/a/t/h?query=q&f=f#f")
+    url6 = Url("http://site.by/page")
 
     assert url1.scheme == "http"
     assert url1.username is None
@@ -55,9 +56,18 @@ def task_01_test() -> None:
     assert url5.query == "query=q&f=f"
     assert url5.fragment == "f"
 
+    assert url6.scheme == "http"
+    assert url6.username is None
+    assert url6.password is None
+    assert url6.host == "site.by"
+    assert url6.port is None
+    assert url6.path == "/page"
+    assert url6.query is None
+    assert url6.fragment is None
 
-def task_02_test() -> None:
-    message = """HEAD / HTTP/1.1
+
+def test_task_02() -> None:
+    message1 = """HEAD / HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
@@ -66,7 +76,7 @@ User-Agent: HTTPie/3.2.1
 
 """
 
-    req = HttpRequest(message)
+    req = HttpRequest(message1)
 
     assert req.method == "HEAD"
     assert req.path == "/"
@@ -80,8 +90,31 @@ User-Agent: HTTPie/3.2.1
     }
     assert req.body is None
 
+    message2 = """HEAD / HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
 
-def task_03_test() -> None:
+body"""
+
+    rq = HttpRequest(message2)
+
+    assert rq.method == "HEAD"
+    assert rq.path == "/"
+    assert rq.http_version == "HTTP/1.1"
+    assert rq.headers == {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Host": "github.com",
+        "User-Agent": "HTTPie/3.2.1",
+    }
+    assert rq.body == "body"
+
+
+def test_task_03() -> None:
     message1 = """HTTP/1.1 404 NOT FOUND
 Content-Length: 48
 Content-Type: application/json
@@ -126,3 +159,15 @@ Server: gunicorn/19.9.0
 
     assert resp3.is_valid()
     assert resp3.json() is None
+
+    message4 = """HTTP/1.1 404 NOT FOUND
+Content-Length: 48
+Content-Type: application/json
+Server: gunicorn/19.9.0
+
+"""
+
+    resp4 = HttpResponse(message4)
+
+    assert resp4.body is None
+    assert resp4.json() is None
