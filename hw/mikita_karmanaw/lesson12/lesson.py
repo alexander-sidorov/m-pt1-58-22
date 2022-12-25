@@ -19,19 +19,11 @@ class Url:
             ("?" in url_without_scheme) and ("/" not in url_without_scheme)
         ):
             try:
-                access_data = url_without_scheme[
-                    : url_without_scheme.index("/")
-                ]
-                request_data = url_without_scheme[
-                    url_without_scheme.index("/"):
-                ]
+                access_data = url_without_scheme[: url_without_scheme.index("/")]
+                request_data = url_without_scheme[url_without_scheme.index("/"):]
             except ValueError:
-                access_data = url_without_scheme[
-                    : url_without_scheme.index("?")
-                ]
-                request_data = url_without_scheme[
-                    url_without_scheme.index("?"):
-                ]
+                access_data = url_without_scheme[: url_without_scheme.index("?")]
+                request_data = url_without_scheme[url_without_scheme.index("?"):]
             if "#" in request_data:
                 self.fragment = request_data[request_data.find("#") + 1:]
                 request_data = request_data[: request_data.find("#")]
@@ -111,17 +103,14 @@ class HttpResponse:
             self.headers[header] = value
 
     def is_valid(self) -> bool:
-        return (
-            self.body is not None
-            and len(self.body) == self.headers.get("Content-Length", 0)
+        return self.body is not None and len(self.body) == self.headers.get(
+            "Content-Length", 0
         )
 
     def json(self) -> Any:
         if self.body is None:
             return None
-
         content_type = cast(str, self.headers.get("Content-Type", ""))
         if "application/json" in content_type:
             return json.loads(self.body)
-
         return None
