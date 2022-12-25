@@ -14,16 +14,16 @@ class Url:
         self.query: None | str = None
         self.fragment: None | str = None
         self.scheme = url[: url.find("://")]
-        url_without_scheme = url[url.find("://") + 3:]  # noqa: BLK100
-        if ("/" in url_without_scheme) or (
-            ("?" in url_without_scheme) and ("/" not in url_without_scheme)
+        url_no_scheme = url[url.find("://") + 3:]  # noqa: BLK100
+        if ("/" in url_no_scheme) or (
+            ("?" in url_no_scheme) and ("/" not in url_no_scheme)
         ):
             try:
-                access_data = url_without_scheme[: url_without_scheme.index("/")]
-                request_data = url_without_scheme[url_without_scheme.index("/"):]
+                access_data = url_no_scheme[: url_no_scheme.index("/")]
+                request_data = url_no_scheme[url_no_scheme.index("/"):]
             except ValueError:
-                access_data = url_without_scheme[: url_without_scheme.index("?")]
-                request_data = url_without_scheme[url_without_scheme.index("?"):]
+                access_data = url_no_scheme[: url_no_scheme.index("?")]
+                request_data = url_no_scheme[url_no_scheme.index("?"):]
             if "#" in request_data:
                 self.fragment = request_data[request_data.find("#") + 1:]
                 request_data = request_data[: request_data.find("#")]
@@ -38,7 +38,7 @@ class Url:
             if self.path == "":
                 self.path = None
         else:
-            access_data = url_without_scheme
+            access_data = url_no_scheme
         if "@" in access_data:
             user_data = access_data[: access_data.find("@")]
             host_data = access_data[access_data.find("@") + 1:]
