@@ -1,73 +1,117 @@
-def task_01_urlsplit(url: str) -> dict:  # noqa: CCR001
-    url_dict: dict[str, str | int] = {}
-    scheme = url[: url.find("://")]
-    url_dict.update({"scheme": scheme})
-    url = url[url.find("://") + 3:]
-    user_data = url[: url.find("@")]
-    if ":" in user_data:
-        user_login = user_data[: user_data.find(":")]
-        user_password = user_data[user_data.find(":") + 1:]
-        url_dict.update({"user": user_login, "password": user_password})
-    else:
-        user_login = user_data
-        url_dict.update({"user": user_login})
-    url = url[url.find("@") + 1:]
-    host_data = url[: url.find("/")]
-    if ":" in host_data:
-        port = host_data[host_data.find(":") + 1:]
-        host = host_data[: host_data.find(":")]
-        url_dict.update({"port": int(port), "host": host})
-    else:
-        host = host_data
-        url_dict.update({"host": host})
-    if "/" in url:
-        if "?" in url:
-            path = url[url.find("/"): url.find("?")]
-            if "#" in url:
-                query = url[url.find("?") + 1: url.find("#")]
-                fragment = url[url.find("#") + 1:]
-                url_dict.update({
-                    "query": query,
-                    "fragment": fragment,
-                    "path": path
-                })
+import json
+
+
+class Url:
+    def __init__(self, url: str) -> None:
+        self.scheme: None | str = None
+        self.username: None | str = None
+        self.password: None | str = None
+        self.host: None | str = None
+        self.port: None | int = None
+        self.path: None | str = None
+        self.query: None | str = None
+        self.fragment: None | str = None
+        self.scheme = url[: url.find("://")]
+        url_without_scheme = url[url.find("://") + 3 :]
+        if ("/" in url_without_scheme) or (
+            ("?" in url_without_scheme) and ("/" not in url_without_scheme)
+        ):
+            try:
+                access_data = url_without_scheme[
+                    : url_without_scheme.index("/")
+                ]
+                request_data = url_without_scheme[
+                    url_without_scheme.index("/") :
+                ]
+            except ValueError:
+                access_data = url_without_scheme[
+                    : url_without_scheme.index("?")
+                ]
+                request_data = url_without_scheme[
+                    url_without_scheme.index("?") :
+                ]
+            if "#" in request_data:
+                self.fragment = request_data[request_data.find("#") + 1 :]
+                request_data = request_data[: request_data.find("#")]
             else:
-                query = url[url.find("?") + 1:]
-                url_dict.update({"query": query, "path": path})
-        elif "#" in url:
-            path = url[url.find("/"): url.find("#")]
-            fragment = url[url.find("#") + 1:]
-            url_dict.update({"path": path, "fragment": fragment})
+                pass
+            if "?" in request_data:
+                self.query = request_data[request_data.find("?") + 1 :]
+                request_data = request_data[: request_data.find("?")]
+            else:
+                pass
+            self.path = request_data
+            if self.path == "":
+                self.path = None
         else:
-            path = url
-            url_dict.update({"path": path})
-    else:
-        pass
-    return url_dict
+            access_data = url_without_scheme
+        if "@" in access_data:
+            user_data = access_data[: access_data.find("@")]
+            host_data = access_data[access_data.find("@") + 1 :]
+            if ":" in user_data:
+                self.username = user_data[: user_data.find(":")]
+                self.password = user_data[user_data.find(":") + 1 :]
+            else:
+                self.username = user_data
+        else:
+            host_data = access_data
+        if ":" in host_data:
+            self.host = host_data[: host_data.find(":")]
+            self.port = int(host_data[host_data.find(":") + 1 :])
+        else:
+            self.host = host_data
 
-class Request:
-    def __init__(self, req: str):
-        self.rq = req
-        self.headers_dict = {}
-        self.body = None
-    def request_to_dict(self):
-        req = self.rq
-        headers = req.splitlines()
-        head_tup = tuple(headers[0].split())
-        self.method, self.path, self.version = head_tup
-        headers.remove(headers[0])
-        for header in headers:
-            head = header.partition(": ")
-            self.headers_dict.update({head[0]: head[2]})
-        return None
 
-f=Request(
-    """GET /alexander-sidorov/m-pt-1-58-22 HTTP/1.1
-Accept: */*
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Host: github.com
-User-agent: HTTPie/3.2.1
-""")
-f.request_to_dict()
-print(f.headers_dict)
+class HttpRequest:
+    def __init__(self, req: str) -> None:
+        self.method: None | str = None
+        self.path: None | str = None
+        self.http_version: None | str = None
+        self.headers: dict[str, str] = {}
+        self.body: None | str = None
+        self.body = req[req.find("\n\n") + 2 :]
+        if self.body == "":
+            self.body = None
+        req = req[: req.find("\n\n")]
+        lines = req.splitlines()
+        head = lines[0].split(" ")
+        self.method, self.path, self.http_version = head[0], head[1], head[2]
+        del lines[0]
+        for line in lines:
+            header = line.split(": ")
+            self.headers.update({header[0]: header[1]})
+
+
+class HttpResponse:
+    def __init__(self, resp: str) -> None:
+        self.status_code: None | int = None
+        self.reason: None | str = None
+        self.http_version: None | str = None
+        self.headers: dict[str, str | int] = {}
+        self.body: None | str = None
+        self.body = resp[resp.find("\n\n") + 2 :]
+        if self.body == "":
+            self.body = None
+        resp = resp[: resp.find("\n\n")]
+        lines = resp.splitlines()
+        head = lines[0]
+        self.http_version = head.partition(" ")[0]
+        head = head[len(self.http_version) + 1 :]
+        code = head.partition(" ")[0]
+        self.status_code = int(code)
+        self.reason = head[len(code) + 1 :].title()
+        del lines[0]
+        for line in lines:
+            header = line.split(": ")
+            if header[1].isdigit():
+                header[1] = int(header[1])
+            self.headers.update({header[0]: header[1]})
+
+    def is_valid(self) -> bool:
+        return len(self.body) == self.headers["Content-Length"]
+
+    def json(self) -> dict | None:
+        if "json" in self.headers["Content-Type"]:
+            return json.loads(self.body)
+        else:
+            return None
