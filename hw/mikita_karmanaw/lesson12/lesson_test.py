@@ -21,7 +21,7 @@ def task_01_test() -> None:
 
     assert url2.scheme == "postgresql"
     assert url2.username == "u"
-    assert url2.password == "p"
+    assert url2.password == "p"  # noqa: S105
     assert url2.host == "db"
     assert url2.port == 5432
     assert url2.path == "/dbname"

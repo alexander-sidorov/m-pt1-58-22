@@ -2,7 +2,7 @@ import json
 
 
 class Url:
-    def __init__(self, url: str) -> None:
+    def __init__(self, url: str) -> None:  # noqa: CCR001
         self.scheme: None | str = None
         self.username: None | str = None
         self.password: None | str = None
@@ -12,7 +12,7 @@ class Url:
         self.query: None | str = None
         self.fragment: None | str = None
         self.scheme = url[: url.find("://")]
-        url_without_scheme = url[url.find("://") + 3 :]
+        url_without_scheme = url[url.find("://") + 3:]
         if ("/" in url_without_scheme) or (
             ("?" in url_without_scheme) and ("/" not in url_without_scheme)
         ):
@@ -21,22 +21,22 @@ class Url:
                     : url_without_scheme.index("/")
                 ]
                 request_data = url_without_scheme[
-                    url_without_scheme.index("/") :
+                    url_without_scheme.index("/"):
                 ]
             except ValueError:
                 access_data = url_without_scheme[
                     : url_without_scheme.index("?")
                 ]
                 request_data = url_without_scheme[
-                    url_without_scheme.index("?") :
+                    url_without_scheme.index("?"):
                 ]
             if "#" in request_data:
-                self.fragment = request_data[request_data.find("#") + 1 :]
+                self.fragment = request_data[request_data.find("#") + 1:]
                 request_data = request_data[: request_data.find("#")]
             else:
                 pass
             if "?" in request_data:
-                self.query = request_data[request_data.find("?") + 1 :]
+                self.query = request_data[request_data.find("?") + 1:]
                 request_data = request_data[: request_data.find("?")]
             else:
                 pass
@@ -47,17 +47,17 @@ class Url:
             access_data = url_without_scheme
         if "@" in access_data:
             user_data = access_data[: access_data.find("@")]
-            host_data = access_data[access_data.find("@") + 1 :]
+            host_data = access_data[access_data.find("@") + 1:]
             if ":" in user_data:
                 self.username = user_data[: user_data.find(":")]
-                self.password = user_data[user_data.find(":") + 1 :]
+                self.password = user_data[user_data.find(":") + 1:]
             else:
                 self.username = user_data
         else:
             host_data = access_data
         if ":" in host_data:
             self.host = host_data[: host_data.find(":")]
-            self.port = int(host_data[host_data.find(":") + 1 :])
+            self.port = int(host_data[host_data.find(":") + 1:])
         else:
             self.host = host_data
 
@@ -69,7 +69,7 @@ class HttpRequest:
         self.http_version: None | str = None
         self.headers: dict[str, str] = {}
         self.body: None | str = None
-        self.body = req[req.find("\n\n") + 2 :]
+        self.body = req[req.find("\n\n") + 2:]
         if self.body == "":
             self.body = None
         req = req[: req.find("\n\n")]
@@ -89,17 +89,17 @@ class HttpResponse:
         self.http_version: None | str = None
         self.headers: dict[str, str | int] = {}
         self.body: None | str = None
-        self.body = resp[resp.find("\n\n") + 2 :]
+        self.body = resp[resp.find("\n\n") + 2:]
         if self.body == "":
             self.body = None
         resp = resp[: resp.find("\n\n")]
         lines = resp.splitlines()
         head = lines[0]
         self.http_version = head.partition(" ")[0]
-        head = head[len(self.http_version) + 1 :]
+        head = head[len(self.http_version) + 1:]
         code = head.partition(" ")[0]
         self.status_code = int(code)
-        self.reason = head[len(code) + 1 :].title()
+        self.reason = head[len(code) + 1:].title()
         del lines[0]
         for line in lines:
             header = line.split(": ")
