@@ -1,6 +1,4 @@
 import time
-from typing import Any
-from typing import cast
 
 import pytest
 
@@ -44,14 +42,11 @@ def g() -> int:
     return "1"  # type: ignore
 
 
-import pytest
-
-
-def test_04():
+def test_04() -> None:
     assert f(a=2, b=3) == 6
 
     with pytest.raises(TypeError):
-        f(a=2, b=0.2)  # type: ignore
+        f(a=2, b=0.2)
 
     with pytest.raises(TypeError):
         g()
