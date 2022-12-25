@@ -1,50 +1,98 @@
-from urllib.parse import urlparse
+import json
 
 
-def pars_url(url: str) -> dict:
-    pars = urlparse(url)
-    return {
-        "scheme": pars.scheme,
-        "user": pars.username,
-        "password": pars.password,
-        "host": pars.hostname,
-        "port": pars.port,
-        "path": pars.path,
-        "query": pars.query,
-        "fragment": pars.fragment,
-    }
+class Url:
+    def __init__(self, url: str) -> None:  # noqa: CCR001
+        self.scheme, other = url.split("://")
+        if "@" in other:
+            userinfo, other = other.split("@")
+            if ":" in userinfo:
+                self.username, self.password = userinfo.split(":")
+            else:
+                self.username, self.password = userinfo, None
+        else:
+            self.username, self.password = None, None
+        if "#" in other:
+            other, self.fragment = other.split("#")
+        else:
+            self.fragment = None
+        if "?" in other:
+            other, self.query = other.split("?")
+
+        else:
+            self.query = None
+        if "/" in other:
+            ind = other.index("/")
+            self.path, other = other[ind:], other[:ind]
+        else:
+            self.path = None
+        if ":" in other:
+            self.host, port = other.split(":")
+            self.port = int(port)
+        else:
+            self.host, self.port = other, None
 
 
-class Request:
+class HttpRequest:
     def __init__(self, req: str) -> None:
         self.req = req.split("\n")
+        first = self.req[0].split()
+        self.__method = first[0]
+        self.__path = first[1]
+        self.__http_version = " ".join(first[2:])
+        self.__headers_dict: dict = {}
+        end = self.req.index("")
+        for head in self.req[1:end]:
+            header, value = head.split(": ")
+            if value.isdigit():
+                value = int(value)
+            self.__headers_dict[header] = value
+        self.__body = self.req[-2] if self.req[-2] else None
 
+    @property
     def method(self) -> str:
-        return self.req[0].split()[0]
+        return self.__method
 
+    @property
     def path(self) -> str:
-        return self.req[0].split()[1]
+        return self.__path
 
-    def version(self) -> str:
-        return self.req[0].split()[2]
+    @property
+    def http_version(self) -> str:
+        return self.__http_version
 
+    @property
     def headers(self) -> dict:
-        self.headers_dict: dict = {}
-        for head in self.req[1:-3]:
-            head1: list = head.split(": ")
-            self.headers_dict[head1[0]] = head1[1]
-        return self.headers_dict
+        return self.__headers_dict
 
-    def body(self) -> str:
-        return self.req[-1]
+    @property
+    def body(self) -> str | None:
+        return self.__body
 
 
-req = """HEAD /docs/python_3/library/urllib.parse.html HTTP/1.1
-Accept: */*
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Host: digitology.tech
-User-Agent: HTTPie/3.2.1
+class HttpResponse(HttpRequest):
+    def __init__(self, req: str) -> None:
+        HttpRequest.__init__(self, req)
 
+    @property
+    def http_version(self) -> str:
+        return self.method
 
-"""
+    @property
+    def status_code(self) -> int:
+        return int(self.path)
+
+    @property
+    def reason(self) -> str:
+        return self._HttpRequest__http_version.title()
+
+    def is_valid(self) -> bool:
+        return self.headers["Content-Length"] == len(self.body)
+
+    def json(self) -> dict | None:
+        if self.headers["Content-Type"] == "application/json":
+            try:
+                self.__json = json.loads(self.body)
+            except Exception:
+                return None
+            return self.__json
