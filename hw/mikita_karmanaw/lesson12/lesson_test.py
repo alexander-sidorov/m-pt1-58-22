@@ -58,13 +58,13 @@ def task_01_test() -> None:
 
 def task_02_test() -> None:
     message = """HEAD / HTTP/1.1
-    Accept: */*
-    Accept-Encoding: gzip, deflate
-    Connection: keep-alive
-    Host: github.com
-    User-Agent: HTTPie/3.2.1
-    
-    """
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
+
+"""
 
     req = HttpRequest(message)
 
@@ -83,11 +83,11 @@ def task_02_test() -> None:
 
 def task_03_test() -> None:
     message1 = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: application/json
-    Server: gunicorn/19.9.0
-    
-    {"status_code": 404, "description": "no access"}"""
+Content-Length: 48
+Content-Type: application/json
+Server: gunicorn/19.9.0
+
+{"status_code": 404, "description": "no access"}"""
 
     resp1 = HttpResponse(message1)
 
@@ -104,11 +104,11 @@ def task_03_test() -> None:
     assert resp1.json() == {"status_code": 404, "description": "no access"}
 
     message2 = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 49
-    Content-Type: text/html
-    Server: gunicorn/19.9.0
-    
-    {"status_code": 404, "description": "no access"}"""
+Content-Length: 49
+Content-Type: text/html
+Server: gunicorn/19.9.0
+
+{"status_code": 404, "description": "no access"}"""
 
     resp2 = HttpResponse(message2)
 
@@ -116,11 +116,11 @@ def task_03_test() -> None:
     assert resp2.json() is None
 
     message3 = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: text/html
-    Server: gunicorn/19.9.0
-    
-    {"status_code": 404, "description": "no access"}"""
+Content-Length: 48
+Content-Type: text/html
+Server: gunicorn/19.9.0
+
+{"status_code": 404, "description": "no access"}"""
 
     resp3 = HttpResponse(message3)
 

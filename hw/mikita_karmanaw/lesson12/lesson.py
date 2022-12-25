@@ -12,7 +12,7 @@ class Url:
         self.query: None | str = None
         self.fragment: None | str = None
         self.scheme = url[: url.find("://")]
-        url_without_scheme = url[url.find("://") + 3:]
+        url_without_scheme = url[url.find("://") + 3:]  # noqa: BLK100
         if ("/" in url_without_scheme) or (
             ("?" in url_without_scheme) and ("/" not in url_without_scheme)
         ):
@@ -104,14 +104,14 @@ class HttpResponse:
         for line in lines:
             header = line.split(": ")
             if header[1].isdigit():
-                header[1] = int(header[1])
+                header[1] = int(header[1])  # noqa: [call-overload]
             self.headers.update({header[0]: header[1]})
 
     def is_valid(self) -> bool:
-        return len(self.body) == self.headers["Content-Length"]
+        return len(self.body) == self.headers["Content-Length"]  # noqa: [arg-type]
 
     def json(self) -> dict | None:
-        if "json" in self.headers["Content-Type"]:
-            return json.loads(self.body)
+        if "json" in self.headers["Content-Type"]:  # noqa: [operator]
+            return json.loads(self.body)  # noqa: [no-any-return], [arg-type]
         else:
             return None
