@@ -4,28 +4,20 @@ from typing import Any
 
 class Url:
     def __init__(self, url: str) -> None:
-        my_dict = dict.fromkeys(
-            (
-                "sheme",
-                "username",
-                "password",
-                "fragment",
-                "query",
-                "path",
-                "host",
-                "port",
-            )
-        )
-        self.__dict__.update(my_dict)
-        self.scheme, other = url.split("://")
 
+        self.username: str | None = None
+        self.password: str | None = None
+        self.fragment: str | None = None
+        self.query: str | None = None
+        self.path: str | None = None
+        self.port: int | None = None
+        self.scheme, other = url.split("://")
         if "@" in other:
             self.userinfo, other = other.split("@")
             if ":" in self.userinfo:
                 self.username, self.password = self.userinfo.split(":")
             else:
                 self.username = self.userinfo
-
         if "#" in other:
             other, self.fragment = other.split("#")
         if "?" in other:
@@ -33,26 +25,21 @@ class Url:
         if "/" in other:
             ind = other.index("/")
             self.path, other = other[ind:], other[:ind]
-        if ":" in other:
+        self.host: str = other
+        if ":" in self.host:
             self.host, port = other.split(":")
             self.port = int(port)
-        else:
-            self.host: str = other
 
 
 class HttpRequest:
     def __init__(self, req: str) -> None:
         self.req = req.split("\n")
         first = self.req[0].split()
-        self.__method = first[0]
-        self.__path = first[1]
-        self.__http_version = " ".join(first[2:])
+        self.__method, self.__path, self.__http_version = first
         self.__headers_dict: dict = {}
         end = self.req.index("")
         for head in self.req[1:end]:
             header, value = head.split(": ")
-            if value.isdigit():
-                value: int = int(value)
             self.__headers_dict[header] = value
         self.__body = self.req[-2] if self.req[-2] else None
 
@@ -77,29 +64,49 @@ class HttpRequest:
         return self.__body
 
 
-class HttpResponse(HttpRequest):
-    def __init__(self, req: str) -> None:
-        HttpRequest.__init__(self, req)
+class HttpResponse:
+    def __init__(self, res: str) -> None:
+        self.res = res.split("\n")
+        first = self.res[0].split()
+        self.__http_version, status_code, *reason = first
+        self.__status_code: int = int(status_code)
+        self.__reason: str = " ".join(reason).title()
+        self.__headers: dict = {}
+        end = self.res.index("")
+        for head in self.res[1:end]:
+            header, val = head.split(": ")
+            value: str | int = int(val) if val.isdigit() else val
+            self.__headers[header] = value
+        self.__body: str = self.res[-2]
 
     @property
     def http_version(self) -> str:
-        return self.method
+        return self.__http_version
 
     @property
     def status_code(self) -> int:
-        return int(self.path)
+        return self.__status_code
 
     @property
-    def reason(self) -> Any:
-        return self._HttpRequest__http_version.title()
+    def reason(self) -> str:
+        return self.__reason
+
+    @property
+    def headers(self) -> dict:
+        return self.__headers
+
+    @property
+    def body(self) -> str:
+        return self.__body
 
     def is_valid(self) -> Any:
-        return self.headers["Content-Length"] == len(self.body)
+        return self.__headers["Content-Length"] == len(self.__body)
 
-    def json(self) -> str | None:
-        if self.headers["Content-Type"] == "application/json":
+    def json(self) -> Any:
+        if self.__headers["Content-Type"] == "application/json":
             try:
-                self.__json = json.loads(self.body)
+                self.__json = json.loads(self.__body)
             except Exception:
                 return None
             return self.__json
+        return

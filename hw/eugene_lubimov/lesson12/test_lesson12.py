@@ -78,7 +78,7 @@ User-Agent: HTTPie/3.2.1
     }
     assert req.body is None
 
-    req = """HEAD /docs/python_3/library/urllib.parse.html HTTP/1.1
+    message = """HEAD /docs/python_3/library/urllib.parse.html HTTP/1.1
 Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
@@ -87,7 +87,7 @@ User-Agent: HTTPie/3.2.1
 
 
 """
-    req1 = les.HttpRequest(req)
+    req1 = les.HttpRequest(message)
 
     assert req1.method == "HEAD"
     assert req1.path == "/docs/python_3/library/urllib.parse.html"
