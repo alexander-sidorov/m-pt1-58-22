@@ -38,7 +38,7 @@ def task_04_typecheck(func: Callable) -> Callable:
             if not isinstance(lst[i - 1], type(lst[i])):
                 raise TypeError(f"{lst[i-1]=!r} is not of type {lst[i]}")
         type_func = func.__annotations__["return"]
-        if not isinstance(type_func, type(result)):
+        if not isinstance(result, type_func):
             raise TypeError(f"{result} is not of type {type_func}")
         return result
 
