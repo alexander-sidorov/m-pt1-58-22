@@ -33,15 +33,11 @@ class Url:
                 frag_cut_pos = frag_pos + 1
                 self.fragment = request_data[frag_cut_pos:]
                 request_data = request_data[:frag_pos]
-            else:
-                pass
             if "?" in request_data:
                 query_pos = request_data.find("?")
                 query_cut_pos = query_pos + 1
                 self.query = request_data[query_cut_pos:]
                 request_data = request_data[:query_pos]
-            else:
-                pass
             self.path = request_data
             if self.path == "":
                 self.path = None
@@ -88,7 +84,7 @@ class HttpRequest:
         del lines[0]
         for line in lines:
             header = line.split(": ")
-            self.headers.update({header[0]: header[1]})
+            self.headers[header[0]] = header[1]
 
 
 class HttpResponse:
