@@ -37,3 +37,11 @@ def test_task_05() -> None:
 
     assert js == '{"name": "P"}'
     assert json.loads(js) == {"name": "P"}
+
+    petya.save_json(js)
+
+    with open("data.json") as g:
+        file_content = g.read()
+        file_json = json.loads(file_content)
+    assert file_content == '{"name": "P"}'
+    assert file_json == {"name": "P"}
