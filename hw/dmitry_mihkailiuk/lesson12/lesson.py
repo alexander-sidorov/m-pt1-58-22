@@ -46,8 +46,8 @@ class Url:
 
 class HttpRequest:
     def __init__(self, get: str):
+        self.body: str | None
         line, self.body = get.split("\n\n", 1)
-        self.body = self.body.strip()
         line_list = line.split("\n")
         self.method, self.path, self.http_version = line_list[0].split(" ")
         line_list = line_list[1:]
@@ -55,34 +55,38 @@ class HttpRequest:
         for i in line_list:
             key, value = i.strip().split(":", 1)
             self.headers[key] = value.strip()
-        if not self.body:
-            self.body = None
+        self.body = self.body if self.body else None
 
 
 class HttpResponse:
     def __init__(self, get: str):
+        self.body: str | None
         line, self.body = get.split("\n\n", 1)
-        self.body = self.body.strip()
         line_list = line.split("\n")
         self.http_version, other = line_list[0].split(" ", 1)
         status_code, self.reason = other.split(" ", 1)
         self.status_code = int(status_code)
         line_list = line_list[1:]
-        self.headers = {}
+        self.headers: dict[str, int | str] = {}
         for i in line_list:
             key, value = i.strip().split(":", 1)
             if key == "Content-Length":
                 self.headers[key] = int(value)
             else:
                 self.headers[key] = value.strip()
+        self.body = self.body if self.body else None
 
     def is_valid(self) -> bool:
-        return self.headers["Content-Length"] == len(self.body)
+        if self.body is not None:
+            return self.headers["Content-Length"] == len(self.body)
+        else:
+            return False
 
     def json(self) -> Any:
         if self.headers["Content-Type"] == "application/json":
             try:
-                return json.loads(self.body)
+                if self.body is not None:
+                    return json.loads(self.body)
             except json.decoder.JSONDecodeError:
                 return None
         else:

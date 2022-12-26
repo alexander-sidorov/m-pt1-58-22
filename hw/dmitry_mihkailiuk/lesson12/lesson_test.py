@@ -78,13 +78,13 @@ def test_url() -> None:
 def test_http_request() -> None:
 
     message = """HEAD / HTTP/1.1
-    Accept: */*
-    Accept-Encoding: gzip, deflate
-    Connection: keep-alive
-    Host: github.com
-    User-Agent: HTTPie/3.2.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
 
-    """
+"""
 
     req = HttpRequest(message)
 
@@ -101,14 +101,14 @@ def test_http_request() -> None:
     assert req.body is None
 
     message = """HEAD /docs/cli HTTP/1.1
-    Accept: */*
-    Accept-Encoding: gzip, deflate
-    Connection: keep-alive
-    Host: httpie.io
-    User-Agent: HTTPie/3.2.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpie.io
+User-Agent: HTTPie/3.2.1
 
-    <body>
-    """
+<body>
+"""
 
     req = HttpRequest(message)
 
@@ -123,17 +123,17 @@ def test_http_request() -> None:
         "User-Agent": "HTTPie/3.2.1",
     }
 
-    assert req.body == "<body>"
+    assert req.body == "<body>\n"
 
 
 def test_http_response() -> None:
-    message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: application/json
-    Server: gunicorn/19.9.0
 
-    {"status_code": 404, "description": "no access"}
-    """
+    message = """HTTP/1.1 404 NOT FOUND
+Content-Length: 48
+Content-Type: application/json
+Server: gunicorn/19.9.0
+
+{"status_code": 404, "description": "no access"}"""
 
     resp = HttpResponse(message)
 
@@ -150,12 +150,11 @@ def test_http_response() -> None:
     assert resp.json() == {"status_code": 404, "description": "no access"}
 
     message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 49
-    Content-Type: text/html
-    Server: gunicorn/19.9.0
+Content-Length: 49
+Content-Type: text/html
+Server: gunicorn/19.9.0
 
-    {"status_code": 404, "description": "no access"}
-    """
+{"status_code": 404, "description": "no access"}"""
 
     resp = HttpResponse(message)
 
@@ -163,12 +162,11 @@ def test_http_response() -> None:
     assert resp.json() is None
 
     message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: text/html
-    Server: gunicorn/19.9.0
+Content-Length: 48
+Content-Type: text/html
+Server: gunicorn/19.9.0
 
-    {"status_code": 404, "description": "no access"}
-    """
+{"status_code": 404, "description": "no access"}"""
 
     resp = HttpResponse(message)
 
@@ -176,15 +174,27 @@ def test_http_response() -> None:
     assert resp.json() is None
 
     message = """HTTP/1.1 404 NOT FOUND
-       Content-Length: 48
-       Content-Type: application/json
-       Server: gunicorn/19.9.0
+Content-Length: 48
+Content-Type: application/json
+Server: gunicorn/19.9.0
 
-       "status_code": 404, "description": "no access"
-       """
+'status_code': 404, 'description': 'no access'"""
 
     resp = HttpResponse(message)
 
-    assert resp.body == '"status_code": 404, "description": "no access"'
+    assert resp.body == "'status_code': 404, 'description': 'no access'"
+    assert not resp.is_valid()
+    assert resp.json() is None
+
+    message = """HTTP/1.1 404 NOT FOUND
+Content-Length: 48
+Content-Type: application/json
+Server: gunicorn/19.9.0
+
+"""
+
+    resp = HttpResponse(message)
+
+    assert resp.body is None
     assert not resp.is_valid()
     assert resp.json() is None
