@@ -1,5 +1,6 @@
 import pytest
 
+from hw.vladislav_yurenya.lesson12.lesson import HttpRequest
 from hw.vladislav_yurenya.lesson12.lesson import Url
 
 
@@ -53,3 +54,51 @@ def test_01_urlsplit() -> None:
     assert url.path == "/p/a/t/h"
     assert url.query == "query=q&f=f"
     assert url.fragment == "f"
+
+
+def test_http_request() -> None:
+
+    message = """HEAD / HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
+
+"""
+
+    req = HttpRequest(message)
+
+    assert req.method == "HEAD"
+    assert req.path == "/"
+    assert req.http_version == "HTTP/1.1"
+    assert req.headers == {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Host": "github.com",
+        "User-Agent": "HTTPie/3.2.1",
+    }
+    assert req.body is None
+    message_2 = """HEAD / HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
+
+Hard"""
+
+    req = HttpRequest(message_2)
+
+    assert req.method == "HEAD"
+    assert req.path == "/"
+    assert req.http_version == "HTTP/1.1"
+    assert req.headers == {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Host": "github.com",
+        "User-Agent": "HTTPie/3.2.1",
+    }
+    assert req.body == "Hard"

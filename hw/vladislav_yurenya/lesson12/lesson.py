@@ -1,10 +1,11 @@
+import re
 from urllib.parse import urlparse
 
 import pytest
 
 
 class Url:
-    def __init__(self, url: str) -> dict:
+    def __init__(self, url: str):
         self.url = url
         new = urlparse(self.url)
         self.url = new
@@ -33,3 +34,26 @@ class Url:
         self.fragment = self.c["fragment"]
         if self.fragment == "":
             self.fragment = None
+
+
+class HttpRequest:
+    def __init__(self, url: str):
+        body = url.find("\n\n") + 2
+        self.body = url[body:]
+        if self.body == "":
+            self.body = None
+        self.url = url
+        self.url = re.split('" "|\n', self.url)
+        new = self.url[0].split(" ")
+        self.method = new[0]
+        self.path = new[1]
+        self.http_version = new[2]
+        qef = self.url[1:]
+        self.headers = " ".join(qef)
+        rew = self.headers.split(" ")
+        self.headers = {}
+        self.headers["Accept"] = rew[1]
+        self.headers["Accept-Encoding"] = " ".join(rew[3:5])
+        self.headers["Connection"] = rew[6]
+        self.headers["Host"] = rew[8]
+        self.headers["User-Agent"] = rew[10]
