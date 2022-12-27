@@ -23,7 +23,7 @@ class User:
     def save_json(self, destination: str | Path) -> Any:
         json_file = Path(destination)
         with json_file.open("w") as stream:
-            json.dump(stream, {"name": self.name})
+            json.dump({"name": self.name}, stream)
 
 
 class Counter:

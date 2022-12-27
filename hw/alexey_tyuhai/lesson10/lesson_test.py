@@ -40,8 +40,6 @@ def test_task_05() -> None:
     assert js == '{"name": "P"}'
     assert json.loads(js) == {"name": "P"}
 
-    petya.save_json(js)
-
     with tempfile.TemporaryDirectory() as _tmpdir:
         tmpdir = Path(_tmpdir)
         assert tmpdir.is_dir()
