@@ -1,10 +1,9 @@
+import json
+
+
 class User:
     def __init__(self, name: str) -> None:
         self._name = name
-
-    @property
-    def get_name(self) -> str:
-        return self._name
 
     @classmethod
     def get_class_name(cls) -> str:
@@ -13,6 +12,12 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
+    def __str__(self) -> str:
+        return self._name
+
+    def to_json(self) -> str:
+        return json.dumps({"name": self._name})
+
 
 class Counter:
     def __init__(self, start: int, end: int) -> None:
@@ -20,8 +25,11 @@ class Counter:
         self.end = end
         self.num = start - 1
 
-    def next(self) -> int:  # noqa: A003
+    def __iter__(self) -> "Counter":
+        return self
+
+    def __next__(self) -> int:  # noqa: A003
         if self.num < self.end:
             self.num += 1
             return self.num
-        return self.num
+        raise StopIteration

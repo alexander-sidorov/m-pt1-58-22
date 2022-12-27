@@ -1,25 +1,34 @@
 #include <iostream>
 
-class DoTwice {
-    void (*my_original_func)();
+class Function {
+public:
+    virtual void operator()() = 0;
+};
+
+
+class Helloworld: public Function {
+public:
+    void operator() () {
+        std::cout << "Hello world!" << std::endl;
+    }
+};
+
+class DoTwice: public Function {
+    Function* const _inner;
 
 public:
-    explicit DoTwice(void (*func)()) : my_original_func(func) {}
+    explicit DoTwice(Function* const inner) : _inner(inner) {}
 
     void operator()() {
-        this->my_original_func();
-        this->my_original_func();
+        (*_inner)();
+        (*_inner)();
     }
 };
 
 
-void helloworld_() {
-    std::cout << "Hello world!" << std::endl;
-}
-
-DoTwice helloworld(helloworld_);
-
-
 int main() {
-    helloworld();
+    Function* helloworld = new Helloworld();
+    helloworld = new DoTwice(helloworld);
+
+    (*helloworld)();
 }
