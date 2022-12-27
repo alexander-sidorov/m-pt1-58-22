@@ -80,7 +80,7 @@ class HttpRequest:
         req = req[: req.find("\n\n")]
         lines = req.splitlines()
         head = lines[0].split(" ")
-        self.method, self.path, self.http_version = head[0], head[1], head[2]
+        self.method, self.path, self.http_version = head
         del lines[0]
         for line in lines:
             header = line.split(": ")
