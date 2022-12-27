@@ -15,20 +15,21 @@ class User:
         return "hello world"
 
     def to_json(self) -> str:
-        return json.dumps({"rabbit": self.name})
+        return json.dumps({"name": self.name})
 
 
 class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start
         self.stop = stop
-        self.resault = self.start - 1
+        self.current = self.start
 
     def __iter__(self) -> "Counter":
         return self
 
-    def __next__(self) -> int:  # noqa: A003
-        if self.stop - 1 < self.resault:
+    def __next__(self) -> int:
+        if self.current > self.stop:
             raise StopIteration
-        self.resault += 1
-        return self.resault
+
+        result, self.current = self.current, self.current + 1
+        return result
