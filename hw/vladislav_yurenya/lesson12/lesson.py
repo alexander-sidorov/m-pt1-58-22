@@ -67,65 +67,25 @@ class HttpResponse:
         self.status_code = int(new[1])
         new_0 = " ".join(new[2:4])
         self.reason = new_0.title()
-        # ----------------------------ТУТ ВСЕ ГУД--------------------------#
         new = new[4:]
-        print(new)
         self.headers = {
             "Content-Length": int(new[1]),
             "Content-Type": new[3],
             "Server": new[5],
         }
-        # ----------------------------ТУТ ВСЕ ГУД--------------------------#
         left = self.url.find("{")
         self.body = self.url[left:]
         deleted = self.body.find("\n   ")
         self.body = self.body[:deleted]
 
-        # ----------------------------ТУТ ВСЕ ГУД--------------------------#
-
-    def is_valid(self):
+    def is_valid(self) -> bool:
         if self.headers["Content-Length"] == len(self.body):
             return True
 
-        # ----------------------------ТУТ ВСЕ ГУД--------------------------#
-
-    def json(self):
-        if self.headers["Content-Type"] == "application/json":
-            return json.loads(self.body)
-        elif self.headers["Content-Type"] != "application/json":
+    def json(self) -> Any:
+        try:
+            if "application/json" in self.headers["Content-Type"]:
+                return json.loads(self.body)
+            raise JSONDecodeError
+        except:
             return None
-
-
-message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: application/json
-    Server: gunicorn/19.9.0
-
-    {"status_code": 404, "description": "no access"}
-    """
-
-resp = HttpResponse(message)
-print(resp.is_valid())
-#     for i in line_list:
-#         key, value = i.strip().split(":", 1)
-#         if key == "Content-Length":
-#             self.headers[key] = int(value)
-#         else:
-#             self.headers[key] = value.strip()
-#     self.body = self.body if self.body else None
-#
-# def is_valid(self) -> bool:
-#     if self.body is not None:
-#         return self.headers["Content-Length"] == len(self.body)
-#     else:
-#         return False
-#
-# def json(self) -> Any:
-#     if self.headers["Content-Type"] == "application/json":
-#         try:
-#             if self.body is not None:
-#                 return json.loads(self.body)
-#         except json.decoder.JSONDecodeError:
-#             return None
-#     else:
-#         return None
