@@ -79,7 +79,7 @@ class HttpResponse:
         self.body = self.body[:deleted]
 
     def is_valid(self) -> bool:
-        if self.headers["Content-Length"] == len(self.body):
+        if self.headers["Content-Length"] == len(self.body):  #noqa: SIM103
             return True
         else:
             return False
