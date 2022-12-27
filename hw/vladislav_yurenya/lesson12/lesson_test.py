@@ -1,5 +1,3 @@
-import pytest
-
 from hw.vladislav_yurenya.lesson12.lesson import HttpRequest
 from hw.vladislav_yurenya.lesson12.lesson import Url
 
@@ -18,7 +16,7 @@ def test_01_urlsplit() -> None:
     url = Url("postgresql://u:p@db:5432/dbname?opt=1&xyz=2#f")
     assert url.scheme == "postgresql"
     assert url.username == "u"
-    assert url.password == "p"
+    assert url.password == "p"  # noqa: S105
     assert url.host == "db"
     assert url.port == 5432
     assert url.path == "/dbname"

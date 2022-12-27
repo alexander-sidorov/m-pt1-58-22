@@ -1,15 +1,12 @@
 import re
+from typing import Any
 from urllib.parse import urlparse
-
-import pytest
 
 
 class Url:
     def __init__(self, url: str):
         self.url = url
         new = urlparse(self.url)
-        self.url = new
-        print(new)
         self.c = {
             "schema": new.scheme,
             "username": new.username,
@@ -38,6 +35,8 @@ class Url:
 
 class HttpRequest:
     def __init__(self, url: str):
+        self.url: str | Any
+        self.body: None | str = None
         body = url.find("\n\n") + 2
         self.body = url[body:]
         if self.body == "":
@@ -51,7 +50,7 @@ class HttpRequest:
         qef = self.url[1:]
         self.headers = " ".join(qef)
         rew = self.headers.split(" ")
-        self.headers = {}
+        self.headers: dict[str, list] = {}
         self.headers["Accept"] = rew[1]
         self.headers["Accept-Encoding"] = " ".join(rew[3:5])
         self.headers["Connection"] = rew[6]
