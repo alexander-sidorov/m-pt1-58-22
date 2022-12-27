@@ -56,15 +56,14 @@ def test_task_1() -> None:
 
 
 def test_task_2() -> None:
-    req = HttpRequest(
-        """HEAD / HTTP/1.1
-    Accept: */*
-    Accept-Encoding: gzip, deflate
-    Connection: keep-alive
-    Host: github.com
-    User-Agent: HTTPie/3.2.1
-    """
-    )
+    message = """HEAD / HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
+"""
+    req = HttpRequest(message)
     assert req.method == "HEAD"
     assert req.path == "/"
     assert req.http_version == "HTTP/1.1"
@@ -79,14 +78,13 @@ def test_task_2() -> None:
 
 
 def test_task_3() -> None:
-    resp = HttpResponse(
-        """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: application/json
-    Server: gunicorn/19.9.0
-    {"status_code": 404, "description": "no access"}
-    """
-    )
+    message = """HTTP/1.1 404 NOT FOUND
+Content-Length: 48
+Content-Type: application/json
+Server: gunicorn/19.9.0
+{"status_code": 404, "description": "no access"}
+"""
+    resp = HttpResponse(message)
 
     assert resp.status_code == 404
     assert resp.reason == "NOT FOUND"
@@ -101,11 +99,11 @@ def test_task_3() -> None:
     assert resp.json() == {"status_code": 404, "description": "no access"}
 
     message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 49
-    Content-Type: text/html
-    Server: gunicorn/19.9.0
-    {"status_code": 404, "description": "no access"}
-    """
+Content-Length: 49
+Content-Type: text/html
+Server: gunicorn/19.9.0
+{"status_code": 404, "description": "no access"}
+"""
 
     resp = HttpResponse(message)
 
@@ -113,11 +111,11 @@ def test_task_3() -> None:
     assert resp.json() is None
 
     message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: text/html
-    Server: gunicorn/19.9.0
-    {"status_code": 404, "description": "no access"}
-    """
+Content-Length: 48
+Content-Type: text/html
+Server: gunicorn/19.9.0
+{"status_code": 404, "description": "no access"}
+"""
 
     resp = HttpResponse(message)
 

@@ -1,4 +1,5 @@
 import json
+from contextlib import suppress
 from typing import Any
 from urllib.parse import urlparse
 
@@ -26,42 +27,33 @@ class Url:
 
 
 class HttpRequest:
-    def __init__(self, request: str) -> None:
+    def __init__(self, request_on_server: Any) -> None:
 
-        request = request.strip()
+        request = request_on_server.strip()
+
+        title_end = request.find("\n")
+        title = request[:title_end]
+        title = title.split()
+        self.method, self.path, self.http_version = title
 
         self.body: None = None
 
-        methed_end = request.find(" ")
-        self.method: str = (request[0:methed_end]).strip()
-
-        path_begin = request.find(" ")
-        path_end = request.find(" ", path_begin + 1)
-        self.path: str = (
-            request[path_begin + 1 : path_end]  # noqa E203
-        ).strip()
-
-        http_begin = request.find("HTTP")
-        self.http_version: str = (
-            request[http_begin : (http_begin + 9)]  # noqa E203
-        ).strip("\n")
-
-        request = (request[http_begin + 8 :]).strip("\n")  # noqa E203
+        request = (request[title_end:]).strip("\n")  # noqa E203
 
         heads = request.split("\n")
 
         self.headers: dict = {}
-        for _ in heads:
-            _ = _.split(":")
-            _[0] = _[0].replace(" ", "")
-            _[1] = _[1].replace(" ", "")
-            self.headers.update({_[0]: _[1]})
+        for i in heads:
+            i = i.split(":")
+            i[0] = i[0].replace(" ", "")
+            i[1] = i[1].replace(" ", "")
+            self.headers.update({i[0]: i[1]})
 
 
 class HttpResponse:
-    def __init__(self, response: str):
+    def __init__(self, response_from_server: Any):
 
-        response = response.strip()
+        response = response_from_server.strip()
 
         self.http_version: str = (response[0:8]).strip(" \n")
 
@@ -79,15 +71,13 @@ class HttpResponse:
 
         headers_list = headers.split("\n")
         self.headers = {}
-        for _ in headers_list:
-            _ = _.split(":")
-            _[0] = _[0].replace(" ", "")
-            _[1] = _[1].replace(" ", "")
-            try:  # noqa SIM105
-                _[1] = int(_[1])
-            except ValueError:
-                pass
-            self.headers.update({_[0]: _[1]})
+        for i in headers_list:
+            i = i.split(":")
+            i[0] = i[0].replace(" ", "")
+            i[1] = i[1].replace(" ", "")
+            with suppress(ValueError):
+                i[1] = int(i[1])
+            self.headers.update({i[0]: i[1]})
 
         body_end = response.find("}")
         self.body = response[body_start : body_end + 1]  # noqa E203
