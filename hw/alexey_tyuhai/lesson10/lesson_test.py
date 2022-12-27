@@ -1,4 +1,6 @@
 import json
+import tempfile
+from pathlib import Path
 
 from hw.alexey_tyuhai.lesson10.lesson import Counter
 from hw.alexey_tyuhai.lesson10.lesson import User
@@ -40,8 +42,16 @@ def test_task_05() -> None:
 
     petya.save_json(js)
 
-    with open("data.json") as g:
-        file_content = g.read()
-        file_json = json.loads(file_content)
-    assert file_content == '{"name": "P"}'
-    assert file_json == {"name": "P"}
+    with tempfile.TemporaryDirectory() as _tmpdir:
+        tmpdir = Path(_tmpdir)
+        assert tmpdir.is_dir()
+
+        json_file = tmpdir / "asd.json"
+        assert not json_file.is_file()
+
+        petya.save_json(json_file)
+        assert json_file.is_file()
+
+        with json_file.open("r") as stream:
+            jsonobj = json.load(stream)
+            assert jsonobj == {"name": "P"}
