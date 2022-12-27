@@ -48,9 +48,9 @@ class HttpRequest:
         self.path = new[1]
         self.http_version = new[2]
         qef = self.url[1:]
-        self.headers = " ".join(qef)
-        rew = self.headers.split(" ")
-        self.headers: dict[str, list] = {}
+        headers = " ".join(qef)
+        rew = headers.split(" ")
+        self.headers: dict[str, Any] = {}
         self.headers["Accept"] = rew[1]
         self.headers["Accept-Encoding"] = " ".join(rew[3:5])
         self.headers["Connection"] = rew[6]
