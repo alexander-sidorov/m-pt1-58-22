@@ -107,6 +107,7 @@ def test_02() -> None:
 
 
 def test_03() -> None:
+
     message = """HTTP/1.1 404 NOT FOUND
     Content-Length: 48
     Content-Type: application/json
@@ -114,9 +115,7 @@ def test_03() -> None:
 
     {"status_code": 404, "description": "no access"}
     """
-
     resp = l_12.HttpResponse(message)
-
     assert resp.status_code == 404
     assert resp.reason == "NOT FOUND"
     assert resp.http_version == "HTTP/1.1"
@@ -136,7 +135,6 @@ def test_03() -> None:
 
     {"status_code": 404, "description": "no access"}
     """
-
     resp = l_12.HttpResponse(message)
     assert resp.body == '{"status_code": 404, "description": "no access"}'
     assert not resp.is_valid()
@@ -149,9 +147,30 @@ def test_03() -> None:
 
     {"status_code": 404, "description": "no access"}
     """
-
     resp = l_12.HttpResponse(message)
-
     assert resp.body == '{"status_code": 404, "description": "no access"}'
+    assert resp.is_valid()
+    assert resp.json() is None
+
+    message = """HTTP/1.1 404 NOT FOUND
+    Content-Length: 48
+    Content-Type: text/html
+    Server: gunicorn/19.9.0
+
+    """
+    resp = l_12.HttpResponse(message)
+    assert resp.body is None
+    assert not resp.is_valid()
+    assert resp.json() is None
+
+    message = """HTTP/1.1 404 NOT FOUND
+    Content-Length: 48
+    Content-Type: application/json
+    Server: gunicorn/19.9.0
+
+    ?"status_code": 404, "description": "no access"?
+    """
+    resp = l_12.HttpResponse(message)
+    assert resp.body == '?"status_code": 404, "description": "no access"?'
     assert resp.is_valid()
     assert resp.json() is None
