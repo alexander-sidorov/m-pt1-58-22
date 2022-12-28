@@ -85,7 +85,6 @@ Server: gunicorn/19.9.0
 {"status_code": 404, "description": "no access"}
 """
     resp = HttpResponse(message)
-
     assert resp.status_code == 404
     assert resp.reason == "NOT FOUND"
     assert resp.http_version == "HTTP/1.1"
@@ -121,3 +120,20 @@ Server: gunicorn/19.9.0
 
     assert resp.is_valid()
     assert resp.json() is None
+
+    message = """HTTP/1.1 404 NOT FOUND
+Content-Type: application/json
+Server: gunicorn/19.9.0
+
+"""
+
+    resp = HttpResponse(message)
+
+    assert resp.status_code == 404
+    assert resp.reason == "NOT FOUND"
+    assert resp.http_version == "HTTP/1.1"
+    assert resp.headers == {
+        "Content-Type": "application/json",
+        "Server": "gunicorn/19.9.0",
+    }
+    assert resp.body is None

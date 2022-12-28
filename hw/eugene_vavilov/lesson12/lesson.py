@@ -42,12 +42,11 @@ class HttpRequest:
 
         heads = request.split("\n")
 
-        self.headers: dict = {}
+        self.headers = {}
         for i in heads:
+            i = i.replace(" ", "")
             i = i.split(":")
-            i[0] = i[0].replace(" ", "")
-            i[1] = i[1].replace(" ", "")
-            self.headers.update({i[0]: i[1]})
+            self.headers[i[0]] = i[1]
 
 
 class HttpResponse:
@@ -55,32 +54,29 @@ class HttpResponse:
 
         response = response_from_server.strip()
 
-        self.http_version: str = (response[0:8]).strip(" \n")
+        title_end = response.find("\n")
+        title = response[:title_end]
+        title = title.split(" ", 2)
+        title[1] = int(title[1])
+        self.http_version, self.status_code, self.reason = title
 
-        status_begin = response.find(" ")
-        status_end = response.find(" ", status_begin + 1)
-        self.status_code: int = int(
-            (response[status_begin + 1 : status_end]).strip(" \n")  # noqa E203
-        )
+        if "{" in response:
+            body_start = response.find("{")
+            body_end = response.find("}")
+            self.body = response[body_start : body_end + 1]  # noqa E203
+        else:
+            body_start = None
+            self.body = None
 
-        reason_end = response.find("\n", status_end)
-        self.reason: str = (response[status_end:reason_end]).strip(" \n")
-
-        body_start = response.find("{")
-        headers = (response[reason_end:body_start]).strip("\n ")
-
-        headers_list = headers.split("\n")
+        headers_list = (response[title_end:body_start]).strip("\n ")
+        headers_list = headers_list.split("\n")
         self.headers = {}
         for i in headers_list:
+            i = i.replace(" ", "")
             i = i.split(":")
-            i[0] = i[0].replace(" ", "")
-            i[1] = i[1].replace(" ", "")
             with suppress(ValueError):
                 i[1] = int(i[1])
-            self.headers.update({i[0]: i[1]})
-
-        body_end = response.find("}")
-        self.body = response[body_start : body_end + 1]  # noqa E203
+            self.headers[i[0]] = i[1]
 
     def is_valid(self) -> Any:
         return len(self.body) == self.headers["Content-Length"]
