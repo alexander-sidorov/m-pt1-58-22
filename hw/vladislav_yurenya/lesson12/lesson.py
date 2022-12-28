@@ -68,7 +68,7 @@ class HttpResponse:
         for_headers[2].replace("\n", "")
         for_headers = for_headers[1:4]
         for_headers[2] = for_headers[2].replace("\n", "")
-        self.headers = {}
+        self.headers: dict[str, Any] = {}
         for i in range(len(for_headers)):
             count = for_headers[i].split(": ")
             self.headers[count[0]] = count[1]
