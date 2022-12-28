@@ -59,26 +59,32 @@ class HttpResponse:
     def __init__(self, url: str):
         self.url = url
         new = self.url.split()
+
         self.http_version = new[0]
         self.status_code = int(new[1])
         new_0 = " ".join(new[2:4])
         self.reason = new_0.title()
         new = new[4:]
-        self.headers = {
-            "Content-Length": int(new[1]),
-            "Content-Type": new[3],
-            "Server": new[5],
-        }
+        for_headers = self.url
+        for_headers = for_headers.split("\n    ")
+        for_headers[2].replace("\n", "")
+        for_headers = for_headers[1:4]
+        for_headers[2] = for_headers[2].replace("\n", "")
+        self.headers = {}
+        for i in range(len(for_headers)):
+            count = for_headers[i].split(": ")
+            self.headers[count[0]] = count[1]
+        val = self.headers.values()
+        self.headers["Content-Length"] = int(
+            self.headers.get("Content-Length")
+        )
         left = self.url.find("{")
         self.body = self.url[left:]
         deleted = self.body.find("\n   ")
         self.body = self.body[:deleted]
 
     def is_valid(self) -> bool:
-        if self.headers["Content-Length"] == len(self.body):  # noqa: SIM103
-            return True
-        else:
-            return False
+        return self.headers["Content-Length"] == len(self.body)
 
     def json(self) -> Any:
         if self.headers["Content-Type"] == "application/json":
