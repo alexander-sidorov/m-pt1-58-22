@@ -2,24 +2,30 @@
 #include <map>
 
 
-class CountCalls {
-    static std::map<void (*)(), int> *our_calls_counter;
+class Function {
+public:
+    virtual void operator() () = 0;
+};
 
-    void (*my_original_func)();
+
+class CountCalls: public Function {
+    static std::map<Function* const, int> *__calls;
+
+    Function* const __inner;
 
 public:
-    explicit CountCalls(void (*func)()) : my_original_func(func) {
-        (*our_calls_counter)[func] = 0;
+    explicit CountCalls(Function* const inner) : __inner(inner) {
+        (*__calls)[__inner] = 0;
     }
 
     void operator()() {
-        this->my_original_func();
-        ++(*our_calls_counter)[this->my_original_func];
+        (*__inner)();
+        ++((*__calls)[__inner]);
     }
 
     int nr_calls() {
-        auto item = our_calls_counter->find(my_original_func);
-        if (item == our_calls_counter->end()) {
+        auto item = __calls->find(__inner);
+        if (item == __calls->end()) {
             return 0;
         }
 
@@ -27,34 +33,42 @@ public:
     }
 };
 
-std::map<void (*)(), int> *CountCalls::our_calls_counter = new std::map<void (*)(), int>();
+std::map<Function* const, int> *CountCalls::__calls = new std::map<Function* const, int>();
 
 /* --------------------------------------------------- */
 
-void helloworld_() {
-    std::cout << "Hello world!" << std::endl;
-}
 
-CountCalls helloworld(helloworld_);
+class HelloWorld: public Function {
+public:
+    void operator() () {
+        std::cout << "Hello world!" << std::endl;
+    }
+};
 
-
-void byebye_() {
-    std::cout << "Bye bye!!" << std::endl;
-}
-
-CountCalls byebye(byebye_);
+class ByeBye: public Function {
+public:
+    void operator() () {
+        std::cout << "Bye bye!" << std::endl;
+    }
+};
 
 
 int main() {
-    assert(helloworld.nr_calls() == 0);
-    assert(byebye.nr_calls() == 0);
+    Function* helloworld = new HelloWorld();
+    helloworld = new CountCalls(helloworld);
 
-    helloworld();
-    helloworld();
-    helloworld();
-    byebye();
-    byebye();
+    Function* byebye = new ByeBye();
+    byebye = new CountCalls(byebye);
 
-    assert(helloworld.nr_calls() == 3);
-    assert(byebye.nr_calls() == 2);
+    assert(dynamic_cast<CountCalls *>(helloworld)->nr_calls() == 0);
+    assert(dynamic_cast<CountCalls *>(byebye)->nr_calls() == 0);
+
+    (*helloworld)();
+    (*helloworld)();
+    (*helloworld)();
+    (*byebye)();
+    (*byebye)();
+
+    assert(dynamic_cast<CountCalls *>(helloworld)->nr_calls() == 3);
+    assert(dynamic_cast<CountCalls *>(byebye)->nr_calls() == 2);
 }

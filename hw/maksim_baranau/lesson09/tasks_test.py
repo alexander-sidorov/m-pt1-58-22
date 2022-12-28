@@ -1,12 +1,14 @@
 import time
+from typing import Any
+from typing import cast
 
 import pytest
 
-from hw.vladislav_yurenya.lesson09.tasks import dec
-from hw.vladislav_yurenya.lesson09.tasks import task_01_do_twice
-from hw.vladislav_yurenya.lesson09.tasks import task_03_benchmark
-from hw.vladislav_yurenya.lesson09.tasks import task_04_typecheck
-from hw.vladislav_yurenya.lesson09.tasks import task_05_cache
+from hw.maksim_baranau.lesson09.tasks import dec
+from hw.maksim_baranau.lesson09.tasks import task_01_do_twice
+from hw.maksim_baranau.lesson09.tasks import task_03_benchmark
+from hw.maksim_baranau.lesson09.tasks import task_04_typecheck
+from hw.maksim_baranau.lesson09.tasks import task_05_cache
 
 
 def test_01() -> None:
@@ -32,24 +34,21 @@ def test_03() -> None:
     assert abs(dt - 1) < 0.1
 
 
-@task_04_typecheck
-def f(*, a: int, b: int) -> int:
-    return b * a
-
-
-@task_04_typecheck
-def g() -> int:
-    return "1"  # type: ignore
-
-
 def test_04() -> None:
-    assert f(a=2, b=3) == 6
+    @task_04_typecheck
+    def xxx(*, arg: int) -> None:
+        assert arg > 0 or arg <= 0
 
-    with pytest.raises(TypeError):
-        f(a=2, b=0.2)
+    @task_04_typecheck
+    def yyy(*, arg: Any) -> None:
+        return cast(None, arg)
 
+    assert xxx(arg=10) is None
+    assert yyy(arg=None) is None
     with pytest.raises(TypeError):
-        g()
+        xxx(arg="a")
+    with pytest.raises(TypeError):
+        yyy(arg="a")
 
 
 @task_05_cache
