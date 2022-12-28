@@ -72,16 +72,14 @@ class HttpResponse:
         for i in range(len(for_headers)):
             count = for_headers[i].split(": ")
             self.headers[count[0]] = count[1]
-        self.headers["Content-Length"] = int(
-            self.headers.get("Content-Length")
-        )
+        self.headers["Content-Length"] = int(self.headers["Content-Length"])
         left = self.url.find("{")
         self.body = self.url[left:]
         deleted = self.body.find("\n   ")
         self.body = self.body[:deleted]
 
     def is_valid(self) -> bool:
-        return self.headers["Content-Length"] == len(self.body)
+        return bool(self.headers["Content-Length"] == len(self.body))
 
     def json(self) -> Any:
         if self.headers["Content-Type"] == "application/json":
