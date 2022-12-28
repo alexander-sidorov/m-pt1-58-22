@@ -49,14 +49,10 @@ class HttpRequest:
         self.path = new[1]
         self.http_version = new[2]
         qef = self.url[1:]
-        headers = " ".join(qef)
-        rew = headers.split(" ")
         self.headers: dict[str, Any] = {}
-        self.headers["Accept"] = rew[1]
-        self.headers["Accept-Encoding"] = " ".join(rew[3:5])
-        self.headers["Connection"] = rew[6]
-        self.headers["Host"] = rew[8]
-        self.headers["User-Agent"] = rew[10]
+        for i in range(len(qef) - 2):
+            count = qef[i].split(": ")
+            self.headers[count[0]] = count[1]
 
 
 class HttpResponse:
