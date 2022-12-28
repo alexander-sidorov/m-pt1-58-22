@@ -78,7 +78,7 @@ class HttpResponse:
         deleted = self.body.find("\n   ")
         self.body = self.body[:deleted]
 
-    def is_valid(self) -> bool:
+    def is_valid(self) -> Any:
         return self.headers["Content-Length"] == len(self.body)
 
     def json(self) -> Any:
