@@ -1,6 +1,5 @@
 from hw.sergey_sakovich.lesson12.lesson import task_01_urlsplit
 
-
 url = "vnc://user:pass@localhost:8000/s/cree/n1?q=2#x"
 
 
