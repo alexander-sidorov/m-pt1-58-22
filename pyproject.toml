@@ -9,6 +9,7 @@ readme = "README.md"
 black = "^22.10.0"
 coverage = "^6.5.0"
 devtools = {extras = ["pygments"], version = "^0.9.0"}
+django = "^4.1.4"
 dlint = "^0.13.0"
 flake8 = "^5.0.4"
 flake8-annotations-complexity = "^0.0.7"
