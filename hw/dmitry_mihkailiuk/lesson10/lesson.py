@@ -1,5 +1,6 @@
 import json
 from typing import Any
+from pathlib import Path
 
 
 class User:
@@ -19,9 +20,10 @@ class User:
         data = {"name": self.name}
         return json.dumps(data)
 
-    def save_json(self, func_json: Any) -> Any:
-        with open("data.json", "w") as f:
-            f.write(func_json)
+    def save_json(self, destination: str | Path) -> Any:
+        json_file = Path(destination)
+        with json_file.open("w") as stream:
+            json.dump({"name": self.name}, stream)
 
 
 class Counter:
