@@ -3,6 +3,7 @@ branch = True
 concurrency = greenlet
 data_file = .artifacts/coverage/data_file.db
 omit = \
+	*views.py
 	.artifacts/
 	.git/
 	.github/
