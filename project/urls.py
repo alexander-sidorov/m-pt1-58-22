@@ -5,5 +5,5 @@ from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("alexander-sidorov/", handle_alexander_sidorov),
+    path("~/alexander_sidorov/", handle_alexander_sidorov),
 ]
