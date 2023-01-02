@@ -1,29 +1,63 @@
 import json
+import re
 from contextlib import suppress
 from typing import Any
-from urllib.parse import urlparse
 
 
 class Url:
-    def __init__(self, url: Any) -> None:
-        url = urlparse(url)
-        self.scheme = url.scheme
-        self.username = url.username
-        self.password = url.password
-        self.host = url.hostname
-        self.port = url.port
-        if url.path and len(url.path) > 0:
-            self.path = url.path
+    def __init__(self, url_site: Any) -> None:  # noqa CCR001
+
+        self.scheme: str | None
+        self.username: str | None
+        self.password: str | None
+        self.host: Any
+        self.port: Any
+        self.path: Any
+        self.query: Any
+        self.fragment: Any
+
+        url = url_site.split("://")
+        self.scheme = url[0]
+
+        url = url[1]
+
+        _user = re.search(r"\S+@", url)
+        if _user is not None:
+            user = _user[0][:-1]
+            user_split = user.split(":")
+            self.username = user_split[0]
+            try:
+                self.password = user_split[1]
+            except IndexError:
+                self.password = None
         else:
-            self.path = None
-        if url.query and len(url.query) > 0:
-            self.query = url.query
+            self.username = None
+            self.password = None
+
+        if self.username is None:
+            self.host = re.search(r"://[0-9a-zA-Z.]+", url_site)
+            assert self.host is not None
+            self.host = self.host[0][3:]
         else:
-            self.query = None
-        if url.fragment and len(url.fragment) > 0:
-            self.fragment = url.fragment
-        else:
-            self.fragment = None
+            self.host = re.search(r"@[0-9a-zA-Z.]+", url_site)
+            assert self.host is not None
+            self.host = self.host[0][1:]
+
+        self.port = re.search(r"(:\d{1,4})", url)
+        if self.port is not None:
+            self.port = int(self.port[0][1:])
+
+        self.path = re.search(r"/[0-9a-zA-Z/]*", url)
+        if self.path is not None:
+            self.path = self.path[0]
+
+        self.query = re.search(r"\?[^#]+", url)
+        if self.query is not None:
+            self.query = self.query[0][1:]
+
+        self.fragment = re.search(r"#[a-z]", url)
+        if self.fragment is not None:
+            self.fragment = self.fragment[0][1:]
 
 
 class HttpRequest:
@@ -36,7 +70,7 @@ class HttpRequest:
         title = title.split()
         self.method, self.path, self.http_version = title
 
-        self.body: None = None
+        self.body = None
 
         request = (request[title_end:]).strip("\n")  # noqa E203
 
@@ -44,8 +78,7 @@ class HttpRequest:
 
         self.headers = {}
         for i in heads:
-            i = i.replace(" ", "")
-            i = i.split(":")
+            i = i.split(": ")
             self.headers[i[0]] = i[1]
 
 
@@ -60,10 +93,9 @@ class HttpResponse:
         title[1] = int(title[1])
         self.http_version, self.status_code, self.reason = title
 
-        if "{" in response:
-            body_start = response.find("{")
-            body_end = response.find("}")
-            self.body = response[body_start : body_end + 1]  # noqa E203
+        if "\n\n" in response:
+            body_start = response.find("\n\n")
+            self.body = response[body_start + 2 :]  # noqa E203
         else:
             body_start = None
             self.body = None
@@ -72,8 +104,7 @@ class HttpResponse:
         headers_list = headers_list.split("\n")
         self.headers = {}
         for i in headers_list:
-            i = i.replace(" ", "")
-            i = i.split(":")
+            i = i.split(": ")
             with suppress(ValueError):
                 i[1] = int(i[1])
             self.headers[i[0]] = i[1]

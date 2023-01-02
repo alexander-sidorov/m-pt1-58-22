@@ -69,7 +69,7 @@ User-Agent: HTTPie/3.2.1
     assert req.http_version == "HTTP/1.1"
     assert req.headers == {
         "Accept": "*/*",
-        "Accept-Encoding": "gzip,deflate",
+        "Accept-Encoding": "gzip, deflate",
         "Connection": "keep-alive",
         "Host": "github.com",
         "User-Agent": "HTTPie/3.2.1",
@@ -82,6 +82,7 @@ def test_task_3() -> None:
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
+
 {"status_code": 404, "description": "no access"}
 """
     resp = HttpResponse(message)
@@ -101,6 +102,7 @@ Server: gunicorn/19.9.0
 Content-Length: 49
 Content-Type: text/html
 Server: gunicorn/19.9.0
+
 {"status_code": 404, "description": "no access"}
 """
 
@@ -113,6 +115,7 @@ Server: gunicorn/19.9.0
 Content-Length: 48
 Content-Type: text/html
 Server: gunicorn/19.9.0
+
 {"status_code": 404, "description": "no access"}
 """
 
@@ -137,3 +140,14 @@ Server: gunicorn/19.9.0
         "Server": "gunicorn/19.9.0",
     }
     assert resp.body is None
+
+    message = """HTTP/1.1 200 OK
+Content-length: 26
+
+ODQzZjg3}N2Iz{ODdiNDc1NA==
+"""
+    resp = HttpResponse(message)
+    assert resp.status_code == 200
+    assert resp.reason == "OK"
+    assert resp.http_version == "HTTP/1.1"
+    assert resp.body == "ODQzZjg3}N2Iz{ODdiNDc1NA=="
