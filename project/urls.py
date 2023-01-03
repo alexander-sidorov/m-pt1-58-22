@@ -7,5 +7,5 @@ from hw.eugene_lubimov.lesson13.views import my_view
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("~/alexander_sidorov/", handle_alexander_sidorov),
-    path("~/eugene_lubimov/", my_view)
+    path("~/eugene_lubimov/", my_view),
 ]
