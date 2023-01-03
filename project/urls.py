@@ -1,4 +1,3 @@
-
 from django.urls import path
 
 from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
