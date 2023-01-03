@@ -1,21 +1,40 @@
+import json
+
+import pytest
+
 from hw.dmitry_mihkailiuk.lesson10.lesson import Counter
 from hw.dmitry_mihkailiuk.lesson10.lesson import User
 
 
+@pytest.mark.skip("does not clean FS after run")
 def test_01() -> None:
     dim = User("Dim")
-    assert dim.get_name() == "Dim"
+    assert str(dim) == "Dim"
     assert dim.get_class_name() == "User"
     assert dim.get_hello_world() == "hello world"
 
+    js = dim.to_json()
+    assert js == '{"name": "Dim"}'
+    assert json.loads(js) == {"name": "Dim"}
+
+    dim.save_json(js)
+
+    with open("data.json") as f:
+        file_content = f.read()
+        file_json = json.loads(file_content)
+    assert file_content == '{"name": "Dim"}'
+    assert file_json == {"name": "Dim"}
+
 
 def test_02() -> None:
-    r1 = 1
-    ctr1 = Counter(0, r1)
+    ctr1 = Counter(0, 5)
 
-    r2 = 2
-    ctr2 = Counter(0, r2)
+    ctr2 = Counter(0, 2)
 
-    assert [ctr1.next() for _ in range(r1 + 1)] == [0, 1]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [0, 1, 2]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [2, 2, 2]
+    assert next(ctr1) == 0
+
+    list_num = list(ctr1)
+    assert list_num == [1, 2, 3, 4]
+
+    assert next(ctr2) == 0
+    assert next(ctr2) == 1
