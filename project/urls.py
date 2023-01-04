@@ -11,6 +11,7 @@ from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
 from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
+from hw.maksim_baranau.lesson13.views import handle_maksim_baranau
 
 urlpatterns = [
     path("admin/", admin.site.urls),
