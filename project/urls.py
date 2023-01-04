@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
 from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
@@ -21,7 +22,7 @@ urlpatterns = [
     path("~/eugene_vavilov/", handle_eugene_vavilov),
     path("~/jana_sergienko/", handle_jana_sergienko),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
-    path("~/sergey_sakovich/", handle_sergey_sakovich),
+    path("~/sergey_sakovich/", include('app_sergey_sakovich.urls')),
     path("~/vadim_zharski", handle_vadim_zharski),
     path("~/vladislav_yurenya/", handle_vladislav_yurenya),
 ]
