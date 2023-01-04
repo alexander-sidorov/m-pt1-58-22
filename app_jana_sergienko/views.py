@@ -14,4 +14,3 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
     amt = int(request.GET["a"])
     res = task_01_money(rub, coin, amt)
     return HttpResponse(res, content_type="text/plain")
-
