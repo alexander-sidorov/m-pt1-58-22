@@ -60,14 +60,15 @@ target-version = ["py310"]
 exclude = """
 (
   /(
-      /.artifacts
-    | /.env
+      /.env
+    | /.artifacts
     | /.git
     | /.github
     | /.idea
     | /.venv
     | /.vscode
     | /venv
+    | /docs
   )/
 )
 """
@@ -78,6 +79,13 @@ force_single_line = true
 line_length = 79
 multi_line_output = 3
 profile = "black"
+skip = [
+    ".artifacts",
+    ".github",
+    ".idea",
+    ".vscode",
+    "docs",
+]
 
 
 [tool.mypy]
@@ -86,7 +94,7 @@ check_untyped_defs = true
 disallow_incomplete_defs = true
 disallow_untyped_calls = true
 disallow_untyped_defs = true
-files = ["hw"]
+files = ["hw", "project", "app_*"]
 no_implicit_optional = true
 plugins = ["pydantic.mypy"]
 pretty = true
@@ -97,12 +105,6 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
-
-#[[tool.mypy.overrides]]
-#ignore_missing_imports = true
-#module = [
-#    "django.*",
-#]
 
 
 [tool.pydantic-mypy]

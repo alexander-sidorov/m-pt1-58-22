@@ -1,5 +1,5 @@
-black hw
-isort hw
+black hw\ project\ app_*\
+isort hw\ project\ app_*\
 
 pytest
 coverage html
