@@ -16,7 +16,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("~/alexander_sidorov/", handle_alexander_sidorov),
     path("~/alexey-tuyhai/", handle_alexey_tuyhai),
-    path("~/maksim_baranau/") handle_maksim_baranau,
+    path("~/maksim_baranau/"), handle_maksim_baranau,
     path("~/dmitry_mihkailiuk/", handle_dmitry_mikhailiuk),
     path("~/eugene_lubimov/", my_view),
     path("~/eugene_vavilov/", handle_eugene_vavilov),
