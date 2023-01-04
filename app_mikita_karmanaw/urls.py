@@ -5,5 +5,5 @@ from app_mikita_karmanaw.views import money
 
 urlpatterns = [
     path("", hello_mk),
-    path("lesson04/task01", money),
+    path("lesson04/task01/", money),
 ]
