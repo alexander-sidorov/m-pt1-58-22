@@ -1,21 +1,27 @@
-"""project URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 
+from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
+from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
+from hw.dmitry_mihkailiuk.lesson13.views import handle_dmitry_mikhailiuk
+from hw.eugene_lubimov.lesson13.views import my_view
+from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
+from hw.jana_sergienko.lesson13.views import handle_jana_sergienko
+from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
+from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
+from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
+from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("~/alexander_sidorov/", handle_alexander_sidorov),
+    path("~/alexey-tuyhai/", handle_alexey_tuyhai),
+    path("~/dmitry_mihkailiuk/", handle_dmitry_mikhailiuk),
+    path("~/eugene_lubimov/", my_view),
+    path("~/eugene_vavilov/", handle_eugene_vavilov),
+    path("~/jana_sergienko/", handle_jana_sergienko),
+    path("~/mikita_karmanaw/", handle_mikita_karmanaw),
+    path("~/sergey_sakovich/", handle_sergey_sakovich),
+    path("~/vadim_zharski", handle_vadim_zharski),
+    path("~/vladislav_yurenya/", handle_vladislav_yurenya),
 ]
