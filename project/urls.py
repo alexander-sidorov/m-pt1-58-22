@@ -19,5 +19,5 @@ from hw.igor_maksimov.lesson13.hello_world import handle_hello_world
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("igor/", handle_hello_world),
+    path("~/igor_maksimov/", handle_hello_world),
 ]
