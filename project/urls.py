@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
 from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
-from hw.andrei_karpuk.lesson13.views import ak_view
 from hw.dmitry_mihkailiuk.lesson13.views import handle_dmitry_mikhailiuk
 from hw.eugene_lubimov.lesson13.views import my_view
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
@@ -18,7 +18,7 @@ urlpatterns = [
     path("~/alexander_sidorov/", handle_alexander_sidorov),
     path("~/alexander_sidorov/", handle_alexander_sidorov),
     path("~/alexey-tuyhai/", handle_alexey_tuyhai),
-    path("~/andrei_karpuk/", ak_view),
+    path("~/andrei_karpuk/", include("app_andrei_karpuk.urls")),
     path("~/dmitry_mihkailiuk/", handle_dmitry_mikhailiuk),
     path("~/eugene_lubimov/", my_view),
     path("~/eugene_vavilov/", handle_eugene_vavilov),
