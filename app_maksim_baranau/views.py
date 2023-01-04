@@ -1,6 +1,5 @@
-from django.http import HttpRequest
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("hello from app")
+    return HttpResponse("hello from app ")
