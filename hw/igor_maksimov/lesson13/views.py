@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse
 
 
-def handle_hello_world(request: HttpRequest):
+def handle_igor_maksimov(request: HttpRequest):
     return HttpResponse("hello from Igor Maksimov")
