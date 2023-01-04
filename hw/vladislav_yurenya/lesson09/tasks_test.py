@@ -1,6 +1,4 @@
 import time
-from typing import Any
-from typing import cast
 
 import pytest
 
@@ -34,21 +32,24 @@ def test_03() -> None:
     assert abs(dt - 1) < 0.1
 
 
+@task_04_typecheck
+def f(*, a: int, b: int) -> int:
+    return b * a
+
+
+@task_04_typecheck
+def g() -> int:
+    return "1"  # type: ignore
+
+
 def test_04() -> None:
-    @task_04_typecheck
-    def xxx(*, arg: int) -> None:
-        assert arg > 0 or arg <= 0
+    assert f(a=2, b=3) == 6
 
-    @task_04_typecheck
-    def yyy(*, arg: Any) -> None:
-        return cast(None, arg)
+    with pytest.raises(TypeError):
+        f(a=2, b=0.2)
 
-    assert xxx(arg=10) is None
-    assert yyy(arg=None) is None
     with pytest.raises(TypeError):
-        xxx(arg="a")
-    with pytest.raises(TypeError):
-        yyy(arg="a")
+        g()
 
 
 @task_05_cache
