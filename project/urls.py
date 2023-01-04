@@ -21,6 +21,6 @@ urlpatterns = [
     path("~/jana_sergienko/", handle_jana_sergienko),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
-    path("~/vadim_zharski", include("app_vadim_zharski.urls")),
+    path("~/vadim_zharski/", include("app_vadim_zharski.urls")),
     path("~/vladislav_yurenya/", handle_vladislav_yurenya),
 ]
