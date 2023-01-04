@@ -2,13 +2,10 @@ import json
 import tempfile
 from pathlib import Path
 
-import pytest
-
 from hw.dmitry_mihkailiuk.lesson10.lesson import Counter
 from hw.dmitry_mihkailiuk.lesson10.lesson import User
 
 
-@pytest.mark.skip("does not clean FS after run")
 def test_01() -> None:
     dim = User("Dim")
     assert str(dim) == "Dim"
