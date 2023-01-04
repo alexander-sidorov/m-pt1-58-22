@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+
 
 from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
 from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
@@ -10,7 +11,6 @@ from hw.jana_sergienko.lesson13.views import handle_jana_sergienko
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
-from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -23,5 +23,5 @@ urlpatterns = [
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
     path("~/vadim_zharski", handle_vadim_zharski),
-    path("~/vladislav_yurenya/", handle_vladislav_yurenya),
+    path("~/vladislav_yurenya/", include('app_vladislav_yurenya.urls')),
 ]
