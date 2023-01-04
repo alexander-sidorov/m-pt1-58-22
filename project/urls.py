@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include
+from django.urls import path
 
 from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
 from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
