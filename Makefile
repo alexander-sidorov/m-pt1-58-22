@@ -6,6 +6,8 @@ format:
 
 .PHONY: qa
 qa:
+	black --check hw/
+	isort --check-only --virtual-env="$(shell poetry env info --path)" hw/
 	mypy
 	flake8
 	pytest
