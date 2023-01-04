@@ -128,10 +128,9 @@ class HttpResponse:
         return False
 
     def json(self) -> Any:
-        if self.is_valid() and self.__is_json:
+        if self.is_valid() and self.__is_json and self.body:
             try:
-                if self.body is not None:
-                    return json.loads(self.body)
+                return json.loads(self.body)
             except json.decoder.JSONDecodeError:
                 return None
         else:
