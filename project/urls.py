@@ -7,8 +7,8 @@ from hw.dmitry_mihkailiuk.lesson13.views import handle_dmitry_mikhailiuk
 from hw.eugene_lubimov.lesson13.views import my_view
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
 from hw.jana_sergienko.lesson13.views import handle_jana_sergienko
-from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.maksim_baranau.lesson13.views import handle_maksim_baranau
+from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
 from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
@@ -21,9 +21,9 @@ urlpatterns = [
     path("~/eugene_lubimov/", my_view),
     path("~/eugene_vavilov/", handle_eugene_vavilov),
     path("~/jana_sergienko/", handle_jana_sergienko),
-    path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/maksim_baranau/"),
     handle_maksim_baranau,
+    path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
     path("~/vadim_zharski", handle_vadim_zharski),
     path("~/vladislav_yurenya/", handle_vladislav_yurenya),
