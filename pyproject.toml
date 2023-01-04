@@ -10,6 +10,7 @@ black = "^22.10.0"
 coverage = "^6.5.0"
 devtools = {extras = ["pygments"], version = "^0.9.0"}
 django = "^4.1.4"
+django-stubs = "^1.13.1"
 dlint = "^0.13.0"
 flake8 = "^5.0.4"
 flake8-annotations-complexity = "^0.0.7"
@@ -97,11 +98,11 @@ warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
-[[tool.mypy.overrides]]
-ignore_missing_imports = true
-module = [
-    "django.*",
-]
+#[[tool.mypy.overrides]]
+#ignore_missing_imports = true
+#module = [
+#    "django.*",
+#]
 
 
 [tool.pydantic-mypy]
