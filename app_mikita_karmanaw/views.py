@@ -8,6 +8,7 @@ def hello_mk(request: HttpRequest) -> HttpResponse:
 
 def money(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_01_money
+
     rub = request.GET["r"]
     coins = request.GET["c"]
     amo = request.GET["a"]

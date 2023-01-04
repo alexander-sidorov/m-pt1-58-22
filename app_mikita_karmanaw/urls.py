@@ -1,8 +1,9 @@
 from django.urls import path
 
-from app_mikita_karmanaw.views import hello_mk, money
+from app_mikita_karmanaw.views import hello_mk
+from app_mikita_karmanaw.views import money
 
 urlpatterns = [
     path("", hello_mk),
-    path("money", money),
+    path("lesson04/task01", money),
 ]
