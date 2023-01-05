@@ -1,10 +1,10 @@
 class Url:
-    def __init__(self, url: str):
-        self.scheme = None
-        self.username = None
-        self.password = None
-        self.host = None
-        self.port = None
-        self.path = None
-        self.query = None
-        self.fragment = None
+    def get_url(url: str) -> dict:
+        dict_url = {}
+        new_url = url
+        schema = url.split("://")[0]
+
+        dict_url.update({"schema": schema})
+
+
+
