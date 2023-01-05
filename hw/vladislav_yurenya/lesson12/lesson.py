@@ -35,20 +35,19 @@ class Url:
 
 
 class HttpRequest:
-    def __init__(self, url: str):
-        self.url: str | Any
+    def __init__(self, req: str):
+        self.req: str | Any
         self.body: None | str = None
-        body = url.find("\n\n") + 2
-        self.body = url[body:]
+        body = req.find("\n\n") + 2
+        self.body = req[body:]
         if self.body == "":
             self.body = None
-        self.url = url
-        self.url = re.split('" "|\n', self.url)
-        new = self.url[0].split(" ")
+        self.req = re.split("\n", req)
+        new = self.req[0].split(" ")
         self.method = new[0]
         self.path = new[1]
         self.http_version = new[2]
-        qef = self.url[1:]
+        qef = self.req[1:]
         self.headers: dict[str, Any] = {}
         for i in range(len(qef) - 2):
             count = qef[i].split(": ")
@@ -69,16 +68,19 @@ class HttpResponse:
         for_headers = for_headers[1:4]
         for_headers[2] = for_headers[2].replace("\n", "")
         self.headers: dict[str, Any] = {}
-        for i in range(len(for_headers)):
-            count = for_headers[i].split(": ")
+        for header in for_headers:
+            count = header.split(": ")
             self.headers[count[0]] = count[1]
-        self.headers["Content-Length"] = int(self.headers["Content-Length"])
+        for key in self.headers.keys():
+            if key == "Content-Length":
+                self.headers[key] = int(self.headers["Content-Length"])
+        print(self.headers.values())
         left = self.url.find("{")
         self.body = self.url[left:]
         deleted = self.body.find("\n   ")
         self.body = self.body[:deleted]
 
-    def is_valid(self) -> Any:
+    def is_valid(self) -> bool:
         return self.headers["Content-Length"] == len(self.body)
 
     def json(self) -> Any:
@@ -86,3 +88,14 @@ class HttpResponse:
             return json.loads(self.body)
         else:
             return None
+
+
+message = """HTTP/1.1 404 NOT FOUND
+    Content-Length: 48
+    Content-Type: application/json
+    Server: gunicorn/19.9.0
+
+    {"status_code": 404, "description": "no access"}
+    """
+
+resp = HttpResponse(message)
