@@ -37,7 +37,8 @@ class HttpRequest:
     def __init__(self, req: str):
         self.req: str | Any
         self.body: None | str = None
-        self.body = req[req.find("\n\n") + 2:]
+        body = req.find("\n\n") + 2
+        self.body = req[body:]
         if self.body == "":
             self.body = None
         self.req = req.split("\n")
@@ -60,8 +61,8 @@ class HttpResponse:
         self.status_code = int(new[1])
         new_0 = " ".join(new[2:4])
         self.reason = new_0.title()
-        new = new[4:]
-        for_headers = self.url.split("\n    ")
+        for_headers = self.url.split("\n")
+        for_headers = [for_headers.strip(" ") for for_headers in for_headers]
         for_headers[2].replace("\n", "")
         for_headers = for_headers[1:4]
         for_headers[2] = for_headers[2].replace("\n", "")
