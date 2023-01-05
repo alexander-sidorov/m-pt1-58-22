@@ -14,19 +14,15 @@ def task_money(request: HttpRequest) -> HttpResponse:
     rubles = coins = amount = ""
 
     if request.GET:
-        rubles = int(request.GET["c"])
+        rubles = int(request.GET["r"])
         coins = int(request.GET["c"])
         amount = int(request.GET["a"])
         result = task_01_money(rubles, coins, amount)
-
-    return render(
-        request,
-        "app_vadim_zharski/task_01.html",
-        {
-            "r": rubles,
-            "c": coins,
-            "a": amount,
-            "result": result,
-        },
-    )
+    res: dict = {
+        "r": rubles,
+        "c": coins,
+        "a": amount,
+        "result": result,
+    }
+    return render(request, "app_vadim_zharski/task_01.html", res)
 
