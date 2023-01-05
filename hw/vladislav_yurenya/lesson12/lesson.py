@@ -74,13 +74,12 @@ class HttpResponse:
         for key in self.headers.keys():
             if key == "Content-Length":
                 self.headers[key] = int(self.headers["Content-Length"])
-        print(self.headers.values())
         left = self.url.find("{")
         self.body = self.url[left:]
         deleted = self.body.find("\n   ")
         self.body = self.body[:deleted]
 
-    def is_valid(self) -> bool:
+    def is_valid(self) -> Any:
         return self.headers["Content-Length"] == len(self.body)
 
     def json(self) -> Any:
@@ -88,14 +87,3 @@ class HttpResponse:
             return json.loads(self.body)
         else:
             return None
-
-
-message = """HTTP/1.1 404 NOT FOUND
-    Content-Length: 48
-    Content-Type: application/json
-    Server: gunicorn/19.9.0
-
-    {"status_code": 404, "description": "no access"}
-    """
-
-resp = HttpResponse(message)
