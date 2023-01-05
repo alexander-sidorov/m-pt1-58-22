@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app_jana_sergienko",
+    "app_vadim_zharski",
 ]
 
 

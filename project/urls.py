@@ -9,7 +9,6 @@ from hw.eugene_lubimov.lesson13.views import my_view
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
-from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
 from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
 
 urlpatterns = [
@@ -23,6 +22,6 @@ urlpatterns = [
     path("~/maksim_lamaka/", my_view),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
-    path("~/vadim_zharski", handle_vadim_zharski),
+    path("~/vadim_zharski/", include("app_vadim_zharski.urls")),
     path("~/vladislav_yurenya/", handle_vladislav_yurenya),
 ]
