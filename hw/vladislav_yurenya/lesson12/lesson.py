@@ -38,8 +38,7 @@ class HttpRequest:
     def __init__(self, req: str):
         self.req: str | Any
         self.body: None | str = None
-        body = req.find("\n\n") + 2
-        self.body = req[body:]
+        self.body = req[req.find("\n\n") + 2:]
         if self.body == "":
             self.body = None
         self.req = re.split("\n", req)
@@ -53,7 +52,16 @@ class HttpRequest:
             count = qef[i].split(": ")
             self.headers[count[0]] = count[1]
 
+message = """HEAD / HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: github.com
+User-Agent: HTTPie/3.2.1
 
+"""
+
+req = HttpRequest(message)
 class HttpResponse:
     def __init__(self, url: str):
         self.url = url
