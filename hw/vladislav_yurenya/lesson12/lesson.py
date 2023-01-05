@@ -37,7 +37,7 @@ class HttpRequest:
     def __init__(self, req: str):
         self.req: str | Any
         self.body: None | str = None
-        self.body = req[req.find("\n\n") + 2 :]
+        self.body = req[req.find("\n\n") + 2:]
         if self.body == "":
             self.body = None
         self.req = req.split("\n")
