@@ -23,7 +23,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+<<<<<<< HEAD
     "app_eugene_lubimov",
+=======
+    "app_jana_sergienko",
+>>>>>>> 7d0db91 (Jana Sergienko Lesson 14 (#149))
 ]
 
 
