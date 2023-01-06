@@ -9,8 +9,6 @@ def helloworld(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Hello from app")
 
 
-
-
 def handle_task_money(request: HttpRequest) -> HttpResponse:
     result = ""
     rubles = coins = amount = ""
@@ -21,7 +19,7 @@ def handle_task_money(request: HttpRequest) -> HttpResponse:
             int(request.GET["a"]),
         )
         result = task_01_money(rubles, coins, amount)
-        
+
     return render(
         request,
         "app_eugene_lubimov/task01.html",
