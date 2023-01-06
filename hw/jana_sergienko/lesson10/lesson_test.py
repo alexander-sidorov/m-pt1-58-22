@@ -1,3 +1,5 @@
+import json
+
 from hw.jana_sergienko.lesson10.lesson import Counter
 from hw.jana_sergienko.lesson10.lesson import User
 
@@ -7,21 +9,28 @@ def test_01() -> None:
     name = User("Петя")
     petya = User("Вася")
 
-    assert name.get_name() == "Петя"
+    assert name.__str__() == "Петя"
     assert name.get_class_name() == User.__name__
     assert name.get_hello_world() == hw_text
-    assert petya.get_name() == "Вася"
+    assert petya.__str__() == "Вася"
     assert petya.get_class_name() == User.__name__
     assert petya.get_hello_world() == hw_text
 
 
 def test_02() -> None:
-    r1 = 1
+    r1 = 3
     ctr1 = Counter(0, r1)
 
-    r2 = 2
-    ctr2 = Counter(0, r2)
+    r2 = 5
+    ctr2 = Counter(2, r2)
 
-    assert [ctr1.next() for _ in range(r1 + 1)] == [0, 1]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [0, 1, 2]
-    assert [ctr2.next() for _ in range(r2 + 1)] == [2, 2, 2]
+    assert list(ctr1) == [0, 1, 2, 3]
+    assert list(ctr2) == [2, 3, 4, 5]
+
+
+def test_03() -> None:
+    petya = User("P")
+    js = petya.to_json()
+
+    assert js == '{"name": "P"}'
+    assert json.loads(js) == {"name": "P"}

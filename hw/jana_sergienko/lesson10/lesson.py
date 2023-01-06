@@ -1,4 +1,4 @@
-from typing import Optional
+import json
 
 
 class User:
@@ -7,7 +7,7 @@ class User:
     def __init__(self, name: str):
         self.name = name
 
-    def get_name(self) -> str:
+    def __str__(self) -> str:
         return self.name
 
     def get_class_name(self) -> str:
@@ -16,19 +16,22 @@ class User:
     def get_hello_world(self) -> str:
         return "hello world"
 
+    def to_json(self) -> str:
+        return json.dumps({"name": self.name})
+
 
 class Counter:
     def __init__(self, start: int, stop: int):
         self.start = start
         self.stop = stop
-        self.current: Optional[int] = None
+        self.current = self.start
 
-    def next(self) -> int:  # noqa: A003
-        if self.current is None:
-            self.current = self.start
+    def __iter__(self) -> "Counter":
+        return self
 
+    def __next__(self) -> int:  # noqa: A003
         if self.current > self.stop:
-            return self.stop
+            raise StopIteration
 
         result, self.current = self.current, self.current + 1
         return result
