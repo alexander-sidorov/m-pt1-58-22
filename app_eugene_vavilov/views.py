@@ -1,5 +1,6 @@
-from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render  # noqa I005
+from django.http import HttpResponse, HttpRequest  # noqa I005
+
 from hw.eugene_vavilov.lesson04.lecture import task_01_money
 
 
