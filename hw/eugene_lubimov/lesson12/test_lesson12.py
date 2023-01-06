@@ -85,7 +85,6 @@ Connection: keep-alive
 Host: digitology.tech
 User-Agent: HTTPie/3.2.1
 
-
 """
     req1 = les.HttpRequest(message)
 
@@ -103,8 +102,7 @@ Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
 
-{"status_code": 404, "description": "no access"}
-"""
+{"status_code": 404, "description": "no access"}"""
 
     resp = les.HttpResponse(message)
 
@@ -125,8 +123,7 @@ Content-Length: 49
 Content-Type: text/html
 Server: gunicorn/19.9.0
 
-{"status_code": 404, "description": "no access"}
-"""
+{"status_code": 404, "description": "no access"}"""
 
     resp = les.HttpResponse(message)
 
@@ -138,8 +135,7 @@ Content-Length: 48
 Content-Type: text/html
 Server: gunicorn/19.9.0
 
-{"status_code": 404, "description": "no access"}
-"""
+{"status_code": 404, "description": "no access"}"""
 
     resp = les.HttpResponse(message)
 
@@ -151,8 +147,7 @@ Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
 
-!!!!!!!
-"""
+!!!!!!!"""
 
     resp = les.HttpResponse(message)
 

@@ -1,5 +1,6 @@
 import json
 from typing import Any
+from typing import Optional
 
 
 class Url:
@@ -33,15 +34,16 @@ class Url:
 
 class HttpRequest:
     def __init__(self, req: str) -> None:
-        self.req = req.split("\n")
+        ind = req.index("\n\n") + 2
+        body = req[ind:]
+        self.__body = body if body else None
+        self.req = req[: req.index("\n\n")].split("\n")
         first = self.req[0].split()
         self.__method, self.__path, self.__http_version = first
         self.__headers_dict: dict = {}
-        end = self.req.index("")
-        for head in self.req[1:end]:
+        for head in self.req[1:]:
             header, value = head.split(": ")
             self.__headers_dict[header] = value
-        self.__body = self.req[-2] if self.req[-2] else None
 
     @property
     def method(self) -> str:
@@ -60,24 +62,25 @@ class HttpRequest:
         return self.__headers_dict
 
     @property
-    def body(self) -> str | None:
+    def body(self) -> Optional[str]:
         return self.__body
 
 
 class HttpResponse:
     def __init__(self, res: str) -> None:
-        self.res = res.split("\n")
+        ind = res.index("\n\n") + 2
+        body = res[ind:]
+        self.__body = body
+        self.res = res[: res.index("\n\n")].split("\n")
         first = self.res[0].split()
         self.__http_version, status_code, *reason = first
         self.__status_code: int = int(status_code)
         self.__reason: str = " ".join(reason).title()
         self.__headers: dict = {}
-        end = self.res.index("")
-        for head in self.res[1:end]:
+        for head in self.res[1:]:
             header, val = head.split(": ")
             value: str | int = int(val) if val.isdigit() else val
             self.__headers[header] = value
-        self.__body: str = self.res[-2]
 
     @property
     def http_version(self) -> str:
@@ -100,13 +103,13 @@ class HttpResponse:
         return self.__body
 
     def is_valid(self) -> Any:
-        return self.__headers["Content-Length"] == len(self.__body)
+        return self.__headers["Content-Length"] == len(self.body)
 
     def json(self) -> Any:
         if self.__headers["Content-Type"] != "application/json":
             return
         try:
-            self.__json = json.loads(self.__body)
+            self.__json = json.loads(self.body)
         except Exception:
             return
         return self.__json
