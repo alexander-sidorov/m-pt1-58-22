@@ -18,8 +18,6 @@ urlpatterns = [
     path("~/dmitry_mihkailiuk/", handle_dmitry_mikhailiuk),
     path("~/eugene_lubimov/", include("app_eugene_lubimov.urls")),
     path("~/eugene_vavilov/", handle_eugene_vavilov),
-    path("~/jana_sergienko/", handle_jana_sergienko),
-    path("~/maksim_lamaka/", my_view),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
     path("~/vadim_zharski", handle_vadim_zharski),
