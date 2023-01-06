@@ -6,7 +6,6 @@ from hw.alexander_sidorov.lesson13.views import handle_alexander_sidorov
 from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
 from hw.dmitry_mihkailiuk.lesson13.views import handle_dmitry_mikhailiuk
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
-from hw.jana_sergienko.lesson13.views import handle_jana_sergienko
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
