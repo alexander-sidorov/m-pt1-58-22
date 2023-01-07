@@ -1,4 +1,5 @@
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpRequest
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from hw.dmitry_mihkailiuk.lesson04.lecture import task_01_money
@@ -13,9 +14,9 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
     rub = coins = amount = ""
 
     if request.GET:
-        rub = int(request.GET['r'])
-        coins = int(request.GET['c'])
-        amount = int(request.GET['a'])
+        rub = int(request.GET["r"])
+        coins = int(request.GET["c"])
+        amount = int(request.GET["a"])
         result = task_01_money(rub, coins, amount)
 
     return render(
