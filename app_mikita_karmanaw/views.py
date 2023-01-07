@@ -11,13 +11,13 @@ def money(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_01_money
 
     res = ""
-    rub = coins = amo = ""
+    rub: = coins = amo = ""
 
     if request.GET:
-        rub = int(request.GET["r"])
-        coins = int(request.GET["c"])
-        amo = int(request.GET["a"])
-        res = task_01_money(rub, coins, amo)
+        rub = str(request.GET["r"])
+        coins = str(request.GET["c"])
+        amo = str(request.GET["a"])
+        res = str(task_01_money(rub, coins, amo))
     html_out = render(
         request,
         "app_mikita_karmanaw/index_task_01.html",
