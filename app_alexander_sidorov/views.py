@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -10,8 +12,8 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 
 def handle_task_01_money(request: HttpRequest) -> HttpResponse:
-    result = ""
-    rubles = coins = amount = ""
+    result = Decimal()
+    rubles = coins = amount = 0
 
     if request.GET:
         rubles = int(request.GET["r"])
