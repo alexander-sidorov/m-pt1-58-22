@@ -10,29 +10,29 @@ class Url:
         self.fragment = None
 
         self.scheme = url[: url.find("://")]
-        url = url[url.find("://") + 3 :]
+        url = url[url.find("://") + 3:]
         if "#" in url:
-            self.fragment = url[url.find("#") + 1 :]
+            self.fragment = url[url.find("#") + 1:]
             url = url[: url.find("#")]
         if "@" in url:
             if ":" in url:
                 self.username = url[: url.find(":")]
-                url = url[url.find(":") + 1 :]
+                url = url[url.find(":") + 1:]
                 self.password = url[: url.find("@")]
-                url = url[url.find("@") + 1 :]
+                url = url[url.find("@") + 1:]
             else:
                 self.username = url[: url.find("@")]
-                url = url[url.find("@") + 1 :]
+                url = url[url.find("@") + 1:]
                 if "/" in url:
                     self.host = url[: url.find("/")]
-                    url = url[url.find("/") + 1 :]
+                    url = url[url.find("/") + 1:]
                 if "?" in url:
-                    urlhost1 = url[: url.find("?")]
-                    if urlhost1 == "":
+                    urlhost = url[: url.find("?")]
+                    if urlhost == "":
                         ...
                     else:
-                        self.host = urlhost1
-                        url = url[url.find("?") :]
+                        self.host = urlhost
+                        url = url[url.find("?"):]
                 else:
                     self.host = url
         else:
@@ -42,13 +42,13 @@ class Url:
             else:
                 self.host = url
         if "?" in url:
-            self.query = url[url.find("?") + 1 :]
+            self.query = url[url.find("?") + 1:]
             url = url[: url.find("?")]
         if ":" in url:
             self.host = url[: url.find(":")]
-            url = url[url.find(":") + 1 :]
+            url = url[url.find(":") + 1:]
         if "/" in url:
-            self.path = url[url.find("/") :]
+            self.path = url[url.find("/"):]
             url = url[: url.find("/")]
         if url.isnumeric():
             self.port = url
