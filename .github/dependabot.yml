@@ -2,7 +2,8 @@ version: 2
 
 updates:
   - package-ecosystem: pip  # poetry
-    assignees: "alexander-sidorov"
+    assignees:
+      - "alexander-sidorov"
     directory: "/"
     schedule:
       day: "monday"
