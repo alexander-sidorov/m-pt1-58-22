@@ -11,7 +11,7 @@ def money(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_01_money
 
     res = ""
-    rub: = coins = amo = ""
+    rub = coins = amo = ""
 
     if request.GET:
         rub = str(request.GET["r"])
