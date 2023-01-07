@@ -57,21 +57,16 @@ build-backend = "poetry.core.masonry.api"
 [tool.black]
 line-length = 79
 target-version = ["py310"]
-exclude = """
+include = '^.+\.pyi?$'
+extend-exclude = '''
 (
-  /(
-      /.env
-    | /.artifacts
-    | /.git
-    | /.github
-    | /.idea
-    | /.venv
-    | /.vscode
-    | /venv
-    | /docs
-  )/
+    .*\.artifacts.*
+    | .*\.github.*
+    | .*\.idea.*
+    | .*\.vscode.*
+    | .*docs.*
 )
-"""
+'''
 
 
 [tool.isort]
@@ -94,7 +89,13 @@ check_untyped_defs = true
 disallow_incomplete_defs = true
 disallow_untyped_calls = true
 disallow_untyped_defs = true
-exclude = [".artifacts", ".github", ".vscode", ".idea", "docs"]
+exclude = [
+    ".artifacts",
+    ".github",
+    ".idea",
+    ".vscode",
+    "docs",
+]
 files = ["."]
 no_implicit_optional = true
 plugins = ["pydantic.mypy"]
