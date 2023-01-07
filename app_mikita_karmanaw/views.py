@@ -10,8 +10,10 @@ def hello_mk(request: HttpRequest) -> HttpResponse:
 def money(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_01_money
 
-    res = ""
-    rub: str | int = coins: str | int = amo: str | int = ""
+    res: str = ""
+    rub: str | int = ""
+    coins: str | int = ""
+    amo: str | int = ""
 
     if request.GET:
         rub = int(request.GET["r"])
