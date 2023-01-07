@@ -10,6 +10,11 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 
 def my_money(request: HttpRequest) -> HttpResponse:
+
+    res: str = ""
+    rubles: str | int = ""
+    coins: str | int = ""
+    amount: str | int = ""
     result = ""
     rubles = coins = amount = ""
 
