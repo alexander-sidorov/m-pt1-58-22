@@ -11,12 +11,12 @@ def money(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_01_money
 
     res = ""
-    rub = coins = amo = ""
+    rub: str | int = coins: str | int = amo: str | int = ""
 
     if request.GET:
-        rub = str(request.GET["r"])
-        coins = str(request.GET["c"])
-        amo = str(request.GET["a"])
+        rub = int(request.GET["r"])
+        coins = int(request.GET["c"])
+        amo = int(request.GET["a"])
         res = str(task_01_money(rub, coins, amo))
     html_out = render(
         request,
