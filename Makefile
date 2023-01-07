@@ -1,13 +1,13 @@
 .PHONY: format
 format:
-	black hw/
-	isort --virtual-env="$(shell poetry env info --path)" hw/
+	black .
+	isort --virtual-env="$(shell poetry env info --path)" .
 
 
 .PHONY: qa
 qa:
-	black --check hw/
-	isort --check-only --virtual-env="$(shell poetry env info --path)" hw/
+	black --check .
+	isort --check-only --virtual-env="$(shell poetry env info --path)" .
 	mypy
 	flake8
 	pytest
