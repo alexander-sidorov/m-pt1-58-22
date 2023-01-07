@@ -1,7 +1,5 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
-from typing import Any, Dict
-from decimal import Decimal
 from django.shortcuts import render
 
 from hw.vladislav_yurenya.lesson_04.lecture import task_01_money
