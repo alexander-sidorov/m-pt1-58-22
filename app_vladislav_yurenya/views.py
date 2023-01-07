@@ -10,9 +10,8 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 
 def my_money(request: HttpRequest) -> HttpResponse:
-    from decimal import Decimal
 
-    result: str | decimal = ""
+    result: str | Decimal = ""
     rubles: str | int = ""
     coins: str | int = ""
     amount: str | int = ""
