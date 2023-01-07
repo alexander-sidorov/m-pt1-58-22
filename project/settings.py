@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "app_alexander_sidorov",
     "app_jana_sergienko",
     "app_mikita_karmanaw",
 ]
