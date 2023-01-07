@@ -1,0 +1,16 @@
+version: 2
+
+updates:
+  - package-ecosystem: pip  # poetry
+    assignees: "alexander-sidorov"
+    directory: "/"
+    schedule:
+      day: "monday"
+      interval: "weekly"
+      time: "06:00"
+    labels:
+      - "auto: dependencies"
+    reviewers:
+      - "alexander-sidorov"
+      - "karmaxa"
+      - "Mikhailiuk-Dmitriy"
