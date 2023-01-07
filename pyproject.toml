@@ -40,7 +40,7 @@ httpie = "^3.2.1"
 ipython = "^8.6.0"
 isort = "^5.10.1"
 mypy = "^0.991"
-orjson = "^3.8.2"
+orjson = "^3.8.4"
 pep8-naming = "^0.13.2"
 pydantic = {extras = ["dotenv"], version = "^1.10.2"}
 pytest = "^7.2.0"
