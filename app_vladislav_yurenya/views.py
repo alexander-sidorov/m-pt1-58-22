@@ -11,12 +11,11 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 def my_money(request: HttpRequest) -> HttpResponse:
 
-    res: str = ""
+    result: str | Decimal = ""
     rubles: str | int = ""
     coins: str | int = ""
     amount: str | int = ""
-    result = ""
-    rubles = coins = amount = ""
+
 
     if request.GET:
         rubles = int(request.GET["r"])
