@@ -1,17 +1,19 @@
+from decimal import Decimal
+
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from hw.vladislav_yurenya.lesson_04.lecture import task_01_money
+from hw.alexander_sidorov.lesson04.lecture import task_01_money
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("HELLO FROM APP!")
+    return HttpResponse("hello from app 12ewadsadsada")
 
 
-def my_money(request: HttpRequest) -> HttpResponse:
-    result = ""
-    rubles = coins = amount = ""
+def handle_task_01_money(request: HttpRequest) -> HttpResponse:
+    result = Decimal()
+    rubles = coins = amount = 0
 
     if request.GET:
         rubles = int(request.GET["r"])
@@ -21,7 +23,7 @@ def my_money(request: HttpRequest) -> HttpResponse:
 
     return render(
         request,
-        "app_vladislav_yurenya/task01.html",
+        "app_alexander_sidorov/task01.html",
         {
             "r": rubles,
             "c": coins,
