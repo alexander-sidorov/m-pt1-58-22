@@ -2,14 +2,13 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
+from hw.alexey_tyuhai.lesson13.views import handle_alexey_tuyhai
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
 from hw.maksim_lamaka.lesson13.views import my_view
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
 from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
-
 
 urlpatterns = [
     path("admin/", admin.site.urls),
