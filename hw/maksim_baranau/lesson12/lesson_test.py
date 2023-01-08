@@ -1,5 +1,5 @@
-from hw.maksim_baranau.lesson12.lesson import Url
 from hw.maksim_baranau.lesson12.lesson import HttpRequest
+from hw.maksim_baranau.lesson12.lesson import Url
 
 
 def test_task_1() -> None:
