@@ -1,17 +1,17 @@
+from decimal import Decimal
+
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
-from decimal import Decimal
 
 from hw.vladislav_yurenya.lesson_04.lecture import task_01_money
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("HELLO FROM APP!")
+    return HttpResponse("<h1>HELLO FROM APP!</h1>")
 
 
 def my_money(request: HttpRequest) -> HttpResponse:
-
     result = Decimal()
     rubles: str | int = ""
     coins: str | int = ""
