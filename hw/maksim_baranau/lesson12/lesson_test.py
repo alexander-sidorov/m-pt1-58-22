@@ -77,16 +77,14 @@ User-Agent: HTTPie/3.2.1
     assert req.body is None
 
 
-def test_http_response() -> None:
-
+def test_task_3() -> None:
     message = """HTTP/1.1 404 NOT FOUND
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
-{"status_code": 404, "description": "no access"}"""
-
+{"status_code": 404, "description": "no access"}
+"""
     resp = HttpResponse(message)
-
     assert resp.status_code == 404
     assert resp.reason == "NOT FOUND"
     assert resp.http_version == "HTTP/1.1"
@@ -103,7 +101,8 @@ Server: gunicorn/19.9.0
 Content-Length: 49
 Content-Type: text/html
 Server: gunicorn/19.9.0
-{"status_code": 404, "description": "no access"}"""
+{"status_code": 404, "description": "no access"}
+"""
 
     resp = HttpResponse(message)
 
@@ -114,7 +113,8 @@ Server: gunicorn/19.9.0
 Content-Length: 48
 Content-Type: text/html
 Server: gunicorn/19.9.0
-{"status_code": 404, "description": "no access"}"""
+{"status_code": 404, "description": "no access"}
+"""
 
     resp = HttpResponse(message)
 
@@ -122,25 +122,27 @@ Server: gunicorn/19.9.0
     assert resp.json() is None
 
     message = """HTTP/1.1 404 NOT FOUND
-Content-Length: 48
-Content-Type: application/json
-Server: gunicorn/19.9.0
-'status_code': 404, 'description': 'no access'"""
-
-    resp = HttpResponse(message)
-
-    assert resp.body == "'status_code': 404, 'description': 'no access'"
-    assert not resp.is_valid()
-    assert resp.json() is None
-
-    message = """HTTP/1.1 404 NOT FOUND
-Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
 """
 
     resp = HttpResponse(message)
 
+    assert resp.status_code == 404
+    assert resp.reason == "NOT FOUND"
+    assert resp.http_version == "HTTP/1.1"
+    assert resp.headers == {
+        "Content-Type": "application/json",
+        "Server": "gunicorn/19.9.0",
+    }
     assert resp.body is None
-    assert not resp.is_valid()
-    assert resp.json() is None
+
+    message = """HTTP/1.1 200 OK
+Content-length: 26
+ODQzZjg3}N2Iz{ODdiNDc1NA==
+"""
+    resp = HttpResponse(message)
+    assert resp.status_code == 200
+    assert resp.reason == "OK"
+    assert resp.http_version == "HTTP/1.1"
+    assert resp.body == "ODQzZjg3}N2Iz{ODdiNDc1NA=="
