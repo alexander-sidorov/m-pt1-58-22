@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from hw.alexey_tyuhai.lesson13.hello_world import handle_alexey_tuyhai
+from hw.alexey_tyuhai.lesson13.views import handle_alexey_tuyhai
 from hw.eugene_lubimov.lesson13.views import my_view
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
