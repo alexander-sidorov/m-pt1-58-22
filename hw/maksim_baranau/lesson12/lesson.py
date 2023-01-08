@@ -1,3 +1,7 @@
+import json
+from typing import Any
+
+
 class Url:
     def __init__(self, url: str) -> None:  # noqa: CCR001
         self.scheme = None
@@ -70,3 +74,38 @@ class HttpRequest:
         for line in lines:
             header = line.split(": ")
             self.headers[header[0]] = header[1]
+
+
+class HttpResponse:
+    def __init__(self, get: str):
+        self.body: str | None
+        line, self.body = get.split("\n\n", 1)
+        line_list = line.split("\n")
+        self.http_version, other = line_list[0].split(" ", 1)
+        status_code, self.reason = other.split(" ", 1)
+        self.status_code = int(status_code)
+        line_list = line_list[1:]
+        self.headers: dict[str, int | str] = {}
+        for i in line_list:
+            key, value = i.strip().split(":", 1)
+            if key == "Content-Length":
+                self.headers[key] = int(value)
+            else:
+                self.headers[key] = value.strip()
+        self.body = self.body if self.body else None
+
+    def is_valid(self) -> bool:
+        if self.body is not None:
+            return self.headers["Content-Length"] == len(self.body)
+        else:
+            return False
+
+    def json(self) -> Any:
+        if self.headers["Content-Type"] == "application/json":
+            try:
+                if self.body is not None:
+                    return json.loads(self.body)
+            except json.decoder.JSONDecodeError:
+                return None
+        else:
+            return None
