@@ -8,7 +8,9 @@ from hw.vladislav_yurenya.lesson_04.lecture import task_01_money
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("<h1>HELLO FROM APP!</h1>")
+    return render(
+        request, "app_vladislav_yurenya/hello.html", {"hello": "HELLO WORLD"}
+    )
 
 
 def my_money(request: HttpRequest) -> HttpResponse:
