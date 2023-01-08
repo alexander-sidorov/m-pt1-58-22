@@ -1,4 +1,5 @@
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest
+from django.http import HttpResponse
 from django.shortcuts import render
 
 list_students = [
@@ -22,4 +23,6 @@ list_students = [
 
 
 def liststudents(request: HttpRequest) -> HttpResponse:
-    return render(request, "app_main/index.html", {"list_students": list_students})
+    return render(
+        request, "app_main/index.html", {"list_students": list_students}
+    )
