@@ -61,10 +61,7 @@ class HttpRequest:
         self.http_version: None | str = None
         self.headers: dict[str, str] = {}
         self.body: None | str = None
-        body_cut_pos = req.find("\n\n") + 2
-        self.body = req[body_cut_pos:]
-        if self.body == "":
-            self.body = None
+        self.body = self.body if self.body else None
         req = req[: req.find("\n\n")]
         lines = req.splitlines()
         head = lines[0].split(" ")
