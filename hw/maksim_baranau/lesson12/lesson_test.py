@@ -83,6 +83,7 @@ def test_task_3() -> None:
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
+
 {"status_code": 404, "description": "no access"}"""
 
     resp = HttpResponse(message)
@@ -103,6 +104,7 @@ Server: gunicorn/19.9.0
 Content-Length: 49
 Content-Type: text/html
 Server: gunicorn/19.9.0
+
 {"status_code": 404, "description": "no access"}"""
 
     resp = HttpResponse(message)
@@ -114,6 +116,7 @@ Server: gunicorn/19.9.0
 Content-Length: 48
 Content-Type: text/html
 Server: gunicorn/19.9.0
+
 {"status_code": 404, "description": "no access"}"""
 
     resp = HttpResponse(message)
@@ -125,6 +128,7 @@ Server: gunicorn/19.9.0
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
+
 'status_code': 404, 'description': 'no access'"""
 
     resp = HttpResponse(message)
@@ -137,6 +141,7 @@ Server: gunicorn/19.9.0
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
+
 """
 
     resp = HttpResponse(message)
