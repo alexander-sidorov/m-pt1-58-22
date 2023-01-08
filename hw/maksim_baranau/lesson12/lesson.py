@@ -1,5 +1,4 @@
 import json
-from contextlib import suppress
 from typing import Any
 
 
@@ -78,37 +77,35 @@ class HttpRequest:
 
 
 class HttpResponse:
-    def __init__(self, response_from_server: Any):
+    def __init__(self, get: str):
+        self.body: str | None
+        line, self.body = get.split("\n\n", 1)
+        line_list = line.split("\n")
+        self.http_version, other = line_list[0].split(" ", 1)
+        status_code, self.reason = other.split(" ", 1)
+        self.status_code = int(status_code)
+        line_list = line_list[1:]
+        self.headers: dict[str, int | str] = {}
+        for i in line_list:
+            key, value = i.strip().split(":", 1)
+            if key == "Content-Length":
+                self.headers[key] = int(value)
+            else:
+                self.headers[key] = value.strip()
+        self.body = self.body if self.body else None
 
-        response = response_from_server.strip()
-
-        title_end = response.find("\n")
-        title = response[:title_end]
-        title = title.split(" ", 2)
-        title[1] = int(title[1])
-        self.http_version, self.status_code, self.reason = title
-
-        if "\n\n" in response:
-            body_start = response.find("\n\n")
-            self.body = response[body_start + 2 :]  # noqa E203
+    def is_valid(self) -> bool:
+        if self.body is not None:
+            return self.headers["Content-Length"] == len(self.body)
         else:
-            body_start = None
-            self.body = None
-
-        headers_list = (response[title_end:body_start]).strip("\n ")
-        headers_list = headers_list.split("\n")
-        self.headers = {}
-        for i in headers_list:
-            i = i.split(": ")
-            with suppress(ValueError):
-                i[1] = int(i[1])
-            self.headers[i[0]] = i[1]
-
-    def is_valid(self) -> Any:
-        return len(self.body) == self.headers["Content-Length"]
+            return False
 
     def json(self) -> Any:
-        if "json" in self.headers["Content-Type"]:
-            body = json.loads(self.body)
-            return body
-        return None
+        if self.headers["Content-Type"] == "application/json":
+            try:
+                if self.body is not None:
+                    return json.loads(self.body)
+            except json.decoder.JSONDecodeError:
+                return None
+        else:
+            return None
