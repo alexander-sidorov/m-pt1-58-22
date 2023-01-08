@@ -23,4 +23,5 @@ urlpatterns = [
     path("~/sergey_sakovich/", handle_sergey_sakovich),
     path("~/vadim_zharski", handle_vadim_zharski),
     path("~/vladislav_yurenya/", handle_vladislav_yurenya),
+    path("~/alexey_tyuhai/", include("app_alexey_tyuhai.urls")),
 ]
