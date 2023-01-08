@@ -11,7 +11,7 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 def handle_task_money(request: HttpRequest) -> HttpResponse:
     result = ""
-    rubles = coins = amount = ""
+    rubles = coins = amount = 0
     if request.GET:
         rubles, coins, amount = (
             int(request.GET["r"]),
