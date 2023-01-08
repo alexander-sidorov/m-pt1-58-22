@@ -13,6 +13,7 @@ from hw.vladislav_yurenya.lesson13.views import handle_vladislav_yurenya
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include("app_main.urls")),
     path("~/alexander_sidorov/", include("app_alexander_sidorov.urls")),
     path("~/alexey-tuyhai/", handle_alexey_tuyhai),
     path("~/dmitry_mihkailiuk/", handle_dmitry_mikhailiuk),

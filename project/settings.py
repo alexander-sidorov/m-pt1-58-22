@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "app_alexander_sidorov",
     "app_jana_sergienko",
+    "app_main",
 ]
 
 
