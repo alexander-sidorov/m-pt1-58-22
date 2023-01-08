@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="{% static 'project/styles.css' %}">
+
+<body>
+
+<h1>Group m-pt1-58-22</h1>
+
+<ol class="rectangle">
+{% for student in list_students %}
+<li>
+    <a href="~/{{ student }}">{{ student }}</a>
+</li>
+{% endfor %}
+</ol>
+
+</body>
+</html>
