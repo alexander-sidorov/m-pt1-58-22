@@ -102,8 +102,10 @@ class HttpResponse:
     def body(self) -> str:
         return self.__body
 
-    def is_valid(self) -> Any:
-        return self.__headers["Content-Length"] == len(self.body)
+    def is_valid(self) -> bool:
+        if self.headers.get("Content-Length", 0) == len(self.body):
+            return True
+        return False
 
     def json(self) -> Any:
         if self.__headers["Content-Type"] != "application/json":
