@@ -7,7 +7,6 @@ from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
 from hw.maksim_lamaka.lesson13.views import my_view
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
-from hw.vadim_zharski.lesson13.views import handle_vadim_zharski
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -20,6 +19,6 @@ urlpatterns = [
     path("~/maksim_lamaka/", my_view),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
-    path("~/vadim_zharski", handle_vadim_zharski),
+    path("~/vadim_zharski/", include("app_vadim_zharski.urls")),
     path("~/vladislav_yurenya/", include("app_vladislav_yurenya.urls")),
 ]
