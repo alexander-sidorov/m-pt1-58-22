@@ -5,8 +5,6 @@ from django.urls import path
 from hw.alexey_tyuhai.lesson13.views import handle_alexey_tuyhai
 from hw.eugene_vavilov.lesson13.views import handle_eugene_vavilov
 from hw.maksim_lamaka.lesson13.views import my_view
-from hw.jana_sergienko.lesson13.views import handle_jana_sergienko
-from hw.maksim_baranau.lesson13.views import handle_maksim_baranau
 from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 
@@ -18,9 +16,8 @@ urlpatterns = [
     path("~/eugene_lubimov/", include("app_eugene_lubimov.urls")),
     path("~/eugene_vavilov/", handle_eugene_vavilov),
     path("~/jana_sergienko/", include("app_jana_sergienko.urls")),
-    path("~/maksim_lamaka/", my_view),
-    path("~/jana_sergienko/", handle_jana_sergienko),
     path("~/maksim_baranau/", include("app_maksim_baranau.urls")),
+    path("~/maksim_lamaka/", my_view),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
     path("~/vadim_zharski/", include("app_vadim_zharski.urls")),
