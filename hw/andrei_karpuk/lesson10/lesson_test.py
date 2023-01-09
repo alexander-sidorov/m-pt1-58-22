@@ -1,3 +1,5 @@
+import json
+
 from hw.andrei_karpuk.lesson10.lesson import Counter
 from hw.andrei_karpuk.lesson10.lesson import User
 
@@ -32,4 +34,4 @@ def test_03() -> None:
     js = petya.to_json()
 
     assert js == '{"name": "P"}'
-    assert js.loads(js) == {"name": "P"}
+    assert json.loads(js) == {"name": "P"}
