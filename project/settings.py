@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "app_jana_sergienko",
     "app_eugene_lubimov",
     "app_vadim_zharski",
+    "app_vladislav_yurenya",
 ]
 
 
