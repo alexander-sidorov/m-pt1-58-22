@@ -1,6 +1,7 @@
+import json
+
 from hw.andrei_karpuk.lesson10.lesson import Counter
 from hw.andrei_karpuk.lesson10.lesson import User
-import json
 
 
 def test_01() -> None:
