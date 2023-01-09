@@ -3,18 +3,14 @@ from pathlib import Path
 
 DIR_REPO = Path(__file__).parent.parent.resolve()
 
-
 SECRET_KEY = os.getenv("APP_SECRET_KEY") or "1"
 
-
 DEBUG = True
-
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
 ]
-
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,12 +20,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app_alexander_sidorov",
+    "app_alexey_tyuhai",
     "app_dmitry_mikhailiuk",
     "app_jana_sergienko",
     "app_eugene_lubimov",
-    "app_alexey_tyuhai",
 ]
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -41,9 +36,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 ROOT_URLCONF = "project.urls"
-
 
 TEMPLATES = [
     {
@@ -61,9 +54,7 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = "project.wsgi.application"
-
 
 DATABASES = {
     "default": {
@@ -71,7 +62,6 @@ DATABASES = {
         "NAME": DIR_REPO / "db.sqlite3",
     }
 }
-
 
 _pv = "django.contrib.auth.password_validation"
 
@@ -90,20 +80,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = "en-us"
-
 
 TIME_ZONE = "UTC"
 
-
 USE_I18N = True
-
 
 USE_TZ = True
 
-
 STATIC_URL = "static/"
-
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
