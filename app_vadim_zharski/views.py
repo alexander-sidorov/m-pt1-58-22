@@ -1,4 +1,4 @@
-from typing import Any
+from decimal import Decimal
 
 from django.http import HttpRequest
 from django.http import HttpResponse
@@ -14,8 +14,10 @@ def hello_world_vadim_zharski(request: HttpRequest) -> HttpResponse:
 
 
 def task_money(request: HttpRequest) -> HttpResponse:
-    result = Any
-    rubles = coins = amount = Any
+    result: str | Decimal = ""
+    rubles: str | int = ""
+    coins: str | int = ""
+    amount: str | int = ""
 
     if request.GET:
         rubles = int(request.GET["r"])
