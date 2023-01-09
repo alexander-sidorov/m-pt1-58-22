@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -12,8 +14,8 @@ def hello_world_vadim_zharski(request: HttpRequest) -> HttpResponse:
 
 
 def task_money(request: HttpRequest) -> HttpResponse:
-    result = ""
-    rubles = coins = amount = ""
+    result = Any
+    rubles = coins = amount = Any
 
     if request.GET:
         rubles = int(request.GET["r"])
