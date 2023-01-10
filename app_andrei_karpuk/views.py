@@ -1,11 +1,12 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
-from hw.andrei_karpuk.lesson04.lecture import task_01_money
 from django.shortcuts import render
+
+from hw.andrei_karpuk.lesson04.lecture import task_01_money
+
 
 def helloworld_ak(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Hello from App")
-
 
 
 def task_money(request: HttpRequest) -> HttpResponse:
