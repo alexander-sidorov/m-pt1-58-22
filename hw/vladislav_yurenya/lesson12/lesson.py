@@ -10,7 +10,7 @@ class Url:
         self.scheme = new.scheme or None
         self.username = new.username or None
         self.password = new.password or None
-        self.host = new.netloc or None
+        self.host = new.hostname or None
         self.port = new.port or None
         self.path = new.path or None
         self.query = new.query or None
