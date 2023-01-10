@@ -48,7 +48,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["project/templates"],
+        "DIRS": [DIR_REPO / "project/templates/project"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -106,8 +106,6 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 
-STATICFILES_DIRS = [
-    "project/static",
-]
+STATICFILES_DIRS = [DIR_REPO / "project/static/project"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
