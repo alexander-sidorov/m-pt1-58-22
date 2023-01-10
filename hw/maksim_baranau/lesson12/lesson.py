@@ -14,9 +14,7 @@ class Url:
         self.fragment = None
 
         self.scheme = url[: url.find("://")]
-        startscheme = url.find("://")
-        startscheme += 1
-        url = url[startscheme:]
+        url = url[url.find("://") + 3:]
         if "#" in url:
             self.fragment = url[url.find("#") + 1:]
             url = url[: url.find("#")]
