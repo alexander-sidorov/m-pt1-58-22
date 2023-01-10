@@ -14,7 +14,8 @@ class Url:
         self.fragment = None
 
         self.scheme = url[: url.find("://")]
-        url = url[url.find("://") + 3:]
+        urlid = url.rfind("://")
+        url = url[urlid + 3:]
         if "#" in url:
             self.fragment = url[url.find("#") + 1:]
             url = url[: url.find("#")]
@@ -33,7 +34,7 @@ class Url:
                 if "?" in url:
                     urlhost = url[: url.find("?")]
                     if urlhost == "":
-                        ...
+                        self.host = None
                     else:
                         self.host = urlhost
                         url = url[url.find("?"):]
