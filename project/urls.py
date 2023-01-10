@@ -9,6 +9,8 @@ from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include("app_main.urls")),
+    path("/", include("app_main.urls")),
     path("~/alexander_sidorov/", include("app_alexander_sidorov.urls")),
     path("~/alexey_tyuhai/", include("app_alexey_tyuhai.urls")),
     path("~/alexey-tuyhai/", handle_alexey_tuyhai),
