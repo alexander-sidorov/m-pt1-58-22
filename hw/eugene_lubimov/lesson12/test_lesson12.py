@@ -1,20 +1,19 @@
-from hw.jana_sergienko.lesson12.lesson import HttpRequest
-from hw.jana_sergienko.lesson12.lesson import HttpResponse
-from hw.jana_sergienko.lesson12.lesson import Url
+import hw.eugene_lubimov.lesson12.lesson12 as les
 
 
-def test_url() -> None:
-    url = Url("http://google.com")
+def test_pars_url() -> None:
+
+    url = les.Url("http://google.com")
     assert url.scheme == "http"
     assert url.username is None
     assert url.password is None
     assert url.host == "google.com"
     assert url.port is None
-    assert url.path == ""
-    assert url.query == ""
-    assert url.fragment == ""
+    assert url.path is None
+    assert url.query is None
+    assert url.fragment is None
 
-    url = Url("postgresql://u:p@db:5432/dbname?opt=1&xyz=2#f")
+    url = les.Url("postgresql://u:p@db:5432/dbname?opt=1&xyz=2#f")
     assert url.scheme == "postgresql"
     assert url.username == "u"
     assert url.password == "p"  # noqa: S105
@@ -24,17 +23,17 @@ def test_url() -> None:
     assert url.query == "opt=1&xyz=2"
     assert url.fragment == "f"
 
-    url = Url("vnc://user@host?query=q")
+    url = les.Url("vnc://user@host?query=q")
     assert url.scheme == "vnc"
     assert url.username == "user"
     assert url.password is None
     assert url.host == "host"
     assert url.port is None
-    assert url.path == ""
+    assert url.path is None
     assert url.query == "query=q"
-    assert url.fragment == ""
+    assert url.fragment is None
 
-    url = Url("vnc://user@host/?query=q")
+    url = les.Url("vnc://user@host/?query=q")
     assert url.scheme == "vnc"
     assert url.username == "user"
     assert url.password is None
@@ -42,9 +41,9 @@ def test_url() -> None:
     assert url.port is None
     assert url.path == "/"
     assert url.query == "query=q"
-    assert url.fragment == ""
+    assert url.fragment is None
 
-    url = Url("ftp://a.b.c.host/p/a/t/h?query=q&f=f#f")
+    url = les.Url("ftp://a.b.c.host/p/a/t/h?query=q&f=f#f")
     assert url.scheme == "ftp"
     assert url.username is None
     assert url.password is None
@@ -62,8 +61,11 @@ Accept-Encoding: gzip, deflate
 Connection: keep-alive
 Host: github.com
 User-Agent: HTTPie/3.2.1
+
 """
-    req = HttpRequest(message)
+
+    req = les.HttpRequest(message)
+
     assert req.method == "HEAD"
     assert req.path == "/"
     assert req.http_version == "HTTP/1.1"
@@ -76,61 +78,87 @@ User-Agent: HTTPie/3.2.1
     }
     assert req.body is None
 
+    message = """HEAD /docs/python_3/library/urllib.parse.html HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: digitology.tech
+User-Agent: HTTPie/3.2.1
 
-def test_http_response() -> None:
-    message1 = """HTTP/1.1 404 NOT FOUND
+"""
+    req1 = les.HttpRequest(message)
+
+    assert req1.method == "HEAD"
+    assert req1.path == "/docs/python_3/library/urllib.parse.html"
+    assert req1.http_version == "HTTP/1.1"
+    assert req1.headers["Accept"] == "*/*"
+    assert req1.body is None
+
+
+def test__http_response() -> None:
+
+    message = """HTTP/1.1 404 NOT FOUND
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
 
 {"status_code": 404, "description": "no access"}"""
 
-    resp1 = HttpResponse(message1)
+    resp = les.HttpResponse(message)
 
-    assert resp1.status_code == 404
-    assert resp1.reason == "Not Found"
-    assert resp1.http_version == "HTTP/1.1"
-    assert resp1.headers == {
+    assert resp.status_code == 404
+    assert resp.reason == "Not Found"
+    assert resp.http_version == "HTTP/1.1"
+    assert resp.headers == {
         "Content-Length": 48,
         "Content-Type": "application/json",
         "Server": "gunicorn/19.9.0",
     }
-    assert resp1.body == '{"status_code": 404, "description": "no access"}'
-    assert resp1.is_valid()
-    assert resp1.json() == {"status_code": 404, "description": "no access"}
+    assert resp.body == '{"status_code": 404, "description": "no access"}'
+    assert resp.is_valid()
+    assert resp.json() == {"status_code": 404, "description": "no access"}
 
-    message2 = """HTTP/1.1 404 NOT FOUND
+    message = """HTTP/1.1 404 NOT FOUND
 Content-Length: 49
 Content-Type: text/html
 Server: gunicorn/19.9.0
 
 {"status_code": 404, "description": "no access"}"""
 
-    resp2 = HttpResponse(message2)
+    resp = les.HttpResponse(message)
 
-    assert not resp2.is_valid()
-    assert resp2.json() is None
+    assert not resp.is_valid()
+    assert resp.json() is None
 
-    message3 = """HTTP/1.1 404 NOT FOUND
+    message = """HTTP/1.1 404 NOT FOUND
 Content-Length: 48
 Content-Type: text/html
 Server: gunicorn/19.9.0
 
 {"status_code": 404, "description": "no access"}"""
 
-    resp3 = HttpResponse(message3)
+    resp = les.HttpResponse(message)
 
-    assert resp3.is_valid()
-    assert resp3.json() is None
+    assert resp.is_valid()
+    assert resp.json() is None
 
-    message4 = """HTTP/1.1 404 NOT FOUND
+    message = """HTTP/1.1 404 NOT FOUND
 Content-Length: 48
 Content-Type: application/json
 Server: gunicorn/19.9.0
 
-"""
+!!!!!!!"""
 
-    resp4 = HttpResponse(message4)
+    resp = les.HttpResponse(message)
 
-    assert resp4.body is None
-    assert resp4.json() is None
+    assert resp.status_code == 404
+    assert resp.reason == "Not Found"
+    assert resp.http_version == "HTTP/1.1"
+    assert resp.headers == {
+        "Content-Length": 48,
+        "Content-Type": "application/json",
+        "Server": "gunicorn/19.9.0",
+    }
+    assert resp.body == "!!!!!!!"
+    assert not resp.is_valid()
+    assert resp.json() is None
