@@ -1,5 +1,5 @@
-black hw
-isort hw
+black .
+isort .
 
 pytest
 coverage html
