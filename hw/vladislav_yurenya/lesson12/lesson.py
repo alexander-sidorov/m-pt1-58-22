@@ -7,30 +7,24 @@ class Url:
     def __init__(self, url: str):
         self.url = url
         new = urlparse(self.url)
-        self.c = {
-            "schema": new.scheme,
-            "username": new.username,
-            "password": new.password,
-            "host": new.hostname,
-            "port": new.port,
-            "path": new.path,
-            "query": new.query,
-            "fragment": new.fragment,
-        }
-        self.scheme = self.c["schema"]
-        self.username = self.c["username"]
-        self.password = self.c["password"]
-        self.host = self.c["host"]
-        self.port = self.c["port"]
-        self.path = self.c["path"]
-        if self.path == "":
-            self.path = None
-        self.query = self.c["query"]
-        if self.query == "":
-            self.query = None
-        self.fragment = self.c["fragment"]
-        if self.fragment == "":
-            self.fragment = None
+        # self.c = {
+        #     "schema": new.scheme,
+        #     "username": new.username,
+        #     "password": new.password,
+        #     "host": new.hostname,
+        #     "port": new.port,
+        #     "path": new.path,
+        #     "query": new.query,
+        #     "fragment": new.fragment,
+        # }
+        self.scheme = new.scheme or None
+        self.username = new.username or None
+        self.password = new.password or None
+        self.host = new.netloc or None
+        self.port = new.port or None
+        self.path = new.path or None
+        self.query = new.query or None
+        self.fragment = new.fragment or None
 
 
 class HttpRequest:
@@ -46,10 +40,10 @@ class HttpRequest:
         self.method = new[0]
         self.path = new[1]
         self.http_version = new[2]
-        qef = self.req[1:]
+        qef = self.req[1:-2]
         self.headers: dict[str, Any] = {}
-        for i in range(len(qef) - 2):
-            count = qef[i].split(": ")
+        for i in qef:
+            count = i.split(": ")
             self.headers[count[0]] = count[1]
 
 
