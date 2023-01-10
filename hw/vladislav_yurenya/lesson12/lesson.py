@@ -7,16 +7,6 @@ class Url:
     def __init__(self, url: str):
         self.url = url
         new = urlparse(self.url)
-        # self.c = {
-        #     "schema": new.scheme,
-        #     "username": new.username,
-        #     "password": new.password,
-        #     "host": new.hostname,
-        #     "port": new.port,
-        #     "path": new.path,
-        #     "query": new.query,
-        #     "fragment": new.fragment,
-        # }
         self.scheme = new.scheme or None
         self.username = new.username or None
         self.password = new.password or None
