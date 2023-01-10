@@ -32,8 +32,8 @@ class Url:
                     url = url[url.find("/") + 1:]
                 if "?" in url:
                     urlhost = url[: url.find("?")]
-                    if urlhost == "":
-                        ...
+                    if not urlhost:
+                        self.host = None
                     else:
                         self.host = urlhost
                         url = url[url.find("?"):]
