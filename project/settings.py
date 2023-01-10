@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app_alexander_sidorov",
+    "app_dmitry_mikhailiuk",
+    "app_eugene_lubimov",
     "app_jana_sergienko",
     "app_main",
 ]
@@ -46,7 +48,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [DIR_REPO / "project/templates/project"],
+        "DIRS": ["project/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -105,7 +107,7 @@ STATIC_URL = "static/"
 
 
 STATICFILES_DIRS = [
-    DIR_REPO / "project/static/project",
+    "project/static",
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
