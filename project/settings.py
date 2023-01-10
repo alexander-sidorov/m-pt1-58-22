@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     "app_maksim_baranau",
     "app_vadim_zharski",
     "app_vladislav_yurenya",
->>>>>>> main
 ]
 
 MIDDLEWARE = [
