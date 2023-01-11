@@ -6,10 +6,7 @@ from django.shortcuts import render
 
 
 def hello_mk(request: HttpRequest) -> HttpResponse:
-    return render(
-        request,
-        "app_mikita_karmanaw/index_main.html"
-    )
+    return render(request, "app_mikita_karmanaw/index_main.html")
 
 
 def money(request: HttpRequest) -> HttpResponse:
