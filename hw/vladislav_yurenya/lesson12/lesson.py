@@ -57,10 +57,8 @@ class HttpResponse:
         for key in self.headers.keys():
             if key == "Content-Length":
                 self.headers[key] = int(self.headers["Content-Length"])
-        left = self.url.find("{")
-        self.body = self.url[left:]
-        deleted = self.body.find("\n   ")
-        self.body = self.body[:deleted]
+        self.body = url.split("\n\n")
+        self.body = self.body[1].strip()
 
     def is_valid(self) -> bool:
         return (
