@@ -11,5 +11,4 @@ urlpatterns = [
     path("lesson04/task05/", views.handle_task_01_boundary),
     path("lesson04/task06/", views.handle_task_02_expand),
     path("lesson04/task07/", views.handle_task_03_hdist),
-
 ]
