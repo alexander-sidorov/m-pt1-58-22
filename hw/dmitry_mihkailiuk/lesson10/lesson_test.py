@@ -1,4 +1,6 @@
 import json
+import tempfile
+from pathlib import Path
 
 from hw.dmitry_mihkailiuk.lesson10.lesson import Counter
 from hw.dmitry_mihkailiuk.lesson10.lesson import User
@@ -14,13 +16,19 @@ def test_01() -> None:
     assert js == '{"name": "Dim"}'
     assert json.loads(js) == {"name": "Dim"}
 
-    dim.save_json(js)
+    with tempfile.TemporaryDirectory() as _tmpdir:
+        tmpdir = Path(_tmpdir)
+        assert tmpdir.is_dir()
 
-    with open("data.json") as f:
-        file_content = f.read()
-        file_json = json.loads(file_content)
-    assert file_content == '{"name": "Dim"}'
-    assert file_json == {"name": "Dim"}
+        json_file = tmpdir / "data.json"
+        assert not json_file.is_file()
+
+        dim.save_json(json_file)
+        assert json_file.is_file()
+
+        with json_file.open("r") as stream:
+            jsonobj = json.load(stream)
+            assert jsonobj == {"name": "Dim"}
 
 
 def test_02() -> None:
