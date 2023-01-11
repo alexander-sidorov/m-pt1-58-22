@@ -1,0 +1,10 @@
+body {
+    padding: 8px;
+}
+.card-body {
+    height: 90vh;
+}
+.card-row {
+    display: flex;
+    flex-flow: row wrap;
+}
