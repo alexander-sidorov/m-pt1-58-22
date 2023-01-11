@@ -6,7 +6,10 @@ from django.shortcuts import render
 
 
 def hello_mk(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Hello from mikitakarman's app!")
+    return render(
+        request,
+        "app_mikita_karmanaw/index_main.html"
+    )
 
 
 def money(request: HttpRequest) -> HttpResponse:
@@ -20,7 +23,7 @@ def money(request: HttpRequest) -> HttpResponse:
     if not request.GET:
         html_out = render(
             request,
-            "app_mikita_karmanaw/index_task_01.html",
+            "app_mikita_karmanaw/lesson04task01.html",
             {
                 "r": rub,
                 "c": coins,
@@ -48,7 +51,11 @@ def sign(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_02_sign
 
     if not request.GET:
-        return HttpResponse("no data")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson04task02.html"
+        )
+        return HttpResponse(html_out)
     else:
         num = int(request.GET["number"])
         res = str(task_02_sign(num))
@@ -67,7 +74,11 @@ def triangle(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_03_triangle
 
     if not request.GET:
-        return HttpResponse("no data")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson04task03.html"
+        )
+        return HttpResponse(html_out)
     else:
         side1, side2, side3 = (
             int(request.GET["side1"]),
@@ -92,13 +103,17 @@ def palindrom(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_04_palindrom
 
     if not request.GET:
-        return HttpResponse("no data")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson04task04.html"
+        )
+        return HttpResponse(html_out)
     else:
-        string = request.GET["str"]
+        string = str(request.GET.get("str"))
         res = task_04_palindrom(string)
         payload = {
             "data": {
-                "string": string,
+                "str": string,
                 "palindrom": res,
             },
         }
@@ -111,7 +126,11 @@ def hdist(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import task_03_hdist
 
     if not request.GET:
-        return HttpResponse("no data")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson06task03.html"
+        )
+        return HttpResponse(html_out)
     else:
         seq1, seq2 = request.GET["seq1"], request.GET["seq2"]
         res = task_03_hdist(seq1, seq2)
@@ -129,9 +148,18 @@ def hdist(request: HttpRequest) -> HttpResponse:
 
 def cities(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import task_04_cities
+    from hw.mikita_karmanaw.lesson06.tasks import CITIES
+    cities: list = []
+    for city in CITIES:
+        cities.append(city)
 
     if not request.GET:
-        return HttpResponse("no data")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson06task04.html",
+            {"cities": cities}
+        )
+        return HttpResponse(html_out)
     else:
         city = request.GET["city"]
         res = task_04_cities(city)
@@ -146,9 +174,18 @@ def cities(request: HttpRequest) -> HttpResponse:
 
 def route(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import task_05_route
+    from hw.mikita_karmanaw.lesson06.tasks import CITIES
+    cities: list = []
+    for city in CITIES:
+        cities.append(city)
 
     if not request.GET:
-        return HttpResponse("no data")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson06task05.html",
+            {"cities": cities}
+        )
+        return HttpResponse(html_out)
     else:
         route = request.GET["route"]
         route_list = route.split(", ")

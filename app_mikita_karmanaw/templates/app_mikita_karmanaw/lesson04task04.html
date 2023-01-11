@@ -1,0 +1,23 @@
+{% extends 'app_mikita_karmanaw/index_main.html' %}
+
+{% block content %}
+<div style="height:40px"></div>
+<div class="container" style="margin: top 2em;">
+    <form class="row g-2">
+        <h4>task_palindrom</h4>
+        <div class="col-auto">string
+            <input type="text" class="form-control" name="str" value="{{str}}">
+        </div>
+        <div class="row-auto">
+            <button type="submit" class="btn btn-outline-primary">Check!</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <h3>{{palindrom}}</h3>
+    </div>
+    <div class="mb-3">
+        <a href="{% url 'karmaxa_main' %}">back</a>
+    </div>
+</div>
+
+{% endblock content %}

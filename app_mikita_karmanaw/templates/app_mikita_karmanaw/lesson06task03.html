@@ -1,0 +1,26 @@
+{% extends 'app_mikita_karmanaw/index_main.html' %}
+
+{% block content %}
+<div style="height:40px"></div>
+<div class="container" style="margin: top 2em;">
+    <form class="row g-2">
+        <h4>task_hdist</h4>
+        <div class="col-auto">1st string
+            <input type="text" class="form-control" name="seq1" value="{{seq1}}">
+        </div>
+        <div class="col-auto">2nd string
+            <input type="text" class="form-control" name="seq2" value="{{seq2}}">
+        </div>
+        <div class="row-auto">
+            <button type="submit" class="btn btn-outline-primary">Calculate!</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <h3>{{hdist}}</h3>
+    </div>
+    <div class="mb-3">
+        <a href="{% url 'karmaxa_main' %}">back</a>
+    </div>
+</div>
+
+{% endblock content %}
