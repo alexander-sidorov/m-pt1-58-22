@@ -144,3 +144,23 @@ def cities(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
         json.dumps(payload), content_type="application/json"
     )
+
+
+def route(request: HttpRequest) -> HttpResponse:
+    from hw.mikita_karmanaw.lesson06.tasks import task_05_route
+
+    if not request.GET:
+        return HttpResponse("no data")
+    else:
+        route = request.GET["route"]
+        route_list = route.split(", ")
+        res = task_05_route(route_list)
+        payload = {
+            "data": {
+                "route": route,
+                "distance": res,
+            },
+        }
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
