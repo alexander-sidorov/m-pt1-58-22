@@ -105,3 +105,42 @@ def palindrom(request: HttpRequest) -> HttpResponse:
         return HttpResponse(
             json.dumps(payload), content_type="application/json"
         )
+
+
+def hdist(request: HttpRequest) -> HttpResponse:
+    from hw.mikita_karmanaw.lesson06.tasks import task_03_hdist
+
+    if not request.GET:
+        return HttpResponse("no data")
+    else:
+        seq1, seq2 = request.GET["seq1"], request.GET["seq2"]
+        res = task_03_hdist(seq1, seq2)
+        payload = {
+            "data": {
+                "seq1": seq1,
+                "seq2": seq2,
+                "hdist": res,
+            },
+        }
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+
+
+def cities(request: HttpRequest) -> HttpResponse:
+    from hw.mikita_karmanaw.lesson06.tasks import task_04_cities
+
+    if not request.GET:
+        return HttpResponse("no data")
+    else:
+        city = request.GET["city"]
+        res = task_04_cities(city)
+        payload = {
+            "data": {
+                "city": city,
+                "distances": res,
+            },
+        }
+    return HttpResponse(
+        json.dumps(payload), content_type="application/json"
+    )
