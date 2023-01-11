@@ -1,5 +1,4 @@
 from django.urls import path
-from typing import Any
 
 from app_maksim_baranau import views
 
