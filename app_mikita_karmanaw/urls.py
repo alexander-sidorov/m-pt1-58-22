@@ -1,6 +1,5 @@
 from django.urls import path
 
-from app_mikita_karmanaw.views import hello_mk
 from app_mikita_karmanaw.views import cities
 from app_mikita_karmanaw.views import hdist
 from app_mikita_karmanaw.views import hello_mk

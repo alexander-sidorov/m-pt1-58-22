@@ -51,10 +51,7 @@ def sign(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_02_sign
 
     if not request.GET:
-        html_out = render(
-            request,
-            "app_mikita_karmanaw/lesson04task02.html"
-        )
+        html_out = render(request, "app_mikita_karmanaw/lesson04task02.html")
         return HttpResponse(html_out)
     else:
         num = int(request.GET["number"])
@@ -74,10 +71,7 @@ def triangle(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_03_triangle
 
     if not request.GET:
-        html_out = render(
-            request,
-            "app_mikita_karmanaw/lesson04task03.html"
-        )
+        html_out = render(request, "app_mikita_karmanaw/lesson04task03.html")
         return HttpResponse(html_out)
     else:
         side1, side2, side3 = (
@@ -103,10 +97,7 @@ def palindrom(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_04_palindrom
 
     if not request.GET:
-        html_out = render(
-            request,
-            "app_mikita_karmanaw/lesson04task04.html"
-        )
+        html_out = render(request, "app_mikita_karmanaw/lesson04task04.html")
         return HttpResponse(html_out)
     else:
         string = str(request.GET.get("str"))
@@ -126,10 +117,7 @@ def hdist(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import task_03_hdist
 
     if not request.GET:
-        html_out = render(
-            request,
-            "app_mikita_karmanaw/lesson06task03.html"
-        )
+        html_out = render(request, "app_mikita_karmanaw/lesson06task03.html")
         return HttpResponse(html_out)
     else:
         seq1, seq2 = request.GET["seq1"], request.GET["seq2"]
@@ -147,8 +135,9 @@ def hdist(request: HttpRequest) -> HttpResponse:
 
 
 def cities(request: HttpRequest) -> HttpResponse:
-    from hw.mikita_karmanaw.lesson06.tasks import task_04_cities
     from hw.mikita_karmanaw.lesson06.tasks import CITIES
+    from hw.mikita_karmanaw.lesson06.tasks import task_04_cities
+
     cities: list = []
     for city in CITIES:
         cities.append(city)
@@ -157,7 +146,7 @@ def cities(request: HttpRequest) -> HttpResponse:
         html_out = render(
             request,
             "app_mikita_karmanaw/lesson06task04.html",
-            {"cities": cities}
+            {"cities": cities},
         )
         return HttpResponse(html_out)
     else:
@@ -173,8 +162,9 @@ def cities(request: HttpRequest) -> HttpResponse:
 
 
 def route(request: HttpRequest) -> HttpResponse:
-    from hw.mikita_karmanaw.lesson06.tasks import task_05_route
     from hw.mikita_karmanaw.lesson06.tasks import CITIES
+    from hw.mikita_karmanaw.lesson06.tasks import task_05_route
+
     cities: list = []
     for city in CITIES:
         cities.append(city)
@@ -183,7 +173,7 @@ def route(request: HttpRequest) -> HttpResponse:
         html_out = render(
             request,
             "app_mikita_karmanaw/lesson06task05.html",
-            {"cities": cities}
+            {"cities": cities},
         )
         return HttpResponse(html_out)
     else:
