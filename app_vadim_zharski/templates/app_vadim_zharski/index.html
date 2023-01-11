@@ -9,8 +9,12 @@
 <div class="mb-3" style="padding: 2vw">
     {% block content %}
         <h3>{{hello}}</h3>
-        <div class="list-group text-center" style="width: 200px">
+        <div class="list-group text-left" style="width: 200px; border: solid 1px #1D62F0">
             <a href="{% url 'app_vadim_zharski:task_money' %}" class="list-group-item list-group-item-action">task_money</a>
+            <a href="{% url 'app_vadim_zharski:task_sign' %}" class="list-group-item list-group-item-action">task_sign</a>
+            <a href="{% url 'app_vadim_zharski:task_triangle' %}" class="list-group-item list-group-item-action">task_triangle</a>
+            <a href="{% url 'app_vadim_zharski:task_palindrom' %}" class="list-group-item list-group-item-action">task_palindrom</a>
+            <a href="{% url 'app_vadim_zharski:task_boundary' %}" class="list-group-item list-group-item-action">task_boundary</a>
         </div>
     {% endblock content %}
 </div>

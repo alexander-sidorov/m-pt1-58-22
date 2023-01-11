@@ -1,0 +1,18 @@
+{% extends 'app_vadim_zharski/index.html' %}
+
+{% block content %}
+<div class="mb-3">
+    <form class="row g-3">
+      <div class="col-auto">
+        <input type="text" class="form-control" name="string" value="{{string}}" placeholder="check palendrom">
+      </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Calculate</button>
+        </div>
+    </form>
+        <div class="mb-3">
+            <h3>{{data}}</h3>
+        </div>
+    <a href= "{% url 'app_vadim_zharski:hello' %}">to home page</a>
+</div>
+{% endblock content %}
