@@ -23,17 +23,23 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
     amt = int(request.GET["a"])
     result = task_01_money(rub, coin, amt)
 
-    payload = {"data": float(result)}
+    payload = {
+        "rubles": rub,
+        "coins": coin,
+        "amount": amt,
+        "result": float(result),
+    }
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
 
 def handle_task_02_sign(request: HttpRequest) -> HttpResponse:
+    result = 0
     if request.GET:
         number = int(request.GET["n"])
         result = task_02_sign(number)
 
-    payload = {"data": float(result)}
+    payload = {"number": number, "result": float(result)}
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
@@ -45,16 +51,28 @@ def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
         side3 = int(request.GET["s3"])
         result = task_03_triangle(side1, side2, side3)
 
-    payload = {"data": float(result)}
+    payload = {
+        "side1": side1,
+        "side2": side2,
+        "side3": side3,
+        "triangle": float(result),
+    }
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
 
 def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
+    str_ = ""
+    result = False
     if request.GET:
-        str_ = str(request.GET["str"])
+        str_ = request.GET["str"]
         result = task_04_palindrom(str_)
 
-    payload = {"data": float(result)}
+    payload = {
+        "data": {
+            "line": str_,
+            "result": str(result),
+        }
+    }
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
