@@ -29,10 +29,19 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
         coins = int(request.GET["c"])
         amount = int(request.GET["a"])
         result = task_01_money(rubles, coins, amount)
+
+        payload = {
+            "data": float(result),
+        }
+
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+
     else:
         return render(
             request,
-            "app_alexander_sidorov/task01.html",
+            "app_eugene_vavilov/lesson04_01.html",
             {
                 "r": rubles,
                 "c": coins,
@@ -41,46 +50,82 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
             },
         )
 
-    payload = {
-        "data": float(result),
-    }
-
-    return HttpResponse(json.dumps(payload), content_type="application/json")
-
 
 def handle_task_02_sign(request: HttpRequest) -> HttpResponse:
+    number = 0
+    result: str | int = ""
+
     if request.GET:
         number = int(request.GET["n"])
         result = task_02_sign(number)
 
-    payload = {
-        "data": int(result),
-    }
+        payload = {
+            "data": int(result),
+        }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson04_02.html",
+            {
+                "n": number,
+                "result": result,
+            },
+        )
 
 
 def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
+    side1 = side2 = side3 = 0
+    result: str | bool = ""
     if request.GET:
         side1 = int(request.GET["s1"])
         side2 = int(request.GET["s2"])
         side3 = int(request.GET["s3"])
         result = task_03_triangle(side1, side2, side3)
 
-    payload = {
-        "data": result,
-    }
+        payload = {
+            "data": result,
+        }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson04_03.html",
+            {
+                "s1": side1,
+                "s2": side2,
+                "s3": side3,
+                "result": result,
+            },
+        )
 
 
 def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
+    word = ""
+    result: str | bool = ""
     if request.GET:
         word = request.GET["w"]
         result = task_04_palindrom(word)
 
-    payload = {
-        "data": result,
-    }
+        payload = {
+            "data": result,
+        }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson04_04.html",
+            {
+                "w": word,
+                "result": result,
+            },
+        )
