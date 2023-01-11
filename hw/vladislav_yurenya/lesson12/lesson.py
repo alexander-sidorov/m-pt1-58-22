@@ -57,9 +57,9 @@ class HttpResponse:
         for key in self.headers.keys():
             if key == "Content-Length":
                 self.headers[key] = int(self.headers["Content-Length"])
-        self.body: str | None
+        self.body: str | None | Any
         self.body = url.split("\n\n")
-        self.body = self.body[1].strip() # type: List[str]
+        self.body = self.body[1].strip()
 
     def is_valid(self) -> bool:
         return (
