@@ -7,4 +7,5 @@ urlpatterns = [
     path("lesson04/task01/", views.handle_task_01_money),
     path("lesson04/task01/", views.handle_task_02_sign),
     path("lesson04/task01/", views.handle_task_03_triangle),
+    path("lesson04/task01/", views.handle_task_04_palindrom),
 ]
