@@ -12,6 +12,8 @@ from hw.maksim_baranau.lesson04.lecture import (
     task_04_palindrom,
 )
 
+from hw.maksim_baranau.lesson06.tasks import task_05_route
+
 
 def helloworld(request: HttpRequest) -> HttpResponse:
     return HttpResponse("hello from APP")
@@ -57,3 +59,15 @@ def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
         "data": bool(result),
     }
     return HttpResponse(json.dumps(payload), content_type="application/json")
+
+def handle_task_05_rout(request: HttpRequest) -> HttpResponse:
+    if request.GET:
+        route = []
+        route.append(request.GET["a"])
+        route.append(request.GET["b"])
+        result = task_05_route(route)
+    payload = {
+        "data": float(result),
+    }
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+
