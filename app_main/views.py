@@ -6,7 +6,7 @@ list_students = [
     "alexander_sidorov",
     "alexey_tyuhai",
     "andrei_karpuk",
-    "dmitry_mihkailiuk",
+    "dmitry_mikhailiuk",
     "eugene_bakun",
     "eugene_ladyko",
     "eugene_lubimov",

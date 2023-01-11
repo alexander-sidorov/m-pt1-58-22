@@ -1,7 +1,8 @@
-from decimal import Decimal
+import json
 
 from django.http import HttpRequest
 from django.http import HttpResponse
+
 from django.shortcuts import render
 
 from hw.dmitry_mihkailiuk.lesson04.lecture import task_01_money
@@ -12,24 +13,16 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 
 def handle_task_01_money(request: HttpRequest) -> HttpResponse:
-    result: str | Decimal = ""
-    rub: str | int = ""
-    coins: str | int = ""
-    amount: str | int = ""
+    if not request.GET:
+        return render(request, "app_dmitry_mikhailiuk/task01.html")
 
-    if request.GET:
-        rub = int(request.GET["r"])
-        coins = int(request.GET["c"])
-        amount = int(request.GET["a"])
-        result = task_01_money(rub, coins, amount)
+    rubles = int(request.GET["r"])
+    coins = int(request.GET["c"])
+    amount = int(request.GET["a"])
+    result = task_01_money(rubles, coins, amount)
 
-    return render(
-        request,
-        "app_dmitry_mikhailiuk/task01.html",
-        {
-            "r": rub,
-            "c": coins,
-            "a": amount,
-            "result": result,
-        },
-    )
+    payload = {
+        "data": float(result),
+    }
+
+    return HttpResponse(json.dumps(payload), content_type="application/json")
