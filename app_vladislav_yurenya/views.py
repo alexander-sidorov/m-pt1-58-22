@@ -1,6 +1,5 @@
 import json
 from decimal import Decimal
-from typing import Sequence
 
 from django.http import HttpRequest
 from django.http import HttpResponse
@@ -36,8 +35,8 @@ def my_money(request: HttpRequest) -> HttpResponse:
 
 
 def sign(request: HttpRequest) -> HttpResponse:
-    number: str | int = ""
-    res: int | str = ""
+    number: str | float = ""
+    res: float | str = ""
     if not request.GET:
         return render(request, "app_vladislav_yurenya/task02.html")
     number = float(request.GET["number"])
