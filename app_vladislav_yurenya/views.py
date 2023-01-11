@@ -1,10 +1,12 @@
 import json
 from decimal import Decimal
+from typing import Sequence
 
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest
+from django.http import HttpResponse
 from django.shortcuts import render
-from requests import request
 
+from hw.vladislav_yurenya.lesson06.tasks import task_01_boundary
 from hw.vladislav_yurenya.lesson_04.lecture import task_01_money
 from hw.vladislav_yurenya.lesson_04.lecture import task_02_sign
 from hw.vladislav_yurenya.lesson_04.lecture import task_03_triangle
@@ -38,7 +40,7 @@ def sign(request: HttpRequest) -> HttpResponse:
     res: int | str = ""
     if not request.GET:
         return render(request, "app_vladislav_yurenya/task02.html")
-    number = int(request.GET["number"])
+    number = float(request.GET["number"])
     res = task_02_sign(number)
     payloads = {"data": res}
     return HttpResponse(json.dumps(payloads), content_type="application/json")
@@ -67,4 +69,15 @@ def palindrom(request: HttpRequest) -> HttpResponse:
     string = str(request.GET["string"])
     result = task_04_palindrom(string)
     payloads = {"data": bool(result)}
+    return HttpResponse(json.dumps(payloads), content_type="application/json")
+
+
+def boundary(request: HttpRequest) -> HttpResponse:
+    seq: str = ""
+    res: tuple
+    if not request.GET:
+        return render(request, "app_vladislav_yurenya/task_6_01.html")
+    seq = str(request.GET["seq"])
+    result = task_01_boundary(seq)
+    payloads = {"data": result}
     return HttpResponse(json.dumps(payloads), content_type="application/json")
