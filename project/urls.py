@@ -3,8 +3,6 @@ from django.urls import include
 from django.urls import path
 
 from hw.maksim_lamaka.lesson13.views import my_view
-from hw.mikita_karmanaw.lesson13.views import handle_mikita_karmanaw
-from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 
 urlpatterns = [
     path("", include("app_main.urls")),
