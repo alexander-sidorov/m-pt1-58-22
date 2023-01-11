@@ -2,7 +2,6 @@ import json
 
 from django.http import HttpRequest
 from django.http import HttpResponse
-
 from django.shortcuts import render
 
 from hw.dmitry_mihkailiuk.lesson04.lecture import task_01_money
