@@ -7,6 +7,8 @@ from django.shortcuts import render
 
 from hw.eugene_vavilov.lesson04.lecture import task_01_money
 from hw.eugene_vavilov.lesson04.lecture import task_02_sign
+from hw.eugene_vavilov.lesson04.lecture import task_03_triangle
+from hw.eugene_vavilov.lesson04.lecture import task_04_palindrom
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
@@ -40,7 +42,7 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
         )
 
     payload = {
-        "data": int(result),
+        "data": float(result),
     }
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
@@ -52,7 +54,33 @@ def handle_task_02_sign(request: HttpRequest) -> HttpResponse:
         result = task_02_sign(number)
 
     payload = {
-        "data": float(result),
+        "data": int(result),
+    }
+
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+
+
+def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
+    if request.GET:
+        side1 = int(request.GET["s1"])
+        side2 = int(request.GET["s2"])
+        side3 = int(request.GET["s3"])
+        result = task_03_triangle(side1, side2, side3)
+
+    payload = {
+        "data": result,
+    }
+
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+
+
+def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
+    if request.GET:
+        word = request.GET["w"]
+        result = task_04_palindrom(word)
+
+    payload = {
+        "data": result,
     }
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
