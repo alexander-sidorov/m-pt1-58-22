@@ -1,3 +1,4 @@
+import json
 from decimal import Decimal
 
 from django.http import HttpRequest
@@ -18,16 +19,24 @@ def task_money(request: HttpRequest) -> HttpResponse:
     rubles: str | int = ""
     coins: str | int = ""
     amount: str | int = ""
-
-    if request.GET:
-        rubles = int(request.GET["r"])
-        coins = int(request.GET["c"])
-        amount = int(request.GET["a"])
-        result = task_01_money(rubles, coins, amount)
     res: dict = {
         "r": rubles,
         "c": coins,
         "a": amount,
         "result": result,
     }
-    return render(request, "app_vadim_zharski/task_01.html", res)
+    if not request.GET:
+        return render(request, "app_vadim_zharski/task_01.html", res)
+
+    rubles = int(request.GET["r"])
+    coins = int(request.GET["c"])
+    amount = int(request.GET["a"])
+    result = task_01_money(rubles, coins, amount)
+    payload = {
+        "rubles": rubles,
+        "coins": coins,
+        "amount": amount,
+        "data": float(result),
+    }
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+
