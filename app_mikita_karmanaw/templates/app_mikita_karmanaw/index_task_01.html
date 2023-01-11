@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hi</title>
-</head>
-<body>
-    <form action="/~/mikita_karmanaw/lesson04/task01/" method="get">
+{% extends 'app_mikita_karmanaw/index_main.html' %}
 
-        Rubles: <input type="text" name="r" value = {{r}}>
-        Coins: <input type="text" name="c" value={{c}}>
-        Amount: <input type="text" name="a" value={{a}}>
-        
-        <button type="submit">Calculate</button>
-        
-        <h3>{{ result }}</h3>
-        
-        </form>
-</body>
-</html>
+{% block content %}
+<div style="height:40px"></div>
+<div class="container" style="margin: top 2em;">
+    <form class="row g-2">
+        <h4>task_money</h4>
+        <div class="col-auto">Rubles
+            <input type="text" class="form-control" name="r" value="{{r}}">
+        </div>
+        <div class="col-auto">Coins
+            <input type="text" class="form-control" name="c" value="{{c}}">
+        </div>
+        <div class="col-auto">Amount
+            <input type="text" class="form-control" name="a" value="{{a}}">
+        </div>
+        <div class="row-auto">
+            <button type="submit" class="btn btn-outline-primary">Calculate!</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <h3>{{result}}</h3>
+    </div>
+    <div class="mb-3">
+        <a href="{% url 'karmaxa_main' %}">back</a>
+    </div>
+</div>
+
+{% endblock content %}
