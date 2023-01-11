@@ -1,0 +1,33 @@
+from decimal import Decimal
+
+from django.http import HttpRequest
+from django.http import HttpResponse
+from django.shortcuts import render
+
+from hw.andrei_karpuk.lesson04.lecture import task_01_money
+
+
+def helloworld_ak(request: HttpRequest) -> HttpResponse:
+    return HttpResponse("Hello from App")
+
+
+def task_money(request: HttpRequest) -> HttpResponse:
+    result = Decimal(0)
+    rubles = coin = amount = 0
+
+    if request.GET:
+        rubles = int(request.GET["r"])
+        coin = int(request.GET["c"])
+        amount = int(request.GET["a"])
+        result = task_01_money(rubles, coin, amount)
+
+    return render(
+        request,
+        "app_andrei_karpuk/task01.html",
+        {
+            "r": rubles,
+            "c": coin,
+            "a": amount,
+            "result": result,
+        },
+    )
