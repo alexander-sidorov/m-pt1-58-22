@@ -15,7 +15,7 @@ urlpatterns = [
     path("~/maksim_baranau/", include("app_maksim_baranau.urls")),
     path("~/maksim_lamaka/", my_view),
     path("~/mikita_karmanaw/", handle_mikita_karmanaw),
+    path("~/sergey_sakovich/", include("app_sergey_sakovich.urls")),
     path("~/vadim_zharski/", include("app_vadim_zharski.urls")),
     path("~/vladislav_yurenya/", include("app_vladislav_yurenya.urls")),
-    path("~/sergey_sakovich/", include("app_sergey_sakovich.urls")),
 ]
