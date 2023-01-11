@@ -5,4 +5,6 @@ from app_eugene_lubimov import views
 urlpatterns = [
     path("", views.helloworld),
     path("lesson04/task01/", views.handle_task_money),
+    path("lesson04/task02/", views.handle_task_02_sign),
+
 ]

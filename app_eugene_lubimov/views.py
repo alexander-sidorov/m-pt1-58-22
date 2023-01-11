@@ -1,8 +1,9 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
+import json
 
-from hw.eugene_lubimov.lesson04.lecture import task_01_money
+import hw.eugene_lubimov.lesson04.lecture as les4
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
@@ -18,15 +19,19 @@ def handle_task_money(request: HttpRequest) -> HttpResponse:
             int(request.GET["c"]),
             int(request.GET["a"]),
         )
-        result = task_01_money(rubles, coins, amount)
+        result = les4.task_01_money(rubles, coins, amount)
+    payload = {
+        "data": float(result)
+    }
+    return HttpResponse(json.dumps(payload), content_type="application/json")
 
-    return render(
-        request,
-        "app_eugene_lubimov/task01.html",
-        {
-            "r": rubles,
-            "c": coins,
-            "a": amount,
-            "result": result,
-        },
-    )
+def handle_task_02_sign(request: HttpRequest) -> HttpResponse:
+    result: int = 0
+    if request.GET:
+        number = request.GET["n"]
+        result = les4.task_02_sign(number)
+
+    payload = {
+        "data": result
+    }
+    return HttpResponse(json.dumps(payload), content_type="application/json")
