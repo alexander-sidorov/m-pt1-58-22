@@ -57,6 +57,7 @@ class HttpResponse:
         for key in self.headers.keys():
             if key == "Content-Length":
                 self.headers[key] = int(self.headers["Content-Length"])
+        self.body: str | None
         self.body = url.split("\n\n")
         self.body = self.body[1].strip()
 
