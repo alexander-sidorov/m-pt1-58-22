@@ -7,6 +7,7 @@ from django.shortcuts import render
 from hw.jana_sergienko.lesson04.lecture import task_01_money
 from hw.jana_sergienko.lesson04.lecture import task_02_sign
 from hw.jana_sergienko.lesson04.lecture import task_03_triangle
+from hw.jana_sergienko.lesson04.lecture import task_04_palindrom
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
@@ -43,6 +44,16 @@ def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
         side2 = int(request.GET["s2"])
         side3 = int(request.GET["s3"])
         result = task_03_triangle(side1, side2, side3)
+
+    payload = {"data": float(result)}
+
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+
+
+def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
+    if request.GET:
+        str_ = str(request.GET["str"])
+        result = task_04_palindrom(str_)
 
     payload = {"data": float(result)}
 
