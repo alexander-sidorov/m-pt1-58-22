@@ -1,5 +1,7 @@
-from django.http import HttpResponse, HttpRequest
+import json
 
+from django.http import HttpRequest
+from django.http import HttpResponse
+from django.shortcuts import render
 
-def helloworld(request: HttpResponse) -> HttpResponse:
-    return HttpResponse("hello from app")
+from hw.eugene_bakun.
