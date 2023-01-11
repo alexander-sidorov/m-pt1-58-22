@@ -141,9 +141,7 @@ def cities(request: HttpRequest) -> HttpResponse:
                 "distances": res,
             },
         }
-    return HttpResponse(
-        json.dumps(payload), content_type="application/json"
-    )
+    return HttpResponse(json.dumps(payload), content_type="application/json")
 
 
 def route(request: HttpRequest) -> HttpResponse:
