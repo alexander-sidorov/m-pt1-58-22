@@ -58,9 +58,11 @@ class HttpResponse:
             if key == "Content-Length":
                 self.headers[key] = int(self.headers["Content-Length"])
         self.body: str | None
-        self.body = url.split("\n\n")
-        new_body = self.body[1]
-        self.body = new_body.strip()
+        self.body = list(url.split("\n\n"))
+        new_body = self.body[1].strip()
+        self.body = new_body
+        print(self.body)
+
 
     def is_valid(self) -> bool:
         return (
@@ -73,3 +75,12 @@ class HttpResponse:
             return json.loads(self.body)
         else:
             return None
+message = """HTTP/1.1 404 NOT FOUND
+    Content-Length: 48
+    Content-Type: application/json
+    Server: gunicorn/19.9.0
+
+    {"status_code": 404, "description": "no access"}
+    """
+
+resp = HttpResponse(message)
