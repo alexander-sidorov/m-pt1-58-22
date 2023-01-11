@@ -1,13 +1,13 @@
 import json
-from typing import Any
 from decimal import Decimal
+from typing import Any
 
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
 
-import hw.vadim_zharski.lesson_04.lecture as les4
 import hw.vadim_zharski.lesson06.tasks as les6
+import hw.vadim_zharski.lesson_04.lecture as les4
 
 
 def hello_world_vadim_zharski(request: HttpRequest) -> HttpResponse:
@@ -125,4 +125,3 @@ def task_06_boundary(request: HttpRequest) -> HttpResponse:
         "data": result,
     }
     return HttpResponse(json.dumps(payload), content_type="application/json")
-
