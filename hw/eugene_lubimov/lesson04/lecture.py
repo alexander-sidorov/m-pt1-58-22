@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 
-def task_01_money(rubles: int, coins: int, amount: int) -> object:
+def task_01_money(rubles: int, coins: int, amount: int) -> Decimal:
     ru, co, am = Decimal(rubles), Decimal(coins), Decimal(amount)
     return (ru * 100 + co) * am / 100
 
