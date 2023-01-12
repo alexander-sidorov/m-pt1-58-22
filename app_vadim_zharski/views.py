@@ -23,11 +23,12 @@ def task_money(request: HttpRequest) -> HttpResponse:
         amount = int(request.GET["amount"])
         result = float(les4.task_01_money(rubles, coins, amount))
         res: dict = {
-            "rubles": rubles,
-            "coins": coins,
-            "amount": amount,
-            "data": result,
-        }
+            "data": {
+                "rubles": rubles,
+                "coins": coins,
+                "amount": amount,
+                "result": result,
+            }}
         if 'html' in request.GET:
             return render(request, "app_vadim_zharski/task_01.html", res)
         if 'json' in request.GET:
