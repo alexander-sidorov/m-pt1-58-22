@@ -20,9 +20,15 @@ list_students = [
     "vadim_zharski",
     "vladislav_yurenya",
 ]
+listdict_students = [{"name": student} for student in list_students]
 
 
 def liststudents(request: HttpRequest) -> HttpResponse:
     return render(
         request, "app_main/index.html", {"list_students": list_students}
     )
+
+
+def students_listdict(request: HttpRequest) -> HttpResponse:
+    payload = {"data": {"students": listdict_students}}
+    return None
