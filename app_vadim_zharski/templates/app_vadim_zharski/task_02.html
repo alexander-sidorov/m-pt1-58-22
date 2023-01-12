@@ -4,21 +4,14 @@
 <div class="mb-3">
     <form class="row g-3">
       <div class="col-auto">
-        <input type="text" class="form-control" name="rubles" value="{{data.rubles}}" placeholder="rubles">
-      </div>
-      <div class="col-auto">
-        <input type="text" class="form-control" name="coins" value="{{data.coins}}" placeholder="coins">
+        <input type="text" class="form-control" name="num" value="{{data.num}}" placeholder="get sign">
       </div>
         <div class="col-auto">
-        <input type="text" class="form-control" name="amount" value="{{data.amount}}" placeholder="amount">
-      </div>
-      <div class="col-auto">
-        <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group" aria-label="Basic example">
             <button type="submit" name="html" class="btn btn-primary">Calculate</button>
             <button type="submit" name="json" class="btn btn-success">to JSON</button>
         </div>
-
-      </div>
+        </div>
     </form>
         <div class="mb-3">
             <h3>{{data.result}}</h3>

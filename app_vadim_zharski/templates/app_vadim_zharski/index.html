@@ -1,19 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>app_vadim_zharski</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
 <body>
-<div class="mb-3" style="padding: 2vw">
-    {% block content %}
-        <h3>{{hello}}</h3>
-        <div class="list-group text-center" style="width: 200px">
-            <a href="{% url 'app_vadim_zharski:task_money' %}" class="list-group-item list-group-item-action">task_money</a>
-        </div>
-    {% endblock content %}
+<div style="padding: 2vw">
+{% block content %}
+    <h3>{{hello}}</h3>
+    <div class="btn-group-vertical" role="group" aria-label="Vertical button group" style="width: 250px">
+        <a href="#collapse", data-bs-toggle="collapse", aria-controls="collapse" role="button", class="btn btn-secondary" aria-expanded="false">LESSON 4</a>
+        <ol class="collapse list" id="collapse">
+            <li class="list-group-item"><a href="{% url 'app_vadim_zharski:task_money' %}" class="list-group-item list-group-item-action">task_money</a></li>
+            <li class="list-group-item"><a href="{% url 'app_vadim_zharski:task_sign' %}" class="list-group-item list-group-item-action">task_sign</a></li>
+            <li class="list-group-item"><a href="{% url 'app_vadim_zharski:task_triangle' %}" class="list-group-item list-group-item-action">task_triangle</a></li>
+            <li class="list-group-item"><a href="{% url 'app_vadim_zharski:task_palindrom' %}" class="list-group-item list-group-item-action">task_palindrom</a></li>
+        </ol>
+        <a href="#collapse1", data-bs-toggle="collapse", aria-controls="collapse1" role="button", class="btn btn-secondary" aria-expanded="false">LESSON 6</a>
+        <ol class="collapse list" id="collapse1">
+            <li class="list-group-item"><a href="{% url 'app_vadim_zharski:task_boundary' %}" class="list-group-item list-group-item-action">task_boundary</a></li>
+        </ol>
+    </div>
+{% endblock content %}
 </div>
-
 </body>
 </html>
+
