@@ -9,7 +9,7 @@ readme = "README.md"
 anyio = "^3.6.2"
 black = "^22.12.0"
 coverage = "^7.0.5"
-devtools = {extras = ["pygments"], version = "^0.9.0"}
+devtools = {extras = ["pygments"], version = "^0.10.0"}
 django = "^4.1.5"
 django-stubs = "^1.13.1"
 dlint = "^0.13.0"
