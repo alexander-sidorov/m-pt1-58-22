@@ -24,7 +24,8 @@ def api(handler: Callable) -> Callable:
                 {
                     "errors": [str(err)],
                     "tb": traceback.format_exc(),
-                }
+                },
+                status=400,
             )
 
     return wrapped
