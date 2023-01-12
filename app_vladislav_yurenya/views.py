@@ -47,9 +47,9 @@ def sign(request: HttpRequest) -> HttpResponse:
 
 def triangle(request: HttpRequest) -> HttpResponse:
     result = bool()
-    rubles: str | int = ""
-    coins: str | int = ""
-    amount: str | int = ""
+    side1: str | float = ""
+    side2: str | float = ""
+    side3: str | float = ""
     if not request.GET:
         return render(request, "app_vladislav_yurenya/task03.html")
     side1 = float(request.GET["s1"])
