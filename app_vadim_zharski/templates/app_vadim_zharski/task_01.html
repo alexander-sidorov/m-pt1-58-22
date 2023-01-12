@@ -1,24 +1,25 @@
-{% extends 'app_vadim_zharski/index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block basecontent %}
 <div class="mb-3">
     <form class="row g-3">
       <div class="col-auto">
-        <input type="text" class="form-control" name="r" value="{{r}}">
+        <input type="text" class="form-control" name="rubles" value="{{rubles}}">
       </div>
       <div class="col-auto">
-        <input type="text" class="form-control" name="c" value="{{c}}">
+        <input type="text" class="form-control" name="coins" value="{{coins}}">
       </div>
         <div class="col-auto">
-        <input type="text" class="form-control" name="a" value="{{a}}">
+        <input type="text" class="form-control" name="amount" value="{{amount}}">
       </div>
       <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Calculate</button>
+        <button type="submit" name="html" class="btn btn-primary mb-3">Calculate</button>
+        <button type="submit" name="json" class="btn btn-primary mb-3">to JSON</button>
       </div>
     </form>
         <div class="mb-3">
-            <h3>{{result}}</h3>
+            <h3>{{data}}</h3>
         </div>
     <a href= "{% url 'app_vadim_zharski:hello' %}">to home page</a>
 </div>
-{% endblock content %}
+{% endblock basecontent %}

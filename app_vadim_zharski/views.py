@@ -17,30 +17,22 @@ def hello_world_vadim_zharski(request: HttpRequest) -> HttpResponse:
 
 
 def task_money(request: HttpRequest) -> HttpResponse:
-    result: str | Decimal = ""
-    rubles: str | int = ""
-    coins: str | int = ""
-    amount: str | int = ""
-    res: dict = {
-        "r": rubles,
-        "c": coins,
-        "a": amount,
-        "result": result,
-    }
-    if not request.GET:
-        return render(request, "app_vadim_zharski/task_01.html", res)
-
-    rubles = int(request.GET["r"])
-    coins = int(request.GET["c"])
-    amount = int(request.GET["a"])
-    result = les4.task_01_money(rubles, coins, amount)
-    payload = {
-        "rubles": rubles,
-        "coins": coins,
-        "amount": amount,
-        "data": float(result),
-    }
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    if request.GET:
+        rubles = int(request.GET["rubles"])
+        coins = int(request.GET["coins"])
+        amount = int(request.GET["amount"])
+        result = float(les4.task_01_money(rubles, coins, amount))
+        res: dict = {
+            "rubles": rubles,
+            "coins": coins,
+            "amount": amount,
+            "data": result,
+        }
+        if 'html' in request.GET:
+            return render(request, "app_vadim_zharski/task_01.html", res)
+        if 'json' in request.GET:
+            return HttpResponse(json.dumps(res), content_type="application/json")
+    return render(request, "app_vadim_zharski/task_01.html")
 
 
 def task_sign(request: HttpRequest) -> HttpResponse:

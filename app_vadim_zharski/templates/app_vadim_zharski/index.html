@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>app_vadim_zharski</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <div class="mb-3" style="padding: 2vw">
-    {% block content %}
+
         <h3>{{hello}}</h3>
         <div class="list-group text-left" style="width: 200px; border: solid 1px #1D62F0">
             <a href="{% url 'app_vadim_zharski:task_money' %}" class="list-group-item list-group-item-action">task_money</a>
@@ -16,8 +10,5 @@
             <a href="{% url 'app_vadim_zharski:task_palindrom' %}" class="list-group-item list-group-item-action">task_palindrom</a>
             <a href="{% url 'app_vadim_zharski:task_boundary' %}" class="list-group-item list-group-item-action">task_boundary</a>
         </div>
-    {% endblock content %}
 </div>
-
-</body>
-</html>
+{% endblock content %}
