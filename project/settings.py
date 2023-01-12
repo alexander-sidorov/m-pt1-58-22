@@ -3,6 +3,7 @@ from pathlib import Path
 
 DIR_REPO = Path(__file__).parent.parent.resolve()
 
+
 SECRET_KEY = os.getenv("APP_SECRET_KEY") or "1"
 
 DEBUG = True
@@ -13,12 +14,6 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
     "app_alexander_sidorov",
     "app_alexey_tyuhai",
     "app_dmitry_mikhailiuk",
@@ -27,9 +22,16 @@ INSTALLED_APPS = [
     "app_jana_sergienko",
     "app_main",
     "app_maksim_baranau",
+    "app_maksim_lamaka",
     "app_mikita_karmanaw",
     "app_vadim_zharski",
     "app_vladislav_yurenya",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.messages",
+    "django.contrib.sessions",
+    "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [

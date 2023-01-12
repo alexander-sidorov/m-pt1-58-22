@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from hw.maksim_lamaka.lesson13.views import my_view
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 
 urlpatterns = [
@@ -15,7 +14,7 @@ urlpatterns = [
     path("~/eugene_vavilov/", include("app_eugene_vavilov.urls")),
     path("~/jana_sergienko/", include("app_jana_sergienko.urls")),
     path("~/maksim_baranau/", include("app_maksim_baranau.urls")),
-    path("~/maksim_lamaka/", my_view),
+    path("~/maksim_lamaka/", include("app_maksim_lamaka.urls")),
     path("~/mikita_karmanaw/", include("app_mikita_karmanaw.urls")),
     path("~/sergey_sakovich/", handle_sergey_sakovich),
     path("~/vadim_zharski/", include("app_vadim_zharski.urls")),
