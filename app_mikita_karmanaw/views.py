@@ -19,12 +19,14 @@ def hello_mk(request: HttpRequest) -> HttpResponse:
                     "fname": pt.callback.__name__,
                 }
             )
+    hello = "Welcome to MikitaKarman's app!"
     return render(
         request,
         "app_mikita_karmanaw/index_main.html",
         {
             "urls": urls,
             "appname": app_name,
+            "hello": hello,
         },
     )
 
