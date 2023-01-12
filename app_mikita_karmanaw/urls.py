@@ -4,6 +4,6 @@ from app_mikita_karmanaw.views import hello_mk
 from app_mikita_karmanaw.views import money
 
 urlpatterns = [
-    path("", hello_mk),
-    path("lesson04/task01/", money),
+    path("", hello_mk, name="karmaxa_main"),
+    path("lesson04/task01/", money, name="karmaxa_task_money"),
 ]

@@ -4,7 +4,12 @@ from django.shortcuts import render
 
 
 def hello_mk(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Hello from mikitakarman's app!")
+    response = render(
+        request,
+        "app_mikita_karmanaw/index_main.html",
+        {"hello": "Welcome to Mikita Karmanaw's page!"},
+    )
+    return response
 
 
 def money(request: HttpRequest) -> HttpResponse:
