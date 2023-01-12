@@ -1,5 +1,6 @@
 import json
 from decimal import Decimal
+from typing import Any
 
 from django.http import HttpRequest
 from django.http import HttpResponse
@@ -9,6 +10,11 @@ from hw.eugene_vavilov.lesson04.lecture import task_01_money
 from hw.eugene_vavilov.lesson04.lecture import task_02_sign
 from hw.eugene_vavilov.lesson04.lecture import task_03_triangle
 from hw.eugene_vavilov.lesson04.lecture import task_04_palindrom
+from hw.eugene_vavilov.lesson06.tasks import task_01_boundary
+from hw.eugene_vavilov.lesson06.tasks import task_02_expand
+from hw.eugene_vavilov.lesson06.tasks import task_03_hdist
+from hw.eugene_vavilov.lesson06.tasks import task_04_cities
+from hw.eugene_vavilov.lesson06.tasks import task_05_route
 
 
 def helloworld(request: HttpRequest) -> HttpResponse:
@@ -126,6 +132,141 @@ def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
             "app_eugene_vavilov/lesson04_04.html",
             {
                 "w": word,
+                "result": result,
+            },
+        )
+
+
+def handle_task_01_boudary(request: HttpRequest) -> HttpResponse:
+    collect = ""
+    result: tuple[Any, ...] = ()
+
+    if request.GET:
+        collect = request.GET["c"]
+        result = task_01_boundary(collect)
+
+        payload = {
+            "data": result,
+        }
+
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson06_01.html",
+            {
+                "c": collect,
+                "result": result,
+            },
+        )
+
+
+def handle_task_02_expand(request: HttpRequest) -> HttpResponse:
+    seq: list | str = ""
+    result = ""
+
+    if request.GET:
+        seq = request.GET["s"]
+        seq = seq.split(",")
+        result = task_02_expand(seq)
+
+        payload = {
+            "data": result,
+        }
+
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson06_02.html",
+            {
+                "s": seq,
+                "result": result,
+            },
+        )
+
+
+def handle_task_03_hdist(request: HttpRequest) -> HttpResponse:
+    seq1 = seq2 = ""
+    result = 0
+
+    if request.GET:
+        seq1 = request.GET["s1"]
+        seq2 = request.GET["s2"]
+        result = task_03_hdist(seq1, seq2)
+
+        payload = {
+            "data": result,
+        }
+
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson06_03.html",
+            {
+                "s1": seq1,
+                "s2": seq2,
+                "result": result,
+            },
+        )
+
+
+def handle_task_04_cities(request: HttpRequest) -> HttpResponse:
+    town = ""
+    result = {}
+
+    if request.GET:
+        town = request.GET["t"]
+        result = task_04_cities(town)
+
+        payload = {
+            "data": result,
+        }
+
+        return HttpResponse(
+            json.dumps(payload, ensure_ascii=False),
+            content_type="application/json",
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson06_04.html",
+            {
+                "t": town,
+                "result": result,
+            },
+        )
+
+
+def handle_task_05_route(request: HttpRequest) -> HttpResponse:
+    route: list[str] | str = []
+    result = 0
+
+    if request.GET:
+        route = request.GET["r"]
+        route = route.split(",")
+        result = task_05_route(route)
+
+        payload = {
+            "data": result,
+        }
+
+        return HttpResponse(
+            json.dumps(payload), content_type="application/json"
+        )
+    else:
+        return render(
+            request,
+            "app_eugene_vavilov/lesson06_04.html",
+            {
+                "r": route,
                 "result": result,
             },
         )

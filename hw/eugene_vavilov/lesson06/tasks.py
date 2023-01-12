@@ -11,8 +11,8 @@ def task_01_boundary(_seq1: Sequence) -> tuple:
     return _element_1, _element_2
 
 
-def task_02_expand(_seq1: Sequence) -> Any:
-    return _seq1[1:] * _seq1[0]
+def task_02_expand(_seq1: Any) -> Any:
+    return _seq1[1:] * int(_seq1[0])
 
 
 def task_03_hdist(_seq1: Sequence, _seq2: Sequence) -> int:
