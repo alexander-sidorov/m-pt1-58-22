@@ -10,7 +10,7 @@ def task_02_sign(number: int | float | complex) -> int:
     if not number or not isinstance(number, int | float):
         return 0
 
-    return int(abs(number) / number)
+    return -1 if number < 0 else 1
 
 
 def task_03_triangle(side1: int, side2: int, side3: int) -> bool:

@@ -6,8 +6,9 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
+anyio = "^3.6.2"
 black = "^22.12.0"
-coverage = "^7.0.4"
+coverage = "^7.0.5"
 devtools = {extras = ["pygments"], version = "^0.9.0"}
 django = "^4.1.5"
 django-stubs = "^1.13.1"
@@ -37,10 +38,11 @@ flake8-simplify = "^0.19.3"
 flake8-variables-names = "^0.0.5"
 greenlet = "^2.0.1"
 httpie = "^3.2.1"
+httpx = "^0.23.3"
 ipython = "^8.8.0"
 isort = "^5.11.4"
 mypy = "^0.991"
-orjson = "^3.8.4"
+orjson = "^3.8.5"
 pep8-naming = "^0.13.3"
 pydantic = {extras = ["dotenv"], version = "^1.10.4"}
 pytest = "^7.2.0"
@@ -124,5 +126,6 @@ filterwarnings = [
 ]
 testpaths = [
     "hw",
+    "tests",
 ]
 addopts = "--cov --cov-branch --no-cov-on-fail --cov-fail-under=90"
