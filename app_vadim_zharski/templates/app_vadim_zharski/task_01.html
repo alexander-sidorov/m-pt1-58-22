@@ -1,25 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'app_vadim_zharski/index.html' %}
 
-{% block basecontent %}
+{% block content %}
 <div class="mb-3">
     <form class="row g-3">
       <div class="col-auto">
-        <input type="text" class="form-control" name="rubles" value="{{rubles}}">
+        <input type="text" class="form-control" name="rubles" value="{{data.rubles}}">
       </div>
       <div class="col-auto">
-        <input type="text" class="form-control" name="coins" value="{{coins}}">
+        <input type="text" class="form-control" name="coins" value="{{data.coins}}">
       </div>
         <div class="col-auto">
-        <input type="text" class="form-control" name="amount" value="{{amount}}">
+        <input type="text" class="form-control" name="amount" value="{{data.amount}}">
       </div>
       <div class="col-auto">
-        <button type="submit" name="html" class="btn btn-primary mb-3">Calculate</button>
-        <button type="submit" name="json" class="btn btn-primary mb-3">to JSON</button>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" name="html" class="btn btn-primary">Calculate</button>
+            <button type="submit" name="json" class="btn btn-success">to JSON</button>
+        </div>
+
       </div>
     </form>
         <div class="mb-3">
-            <h3>{{data}}</h3>
+            <h3>{{data.result}}</h3>
         </div>
     <a href= "{% url 'app_vadim_zharski:hello' %}">to home page</a>
 </div>
-{% endblock basecontent %}
+{% endblock content %}
