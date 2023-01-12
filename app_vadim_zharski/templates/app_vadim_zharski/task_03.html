@@ -4,20 +4,23 @@
 <div class="mb-3">
     <form class="row g-3">
       <div class="col-auto">
-        <input type="text" class="form-control" name="side1" value="{{side1}}">
+        <input type="text" class="form-control" name="side1" value="{{data.side1}}" placeholder="side 1">
       </div>
         <div class="col-auto">
-        <input type="text" class="form-control" name="side2" value="{{side2}}">
+        <input type="text" class="form-control" name="side2" value="{{data.side2}}" placeholder="side 2">
       </div>
         <div class="col-auto">
-        <input type="text" class="form-control" name="side3" value="{{side3}}">
+        <input type="text" class="form-control" name="side3" value="{{data.side3}}" placeholder="side 3">
       </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Calculate</button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="submit" name="html" class="btn btn-primary">Calculate</button>
+            <button type="submit" name="json" class="btn btn-success">to JSON</button>
+        </div>
         </div>
     </form>
         <div class="mb-3">
-            <h3>{{data}}</h3>
+            <h3>{{data.result}}</h3>
         </div>
     <a href= "{% url 'app_vadim_zharski:hello' %}">to home page</a>
 </div>
