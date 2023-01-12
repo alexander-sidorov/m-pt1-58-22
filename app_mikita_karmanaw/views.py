@@ -1,7 +1,6 @@
-import json
-
-from django.http import HttpRequest
+import jsonfrom django.http import HttpRequest
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 
@@ -62,7 +61,7 @@ def l04t01_money(request: HttpRequest) -> HttpResponse:
             "a": amo,
         },
     }
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
 
 
 def l04t02_sign(request: HttpRequest) -> HttpResponse:
@@ -83,9 +82,7 @@ def l04t02_sign(request: HttpRequest) -> HttpResponse:
                 "sign": res,
             },
         }
-        return HttpResponse(
-            json.dumps(payload), content_type="application/json"
-        )
+        return JsonResponse(payload)
 
 
 def l04t03_triangle(request: HttpRequest) -> HttpResponse:
@@ -112,9 +109,7 @@ def l04t03_triangle(request: HttpRequest) -> HttpResponse:
                 "triangle": res,
             },
         }
-        return HttpResponse(
-            json.dumps(payload), content_type="application/json"
-        )
+        return JsonResponse(payload)
 
 
 def l04t04_palindrom(request: HttpRequest) -> HttpResponse:
@@ -135,9 +130,7 @@ def l04t04_palindrom(request: HttpRequest) -> HttpResponse:
                 "palindrom": res,
             },
         }
-        return HttpResponse(
-            json.dumps(payload), content_type="application/json"
-        )
+        return JsonResponse(payload)
 
 
 def l06t03_hdist(request: HttpRequest) -> HttpResponse:
@@ -159,9 +152,7 @@ def l06t03_hdist(request: HttpRequest) -> HttpResponse:
                 "hdist": res,
             },
         }
-        return HttpResponse(
-            json.dumps(payload), content_type="application/json"
-        )
+        return JsonResponse(payload)
 
 
 def l06t04_cities(request: HttpRequest) -> HttpResponse:
@@ -190,7 +181,7 @@ def l06t04_cities(request: HttpRequest) -> HttpResponse:
                 "distances": res,
             },
         }
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
 
 
 def l06t05_route(request: HttpRequest) -> HttpResponse:
@@ -220,6 +211,4 @@ def l06t05_route(request: HttpRequest) -> HttpResponse:
                 "distance": res,
             },
         }
-        return HttpResponse(
-            json.dumps(payload), content_type="application/json"
-        )
+        return JsonResponse(payload)
