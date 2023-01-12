@@ -2,6 +2,7 @@ import json
 
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 list_students = [
@@ -33,4 +34,4 @@ def liststudents(request: HttpRequest) -> HttpResponse:
 
 def students_listdict(request: HttpRequest) -> HttpResponse:
     payload = {"data": {"students": listdict_students}}
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
