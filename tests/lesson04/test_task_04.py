@@ -11,27 +11,25 @@ pytestmark = [
 @pytest.mark.parametrize(
     "url",
     [
-        "/~/alexander_sidorov/api/04/03/",
+        "/~/alexander_sidorov/api/04/04/",
     ],
 )
 @pytest.mark.parametrize(
-    "s1,s2,s3,expected",
+    "text,expected",
     [
-        (0, 0, 0, False),
-        (1, 2, 3, False),
-        (2, 3, 4, True),
-        (3, 4, 5, True),
+        ("", True),
+        ("abba", True),
+        ("abc", False),
+        ("abcba", True),
     ],
 )
 async def test_success(
     asgi_client: httpx.AsyncClient,
     url: str,
-    s1: int,
-    s2: int,
-    s3: int,
-    expected: bool,
+    text: str,
+    expected: int,
 ) -> None:
-    query = urlencode({"a": s1, "b": s2, "c": s3})
+    query = urlencode({"t": text})
     url = f"{url}?{query}"
 
     rs: httpx.Response = await asgi_client.get(
@@ -43,5 +41,5 @@ async def test_success(
     assert isinstance(payload, dict)
 
     data = payload.get("data")
-    assert isinstance(data, bool)
+    assert isinstance(data, int)
     assert data == expected
