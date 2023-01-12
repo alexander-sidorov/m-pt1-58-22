@@ -1,5 +1,4 @@
 import json
-from decimal import Decimal
 
 from django.http import HttpRequest
 from django.http import HttpResponse
@@ -17,7 +16,6 @@ def helloworld(request: HttpRequest) -> HttpResponse:
 
 def handle_task_01_money(request: HttpRequest) -> HttpResponse:
 
-    result = Decimal(0)
     if request.GET:
         rubles = int(request.GET["r"])
         coins = int(request.GET["c"])
@@ -32,7 +30,7 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
 def handle_task_02_sign(request: HttpRequest) -> HttpResponse:
 
     if request.GET:
-        number = int(request.GET("a"))
+        number = int(request.GET["i"])
         result = task_02_sign(number)
 
     payload = {
@@ -48,7 +46,7 @@ def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
         side1 = float(request.GET["a"])
         side2 = float(request.GET["b"])
         side3 = float(request.GET["c"])
-        result = handle_task_03_triangle(side1, side2, side3)
+        result = task_03_triangle(side1, side2, side3)
 
     payload = {
         "data": bool(result),
@@ -63,7 +61,7 @@ def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
         result = task_04_palindrom(string)
 
     payload = {
-        "data": bool(result),
+        "data": (result),
     }
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
