@@ -8,3 +8,28 @@ body {
     display: flex;
     flex-flow: row wrap;
 }
+li.line {
+     cursor: pointer;
+     color: blue;
+        }
+ul.list{
+    color: black;
+    cursor: auto;
+    padding: 0%;
+}
+.btn{
+    border: none;
+    --bs-btn-padding-y: 0.1rem;
+    display: inline;
+    text-align: left;
+}
+ul.list li{
+    margin-left: 40px;
+    list-style-type: none;
+}
+ul.list li::before{
+    color: blue;
+    content: "•";
+    margin-left: -1.5em;
+    margin-right: 0.5em;
+}

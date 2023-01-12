@@ -8,40 +8,18 @@
             rel="stylesheet"
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
             crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-
     <title>Group m-pt1-58-22</title>
-    <style>
-        li.line {
-         cursor: pointer;
-         color: blue;
-        }
-        ul.list{
-            color: black;
-            cursor: auto;
-            padding: 0%;
-        }
-        .btn{
-            border: none;
-            --bs-btn-padding-y: 0.1rem;
-            display: inline;
-            text-align: left;
-        }
-        ul.list li{
-            margin-left: 40px;
-            list-style-type: none;
-        }
-        ul.list li::before{
-            color: blue;
-            content: "•";
-            margin-left: -1.5em;
-            margin-right: 0.5em;
-        }
-       </style>
 </head>
 
 <body>
-    <div class="card">
+{% block main_app_content %} {% endblock main_app_content %}
+
+{% block content %}
+<div class="card">
         <div class="card-header">
             <h3 class="card-title">Group m-pt1-58-22</h3>
         </div>
@@ -232,10 +210,7 @@
             </div>
         </div>
     </div>
-{% block content %} {% endblock content %}
+{% endblock content %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" 
-            crossorigin="anonymous"></script>
 </body>
 </html>
