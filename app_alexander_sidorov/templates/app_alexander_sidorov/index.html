@@ -1,0 +1,134 @@
+<html>
+<head>
+</head>
+<body>
+
+<article>
+
+    <section>
+        <h1>04/01</h1>
+        <h3 id="id0401result"></h3>
+        <div>
+            <p>Rubles: <input id="id0401r" type="text" value="0"></p>
+            <p>Coins: <input id="id0401c" type="text" value="0"></p>
+            <p>Amount: <input id="id0401a" type="text" value="0"></p>
+        </div>
+    </section>
+
+    <section>
+        <h1>04/02</h1>
+        <h3 id="id0402result"></h3>
+        <p>Number: <input id="id0402n" type="text" value="0"></p>
+    </section>
+
+    <section>
+        <h1>04/03</h1>
+        <h3 id="id0403result"></h3>
+        <div>
+            A: <input id="id0403a" type="text" value="0">
+            B: <input id="id0403b" type="text" value="0">
+            C: <input id="id0403c" type="text" value="0">
+        </div>
+    </section>
+
+    <section>
+        <h1>04/04</h1>
+        <h3 id="id0404result"></h3>
+        <div>
+            Text: <input id="id0404t" type="text" value="">
+        </div>
+    </section>
+
+    <h1 id="idResult"></h1>
+</article>
+
+<script>
+    const id0401r = document.getElementById("id0401r");
+    const id0401c = document.getElementById("id0401c");
+    const id0401a = document.getElementById("id0401a");
+    const id0401result = document.getElementById("id0401result");
+
+    const id0402n = document.getElementById("id0402n");
+    const id0402result = document.getElementById("id0402result");
+
+    const id0403a = document.getElementById("id0403a");
+    const id0403b = document.getElementById("id0403b");
+    const id0403c = document.getElementById("id0403c");
+    const id0403result = document.getElementById("id0403result");
+
+    const id0404t = document.getElementById("id0404t");
+    const id0404result = document.getElementById("id0404result");
+
+    async function apiRequest(apiUrl, query) {
+        const url = `${document.URL}api/${apiUrl}?${query.toString()}`;
+        const resp = await fetch(url, {method: "get"});
+        const payload = await resp.json();
+        return payload.data;
+    }
+
+    async function task0401(event) {
+        event.preventDefault();
+
+        const query = new URLSearchParams({
+            r: id0401r.value || 0,
+            c: id0401c.value || 0,
+            a: id0401a.value || 0,
+        });
+
+        result = await apiRequest("04/01/", query);
+        id0401result.textContent = result + '';
+    }
+
+    async function task0402(event) {
+        event.preventDefault();
+
+        const query = new URLSearchParams({
+            n: id0402n.value || 0,
+        });
+
+        result = await apiRequest("04/02/", query);
+        id0402result.textContent = result + '';
+    }
+
+    async function task0403(event) {
+        event.preventDefault();
+
+        const query = new URLSearchParams({
+            a: id0403a.value || 0,
+            b: id0403b.value || 0,
+            c: id0403c.value || 0,
+        });
+
+        result = await apiRequest("04/03/", query);
+        id0403result.textContent = result + '';
+    }
+
+    async function task0404(event) {
+        event.preventDefault();
+
+        const query = new URLSearchParams({
+            t: id0404t.value || 0,
+        });
+
+        result = await apiRequest("04/04/", query);
+        id0404result.textContent = result + '';
+    }
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        id0401a.addEventListener("input", task0401);
+        id0401c.addEventListener("input", task0401);
+        id0401r.addEventListener("input", task0401);
+
+        id0402n.addEventListener("input", task0402);
+
+        id0403a.addEventListener("input", task0403);
+        id0403b.addEventListener("input", task0403);
+        id0403c.addEventListener("input", task0403);
+
+        id0404t.addEventListener("input", task0404);
+    });
+
+</script>
+
+</body>
+</html>
