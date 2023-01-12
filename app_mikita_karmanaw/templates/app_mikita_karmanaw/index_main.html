@@ -18,13 +18,9 @@
         <h3>{{hello}}</h3>
         <ul>
             <h5>My links:</h5>
-                <li class="link"><a href="{% url 'karmaxa_money' %}" class="list-group-item list-group-item-action">04/01:task_money</a></li>
-                <li class="link"><a href="{% url 'karmaxa_sign' %}" class="list-group-item list-group-item-action">04/02:task_sign</a></li>
-                <li class="link"><a href="{% url 'karmaxa_triangle' %}" class="list-group-item list-group-item-action">04/03:task_triangle</a></li>
-                <li class="link"><a href="{% url 'karmaxa_palindrom' %}" class="list-group-item list-group-item-action">04/04:task_palindrom</a></li>
-                <li class="link"><a href="{% url 'karmaxa_hdist' %}" class="list-group-item list-group-item-action">06/03:task_hdist</a></li>
-                <li class="link"><a href="{% url 'karmaxa_cities' %}" class="list-group-item list-group-item-action">06/04:task_cities</a></li>
-                <li class="link"><a href="{% url 'karmaxa_route' %}" class="list-group-item list-group-item-action">06/05:task_route</a></li>
+                {% for ur in urls %}
+                <li class="link"><a href="{% url ur.route %}" class="list-group-item list-group-item-action">{{ur.fname}}</a></li>
+                {% endfor %}
         </ul>
     </div>
     <div class="btn link">

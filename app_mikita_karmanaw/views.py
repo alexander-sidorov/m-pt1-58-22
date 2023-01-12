@@ -6,10 +6,31 @@ from django.shortcuts import render
 
 
 def hello_mk(request: HttpRequest) -> HttpResponse:
-    return render(request, "app_mikita_karmanaw/index_main.html")
+    from app_mikita_karmanaw.urls import app_name
+    from app_mikita_karmanaw.urls import urlpatterns
+
+    pats = urlpatterns.copy()
+    del pats[0]
+    urls: list = []
+    for pt in pats:
+        if pt.name is not None:
+            urls.append(
+                {
+                    "route": app_name + ":" + pt.name,
+                    "fname": pt.callback.__name__,
+                }
+            )
+    return render(
+        request,
+        "app_mikita_karmanaw/index_main.html",
+        {
+            "urls": urls,
+            "appname": app_name,
+        },
+    )
 
 
-def money(request: HttpRequest) -> HttpResponse:
+def l04t01_money(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_01_money
 
     res: str = ""
@@ -44,11 +65,14 @@ def money(request: HttpRequest) -> HttpResponse:
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
 
-def sign(request: HttpRequest) -> HttpResponse:
+def l04t02_sign(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_02_sign
 
     if not request.GET:
-        html_out = render(request, "app_mikita_karmanaw/lesson04task02.html")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson04task02.html",
+        )
         return HttpResponse(html_out)
     else:
         num = int(request.GET["number"])
@@ -64,11 +88,14 @@ def sign(request: HttpRequest) -> HttpResponse:
         )
 
 
-def triangle(request: HttpRequest) -> HttpResponse:
+def l04t03_triangle(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_03_triangle
 
     if not request.GET:
-        html_out = render(request, "app_mikita_karmanaw/lesson04task03.html")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson04task03.html",
+        )
         return HttpResponse(html_out)
     else:
         side1, side2, side3 = (
@@ -90,11 +117,14 @@ def triangle(request: HttpRequest) -> HttpResponse:
         )
 
 
-def palindrom(request: HttpRequest) -> HttpResponse:
+def l04t04_palindrom(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson04.lecture import task_04_palindrom
 
     if not request.GET:
-        html_out = render(request, "app_mikita_karmanaw/lesson04task04.html")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson04task04.html",
+        )
         return HttpResponse(html_out)
     else:
         string = str(request.GET.get("str"))
@@ -110,11 +140,14 @@ def palindrom(request: HttpRequest) -> HttpResponse:
         )
 
 
-def hdist(request: HttpRequest) -> HttpResponse:
+def l06t03_hdist(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import task_03_hdist
 
     if not request.GET:
-        html_out = render(request, "app_mikita_karmanaw/lesson06task03.html")
+        html_out = render(
+            request,
+            "app_mikita_karmanaw/lesson06task03.html",
+        )
         return HttpResponse(html_out)
     else:
         seq1, seq2 = request.GET["seq1"], request.GET["seq2"]
@@ -131,7 +164,7 @@ def hdist(request: HttpRequest) -> HttpResponse:
         )
 
 
-def cities(request: HttpRequest) -> HttpResponse:
+def l06t04_cities(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import CITIES
     from hw.mikita_karmanaw.lesson06.tasks import task_04_cities
 
@@ -143,7 +176,9 @@ def cities(request: HttpRequest) -> HttpResponse:
         html_out = render(
             request,
             "app_mikita_karmanaw/lesson06task04.html",
-            {"cities": cities},
+            {
+                "cities": cities,
+            },
         )
         return HttpResponse(html_out)
     else:
@@ -158,7 +193,7 @@ def cities(request: HttpRequest) -> HttpResponse:
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
 
-def route(request: HttpRequest) -> HttpResponse:
+def l06t05_route(request: HttpRequest) -> HttpResponse:
     from hw.mikita_karmanaw.lesson06.tasks import CITIES
     from hw.mikita_karmanaw.lesson06.tasks import task_05_route
 
@@ -170,7 +205,9 @@ def route(request: HttpRequest) -> HttpResponse:
         html_out = render(
             request,
             "app_mikita_karmanaw/lesson06task05.html",
-            {"cities": cities},
+            {
+                "cities": cities,
+            },
         )
         return HttpResponse(html_out)
     else:
