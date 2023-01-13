@@ -2,12 +2,14 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
+from app_main.views import students_listdict
 from hw.maksim_lamaka.lesson13.views import my_view
 from hw.sergey_sakovich.lesson13.views import handle_sergey_sakovich
 
 urlpatterns = [
     path("", include("app_main.urls")),
     path("admin/", admin.site.urls),
+    path("api/students/", students_listdict),
     path("~/alexander_sidorov/", include("app_alexander_sidorov.urls")),
     path("~/alexey_tyuhai/", include("app_alexey_tyuhai.urls")),
     path("~/dmitry_mikhailiuk/", include("app_dmitry_mikhailiuk.urls")),
