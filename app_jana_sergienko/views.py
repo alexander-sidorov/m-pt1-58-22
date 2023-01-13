@@ -2,6 +2,7 @@ import json
 
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from hw.jana_sergienko.lesson04.lecture import task_01_money
@@ -24,24 +25,31 @@ def handle_task_01_money(request: HttpRequest) -> HttpResponse:
     result = task_01_money(rub, coin, amt)
 
     payload = {
-        "rubles": rub,
-        "coins": coin,
-        "amount": amt,
-        "result": float(result),
+        "data": {
+            "rubles": rub,
+            "coins": coin,
+            "amount": amt,
+            "result": float(result),
+        }
     }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
 
 
 def handle_task_02_sign(request: HttpRequest) -> HttpResponse:
     result = 0
     if request.GET:
-        number = int(request.GET["n"])
+        number = float(request.GET["n"])
         result = task_02_sign(number)
 
-    payload = {"number": number, "result": float(result)}
+    payload = {
+        "data": {
+            "number": number,
+            "result": result,
+        }
+    }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
 
 
 def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
@@ -52,13 +60,15 @@ def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
         result = task_03_triangle(side1, side2, side3)
 
     payload = {
-        "side1": side1,
-        "side2": side2,
-        "side3": side3,
-        "triangle": float(result),
+        "data": {
+            "side1": side1,
+            "side2": side2,
+            "side3": side3,
+            "triangle": result,
+        }
     }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
 
 
 def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
@@ -71,8 +81,8 @@ def handle_task_04_palindrom(request: HttpRequest) -> HttpResponse:
     payload = {
         "data": {
             "line": str_,
-            "result": str(result),
+            "result": result,
         }
     }
 
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+    return JsonResponse(payload)
