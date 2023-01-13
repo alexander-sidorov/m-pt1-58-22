@@ -62,7 +62,7 @@ def handle_task_03_triangle(request: HttpRequest) -> HttpResponse:
             "side1": side1,
             "side2": side2,
             "side3": side3,
-            "triangle": result,
+            "result": result,
         }
     }
 
