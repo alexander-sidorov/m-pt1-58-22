@@ -1,0 +1,29 @@
+{% extends 'app_mikita_karmanaw/index_main.html' %}
+
+{% block content %}
+<div style="height:40px"></div>
+<div class="container" style="margin: top 2em;">
+    <form class="row g-2">
+        <h4>task_triangle</h4>
+        <div class="col-auto">1st side
+            <input type="text" class="form-control" name="side1" value="{{side1}}">
+        </div>
+        <div class="col-auto">2nd side
+            <input type="text" class="form-control" name="side2" value="{{side2}}">
+        </div>
+        <div class="col-auto">3rd side
+            <input type="text" class="form-control" name="side3" value="{{side3}}">
+        </div>
+        <div class="row-auto">
+            <button type="submit" class="btn btn-outline-primary">Check!</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <h3>{{triangle}}</h3>
+    </div>
+    <div class="mb-3">
+        <a href="{% url 'karmaxa:index' %}">back</a>
+    </div>
+</div>
+
+{% endblock content %}
